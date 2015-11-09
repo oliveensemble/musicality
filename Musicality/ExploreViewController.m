@@ -7,6 +7,7 @@
 //
 
 @import StoreKit;
+#import "MStore.h"
 #import "UserPrefs.h"
 #import "ExploreFetch.h"
 #import "GenreTableViewCell.h"
