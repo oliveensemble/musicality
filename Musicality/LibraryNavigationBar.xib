@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="mA8-IN-dcg" customClass="LibraryNavigationBar">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdS-px-YOu" customClass="Button">
+                    <rect key="frame" x="53" y="15" width="62" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="  Cancel  ">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uL-0G-RS6" customClass="Button">
+                    <rect key="frame" x="187" y="15" width="88" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="  Add Artists  ">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7x-xM-xnV">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
+                    <animations/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="MdS-px-YOu" firstAttribute="top" secondItem="O7x-xM-xnV" secondAttribute="bottom" id="JET-rl-jws"/>
+                <constraint firstAttribute="centerY" secondItem="5uL-0G-RS6" secondAttribute="centerY" id="M9o-jH-sRr"/>
+                <constraint firstAttribute="trailing" secondItem="O7x-xM-xnV" secondAttribute="trailing" id="PqH-pU-BvS"/>
+                <constraint firstAttribute="centerY" secondItem="MdS-px-YOu" secondAttribute="centerY" id="Xd4-Fj-PJ0"/>
+                <constraint firstItem="O7x-xM-xnV" firstAttribute="top" secondItem="mA8-IN-dcg" secondAttribute="top" id="Zo4-eK-CvN"/>
+                <constraint firstItem="MdS-px-YOu" firstAttribute="leading" secondItem="mA8-IN-dcg" secondAttribute="leading" constant="53" id="aLN-nb-aET"/>
+                <constraint firstItem="O7x-xM-xnV" firstAttribute="leading" secondItem="mA8-IN-dcg" secondAttribute="leading" id="psI-lw-gfL"/>
+                <constraint firstAttribute="trailing" secondItem="5uL-0G-RS6" secondAttribute="trailing" constant="45" id="qWE-ni-RkS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addArtistsButton" destination="5uL-0G-RS6" id="4Sf-ed-ipx"/>
+                <outlet property="cancelButton" destination="MdS-px-YOu" id="moI-0J-xja"/>
+            </connections>
+            <point key="canvasLocation" x="306" y="8"/>
+        </view>
+    </objects>
+</document>

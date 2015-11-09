@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" id="m4r-2T-xcL" customClass="ArtistNavigationBar">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WM7-GA-N1y">
+                    <rect key="frame" x="0.0" y="10" width="320" height="43"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XP-lL-SRJ" customClass="Button">
+                    <rect key="frame" x="164" y="68" width="78" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="78" id="dhA-86-p7h"/>
+                        <constraint firstAttribute="height" constant="30" id="w7I-gD-j99"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="Add to list">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ED9-FD-yZh">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                    <animations/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncz-gA-3PF" customClass="Button">
+                    <rect key="frame" x="79" y="68" width="60" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="8oG-Ja-Y06"/>
+                        <constraint firstAttribute="height" constant="30" id="idE-Ix-PJ8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="  Back  ">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtg-Bo-OKm">
+                    <rect key="frame" x="242" y="61" width="78" height="49"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJ9-dh-GSc">
+                    <rect key="frame" x="0.0" y="61" width="79" height="49"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="tau-Dk-ape"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="WM7-GA-N1y" secondAttribute="centerX" id="8fW-x1-F0n"/>
+                <constraint firstItem="ED9-FD-yZh" firstAttribute="leading" secondItem="m4r-2T-xcL" secondAttribute="leading" id="Ce9-u6-eIw"/>
+                <constraint firstItem="5XP-lL-SRJ" firstAttribute="leading" secondItem="Ncz-gA-3PF" secondAttribute="trailing" constant="25" id="Evx-ie-Nwd"/>
+                <constraint firstItem="5XP-lL-SRJ" firstAttribute="top" secondItem="WM7-GA-N1y" secondAttribute="bottom" constant="15" id="HCk-Ag-qIs"/>
+                <constraint firstItem="Ncz-gA-3PF" firstAttribute="centerY" secondItem="5XP-lL-SRJ" secondAttribute="centerY" id="HNT-GO-sgR"/>
+                <constraint firstItem="Ncz-gA-3PF" firstAttribute="leading" secondItem="TJ9-dh-GSc" secondAttribute="trailing" id="IAW-Ul-jKW"/>
+                <constraint firstAttribute="bottom" secondItem="TJ9-dh-GSc" secondAttribute="bottom" id="PNk-tF-Cpl"/>
+                <constraint firstItem="WM7-GA-N1y" firstAttribute="leading" secondItem="m4r-2T-xcL" secondAttribute="leading" id="SHK-gY-iOy"/>
+                <constraint firstItem="TJ9-dh-GSc" firstAttribute="leading" secondItem="m4r-2T-xcL" secondAttribute="leading" id="T8z-lI-3Yf"/>
+                <constraint firstItem="mtg-Bo-OKm" firstAttribute="leading" secondItem="5XP-lL-SRJ" secondAttribute="trailing" id="VkJ-wK-MwO"/>
+                <constraint firstItem="ED9-FD-yZh" firstAttribute="top" secondItem="m4r-2T-xcL" secondAttribute="top" id="WRh-wa-c0t"/>
+                <constraint firstAttribute="trailing" secondItem="WM7-GA-N1y" secondAttribute="trailing" id="aVR-RD-Ohw"/>
+                <constraint firstAttribute="trailing" secondItem="ED9-FD-yZh" secondAttribute="trailing" id="bZl-RX-zQx"/>
+                <constraint firstItem="WM7-GA-N1y" firstAttribute="top" secondItem="m4r-2T-xcL" secondAttribute="top" constant="10" id="gfZ-9q-Rxk"/>
+                <constraint firstItem="TJ9-dh-GSc" firstAttribute="width" secondItem="mtg-Bo-OKm" secondAttribute="width" id="jvJ-0L-HYx"/>
+                <constraint firstItem="TJ9-dh-GSc" firstAttribute="height" secondItem="mtg-Bo-OKm" secondAttribute="height" id="nd5-ZH-hER"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5XP-lL-SRJ" secondAttribute="bottom" constant="10" id="xdt-Gn-1fd"/>
+                <constraint firstAttribute="bottom" secondItem="mtg-Bo-OKm" secondAttribute="bottom" id="yYT-6O-or3"/>
+                <constraint firstAttribute="trailing" secondItem="mtg-Bo-OKm" secondAttribute="trailing" id="yup-ai-aoh"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addToListButton" destination="5XP-lL-SRJ" id="qtG-Ly-7ow"/>
+                <outlet property="artistLabel" destination="WM7-GA-N1y" id="er0-Pd-JlR"/>
+                <outlet property="backButton" destination="Ncz-gA-3PF" id="tvO-zN-tiG"/>
+            </connections>
+            <point key="canvasLocation" x="176" y="530"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7F595168-2007-49B6-BA99-415CD1C3EC93</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Musicality</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7FA6D35496576AC53F9D54625C164ABC3E3E707B</key>
+		<string>https://github.com/evanlws12/Musicality.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Musicality.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7FA6D35496576AC53F9D54625C164ABC3E3E707B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/evanlws12/Musicality.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7FA6D35496576AC53F9D54625C164ABC3E3E707B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7FA6D35496576AC53F9D54625C164ABC3E3E707B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Musicality</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jjt-Yx-1Nv">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="hLI-D0-Aer">
+            <objects>
+                <navigationController storyboardIdentifier="Tutorial" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jjt-Yx-1Nv" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PFK-aj-oiW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vkF-23-vrP" kind="relationship" relationship="rootViewController" id="yJu-rE-ZWn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggP-QK-FTE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-867" y="190"/>
+        </scene>
+        <!--Automatically Scan?-->
+        <scene sceneID="afw-4X-VeQ">
+            <objects>
+                <viewController id="ONB-XD-b14" customClass="TutorialScanViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yk9-O3-OQ5"/>
+                        <viewControllerLayoutGuide type="bottom" id="q96-26-bC4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fkv-hT-Nuj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have a lot of artists (500+) this may take some time. You can also manually import artists in the &quot;Artists&quot; tab" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWM-KM-9wy">
+                                <rect key="frame" x="34" y="279" width="533" height="41"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mw6-rM-9dF" customClass="Button">
+                                <rect key="frame" x="34" y="414" width="137" height="35"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="  Manual Scan  ">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="manual:" destination="ONB-XD-b14" eventType="touchUpInside" id="9JF-0s-gW3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yry-vI-PQa" customClass="Button">
+                                <rect key="frame" x="453" y="414" width="113" height="35"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="eiy-w1-ssf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="  Auto Scan  ">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="autoScan:" destination="ONB-XD-b14" eventType="touchUpInside" id="lSu-Pj-33h"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musicality can automatically scan your entire music library for new releases by your favorite artists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6q-ud-2hK">
+                                <rect key="frame" x="34" y="84" width="533" height="185"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yry-vI-PQa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mw6-rM-9dF" secondAttribute="trailing" constant="5" id="9u8-9Z-t10"/>
+                            <constraint firstAttribute="centerX" secondItem="QWM-KM-9wy" secondAttribute="centerX" id="BFb-wt-m4q"/>
+                            <constraint firstItem="QWM-KM-9wy" firstAttribute="leading" secondItem="fkv-hT-Nuj" secondAttribute="leadingMargin" constant="14" id="DCs-E2-KEZ"/>
+                            <constraint firstItem="QWM-KM-9wy" firstAttribute="top" secondItem="H6q-ud-2hK" secondAttribute="bottom" constant="10" id="DFM-0a-O1Z"/>
+                            <constraint firstItem="mw6-rM-9dF" firstAttribute="top" secondItem="QWM-KM-9wy" secondAttribute="bottom" constant="94" id="F6i-su-kcW"/>
+                            <constraint firstAttribute="centerX" secondItem="H6q-ud-2hK" secondAttribute="centerX" id="SJg-qg-dKJ"/>
+                            <constraint firstItem="Yry-vI-PQa" firstAttribute="height" secondItem="mw6-rM-9dF" secondAttribute="height" id="Soz-Nr-5hw"/>
+                            <constraint firstItem="H6q-ud-2hK" firstAttribute="top" secondItem="yk9-O3-OQ5" secondAttribute="bottom" constant="20" id="bME-iK-1EN"/>
+                            <constraint firstItem="QWM-KM-9wy" firstAttribute="leading" secondItem="mw6-rM-9dF" secondAttribute="leading" id="fFm-yy-hRz"/>
+                            <constraint firstAttribute="centerY" secondItem="QWM-KM-9wy" secondAttribute="centerY" id="pdh-Ts-d7P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Yry-vI-PQa" secondAttribute="trailing" constant="14" id="qdR-wN-SpF"/>
+                            <constraint firstItem="Yry-vI-PQa" firstAttribute="centerY" secondItem="mw6-rM-9dF" secondAttribute="centerY" id="rjM-Sc-ltP"/>
+                            <constraint firstItem="H6q-ud-2hK" firstAttribute="leading" secondItem="fkv-hT-Nuj" secondAttribute="leadingMargin" constant="14" id="zOS-WD-F8E"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Automatically Scan?" id="NtI-8k-sAP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="muO-6E-CK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="600" y="190"/>
+        </scene>
+        <!--Welcome!-->
+        <scene sceneID="RXi-ep-Bil">
+            <objects>
+                <viewController id="vkF-23-vrP" customClass="TutorialInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RM9-PC-HjE"/>
+                        <viewControllerLayoutGuide type="bottom" id="B43-l1-pHh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NX2-W7-W64">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfO-PV-0Cb">
+                                <rect key="frame" x="262" y="215" width="77" height="29"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOU-xI-33f" customClass="Button">
+                                <rect key="frame" x="248" y="314" width="104" height="41"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="  Explore  ">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toScan:" destination="vkF-23-vrP" eventType="touchUpInside" id="TRz-6t-jib"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yg-EH-l2k">
+                                <rect key="frame" x="257" y="99" width="86" height="29"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mao-AV-Uth">
+                                <rect key="frame" x="25" y="138" width="550" height="67"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">The Explore tab allows you to view new and top albums in iTunes. You can add artists to your Artist list by tapping on the "Notify Me" button. Click on any album to view tracks and purchase through iTunes.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMk-cu-Sca">
+                                <rect key="frame" x="25" y="254" width="550" height="50"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">The artists tab contains a list of your artists and their most recent release. You can add more artists in the explore view, or by importing them from your music library.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mao-AV-Uth" firstAttribute="top" secondItem="0Yg-EH-l2k" secondAttribute="bottom" constant="10" id="1jM-Mb-YOF"/>
+                            <constraint firstItem="Mao-AV-Uth" firstAttribute="width" secondItem="FMk-cu-Sca" secondAttribute="width" id="GeP-rt-nvS"/>
+                            <constraint firstItem="xfO-PV-0Cb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Mao-AV-Uth" secondAttribute="bottom" id="Ghe-IQ-3Ay"/>
+                            <constraint firstItem="xfO-PV-0Cb" firstAttribute="top" secondItem="Mao-AV-Uth" secondAttribute="bottom" constant="10" id="Paa-qn-xBF"/>
+                            <constraint firstAttribute="centerX" secondItem="Mao-AV-Uth" secondAttribute="centerX" id="UVV-YJ-Ifj"/>
+                            <constraint firstItem="FMk-cu-Sca" firstAttribute="top" secondItem="xfO-PV-0Cb" secondAttribute="bottom" constant="10" id="VLl-o4-Em9"/>
+                            <constraint firstAttribute="centerX" secondItem="FMk-cu-Sca" secondAttribute="centerX" id="VQz-31-AnV"/>
+                            <constraint firstItem="JOU-xI-33f" firstAttribute="top" secondItem="FMk-cu-Sca" secondAttribute="bottom" constant="10" id="W1M-Zo-eMA"/>
+                            <constraint firstItem="Mao-AV-Uth" firstAttribute="leading" secondItem="NX2-W7-W64" secondAttribute="leadingMargin" constant="5" id="YFG-jc-A03"/>
+                            <constraint firstAttribute="centerX" secondItem="xfO-PV-0Cb" secondAttribute="centerX" id="gYB-lN-HED"/>
+                            <constraint firstAttribute="centerX" secondItem="0Yg-EH-l2k" secondAttribute="centerX" id="iDt-bT-UyR"/>
+                            <constraint firstItem="JOU-xI-33f" firstAttribute="leading" secondItem="FMk-cu-Sca" secondAttribute="trailing" constant="-331" id="opK-cw-8qO"/>
+                            <constraint firstAttribute="centerX" secondItem="JOU-xI-33f" secondAttribute="centerX" id="r4B-ES-Fdm"/>
+                            <constraint firstItem="0Yg-EH-l2k" firstAttribute="top" secondItem="RM9-PC-HjE" secondAttribute="bottom" constant="35" id="tNT-08-LXG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ghe-IQ-3Ay"/>
+                                <exclude reference="opK-cw-8qO"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Welcome!" id="7H3-37-rTa"/>
+                    <connections>
+                        <segue destination="ONB-XD-b14" kind="show" identifier="toScan" id="tQM-aQ-7gb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fiY-uK-fza" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110" y="190"/>
+        </scene>
+    </scenes>
+</document>

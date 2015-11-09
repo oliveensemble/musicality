@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" id="UXm-Fk-jvh" customClass="VariousArtistsNavigationBar">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Artist" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Yt-b3-0Hd">
+                    <rect key="frame" x="0.0" y="10" width="320" height="51"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="51" id="slh-SX-Olc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBc-Jf-nnZ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="51" id="S5m-YF-1LU"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIB-7J-Qex" customClass="Button">
+                    <rect key="frame" x="130" y="67" width="60" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="NrZ-Eg-ffs"/>
+                        <constraint firstAttribute="height" constant="30" id="Zyu-ep-z1L"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="  Back  ">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="YBc-Jf-nnZ" firstAttribute="baseline" secondItem="0Yt-b3-0Hd" secondAttribute="baseline" id="4KQ-Gr-RRt"/>
+                <constraint firstAttribute="centerX" secondItem="VIB-7J-Qex" secondAttribute="centerX" id="8hg-dw-lDF"/>
+                <constraint firstItem="VIB-7J-Qex" firstAttribute="top" secondItem="YBc-Jf-nnZ" secondAttribute="bottom" constant="16" id="BMJ-v5-Dve"/>
+                <constraint firstAttribute="trailing" secondItem="0Yt-b3-0Hd" secondAttribute="trailing" id="Toz-Of-NI5"/>
+                <constraint firstItem="YBc-Jf-nnZ" firstAttribute="top" secondItem="UXm-Fk-jvh" secondAttribute="top" id="a5C-5V-HGl"/>
+                <constraint firstItem="YBc-Jf-nnZ" firstAttribute="leading" secondItem="UXm-Fk-jvh" secondAttribute="leading" id="cvX-b7-oAp"/>
+                <constraint firstItem="0Yt-b3-0Hd" firstAttribute="top" secondItem="UXm-Fk-jvh" secondAttribute="top" constant="10" id="dEu-lN-KIV"/>
+                <constraint firstAttribute="centerX" secondItem="0Yt-b3-0Hd" secondAttribute="centerX" id="dKC-3S-qUk"/>
+                <constraint firstAttribute="trailing" secondItem="YBc-Jf-nnZ" secondAttribute="trailing" id="fZw-ZT-n7c"/>
+                <constraint firstItem="0Yt-b3-0Hd" firstAttribute="leading" secondItem="UXm-Fk-jvh" secondAttribute="leading" id="msw-mZ-WaK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backButton" destination="VIB-7J-Qex" id="SXb-pB-iMm"/>
+                <outlet property="variousArtistsLabel" destination="0Yt-b3-0Hd" id="hps-27-xoh"/>
+            </connections>
+            <point key="canvasLocation" x="176" y="958.5"/>
+        </view>
+    </objects>
+</document>
