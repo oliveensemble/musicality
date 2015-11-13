@@ -10,7 +10,7 @@
 
 @interface PendingOperations : NSObject
 
-@property (nonatomic, strong) NSMutableDictionary *searchesInProgress;
-@property (nonatomic, strong) NSOperationQueue *searchQueue;
+@property (nonatomic, strong) NSMutableDictionary *requestsInProgress;
+@property (nonatomic, strong) NSOperationQueue *requestQueue;
 
 @end

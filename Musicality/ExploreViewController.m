@@ -7,9 +7,11 @@
 //
 
 @import StoreKit;
+#import "Album.h"
 #import "MStore.h"
 #import "UserPrefs.h"
-#import "ExploreFetch.h"
+#import "UIImageView+Haneke.h"
+#import "AlbumTableViewCell.h"
 #import "GenreTableViewCell.h"
 #import "ExploreNavigationBar.h"
 #import "ExploreViewController.h"
@@ -47,7 +49,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   
   //Register TableView cells
   [self.tableView registerClass:[GenreTableViewCell class] forCellReuseIdentifier:@"genreCell"];
-  
+  [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
   //Tab Bar customization
   UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
   self.tabBarItem.selectedImage = selectedImage;
@@ -84,16 +86,19 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   self.tableViewArray = [NSMutableArray arrayWithObject:@"All Genres"];
   self.viewState = browse;
   self.feedType = topCharts;
+  [self fetchFeed:-1];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  
-  
+#pragma mark NSOperation Delegate
+
+- (PendingOperations *)pendingOperations {
+  if (!_pendingOperations) {
+    _pendingOperations = [[PendingOperations alloc] init];
+  }
+  return _pendingOperations;
 }
 
 - (void)fetchFeed:(int)genre {
-  ExploreFetch *exploreFetch;
   NSURL *url;
   
   if (self.feedType == topCharts) {
@@ -103,11 +108,29 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
       url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/rss/topalbums/limit=100/genre=%i/xml", genre]];
     }
   }
-  exploreFetch = [[ExploreFetch alloc] initWithURL:url delegate:self];
+  ExploreFetch *exploreFetch = [[ExploreFetch alloc] initWithURL:url delegate:self];
+  [self.pendingOperations.requestsInProgress setObject:exploreFetch forKey:@"ExploreFetch"];
+  [self.pendingOperations.requestQueue addOperation:exploreFetch];
 }
 
 - (void)exploreFetchDidFinish:(ExploreFetch *)downloader {
+  if (self.viewState == genreSelection) {
+    [self toggleGenreSelection:^(bool finished) {}];
+  }
+  [self.tableView beginUpdates];
   
+  //Add the items to the table view array
+  [self.tableViewArray addObjectsFromArray:downloader.albumArray];
+  
+  NSMutableArray *indexPaths = [NSMutableArray array];
+  //Then add the required number of index paths
+  for (int i = 0; i < downloader.albumArray.count; i++) {
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i + 1 inSection:0];
+    [indexPaths addObject:indexpath];
+  }
+  [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+  [self.tableView endUpdates];
+  [self.tableView reloadData];
 }
 
 #pragma mark TableView Methods
@@ -146,18 +169,32 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     NSNumber *genreId = (NSNumber*)self.genres.allValues[indexPath.row + 1];
     genreCell.genreId = genreId.intValue;
     return genreCell;
+  } else {
+    Album *album = self.tableViewArray[indexPath.row];
+    AlbumTableViewCell *albumCell = [tableView dequeueReusableCellWithIdentifier:@"albumCell"];
+    albumCell.albumLabel.text = album.title;
+    albumCell.artistLabel.text = album.artist;
+    [albumCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
+    return albumCell;
   }
-  return nil;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+  //If the user selected the first item in the array and the genre selection was closed:
   if (indexPath.row == 0 && self.viewState == browse) {
+    //Open genre selection
     [self toggleGenreSelection:^(bool finished) {}];
   } else if (indexPath.row <= self.genres.count && self.viewState == genreSelection) {
+    //If genre selection was open:
     if (indexPath.row == 0) {
+      //Close genre selection
+      [self toggleGenreSelection:^(bool finished) {}];
+    } else {
+      //New genre selected; we need to refetch
       [self toggleGenreSelection:^(bool finished) {
-        //Fetch feed
+        NSNumber *selectedGenreValue = self.genres.allValues[indexPath.row -1];
+        [self fetchFeed:selectedGenreValue.intValue];
       }];
     }
   }

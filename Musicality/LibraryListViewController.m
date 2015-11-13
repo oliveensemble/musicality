@@ -203,8 +203,8 @@
   if (self.selectedArtistsArray.count > 0) {
     for (Artist *artist in self.selectedArtistsArray) {
       ArtistSearch *artistSearch = [[ArtistSearch alloc] initWithArtist:artist delegate:self];
-      [self.pendingOperations.searchesInProgress setObject:artistSearch forKey:[NSString stringWithFormat:@"Artist Search for %@", artist.name]];
-      [self.pendingOperations.searchQueue addOperation:artistSearch];
+      [self.pendingOperations.requestsInProgress setObject:artistSearch forKey:[NSString stringWithFormat:@"Artist Search for %@", artist.name]];
+      [self.pendingOperations.requestQueue addOperation:artistSearch];
     }
     [self beginLoading];
   } else {
@@ -214,16 +214,16 @@
 
 - (void)artistSearchDidFinish:(ArtistSearch *)downloader {
   [[ArtistList sharedList] addArtistToList:downloader.artist];
-  [self.pendingOperations.searchesInProgress removeObjectForKey:[NSString stringWithFormat:@"Artist Search for %@", downloader.artist.name]];
+  [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Artist Search for %@", downloader.artist.name]];
   self.loadingView.viewLabel.text = [NSString stringWithFormat:@"Checking %@", downloader.artist.name];
-  if (self.pendingOperations.searchesInProgress.count == 0) {
+  if (self.pendingOperations.requestsInProgress.count == 0) {
     DLog(@"Finished");
     if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
       [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
     }
     [self endLoading];
     [self toArtistsList:self];
-    [self.pendingOperations.searchQueue cancelAllOperations];
+    [self.pendingOperations.requestQueue cancelAllOperations];
   }
 }
 
