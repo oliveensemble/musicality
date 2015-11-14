@@ -11,4 +11,6 @@
 
 @property (nonatomic) NSDictionary* buttonInfo;
 
+- (void)loadStyle;
+
 @end

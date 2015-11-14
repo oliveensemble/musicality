@@ -235,7 +235,7 @@
     [[self.cells[2] detailTextLabel] setText:@"On"];
   }
   
-  self.view.backgroundColor = self.bwBackgroundColor;
+    self.view.backgroundColor = self.bwBackgroundColor;
   for (UITableViewCell *cell in self.cells) {
     cell.backgroundColor = self.bwBackgroundColor;
     cell.textLabel.textColor = self.bwTextColor;
@@ -254,6 +254,8 @@
   
   [[UserPrefs sharedPrefs] setIsDarkModeEnabled:self.isDarkModeEnabled];
   [[UserPrefs sharedPrefs] savePrefs];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"darkModeToggled" object:self];
+
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
