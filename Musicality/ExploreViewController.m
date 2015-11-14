@@ -7,8 +7,12 @@
 //
 
 @import StoreKit;
+@import Crashlytics;
+#import "Album.h"
+#import "MStore.h"
 #import "UserPrefs.h"
-#import "ExploreFetch.h"
+#import "UIImageView+Haneke.h"
+#import "AlbumTableViewCell.h"
 #import "GenreTableViewCell.h"
 #import "ExploreNavigationBar.h"
 #import "ExploreViewController.h"
@@ -18,7 +22,6 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
   browse = 1 << 0,
   genreSelection = 1 << 1,
   loading = 1 << 2
-  //TODO: Work on loading state and fetch feed
 };
 
 typedef NS_OPTIONS(NSUInteger, FeedType) {
@@ -28,11 +31,16 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 @interface ExploreViewController () <SKStoreProductViewControllerDelegate, ExploreFetchDelegate>
 
+@property (nonatomic, weak) ExploreNavigationBar *navigationBar;
+
 @property (nonatomic) NSMutableArray *tableViewArray;
 @property (nonatomic) NSDictionary *genres;
 
 @property (nonatomic) NSUInteger viewState;
 @property (nonatomic) NSUInteger feedType;
+
+@property (nonatomic) UIColor *cellTextColor;
+@property (nonatomic) UIColor *cellBackgroundColor;
 
 @end
 
@@ -40,23 +48,17 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
   //Allows swipe back to function
   self.navigationController.interactivePopGestureRecognizer.delegate = nil;
   [self.navigationController setNavigationBarHidden:YES animated:NO];
   
   //Register TableView cells
-  [self.tableView registerClass:[GenreTableViewCell class] forCellReuseIdentifier:@"genreCell"];
-  
+  [self.tableView registerNib:[UINib nibWithNibName:@"GenreTableViewCell" bundle:nil] forCellReuseIdentifier:@"genreCell"];
+  [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
   //Tab Bar customization
   UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
   self.tabBarItem.selectedImage = selectedImage;
-  if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
-    self.tabBarController.tabBar.barTintColor = [UIColor blackColor];
-    self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
-  } else {
-    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
-    self.tabBarController.tabBar.tintColor = [UIColor blackColor];
-  }
   
   //List of genres
   _genres = @{@"Alternative" : @20,
@@ -80,19 +82,45 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
               @"Soundtrack" : @16,
               @"World" : @19};
   
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(darkModeToggled:) name:@"darkModeToggled" object:nil];
+  if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
+    self.view.backgroundColor = [UIColor blackColor];
+    self.cellTextColor = [UIColor whiteColor];
+    self.cellBackgroundColor = [UIColor blackColor];
+    self.tabBarController.tabBar.barTintColor = [UIColor blackColor];
+    self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
+  } else {
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.cellTextColor = [UIColor whiteColor];
+    self.cellBackgroundColor = [UIColor blackColor];
+    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.tintColor = [UIColor blackColor];
+  }
+  
   self.tableViewArray = [NSMutableArray arrayWithObject:@"All Genres"];
   self.viewState = browse;
   self.feedType = topCharts;
+  [self fetchFeed:-1];
+}
+
+- (void)darkModeToggled:(id)sender {
+  DLog(@"Dark mode");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  
   
 }
 
+#pragma mark NSOperation Delegate
+
+- (PendingOperations *)pendingOperations {
+  if (!_pendingOperations) {
+    _pendingOperations = [[PendingOperations alloc] init];
+  }
+  return _pendingOperations;
+}
+
 - (void)fetchFeed:(int)genre {
-  ExploreFetch *exploreFetch;
   NSURL *url;
   
   if (self.feedType == topCharts) {
@@ -102,11 +130,29 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
       url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/rss/topalbums/limit=100/genre=%i/xml", genre]];
     }
   }
-  exploreFetch = [[ExploreFetch alloc] initWithURL:url delegate:self];
+  ExploreFetch *exploreFetch = [[ExploreFetch alloc] initWithURL:url delegate:self];
+  [self.pendingOperations.requestsInProgress setObject:exploreFetch forKey:@"ExploreFetch"];
+  [self.pendingOperations.requestQueue addOperation:exploreFetch];
 }
 
 - (void)exploreFetchDidFinish:(ExploreFetch *)downloader {
+  if (self.viewState == genreSelection) {
+    [self toggleGenreSelection:^(bool finished) {}];
+  }
+  [self.tableView beginUpdates];
   
+  //Add the items to the table view array
+  [self.tableViewArray addObjectsFromArray:downloader.albumArray];
+  
+  NSMutableArray *indexPaths = [NSMutableArray array];
+  //Then add the required number of index paths
+  for (int i = 0; i < downloader.albumArray.count; i++) {
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i + 1 inSection:0];
+    [indexPaths addObject:indexpath];
+  }
+  [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+  [self.tableView endUpdates];
+  [self.tableView reloadData];
 }
 
 #pragma mark TableView Methods
@@ -114,11 +160,11 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   
   //Create Navigation Bar and set its bounds
-  ExploreNavigationBar *navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"ExploreNavigationBar" owner:self options:nil] objectAtIndex:0];
-  navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, navigationBar.frame.size.height);
-  navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:navigationBar.bounds].CGPath;
+  _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"ExploreNavigationBar" owner:self options:nil] objectAtIndex:0];
+  _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
+  _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationBar.bounds].CGPath;
   
-  return navigationBar;
+  return _navigationBar;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -137,26 +183,56 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+  // Remove seperator inset
+  if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+    cell.separatorInset = UIEdgeInsetsZero;
+  }
+  
+  // Prevent the cell from inheriting the Table View's margin settings
+  if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+    cell.preservesSuperviewLayoutMargins = NO;
+  }
+  
+  // Set layout margins to zero
+  if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+    cell.layoutMargins = UIEdgeInsetsZero;
+  }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   if (indexPath.row == 0 || (self.viewState == genreSelection && indexPath.row <= self.genres.count)) {
     GenreTableViewCell *genreCell = [tableView dequeueReusableCellWithIdentifier:@"genreCell"];
-    genreCell.textLabel.text = self.tableViewArray[indexPath.row];
     NSNumber *genreId = (NSNumber*)self.genres.allValues[indexPath.row + 1];
     genreCell.genreId = genreId.intValue;
     return genreCell;
+  } else {
+    Album *album = self.tableViewArray[indexPath.row];
+    AlbumTableViewCell *albumCell = [tableView dequeueReusableCellWithIdentifier:@"albumCell"];
+    albumCell.albumLabel.text = album.title;
+    albumCell.artistLabel.text = album.artist;
+    [albumCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
+    return albumCell;
   }
-  return nil;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+  //If the user selected the first item in the array and the genre selection was closed:
   if (indexPath.row == 0 && self.viewState == browse) {
+    //Open genre selection
     [self toggleGenreSelection:^(bool finished) {}];
   } else if (indexPath.row <= self.genres.count && self.viewState == genreSelection) {
+    //If genre selection was open:
     if (indexPath.row == 0) {
+      //Close genre selection
+      [self toggleGenreSelection:^(bool finished) {}];
+    } else {
+      //New genre selected; we need to refetch
       [self toggleGenreSelection:^(bool finished) {
-        //Fetch feed
+        NSNumber *selectedGenreValue = self.genres.allValues[indexPath.row -1];
+        [self fetchFeed:selectedGenreValue.intValue];
       }];
     }
   }

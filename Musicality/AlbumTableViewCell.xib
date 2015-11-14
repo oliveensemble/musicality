@@ -16,13 +16,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-N4-3vl">
-                        <rect key="frame" x="191" y="60" width="391" height="24"/>
-                        <animations/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJy-wD-vmO">
                         <rect key="frame" x="191" y="89" width="391" height="22"/>
                         <animations/>
@@ -43,7 +36,7 @@
                         <rect key="frame" x="18" y="18" width="163" height="163"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Bjm-Gk-erf" secondAttribute="height" multiplier="1:1" id="b71-om-njN"/>
+                            <constraint firstAttribute="width" secondItem="Bjm-Gk-erf" secondAttribute="height" multiplier="1:1" id="3ui-KE-hjT"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbg-ZQ-MLo" customClass="Button">
@@ -58,19 +51,26 @@
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-N4-3vl">
+                        <rect key="frame" x="191" y="60" width="391" height="24"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </label>
                 </subviews>
                 <animations/>
-                <color key="backgroundColor" red="0.55001574754714966" green="0.9894745945930481" blue="0.54819875955581665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="mJy-wD-vmO" firstAttribute="leading" secondItem="mCW-N4-3vl" secondAttribute="leading" id="2Ih-LB-mKm"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="mCW-N4-3vl" secondAttribute="trailing" constant="10" id="3ft-Qx-aO3"/>
                     <constraint firstItem="Bjm-Gk-erf" firstAttribute="leading" secondItem="MLb-n1-dTO" secondAttribute="leadingMargin" constant="10" id="H37-oZ-yLV"/>
                     <constraint firstItem="mJy-wD-vmO" firstAttribute="trailing" secondItem="mCW-N4-3vl" secondAttribute="trailing" id="J6h-4i-fji"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Bjm-Gk-erf" secondAttribute="bottom" constant="10" id="L7G-wk-A3w"/>
                     <constraint firstItem="Wbg-ZQ-MLo" firstAttribute="top" secondItem="mJy-wD-vmO" secondAttribute="bottom" constant="5" id="L8q-5c-29i"/>
+                    <constraint firstItem="Bjm-Gk-erf" firstAttribute="centerY" secondItem="MLb-n1-dTO" secondAttribute="centerY" id="LCA-1N-iZ4"/>
                     <constraint firstItem="mJy-wD-vmO" firstAttribute="centerY" secondItem="MLb-n1-dTO" secondAttribute="centerY" id="MX2-KF-WKz"/>
                     <constraint firstItem="mCW-N4-3vl" firstAttribute="leading" secondItem="Bjm-Gk-erf" secondAttribute="trailing" constant="10" id="SNi-8l-4eZ"/>
-                    <constraint firstItem="Bjm-Gk-erf" firstAttribute="top" secondItem="MLb-n1-dTO" secondAttribute="topMargin" constant="10" id="Ve7-gy-atj"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="mCW-N4-3vl" secondAttribute="trailing" constant="10" id="eyO-y8-iGz"/>
+                    <constraint firstItem="Bjm-Gk-erf" firstAttribute="top" secondItem="MLb-n1-dTO" secondAttribute="topMargin" constant="10" id="fUJ-7D-S41"/>
                     <constraint firstItem="mJy-wD-vmO" firstAttribute="top" secondItem="mCW-N4-3vl" secondAttribute="bottom" constant="5" id="g9P-7j-vt4"/>
                     <constraint firstItem="Wbg-ZQ-MLo" firstAttribute="leading" secondItem="mCW-N4-3vl" secondAttribute="leading" id="uk5-aN-56m"/>
                 </constraints>

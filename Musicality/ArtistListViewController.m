@@ -162,8 +162,8 @@
   for (Artist* artist in [[ArtistList sharedList] artistSet]) {
     if ([mStore thisDate:[NSDate dateWithTimeIntervalSinceNow:-604800] isMoreRecentThan:artist.lastCheckDate]) {
       LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
-      [self.pendingOperations.searchesInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
-      [self.pendingOperations.searchQueue addOperation:albumSearch];
+      [self.pendingOperations.requestsInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
+      [self.pendingOperations.requestQueue addOperation:albumSearch];
       needsUpdates = YES;
     }
   }
@@ -182,8 +182,8 @@
     [self beginLoading];
     for (Artist* artist in [[ArtistList sharedList] artistSet]) {
       LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
-      [self.pendingOperations.searchesInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
-      [self.pendingOperations.searchQueue addOperation:albumSearch];
+      [self.pendingOperations.requestsInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
+      [self.pendingOperations.requestQueue addOperation:albumSearch];
     }
   }
 }
@@ -294,9 +294,9 @@
 
 - (void)latestReleaseSearchDidFinish:(LatestReleaseSearch *)downloader {
   [[ArtistList sharedList] updateLatestRelease:downloader.album forArtist:downloader.artist];
-  [self.pendingOperations.searchesInProgress removeObjectForKey:[NSString stringWithFormat:@"Album Search for %@", downloader.artist.name]];
+  [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Album Search for %@", downloader.artist.name]];
   self.loadingView.viewLabel.text = [NSString stringWithFormat:@"Updating %@", downloader.artist.name];
-  if (self.pendingOperations.searchesInProgress.count == 0) {
+  if (self.pendingOperations.requestsInProgress.count == 0) {
     [self endLoading];
     [self populate];
     if (self.isUpdating) {

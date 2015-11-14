@@ -12,7 +12,7 @@
 @implementation GenreTableViewCell
 
 - (void)awakeFromNib {
-  [self loadStyle];
+    [self loadStyle];
 }
 
 - (void)loadStyle {

@@ -10,20 +10,20 @@
 
 @implementation PendingOperations
 
-- (NSMutableDictionary *)searchesInProgress {
-  if (!_searchesInProgress) {
-    _searchesInProgress = [[NSMutableDictionary alloc] init];
+- (NSMutableDictionary *)requestsInProgress {
+  if (!_requestsInProgress) {
+    _requestsInProgress = [[NSMutableDictionary alloc] init];
   }
-  return _searchesInProgress;
+  return _requestsInProgress;
 }
 
-- (NSOperationQueue *)searchQueue {
-  if (!_searchQueue) {
-    _searchQueue = [[NSOperationQueue alloc] init];
-    _searchQueue.name = @"Artist Search Queue";
-    _searchQueue.maxConcurrentOperationCount = 1;
+- (NSOperationQueue *)requestQueue {
+  if (!_requestQueue) {
+    _requestQueue = [[NSOperationQueue alloc] init];
+    _requestQueue.name = @"Artist Search Queue";
+    _requestQueue.maxConcurrentOperationCount = 1;
   }
-  return _searchQueue;
+  return _requestQueue;
 }
 
 @end

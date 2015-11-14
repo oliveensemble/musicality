@@ -114,7 +114,7 @@
   
   NSString *stringUrl = [url absoluteString];
   NSString *idString = @"/id";
-  NSString *uoString = @"?uo";
+  NSString *uoString = @"?";
   if ([stringUrl containsString:@"i="]) {
     idString = @"i=";
     uoString = @"&uo";

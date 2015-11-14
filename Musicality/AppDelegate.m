@@ -7,6 +7,8 @@
 //
 
 @import StoreKit;
+@import Fabric;
+@import Crashlytics;
 
 #import "NotificationListHandler.h"
 #import "NotificationList.h"
@@ -27,6 +29,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
   // Override point for customization after application launch.
+  
+  [Fabric with:@[[Crashlytics class]]];
+  
   UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
   UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
   [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];

@@ -56,8 +56,8 @@
             self.isScanning = YES;
           }
           ArtistSearch *artistSearch = [[ArtistSearch alloc] initWithArtist:artist delegate:self];
-          [self.pendingOperations.searchesInProgress setObject:artistSearch forKey:[NSString stringWithFormat:@"Artist Search for %@", artist.name]];
-          [self.pendingOperations.searchQueue addOperation:artistSearch];
+          [self.pendingOperations.requestsInProgress setObject:artistSearch forKey:[NSString stringWithFormat:@"Artist Search for %@", artist.name]];
+          [self.pendingOperations.requestQueue addOperation:artistSearch];
         }
       }
     }
@@ -67,8 +67,8 @@
 }
 
 - (void)stopScan {
-  [self.pendingOperations.searchQueue cancelAllOperations];
-  [self.pendingOperations.searchesInProgress removeAllObjects];
+  [self.pendingOperations.requestQueue cancelAllOperations];
+  [self.pendingOperations.requestsInProgress removeAllObjects];
   self.isScanning = NO;
 }
 
@@ -81,16 +81,16 @@
 
 - (void)artistSearchDidFinish:(ArtistSearch *)downloader {
   [[ArtistList sharedList] addArtistToList:downloader.artist];
-  [self.pendingOperations.searchesInProgress removeObjectForKey:[NSString stringWithFormat:@"Artist Search for %@", downloader.artist.name]];
+  [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Artist Search for %@", downloader.artist.name]];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanUpdate" object:nil userInfo:@{@"artistName": downloader.artist.name}];
-  if (self.pendingOperations.searchesInProgress.count == 0) {
+  if (self.pendingOperations.requestsInProgress.count == 0) {
     DLog(@"Finished");
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"AutoScan Finished"];
     self.isScanning = NO;
     if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
       [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
     }
-    [self.pendingOperations.searchQueue cancelAllOperations];
+    [self.pendingOperations.requestQueue cancelAllOperations];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanDone" object:nil];
   }
 }

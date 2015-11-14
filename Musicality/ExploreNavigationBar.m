@@ -29,6 +29,9 @@
     self.layer.backgroundColor = [UIColor whiteColor].CGColor;
     self.exploreLabel.textColor = [UIColor blackColor];
   }
+  
+  [self.exploreNewButton loadStyle];
+  [self.topChartsButton loadStyle];
 }
 
 @end

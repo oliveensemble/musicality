@@ -27,6 +27,7 @@
     self.albumLabel.textColor = [UIColor blackColor];
     self.artistLabel.textColor = [UIColor blackColor];
   }
+  [self.viewArtistButton loadStyle];
 }
 
 @end

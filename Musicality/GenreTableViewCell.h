@@ -12,4 +12,6 @@
 
 @property (nonatomic) int genreId;
 
+- (void)loadStyle;
+
 @end

@@ -35,8 +35,8 @@
     for (Artist* artist in artistSet) {
       NotificationCheck *notificationCheck = [[NotificationCheck alloc] initWithArtist:artist delegate:self];
       DLog(@"Search in progress");
-      [self.pendingOperations.searchesInProgress setObject:notificationCheck forKey:[NSString stringWithFormat:@"Notification Check for %@", artist.name]];
-      [self.pendingOperations.searchQueue addOperation:notificationCheck];
+      [self.pendingOperations.requestsInProgress setObject:notificationCheck forKey:[NSString stringWithFormat:@"Notification Check for %@", artist.name]];
+      [self.pendingOperations.requestQueue addOperation:notificationCheck];
     }
   } else {
     DLog(@"Nothing to check");
@@ -44,9 +44,9 @@
 }
 
 - (void)notificationCheckDidFinish:(NotificationCheck *)downloader {
-  [self.pendingOperations.searchesInProgress removeObjectForKey:[NSString stringWithFormat:@"Notification Check for %@", downloader.artist.name]];
+  [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Notification Check for %@", downloader.artist.name]];
   DLog(@"Recieved a notification");
-  if (self.pendingOperations.searchesInProgress.count == 0) {
+  if (self.pendingOperations.requestsInProgress.count == 0) {
     DLog(@"Finished searching");
     return;
   }
