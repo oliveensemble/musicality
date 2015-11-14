@@ -14,14 +14,12 @@ static NSString* const MArtistListNeedsUpdatingKey = @"artistListNeedsUpdating";
 static NSString* const MLastLibraryCountKey = @"lastLibraryCount";
 static NSString* const MIsAutoUpdateEnabledKey = @"isAutoUpdateEnabled";
 static NSString* const MNoArtistsKey = @"noArtists";
-static NSString* const MIsDarkModeEnabledKey = @"isDarkModeEnabled";
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
   [aCoder encodeBool:self.artistListNeedsUpdating forKey:MArtistListNeedsUpdatingKey];
   [aCoder encodeInteger:self.lastLibraryCount forKey:MLastLibraryCountKey];
   [aCoder encodeBool:self.isAutoUpdateEnabled forKey:MIsAutoUpdateEnabledKey];
   [aCoder encodeBool:self.noArtists forKey:MNoArtistsKey];
-  [aCoder encodeBool:self.isDarkModeEnabled forKey:MIsDarkModeEnabledKey];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -31,7 +29,6 @@ static NSString* const MIsDarkModeEnabledKey = @"isDarkModeEnabled";
     _lastLibraryCount = [aDecoder decodeIntegerForKey:MLastLibraryCountKey];
     _isAutoUpdateEnabled = [aDecoder decodeBoolForKey:MIsAutoUpdateEnabledKey];
     _noArtists = [aDecoder decodeBoolForKey:MNoArtistsKey];
-    _isDarkModeEnabled = [aDecoder decodeBoolForKey:MIsDarkModeEnabledKey];
   }
   return self;
 }

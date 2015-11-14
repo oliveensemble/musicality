@@ -40,25 +40,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   
   [super viewWillAppear:animated];
-  
-  //dark mode customization
-  if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
-    self.view.backgroundColor = [UIColor blackColor];
-    _bwTextColor = [UIColor whiteColor];
-    _bwBackgroundColor = [UIColor blackColor];
-  } else {
-    self.view.backgroundColor = [UIColor whiteColor];
-    _bwTextColor = [UIColor blackColor];
-    _bwBackgroundColor = [UIColor whiteColor];
-  }
-  
-  //    //Tab Bar customization
-  UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-  self.tabBarItem.selectedImage = selectedImage;
-  self.tabBarController.tabBar.barTintColor = self.bwBackgroundColor;
-  self.tabBarController.tabBar.tintColor = self.bwTextColor;
-  
-  for (Artist *artistNotified in [[ArtistList sharedList] artistSet]) {
+ for (Artist *artistNotified in [[ArtistList sharedList] artistSet]) {
     if (artistNotified.artistID == self.artist.artistID) {
       self.isInNotificationList = YES;
     }
@@ -68,6 +50,12 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  //Tab Bar customization
+  UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+  self.tabBarItem.selectedImage = selectedImage;
+  self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+  self.tabBarController.tabBar.tintColor = [UIColor blackColor];
   
   self.navigationController.interactivePopGestureRecognizer.delegate = nil;
   [self.navigationController setNavigationBarHidden:YES animated:NO];

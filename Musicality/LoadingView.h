@@ -12,6 +12,4 @@
 
 @property (nonatomic, weak) IBOutlet UILabel* viewLabel;
 
-- (void)loadStyle;
-
 @end

@@ -19,8 +19,6 @@
 
 @property (nonatomic, weak) VariousArtistsNavigationBar *navigationBar;
 
-@property BOOL isDarkModeEnabled;
-
 @property (nonatomic) UIColor *bwTextColor;
 @property (nonatomic) UIColor *bwBackgroundColor;
 
@@ -49,24 +47,11 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-  _isDarkModeEnabled = [[UserPrefs sharedPrefs] isDarkModeEnabled];
-  
-  //dark mode customization
-  if (self.isDarkModeEnabled) {
-    self.view.backgroundColor = [UIColor blackColor];
-    _bwTextColor = [UIColor whiteColor];
-    _bwBackgroundColor = [UIColor blackColor];
-  } else {
-    self.view.backgroundColor = [UIColor whiteColor];
-    _bwTextColor = [UIColor blackColor];
-    _bwBackgroundColor = [UIColor whiteColor];
-  }
-  
   //Tab Bar customization
   UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
   self.tabBarItem.selectedImage = selectedImage;
-  self.tabBarController.tabBar.barTintColor = self.bwBackgroundColor;
-  self.tabBarController.tabBar.tintColor = self.bwTextColor;
+  self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+  self.tabBarController.tabBar.tintColor = [UIColor blackColor];
   
   [self.tableView headerViewForSection:0];
   [self.tableView reloadData];

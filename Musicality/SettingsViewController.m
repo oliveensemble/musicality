@@ -21,12 +21,8 @@
 
 @property (nonatomic, weak) SettingsNavigationBar *navigationBar;
 
-@property BOOL isDarkModeEnabled;
 @property BOOL isAutoUpdateEnabled;
 
-@property (nonatomic) UIColor *bwTextColor;
-@property (nonatomic) UIColor *bwBackgroundColor;
-@property (nonatomic) NSString *nightModeText;
 @property (nonatomic) NSString *autoupdateText;
 @property (nonatomic) NSNumber *alertViewActionID;
 
@@ -41,21 +37,7 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-  _isDarkModeEnabled = [[UserPrefs sharedPrefs] isDarkModeEnabled];
   _isAutoUpdateEnabled = [[UserPrefs sharedPrefs] isAutoUpdateEnabled];
-  
-  //dark mode customization
-  if (self.isDarkModeEnabled) {
-    self.view.backgroundColor = [UIColor blackColor];
-    _bwTextColor = [UIColor whiteColor];
-    _bwBackgroundColor = [UIColor blackColor];
-    self.nightModeText = @"On";
-  } else {
-    self.view.backgroundColor = [UIColor whiteColor];
-    _bwTextColor = [UIColor blackColor];
-    _bwBackgroundColor = [UIColor whiteColor];
-    self.nightModeText = @"Off";
-  }
   
   if (self.isAutoUpdateEnabled) {
     self.autoupdateText = @"On";
@@ -64,12 +46,8 @@
   }
   
   //Tab Bar customization
-  self.tabBarController.tabBar.barTintColor = self.bwBackgroundColor;
-  self.tabBarController.tabBar.tintColor = self.bwTextColor;
-  
-  UITableViewCell *eveningCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-  eveningCell.detailTextLabel.text = self.nightModeText;
-  
+  self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+  self.tabBarController.tabBar.tintColor = [UIColor blackColor];  
 }
 
 - (void)viewDidLoad {
@@ -132,14 +110,7 @@
   //Add navigation bar to header
   _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"SettingsNavigationBar" owner:self options:nil] objectAtIndex:0];
   _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, _navigationBar.frame.size.height);
-  _navigationBar.backgroundColor = self.bwBackgroundColor;
-  _navigationBar.layer.shadowColor = [self.bwTextColor CGColor];
-  _navigationBar.layer.shadowOpacity = 0.4;
-  _navigationBar.layer.shadowRadius = 2.0;
-  _navigationBar.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
   _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:_navigationBar.bounds].CGPath;
-  UILabel *settingsLabel = (UILabel*)[self.navigationBar viewWithTag:1];
-  settingsLabel.textColor = self.bwTextColor;
   return _navigationBar;
 }
 
@@ -148,17 +119,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-  
-  cell.backgroundColor = self.bwBackgroundColor;
-  cell.textLabel.textColor = self.bwTextColor;
-  cell.detailTextLabel.textColor = self.bwTextColor;
   if (indexPath.row == 1) {
     cell.detailTextLabel.text = self.autoupdateText;
   }
-  if (indexPath.row == 2) {
-    cell.detailTextLabel.text = self.nightModeText;
-  }
-  
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -190,11 +153,6 @@
       break;
     }
     case 2: {
-      DLog(@"Dark mode toggled");
-      [self toggleDarkMode];
-    }
-      break;
-    case 3: {
       if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
         mail.mailComposeDelegate = self;
@@ -207,7 +165,7 @@
       }
     }
       break;
-    case 5: {
+    case 4: {
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear all data" message:@"Are you sure? You can turn 'Scan Library Automatically' on to restart library search" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Clear", nil];
       alert.tag = 2;
       [alert show];
@@ -217,45 +175,6 @@
   }
   [[UserPrefs sharedPrefs] savePrefs];
   [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
-
-- (void)toggleDarkMode {
-  
-  if (self.isDarkModeEnabled) {
-    //Turn it off
-    _isDarkModeEnabled = NO;
-    _bwTextColor = [UIColor blackColor];
-    _bwBackgroundColor = [UIColor whiteColor];
-    [[self.cells[2] detailTextLabel] setText:@"Off"];
-  } else {
-    //Turn it on
-    _isDarkModeEnabled = YES;
-    _bwTextColor = [UIColor whiteColor];
-    _bwBackgroundColor = [UIColor blackColor];
-    [[self.cells[2] detailTextLabel] setText:@"On"];
-  }
-  
-    self.view.backgroundColor = self.bwBackgroundColor;
-  for (UITableViewCell *cell in self.cells) {
-    cell.backgroundColor = self.bwBackgroundColor;
-    cell.textLabel.textColor = self.bwTextColor;
-    cell.detailTextLabel.textColor = self.bwTextColor;
-    [cell setSelected:NO animated:NO];
-  }
-  
-  self.navigationBar.backgroundColor = self.bwBackgroundColor;
-  self.navigationBar.layer.shadowColor = [self.bwBackgroundColor CGColor];
-  UILabel *settingsLabel = (UILabel*)[self.navigationBar viewWithTag:1];
-  settingsLabel.textColor = self.bwTextColor;
-  
-  //Tab Bar customization
-  self.tabBarController.tabBar.barTintColor = self.bwBackgroundColor;
-  self.tabBarController.tabBar.tintColor = self.bwBackgroundColor;
-  
-  [[UserPrefs sharedPrefs] setIsDarkModeEnabled:self.isDarkModeEnabled];
-  [[UserPrefs sharedPrefs] savePrefs];
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"darkModeToggled" object:self];
-
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {

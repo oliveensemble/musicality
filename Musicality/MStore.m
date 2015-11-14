@@ -150,14 +150,6 @@
   textLabel.text = text;
   [alertView addSubview:textLabel];
   
-  if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
-    alertView.backgroundColor = [UIColor whiteColor];
-    textLabel.textColor = [UIColor blackColor];
-  } else {
-    alertView.backgroundColor = [UIColor blackColor];
-    textLabel.textColor = [UIColor whiteColor];
-  }
-  
   [mainWindow addSubview:alertView];
   [mainWindow bringSubviewToFront:alertView];
   

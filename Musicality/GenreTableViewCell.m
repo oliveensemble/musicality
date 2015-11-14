@@ -12,17 +12,8 @@
 @implementation GenreTableViewCell
 
 - (void)awakeFromNib {
-    [self loadStyle];
-}
-
-- (void)loadStyle {
-  if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
-    self.backgroundColor = [UIColor blackColor];
-    self.textLabel.textColor = [UIColor whiteColor];
-  } else {
-    self.backgroundColor = [UIColor whiteColor];
-    self.textLabel.textColor = [UIColor blackColor];
-  }
+  self.backgroundColor = [UIColor whiteColor];
+  self.textLabel.textColor = [UIColor blackColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

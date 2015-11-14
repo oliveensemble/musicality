@@ -50,26 +50,6 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
-  //dark mode customization
-  if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
-    self.view.backgroundColor = [UIColor blackColor];
-    _bwTextColor = [UIColor whiteColor];
-    _bwBackgroundColor = [UIColor blackColor];
-  } else {
-    self.view.backgroundColor = [UIColor whiteColor];
-    _bwTextColor = [UIColor blackColor];
-    _bwBackgroundColor = [UIColor whiteColor];
-  }
-  
-  if (self.loadingView) {
-    [self.loadingView loadStyle];
-  }
-  
-  //Tab Bar customization
-  UIImage *selectedImage = [[UIImage imageNamed:@"mic_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-  self.tabBarItem.selectedImage = selectedImage;
-  self.tabBarController.tabBar.barTintColor = self.bwBackgroundColor;
-  self.tabBarController.tabBar.tintColor = self.bwTextColor;
   self.isUpdating = NO;
   
   if(![self needsUpdates]) {
@@ -80,6 +60,13 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  //Tab Bar customization
+  UIImage *selectedImage = [[UIImage imageNamed:@"mic_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+  self.tabBarItem.selectedImage = selectedImage;
+  self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+  self.tabBarController.tabBar.tintColor = [UIColor blackColor];
+  
   self.isUpdating = NO;
   self.navigationController.navigationBarHidden = YES;
   self.navigationController.interactivePopGestureRecognizer.delegate = nil;

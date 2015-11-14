@@ -13,23 +13,11 @@
 @implementation Button
 
 - (void)awakeFromNib {
-  [self loadStyle];
-}
-
-- (void)loadStyle {
-  //Create border
+  [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+  [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+  [self setBackgroundImage:[self imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
+  self.layer.borderColor = [[UIColor blackColor] CGColor];
   self.layer.borderWidth = 2.0f;
-  if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
-    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    [self setBackgroundImage:[self imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
-    self.layer.borderColor = [[UIColor whiteColor] CGColor];
-  } else {
-    [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [self setBackgroundImage:[self imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
-    self.layer.borderColor = [[UIColor blackColor] CGColor];
-  }
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color {

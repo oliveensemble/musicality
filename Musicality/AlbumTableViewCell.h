@@ -18,6 +18,4 @@
 
 @property (nonatomic) NSDictionary* cellInfo;
 
-- (void)loadStyle;
-
 @end

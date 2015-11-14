@@ -53,7 +53,6 @@
 		4FA71CED1BF68CFD00DC6C0E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA71CEB1BF68CFD00DC6C0E /* Fabric.framework */; };
 		4FA71CEE1BF68CFD00DC6C0E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA71CEC1BF68CFD00DC6C0E /* Crashlytics.framework */; };
 		4FA71CF11BF6C6EC00DC6C0E /* GenreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA71CF01BF6C6EC00DC6C0E /* GenreTableViewCell.xib */; };
-		4FA71CF31BF6C7CA00DC6C0E /* ExploreViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA71CF21BF6C7CA00DC6C0E /* ExploreViewController2.m */; };
 		4FAFCBE81A146A760024A4E5 /* ArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAFCBE71A146A760024A4E5 /* ArtistListViewController.m */; };
 		4FAFCBEB1A1472590024A4E5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAFCBEA1A1472590024A4E5 /* SettingsViewController.m */; };
 		4FC1C26B19F7367900E14360 /* ArtistNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC1C26A19F7367900E14360 /* ArtistNavigationBar.m */; };
@@ -168,7 +167,6 @@
 		4FA71CEB1BF68CFD00DC6C0E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		4FA71CEC1BF68CFD00DC6C0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		4FA71CF01BF6C6EC00DC6C0E /* GenreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenreTableViewCell.xib; sourceTree = "<group>"; };
-		4FA71CF21BF6C7CA00DC6C0E /* ExploreViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController2.m; sourceTree = "<group>"; };
 		4FAFCBE61A146A760024A4E5 /* ArtistListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistListViewController.h; sourceTree = "<group>"; };
 		4FAFCBE71A146A760024A4E5 /* ArtistListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ArtistListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4FAFCBE91A1472590024A4E5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -344,9 +342,8 @@
 		4F2C437A19F0022600909D01 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4F1520C919EDFEAD00530B8E /* ExploreViewController.m */,
 				4F1520C819EDFEAD00530B8E /* ExploreViewController.h */,
-				4FA71CF21BF6C7CA00DC6C0E /* ExploreViewController2.m */,
+				4F1520C919EDFEAD00530B8E /* ExploreViewController.m */,
 				4FAFCBE61A146A760024A4E5 /* ArtistListViewController.h */,
 				4FAFCBE71A146A760024A4E5 /* ArtistListViewController.m */,
 				4F96D92F1A23B73C00759C6D /* ArtistViewController.h */,
@@ -645,7 +642,6 @@
 				4F373B4D1A07D8ED00DA0F34 /* NotificationListHandler.m in Sources */,
 				4F63E8491BE57BCF004B6991 /* HNKSimpleFetcher.m in Sources */,
 				4F668CEF1B3A2A68008DC2A7 /* UserPrefs.m in Sources */,
-				4FA71CF31BF6C7CA00DC6C0E /* ExploreViewController2.m in Sources */,
 				4F63E8451BE57BCF004B6991 /* HNKCache.m in Sources */,
 				4F63E8481BE57BCF004B6991 /* HNKNetworkFetcher.m in Sources */,
 				4F7A16F019F885270039508D /* ArtistsNavigationBar.m in Sources */,

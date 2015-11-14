@@ -82,33 +82,10 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
               @"Soundtrack" : @16,
               @"World" : @19};
   
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(darkModeToggled:) name:@"darkModeToggled" object:nil];
-  if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
-    self.view.backgroundColor = [UIColor blackColor];
-    self.cellTextColor = [UIColor whiteColor];
-    self.cellBackgroundColor = [UIColor blackColor];
-    self.tabBarController.tabBar.barTintColor = [UIColor blackColor];
-    self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
-  } else {
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.cellTextColor = [UIColor whiteColor];
-    self.cellBackgroundColor = [UIColor blackColor];
-    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
-    self.tabBarController.tabBar.tintColor = [UIColor blackColor];
-  }
-  
   self.tableViewArray = [NSMutableArray arrayWithObject:@"All Genres"];
   self.viewState = browse;
   self.feedType = topCharts;
   [self fetchFeed:-1];
-}
-
-- (void)darkModeToggled:(id)sender {
-  DLog(@"Dark mode");
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-  
 }
 
 #pragma mark NSOperation Delegate

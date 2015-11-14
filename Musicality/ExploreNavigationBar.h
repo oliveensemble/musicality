@@ -15,6 +15,4 @@
 @property (weak, nonatomic) IBOutlet Button *topChartsButton;
 @property (weak, nonatomic) IBOutlet UILabel *exploreLabel;
 
-- (void)loadStyle;
-
 @end
