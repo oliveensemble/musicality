@@ -13,13 +13,14 @@
 
 - (void)awakeFromNib {
   self.backgroundColor = [UIColor whiteColor];
-  self.textLabel.textColor = [UIColor blackColor];
+  self.genreLabel.textColor = [UIColor blackColor];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-  [super setSelected:selected animated:animated];
-  
-  // Configure the view for the selected state
+- (void)setHighlighted:(BOOL)highlighted {
+  if (highlighted) {
+    self.backgroundColor = [UIColor blackColor];
+    self.genreLabel.textColor = [UIColor whiteColor];
+  }
 }
 
 @end

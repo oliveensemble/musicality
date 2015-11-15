@@ -10,6 +10,7 @@
 
 @interface GenreTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *genreLabel;
 @property (nonatomic) int genreId;
 
 @end

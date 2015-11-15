@@ -218,7 +218,7 @@
   NSMutableArray *albumsArray = [NSMutableArray array];
   for (Artist *artist in [[ArtistList sharedList] artistSet]) {
     if (artist.latestRelease) {
-      artist.latestRelease.userData = artist.artistID;
+      artist.latestRelease.artistID = artist.artistID;
       [albumsArray addObject:artist.latestRelease];
     }
   }
@@ -475,7 +475,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     DLog(@"Index path row for action: %ld", (long)indexPath.row);
     self.actionAlbum = self.tableViewArray[indexPath.row];
-    self.actionAlbum.userData = indexPath;
+    //self.actionAlbum.userData = indexPath;
     self.actionArtist = [[ArtistList sharedList] getArtist:[self.actionAlbum artist]];
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Hide Artist" otherButtonTitles: @"Share", nil];
     [actionSheet showInView:self.view];
@@ -501,9 +501,9 @@
     [self presentViewController:activityVC animated:YES completion:nil];
   } else if (buttonIndex == 0) {
     DLog(@"Hiding artist");
-    NSIndexPath *indexPath = self.actionAlbum.userData;
-    [self.tableViewArray removeObjectAtIndex:indexPath.row];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    //NSIndexPath *indexPath = self.actionAlbum.artistID;
+    //[self.tableViewArray removeObjectAtIndex:indexPath.row];
+    //[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [[Blacklist sharedList] addArtistToList:self.actionArtist];
   }
   self.actionArtist = nil;

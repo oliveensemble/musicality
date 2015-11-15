@@ -14,10 +14,22 @@
 
 - (void)awakeFromNib {
   [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-  [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-  [self setBackgroundImage:[self imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
   self.layer.borderColor = [[UIColor blackColor] CGColor];
+  [self setBackgroundImage:[self imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+  [self setBackgroundImage:[self imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
   self.layer.borderWidth = 2.0f;
+}
+
+- (void)setSelectedStyle {
+  [self setBackgroundImage:[mStore imageWithColor:[UIColor blackColor]] forState:UIControlStateNormal];
+  [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  self.layer.borderColor = [[UIColor blackColor] CGColor];
+}
+
+- (void)setDeselectedStyle {
+  [self setBackgroundImage:[mStore imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+  [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+  self.layer.borderColor = [[UIColor blackColor] CGColor];
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color {

@@ -60,7 +60,6 @@
 		4FC3E77E1B13E00200C3C10F /* ArtistSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3E77D1B13E00200C3C10F /* ArtistSearch.m */; };
 		4FC8747C1A572C9D004FD67A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC8747B1A572C9D004FD67A /* CoreData.framework */; };
 		4FC8747E1A572CAE004FD67A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC8747D1A572CAE004FD67A /* SystemConfiguration.framework */; };
-		4FCAC7571A200F23005550C2 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCAC7561A200F23005550C2 /* Track.m */; };
 		4FD2E80E1B76F77A00F35659 /* VariousArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2E80D1B76F77A00F35659 /* VariousArtistsViewController.m */; };
 		4FD2E8101B76FFE700F35659 /* VariousArtistsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD2E80F1B76FFE700F35659 /* VariousArtistsNavigationBar.xib */; };
 		4FD2E8131B77002000F35659 /* VariousArtistsNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2E8121B77002000F35659 /* VariousArtistsNavigationBar.m */; };
@@ -180,8 +179,6 @@
 		4FC3E77D1B13E00200C3C10F /* ArtistSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistSearch.m; sourceTree = "<group>"; };
 		4FC8747B1A572C9D004FD67A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4FC8747D1A572CAE004FD67A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		4FCAC7551A200F23005550C2 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
-		4FCAC7561A200F23005550C2 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		4FD2E80C1B76F77A00F35659 /* VariousArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariousArtistsViewController.h; sourceTree = "<group>"; };
 		4FD2E80D1B76F77A00F35659 /* VariousArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariousArtistsViewController.m; sourceTree = "<group>"; };
 		4FD2E80F1B76FFE700F35659 /* VariousArtistsNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VariousArtistsNavigationBar.xib; sourceTree = "<group>"; };
@@ -324,8 +321,6 @@
 				4FE1039D19DB9425004F27BB /* Artist.m */,
 				4FE1039F19DBA0DB004F27BB /* Album.h */,
 				4FE103A019DBA0DB004F27BB /* Album.m */,
-				4FCAC7551A200F23005550C2 /* Track.h */,
-				4FCAC7561A200F23005550C2 /* Track.m */,
 				4FC3E7771B13957000C3C10F /* ArtistList.h */,
 				4FC3E7781B13957000C3C10F /* ArtistList.m */,
 				4FEC5A811B34D0DC00985B0C /* Blacklist.h */,
@@ -634,7 +629,6 @@
 				4F650E5F1A279AF000C2FA82 /* LibraryListViewController.m in Sources */,
 				4F6B7E0719FE90D600FFC596 /* Button.m in Sources */,
 				4FEC5A831B34D0DC00985B0C /* Blacklist.m in Sources */,
-				4FCAC7571A200F23005550C2 /* Track.m in Sources */,
 				4FD2E80E1B76F77A00F35659 /* VariousArtistsViewController.m in Sources */,
 				4F63E8461BE57BCF004B6991 /* HNKDiskCache.m in Sources */,
 				4F18223319DA0439006CCA8B /* main.m in Sources */,

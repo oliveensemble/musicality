@@ -11,4 +11,7 @@
 
 @property (nonatomic) NSDictionary* buttonInfo;
 
+- (void)setSelectedStyle;
+- (void)setDeselectedStyle;
+
 @end

@@ -183,11 +183,11 @@
     [albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
     UILabel *trackNumLabel = (UILabel*)[preOrderCell.contentView viewWithTag:4];
     trackNumLabel.textColor = self.bwTextColor;
-    if (album.userData) {
-      if ([album.userData  isEqual:@1]) {
+    if (album.trackCount) {
+      if ([album.trackCount  isEqual:@1]) {
         trackNumLabel.text = @"1 track";
       } else {
-        trackNumLabel.text = [NSString stringWithFormat:@"%@ tracks", album.userData];
+        trackNumLabel.text = [NSString stringWithFormat:@"%@ tracks", album.trackCount];
       }
     } else {
       trackNumLabel.hidden = YES;
@@ -207,11 +207,11 @@
     latestReleaseLabel.textColor = self.bwTextColor;
     UILabel *trackNumLabel = (UILabel*)[latestReleaseCell.contentView viewWithTag:4];
     trackNumLabel.textColor = self.bwTextColor;
-    if (album.userData) {
-      if ([album.userData  isEqual:@1]) {
+    if (album.trackCount) {
+      if ([album.trackCount  isEqual:@1]) {
         trackNumLabel.text = @"1 track";
       } else {
-        trackNumLabel.text = [NSString stringWithFormat:@"%@ tracks", album.userData];
+        trackNumLabel.text = [NSString stringWithFormat:@"%@ tracks", album.trackCount];
       }
     } else {
       trackNumLabel.hidden = YES;
@@ -228,11 +228,11 @@
   [albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
   UILabel *trackNumLabel = (UILabel*)[albumCell.contentView viewWithTag:4];
   trackNumLabel.textColor = self.bwTextColor;
-  if (album.userData) {
-    if ([album.userData  isEqual:@1]) {
+  if (album.trackCount) {
+    if ([album.trackCount  isEqual:@1]) {
       trackNumLabel.text = @"1 track";
     } else {
-      trackNumLabel.text = [NSString stringWithFormat:@"%@ tracks", album.userData];
+      trackNumLabel.text = [NSString stringWithFormat:@"%@ tracks", album.trackCount];
     }
   } else {
     trackNumLabel.hidden = YES;
@@ -313,7 +313,7 @@
                                              artworkURL:artworkURL
                                                albumURL:buyURL
                                             releaseDate:releaseDate];
-    newAlbum.userData = trackCount;
+    newAlbum.trackCount  = trackCount;
     if (!releaseDate || [mStore thisDate:[NSDate date] isMoreRecentThan:newAlbum.releaseDate]) {
       newAlbum.isPreOrder = YES;
     }

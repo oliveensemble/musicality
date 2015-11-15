@@ -9,13 +9,16 @@
 @import StoreKit;
 @import Crashlytics;
 #import "Album.h"
+#import "Artist.h"
 #import "MStore.h"
 #import "UserPrefs.h"
 #import "UIImageView+Haneke.h"
 #import "AlbumTableViewCell.h"
 #import "GenreTableViewCell.h"
 #import "ExploreNavigationBar.h"
+#import "ArtistViewController.h"
 #import "ExploreViewController.h"
+#import "VariousArtistsViewController.h"
 
 //The different states the view can be in; either selecting a genre or scrolling through albums
 typedef NS_OPTIONS(NSUInteger, ViewState) {
@@ -42,6 +45,9 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 @property (nonatomic) UIColor *cellTextColor;
 @property (nonatomic) UIColor *cellBackgroundColor;
 
+@property int currentGenreId;
+@property (nonatomic) NSString *currentGenreTitle;
+
 @end
 
 @implementation ExploreViewController
@@ -59,6 +65,9 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   //Tab Bar customization
   UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
   self.tabBarItem.selectedImage = selectedImage;
+  self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+  self.tabBarController.tabBar.tintColor = [UIColor blackColor];
+  [self.tableView headerViewForSection:0];
   
   //List of genres
   _genres = @{@"Alternative" : @20,
@@ -85,7 +94,9 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   self.tableViewArray = [NSMutableArray arrayWithObject:@"All Genres"];
   self.viewState = browse;
   self.feedType = topCharts;
-  [self fetchFeed:-1];
+  self.currentGenreId = -1;
+  self.currentGenreTitle = @"All Genres";
+  [self fetchFeed];
 }
 
 #pragma mark NSOperation Delegate
@@ -97,14 +108,20 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   return _pendingOperations;
 }
 
-- (void)fetchFeed:(int)genre {
+- (void)fetchFeed {
   NSURL *url;
   
   if (self.feedType == topCharts) {
-    if (genre == -1) {
-      url = [NSURL URLWithString:@"https://itunes.apple.com/us/rss/topalbums/limit=100/xml"];
+    if (self.currentGenreId == -1) {
+      url = [NSURL URLWithString:@"https://itunes.apple.com/us/rss/topalbums/explicit=true/limit=100/xml"];
     } else {
-      url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/rss/topalbums/limit=100/genre=%i/xml", genre]];
+      url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/rss/topalbums/explicit=true/limit=100/genre=%i/xml", self.currentGenreId]];
+    }
+  } else {
+    if (self.currentGenreId == -1) {
+      url = [NSURL URLWithString:@"https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/explicit=true/limit=100/rss.xml"];
+    } else {
+      url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/explicit=true/limit=100/genre=%i/rss.xml", self.currentGenreId]];
     }
   }
   ExploreFetch *exploreFetch = [[ExploreFetch alloc] initWithURL:url delegate:self];
@@ -117,8 +134,10 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [self toggleGenreSelection:^(bool finished) {}];
   }
   [self.tableView beginUpdates];
-  
+  [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+  [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
   //Add the items to the table view array
+  self.tableViewArray = [NSMutableArray arrayWithObject:self.currentGenreTitle];
   [self.tableViewArray addObjectsFromArray:downloader.albumArray];
   
   NSMutableArray *indexPaths = [NSMutableArray array];
@@ -140,12 +159,21 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"ExploreNavigationBar" owner:self options:nil] objectAtIndex:0];
   _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
   _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationBar.bounds].CGPath;
-  
+  [_navigationBar.topChartsButton addTarget:self action:@selector(showTopCharts:) forControlEvents:UIControlEventTouchUpInside];
+  [_navigationBar.exploreNewButton addTarget:self action:@selector(showNewReleases:) forControlEvents:UIControlEventTouchUpInside];
+  [_navigationBar.topOfPageButton addTarget:self action:@selector(topOfPage) forControlEvents:UIControlEventTouchUpInside];
+  if (self.feedType == topCharts) {
+    [_navigationBar.topChartsButton setSelectedStyle];
+    [_navigationBar.exploreNewButton setDeselectedStyle];
+  } else {
+    [_navigationBar.exploreNewButton setSelectedStyle];
+    [_navigationBar.topChartsButton setDeselectedStyle];
+  }
   return _navigationBar;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 110;
+  return 96;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -156,7 +184,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   if (indexPath.row == 0 || (self.viewState == genreSelection && indexPath.row <= self.genres.count)) {
     return  50;
   } else {
-    return 195;
+    return 150;
   }
 }
 
@@ -181,18 +209,39 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   
   if (indexPath.row == 0 || (self.viewState == genreSelection && indexPath.row <= self.genres.count)) {
     GenreTableViewCell *genreCell = [tableView dequeueReusableCellWithIdentifier:@"genreCell"];
-    NSNumber *genreId = (NSNumber*)self.genres.allValues[indexPath.row + 1];
+    NSNumber *genreId;
+    if (indexPath.row == 0) {
+      genreId = @-1;
+    } else {
+      genreId = (NSNumber*)self.genres.allValues[indexPath.row - 1];
+    }
     genreCell.genreId = genreId.intValue;
+    genreCell.genreLabel.text = self.tableViewArray[indexPath.row];
     return genreCell;
   } else {
     Album *album = self.tableViewArray[indexPath.row];
     AlbumTableViewCell *albumCell = [tableView dequeueReusableCellWithIdentifier:@"albumCell"];
     albumCell.albumLabel.text = album.title;
     albumCell.artistLabel.text = album.artist;
+    if (album.isPreOrder) {
+      albumCell.preOrderLabel.hidden = NO;
+    } else {
+      albumCell.preOrderLabel.hidden = YES;
+    }
     [albumCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
+    [albumCell.viewArtistButton addTarget:self action:@selector(toArtist:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //Add user info to cell and button
+    albumCell.viewArtistButton.buttonInfo = @{@"AlbumURL" : album.URL, @"Artist" : album.artist, @"ArtistID" : album.artistID};
+    albumCell.cellInfo = @{@"AlbumURL" : album.URL, @"Artist" : album.artist, @"ArtistID" : album.artistID, @"Album" : album.title};
+    
+    //Add gesture recognizer for action sheet
+    //Gesture recognizer
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showActionSheet:)];
+    longPress.minimumPressDuration = 0.5;
+    [albumCell addGestureRecognizer:longPress];
     return albumCell;
   }
-
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -201,19 +250,31 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     //Open genre selection
     [self toggleGenreSelection:^(bool finished) {}];
   } else if (indexPath.row <= self.genres.count && self.viewState == genreSelection) {
-    //If genre selection was open:
-    if (indexPath.row == 0) {
-      //Close genre selection
-      [self toggleGenreSelection:^(bool finished) {}];
-    } else {
       //New genre selected; we need to refetch
-      [self toggleGenreSelection:^(bool finished) {
-        NSNumber *selectedGenreValue = self.genres.allValues[indexPath.row -1];
-        [self fetchFeed:selectedGenreValue.intValue];
-      }];
+      if (indexPath.row == 0) {
+        [self toggleGenreSelection:^(bool finished) {
+          self.currentGenreId = -1;
+          self.currentGenreTitle = @"All Genres";
+          [self fetchFeed];
+        }];
+      } else {
+        NSNumber *selectedGenreValue = self.genres.allValues[indexPath.row - 1];
+        if (selectedGenreValue.intValue == self.currentGenreId) {
+          //Close genre selection
+          [self toggleGenreSelection:^(bool finished) {}];
+        } else {
+          [self toggleGenreSelection:^(bool finished) {
+          self.currentGenreId = selectedGenreValue.intValue;
+          self.currentGenreTitle = self.genres.allKeys[indexPath.row - 1];
+          [self fetchFeed];
+        }];
+      }
     }
+  } else if ((indexPath.row > self.genres.count && self.viewState == genreSelection) || (indexPath.row > 0 && self.viewState == browse)){
+    AlbumTableViewCell *albumCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self toiTunes:albumCell.cellInfo];
   }
-  
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark Targets
@@ -249,6 +310,91 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   }
   
   completion(YES);
+}
+
+- (void)showTopCharts:(Button*)sender {
+  self.feedType = topCharts;
+  [self.navigationBar.topChartsButton setSelectedStyle];
+  [self.navigationBar.exploreNewButton setDeselectedStyle];
+  [self fetchFeed];
+}
+
+- (void)showNewReleases:(Button*)sender {
+  self.feedType = new;
+  [self.navigationBar.exploreNewButton setSelectedStyle];
+  [self.navigationBar.topChartsButton setDeselectedStyle];
+  [self fetchFeed];
+}
+
+- (void)showActionSheet:(id)sender {
+  
+  UILongPressGestureRecognizer *longPress = sender;
+  
+  if (longPress.state == UIGestureRecognizerStateBegan) {
+    AlbumTableViewCell *albumCell = (AlbumTableViewCell*)longPress.view;
+    NSString *textToShare = [NSString stringWithFormat:@"%@ - %@", albumCell.cellInfo[@"Artist"], albumCell.cellInfo[@"Album"]];
+    NSURL *link = [NSURL URLWithString:[NSString stringWithFormat:@"%@&at=%@", albumCell.cellInfo[@"AlbumURL"], mStore.affiliateToken]];
+    NSArray *shareObjects = @[textToShare, link];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:shareObjects applicationActivities:nil];
+    NSArray *excludeActivities = @[UIActivityTypePrint,
+                                   UIActivityTypeAssignToContact,
+                                   UIActivityTypeSaveToCameraRoll,
+                                   UIActivityTypePostToFlickr,
+                                   UIActivityTypePostToVimeo];
+    activityVC.excludedActivityTypes = excludeActivities;
+    
+    if ([activityVC respondsToSelector:@selector(popoverPresentationController)]) {
+      //iOS8 on iPad
+      UILongPressGestureRecognizer* lp = sender;
+      activityVC.popoverPresentationController.sourceView = lp.view;
+    }
+    [self presentViewController:activityVC animated:YES completion:nil];
+  }
+}
+
+- (void)topOfPage {
+  [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+#pragma mark Navigation
+
+- (void)toiTunes:(NSDictionary*)cellInfo {
+  // Initialize Product View Controller
+  SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
+  // Configure View Controller
+  storeProductViewController.delegate = self;
+  [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : [mStore formattedAlbumIDFromURL:cellInfo[@"AlbumURL"]], SKStoreProductParameterAffiliateToken : mStore.affiliateToken} completionBlock:^(BOOL result, NSError *error) {
+    if (error) {
+      DLog(@"Error %@ with User Info %@.", error, [error userInfo]);
+    } else {
+      // Present Store Product View Controller
+      [self presentViewController:storeProductViewController animated:YES completion:nil];
+    }
+  }];
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)toArtist:(Button*)sender {
+  if (![sender.buttonInfo[@"ArtistID"] isEqual: @0]) {
+    Artist *artist = [[Artist alloc] initWithArtistID:sender.buttonInfo[@"ArtistID"] andName:sender.buttonInfo[@"Artist"]];
+    [self performSegueWithIdentifier:@"toArtist" sender:artist];
+  } else {
+    [self performSegueWithIdentifier:@"toVariousArtists" sender:sender.buttonInfo[@"AlbumURL"]];
+  }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  if ([segue.identifier isEqualToString:@"toArtist"]) {
+    ArtistViewController *artistVC = segue.destinationViewController;
+    artistVC.artist = sender;
+  } else if ([segue.identifier isEqualToString:@"toVariousArtists"]) {
+    VariousArtistsViewController *variousArtistsVC = segue.destinationViewController;
+    variousArtistsVC.albumLink = sender;
+  }
 }
 
 @end

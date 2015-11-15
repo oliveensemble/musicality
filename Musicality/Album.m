@@ -25,6 +25,8 @@
     
     _URL = [NSURL URLWithString:url];
     _artworkURL = [NSURL URLWithString:[artWorkURL stringByReplacingOccurrencesOfString:@"170x170"withString:@"250x250"]];
+    
+    _artistID = [NSNumber numberWithInt:0];
   }
   return self;
 }

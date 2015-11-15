@@ -18,4 +18,13 @@
   self.artistLabel.textColor = [UIColor blackColor];
 }
 
+- (void)setSelected:(BOOL)selected {
+  if (selected) {
+    self.backgroundColor = [UIColor blackColor];
+    self.contentView.backgroundColor = [UIColor blackColor];
+    self.albumLabel.textColor = [UIColor blackColor];
+    self.artistLabel.textColor = [UIColor blackColor];
+  }
+}
+
 @end

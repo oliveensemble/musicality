@@ -17,8 +17,8 @@
 @property (nonatomic) NSURL *URL;
 @property (nonatomic) NSDate *releaseDate;
 @property (nonatomic) BOOL isPreOrder;
-
-@property (nonatomic) id userData;
+@property (nonatomic) NSNumber *artistID;
+@property (nonatomic) NSNumber *trackCount;
 
 - (instancetype)initWithAlbumTitle:(NSString*)title artist:(NSString*)album artworkURL:(NSString*)artWorkURL albumURL:(NSString*)albumURL releaseDate:(NSString*)releaseDate;
 

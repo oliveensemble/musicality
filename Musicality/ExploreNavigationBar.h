@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet Button *topChartsButton;
 @property (weak, nonatomic) IBOutlet UILabel *exploreLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *topOfPageButton;
+
 @end

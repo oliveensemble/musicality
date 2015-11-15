@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *albumImageView;
 @property (weak, nonatomic) IBOutlet Button *viewArtistButton;
+@property (weak, nonatomic) IBOutlet UILabel *preOrderLabel;
 
 @property (nonatomic) NSDictionary* cellInfo;
 
