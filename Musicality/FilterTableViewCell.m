@@ -6,10 +6,10 @@
 //  Copyright © 2015 Evan Lewis. All rights reserved.
 //
 
-#import "GenreTableViewCell.h"
+#import "FilterTableViewCell.h"
 #import "UserPrefs.h"
 
-@implementation GenreTableViewCell
+@implementation FilterTableViewCell
 
 - (void)awakeFromNib {
   self.backgroundColor = [UIColor whiteColor];
