@@ -24,7 +24,12 @@
     }
     
     _URL = [NSURL URLWithString:url];
-    _artworkURL = [NSURL URLWithString:[artWorkURL stringByReplacingOccurrencesOfString:@"170x170"withString:@"250x250"]];
+    
+    if ([artWorkURL containsString:@"100x100"]) {
+      _artworkURL = [NSURL URLWithString:[artWorkURL stringByReplacingOccurrencesOfString:@"100x100"withString:@"250x250"]];
+    } else {
+      _artworkURL = [NSURL URLWithString:[artWorkURL stringByReplacingOccurrencesOfString:@"170x170"withString:@"250x250"]];
+    }
     
     _artistID = [NSNumber numberWithInt:0];
   }

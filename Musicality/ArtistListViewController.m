@@ -6,14 +6,18 @@
 //  Copyright (c) 2014 Evan Lewis. All rights reserved.
 //
 
+@import StoreKit;
 #import "MStore.h"
 #import "ArtistList.h"
 #import "UIImageView+Haneke.h"
 #import "AlbumTableViewCell.h"
 #import "FilterTableViewCell.h"
 #import "LatestReleaseSearch.h"
+#import "ArtistViewController.h"
 #import "ArtistsNavigationBar.h"
 #import "ArtistListViewController.h"
+#import "LibraryListViewController.h"
+#import "VariousArtistsViewController.h"
 
 typedef NS_OPTIONS(NSUInteger, ViewState) {
   browse = 1 << 0,
@@ -26,12 +30,12 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   hidePreOrders = 1 << 2,
 };
 
-@interface ArtistListViewController ()
+@interface ArtistListViewController () <SKStoreProductViewControllerDelegate>
 
 @property (nonatomic, weak) ArtistsNavigationBar *navigationBar;
 
 @property (nonatomic) NSMutableArray *tableViewArray;
-@property (nonatomic) NSDictionary *filters;
+@property (nonatomic) NSArray *filters;
 
 @property (nonatomic) NSString *currentFilterTitle;
 
@@ -63,11 +67,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update) name:@"autoScanFinished" object:nil];
   
   //Filter Items
-  _filters = @{
-               @"Latest Releases": @0,
-               @"Artists" : @1,
-               @"Hide Pre-Orders" : @2
-               };
+  _filters = @[@"Latest Releases", @"Artists", @"Hide Pre-Orders"];
   
   self.viewState = browse;
   self.filterType = latestReleases;
@@ -112,6 +112,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   [[ArtistList sharedList] updateLatestRelease:downloader.album forArtist:downloader.artist];
   [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Album Search for %@", downloader.artist.name]];
   if (self.pendingOperations.requestsInProgress.count == 0) {
+    [[ArtistList sharedList] saveChanges];
     [self populate];
   }
 }
@@ -170,8 +171,10 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"ArtistsNavigationBar" owner:self options:nil] objectAtIndex:0];
   _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
   _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationBar.bounds].CGPath;
-  [_navigationBar.importFromLibraryButton addTarget:self action:@selector(toImportArtists:) forControlEvents:UIControlEventTouchUpInside];
+  [_navigationBar.importFromLibraryButton addTarget:self action:@selector(toLibraryList:) forControlEvents:UIControlEventTouchUpInside];
   [_navigationBar.refreshButton addTarget:self action:@selector(update) forControlEvents:UIControlEventTouchUpInside];
+  [_navigationBar.topOfPageButton addTarget:self action:@selector(topOfPage) forControlEvents:UIControlEventTouchUpInside];
+  
   return _navigationBar;
 }
 
@@ -184,7 +187,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.row == 0 || (self.viewState == filterSelection && indexPath.row <= self.filters.count)) {
+  if (indexPath.row == 0 || (self.viewState == filterSelection && indexPath.row < self.filters.count)) {
     return  50;
   } else {
     return 150;
@@ -210,15 +213,8 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
-  if (indexPath.row == 0 || (self.viewState == filterSelection && indexPath.row <= self.filters.count)) {
+  if (indexPath.row == 0 || (self.viewState == filterSelection && indexPath.row < self.filters.count)) {
     FilterTableViewCell *filterCell = [tableView dequeueReusableCellWithIdentifier:@"filterCell"];
-    NSNumber *filterId;
-    if (indexPath.row == 0) {
-      filterId = @0;
-    } else {
-      filterId = (NSNumber*)self.filters.allValues[indexPath.row - 1];
-    }
-    filterCell.filterId = filterId.intValue;
     filterCell.filterLabel.text = self.tableViewArray[indexPath.row];
     return filterCell;
   } else {
@@ -244,6 +240,146 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     longPress.minimumPressDuration = 0.5;
     [albumCell addGestureRecognizer:longPress];
     return albumCell;
+  }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  //If the user selected the first item in the array and the filter selection was closed:
+  if (indexPath.row == 0 && self.viewState == browse) {
+    //Open genre selection
+    [self toggleFilterSelection:^(bool finished) {}];
+  } else if (indexPath.row < self.filters.count && self.viewState == filterSelection) {
+    //New filter selected; we need to refetch
+    if (indexPath.row == 0) {
+      [self toggleFilterSelection:^(bool finished) {
+        self.currentFilterTitle = @"Latest Releases";
+        self.filterType = latestReleases;
+      }];
+    } else if (indexPath.row == 1) {
+      [self toggleFilterSelection:^(bool finished) {
+        self.currentFilterTitle = @"Artists";
+        self.filterType = artists;
+      }];
+    } else {
+      [self toggleFilterSelection:^(bool finished) {
+        self.currentFilterTitle = @"Hide Pre-Orders";
+        self.filterType = hidePreOrders;
+      }];
+    }
+    [self populate];
+  } else if ((indexPath.row > self.filters.count && self.viewState == filterSelection) || (indexPath.row > 0 && self.viewState == browse)){
+    AlbumTableViewCell *albumCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self toiTunes:albumCell.cellInfo];
+  }
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark Targets
+- (void)toggleFilterSelection:(void (^)(bool finished))completion {
+  [self.tableView beginUpdates];
+  
+  NSMutableArray *indexPaths = [NSMutableArray array];
+  //Adds the required number of index paths
+  for (int i = 1; i < [self.filters count]; i++) {
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
+    [indexPaths addObject:indexpath];
+  }
+  
+  if (self.viewState == browse) {
+    //Open genre selection view
+    self.viewState = filterSelection;
+    //If we had a previous genre selected, the top will be that item. We need to switch it back to all genres
+    [self.tableViewArray replaceObjectAtIndex:0 withObject:@"Latest Releases"];
+    for (int i = 1; i < [self.filters count]; i++) {
+      //Add the list of genres to the tableView
+      [self.tableViewArray insertObject:self.filters[i] atIndex:i];
+    }
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];
+    [self.tableView reloadData];
+  } else {
+    //Close genre selection view
+    self.viewState = browse;
+    [self.tableViewArray removeObjectsInArray:self.filters];
+    [self.tableViewArray insertObject:self.currentFilterTitle atIndex:0];
+    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];
+  }
+  
+  completion(YES);
+}
+
+- (void)showActionSheet:(id)sender {
+  
+  UILongPressGestureRecognizer *longPress = sender;
+  
+  if (longPress.state == UIGestureRecognizerStateBegan) {
+    AlbumTableViewCell *albumCell = (AlbumTableViewCell*)longPress.view;
+    NSString *textToShare = [NSString stringWithFormat:@"%@ - %@", albumCell.cellInfo[@"Artist"], albumCell.cellInfo[@"Album"]];
+    NSURL *link = [NSURL URLWithString:[NSString stringWithFormat:@"%@&at=%@", albumCell.cellInfo[@"AlbumURL"], mStore.affiliateToken]];
+    NSArray *shareObjects = @[textToShare, link];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:shareObjects applicationActivities:nil];
+    NSArray *excludeActivities = @[UIActivityTypePrint,
+                                   UIActivityTypeAssignToContact,
+                                   UIActivityTypeSaveToCameraRoll,
+                                   UIActivityTypePostToFlickr,
+                                   UIActivityTypePostToVimeo];
+    activityVC.excludedActivityTypes = excludeActivities;
+    
+    if ([activityVC respondsToSelector:@selector(popoverPresentationController)]) {
+      //iOS8 on iPad
+      UILongPressGestureRecognizer* lp = sender;
+      activityVC.popoverPresentationController.sourceView = lp.view;
+    }
+    [self presentViewController:activityVC animated:YES completion:nil];
+  }
+}
+
+- (void)topOfPage {
+  [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+#pragma mark Navigation
+- (void)toiTunes:(NSDictionary*)cellInfo {
+  // Initialize Product View Controller
+  SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
+  // Configure View Controller
+  storeProductViewController.delegate = self;
+  [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : [mStore formattedAlbumIDFromURL:cellInfo[@"AlbumURL"]], SKStoreProductParameterAffiliateToken : mStore.affiliateToken} completionBlock:^(BOOL result, NSError *error) {
+    if (error) {
+      DLog(@"Error %@ with User Info %@.", error, [error userInfo]);
+    } else {
+      // Present Store Product View Controller
+      [self presentViewController:storeProductViewController animated:YES completion:nil];
+    }
+  }];
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)toArtist:(Button*)sender {
+  if (![sender.buttonInfo[@"ArtistID"] isEqual: @0]) {
+    Artist *artist = [[Artist alloc] initWithArtistID:sender.buttonInfo[@"ArtistID"] andName:sender.buttonInfo[@"Artist"]];
+    [self performSegueWithIdentifier:@"toArtist" sender:artist];
+  } else {
+    [self performSegueWithIdentifier:@"toVariousArtists" sender:sender.buttonInfo[@"AlbumURL"]];
+  }
+}
+
+- (void)toLibraryList:(Button*)sender {
+  [self performSegueWithIdentifier:@"toLibraryList" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  if ([segue.identifier isEqualToString:@"toArtist"]) {
+    ArtistViewController *artistVC = segue.destinationViewController;
+    artistVC.artist = sender;
+  } else if ([segue.identifier isEqualToString:@"toVariousArtists"]) {
+    VariousArtistsViewController *variousArtistsVC = segue.destinationViewController;
+    variousArtistsVC.albumLink = sender;
   }
 }
 

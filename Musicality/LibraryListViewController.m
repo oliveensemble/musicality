@@ -10,9 +10,8 @@
 #import "Button.h"
 #import "MStore.h"
 #import "Blacklist.h"
-#import "ArtistList.h"
 #import "UserPrefs.h"
-#import "LoadingView.h"
+#import "ArtistList.h"
 #import "LibraryNavigationBar.h"
 #import "LibraryListViewController.h"
 
@@ -21,10 +20,6 @@
 @property (nonatomic, weak) LibraryNavigationBar *navigationBar;
 @property (nonatomic) NSArray *libraryListArray;
 @property (nonatomic) NSMutableArray *selectedArtistsArray;
-@property (nonatomic) UIColor *bwTextColor;
-@property (nonatomic) UIColor *bwBackgroundColor;
-
-@property (nonatomic) LoadingView *loadingView;
 
 @end
 
@@ -56,11 +51,6 @@
   self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
   self.tabBarController.tabBar.tintColor = [UIColor blackColor];
   
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(toArtistsList:)
-                                               name:@"toArtistsList"
-                                             object:nil];
-  
   _selectedArtistsArray = [NSMutableArray array];
   
 }
@@ -72,8 +62,6 @@
   //Add navigation bar to header
   _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"LibraryNavigationBar" owner:self options:nil] objectAtIndex:0];
   _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, _navigationBar.frame.size.height);
-  _navigationBar.layer.shadowColor = [self.bwTextColor CGColor];
-  _navigationBar.backgroundColor = self.bwBackgroundColor;
   _navigationBar.layer.shadowOpacity = 0.4;
   _navigationBar.layer.shadowRadius = 2.0;
   _navigationBar.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);

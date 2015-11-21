@@ -114,6 +114,7 @@
                 <outlet property="artistsLabel" destination="0hQ-zY-eu5" id="Irr-kA-IFL"/>
                 <outlet property="importFromLibraryButton" destination="f2Y-tg-3cV" id="d0a-Fn-Cz7"/>
                 <outlet property="refreshButton" destination="qK4-43-A7Y" id="p2m-Fb-X0n"/>
+                <outlet property="topOfPageButton" destination="xB9-Qh-Jdb" id="nPs-oB-Ffq"/>
             </connections>
             <point key="canvasLocation" x="176" y="321"/>
         </view>
