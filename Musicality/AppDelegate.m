@@ -37,7 +37,12 @@
   [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
   application.minimumBackgroundFetchInterval = UIApplicationBackgroundFetchIntervalMinimum;
   
-  [[NotificationList sharedList] determineNotificationItems];
+  if (![[NSUserDefaults standardUserDefaults] boolForKey:@"notFirstRun"]) {
+    UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Tutorial" bundle:nil];
+    UIViewController *initialViewController = [storyBoard instantiateInitialViewController];
+    [self.window setRootViewController:initialViewController];
+  }
+  
   return YES;
 }
 
@@ -66,9 +71,9 @@
 }
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-  DLog(@"Background Fetch");
-  [self checkRequests];
-  completionHandler(UIBackgroundFetchResultNewData);
+  //DLog(@"Background Fetch");
+  //[self checkRequests];
+  //completionHandler(UIBackgroundFetchResultNewData);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

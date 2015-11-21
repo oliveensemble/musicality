@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Evan Lewis. All rights reserved.
 //
 
+#import "MStore.h"
 #import "LatestReleaseSearch.h"
 
 @interface LatestReleaseSearch ()
@@ -33,7 +34,7 @@
       return;
     }
     
-    NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@&entity=album&limit=1&sort=recent", self.artist.artistID];
+    NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@&entity=album&limit=2&sort=recent", self.artist.artistID];
     NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSData *albumData = [[NSData alloc] initWithContentsOfURL:requestURL];
     
@@ -49,11 +50,8 @@
       NSDictionary *albumDictionary = [jsonObject[@"results"] lastObject];
       
       if (albumDictionary[@"collectionCensoredName"] && albumDictionary[@"collectionViewUrl"]) {
-        self.privateAlbum = [[Album alloc] initWithAlbumTitle:albumDictionary[@"collectionCensoredName"]
-                                                       artist:self.artist.name
-                                                   artworkURL:albumDictionary[@"artworkUrl100"]
-                                                     albumURL:albumDictionary[@"collectionViewUrl"]
-                                                  releaseDate:albumDictionary[@"releaseDate"]];
+        self.privateAlbum = [[Album alloc] initWithAlbumTitle:albumDictionary[@"collectionCensoredName"] artist:self.artist.name artworkURL:albumDictionary[@"artworkUrl100"]albumURL:albumDictionary[@"collectionViewUrl"] releaseDate: albumDictionary[@"releaseDate"]];
+        DLog(@"Found album: %@", self.privateAlbum.title);
       }
       _album = self.privateAlbum;
     }

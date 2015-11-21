@@ -13,13 +13,13 @@
 
 - (void)awakeFromNib {
   self.backgroundColor = [UIColor whiteColor];
-  self.genreLabel.textColor = [UIColor blackColor];
+  self.filterLabel.textColor = [UIColor blackColor];
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
   if (highlighted) {
     self.backgroundColor = [UIColor blackColor];
-    self.genreLabel.textColor = [UIColor whiteColor];
+    self.filterLabel.textColor = [UIColor whiteColor];
   }
 }
 

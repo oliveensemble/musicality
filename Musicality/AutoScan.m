@@ -84,14 +84,14 @@
   [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Artist Search for %@", downloader.artist.name]];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanUpdate" object:nil userInfo:@{@"artistName": downloader.artist.name}];
   if (self.pendingOperations.requestsInProgress.count == 0) {
-    DLog(@"Finished");
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"AutoScan Finished"];
+    DLog(@"Finished artist search");
     self.isScanning = NO;
     if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
       [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
     }
     [self.pendingOperations.requestQueue cancelAllOperations];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanDone" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanFinished" object:nil userInfo:nil];
+
   }
 }
 

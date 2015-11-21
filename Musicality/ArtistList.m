@@ -121,19 +121,22 @@
 - (void)loadData {
   
   NSData *archiveData = [NSData dataWithContentsOfFile:self.path];
-  self.artistSet = nil;
+
   @try {
     _artistSet = [NSKeyedUnarchiver unarchiveObjectWithData:archiveData];
+    if (self.artistSet == nil) {
+      _artistSet = [NSMutableOrderedSet orderedSet];
+    }
   }
   @catch (NSException *exception) {
     DLog(@"No save data found");
-    _artistSet = [[NSMutableOrderedSet alloc] init];
+    _artistSet = [NSMutableOrderedSet orderedSet];
   }
   
 }
 
 - (void)saveChanges {
-  
+  DLog(@"Saving artist list");
   NSError *error;
   NSData *archiveData = [NSKeyedArchiver archivedDataWithRootObject:self.artistSet];
   [archiveData writeToFile:self.path atomically:YES];

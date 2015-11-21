@@ -297,7 +297,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="genreCell" textLabel="3LJ-F6-quZ" rowHeight="50" style="IBUITableViewCellStyleDefault" id="wcb-2A-6zQ" customClass="GenreTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="genreCell" textLabel="3LJ-F6-quZ" rowHeight="50" style="IBUITableViewCellStyleDefault" id="wcb-2A-6zQ" customClass="FilterTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wcb-2A-6zQ" id="fPi-qM-Yo7">

@@ -103,8 +103,6 @@
 }
 
 - (void)saveChanges {
-  
-  DLog(@"Saving blacklist changes");
   NSError *error;
   NSData *archiveData = [NSKeyedArchiver archivedDataWithRootObject:self.artistSet];
   [archiveData writeToFile:self.path atomically:YES];

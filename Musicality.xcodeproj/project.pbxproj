@@ -35,7 +35,7 @@
 		4F63E84A1BE57BCF004B6991 /* UIButton+Haneke.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F63E8401BE57BCF004B6991 /* UIButton+Haneke.m */; };
 		4F63E84B1BE57BCF004B6991 /* UIImageView+Haneke.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F63E8421BE57BCF004B6991 /* UIImageView+Haneke.m */; };
 		4F63E84C1BE57BCF004B6991 /* UIView+Haneke.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F63E8441BE57BCF004B6991 /* UIView+Haneke.m */; };
-		4F63E84F1BED2E16004B6991 /* GenreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F63E84E1BED2E16004B6991 /* GenreTableViewCell.m */; };
+		4F63E84F1BED2E16004B6991 /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F63E84E1BED2E16004B6991 /* FilterTableViewCell.m */; };
 		4F650E5F1A279AF000C2FA82 /* LibraryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F650E5E1A279AF000C2FA82 /* LibraryListViewController.m */; };
 		4F650E611A279E1F00C2FA82 /* LibraryNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F650E601A279E1F00C2FA82 /* LibraryNavigationBar.xib */; };
 		4F650E641A27A34800C2FA82 /* LibraryNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F650E631A27A34800C2FA82 /* LibraryNavigationBar.m */; };
@@ -52,7 +52,7 @@
 		4FA549CA1B544731005FB1B3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA549C91B544731005FB1B3 /* StoreKit.framework */; };
 		4FA71CED1BF68CFD00DC6C0E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA71CEB1BF68CFD00DC6C0E /* Fabric.framework */; };
 		4FA71CEE1BF68CFD00DC6C0E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA71CEC1BF68CFD00DC6C0E /* Crashlytics.framework */; };
-		4FA71CF11BF6C6EC00DC6C0E /* GenreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA71CF01BF6C6EC00DC6C0E /* GenreTableViewCell.xib */; };
+		4FA71CF11BF6C6EC00DC6C0E /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA71CF01BF6C6EC00DC6C0E /* FilterTableViewCell.xib */; };
 		4FAFCBE81A146A760024A4E5 /* ArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAFCBE71A146A760024A4E5 /* ArtistListViewController.m */; };
 		4FAFCBEB1A1472590024A4E5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAFCBEA1A1472590024A4E5 /* SettingsViewController.m */; };
 		4FC1C26B19F7367900E14360 /* ArtistNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC1C26A19F7367900E14360 /* ArtistNavigationBar.m */; };
@@ -137,8 +137,8 @@
 		4F63E8421BE57BCF004B6991 /* UIImageView+Haneke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Haneke.m"; sourceTree = "<group>"; };
 		4F63E8431BE57BCF004B6991 /* UIView+Haneke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Haneke.h"; sourceTree = "<group>"; };
 		4F63E8441BE57BCF004B6991 /* UIView+Haneke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Haneke.m"; sourceTree = "<group>"; };
-		4F63E84D1BED2E16004B6991 /* GenreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenreTableViewCell.h; sourceTree = "<group>"; };
-		4F63E84E1BED2E16004B6991 /* GenreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenreTableViewCell.m; sourceTree = "<group>"; };
+		4F63E84D1BED2E16004B6991 /* FilterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewCell.h; sourceTree = "<group>"; };
+		4F63E84E1BED2E16004B6991 /* FilterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewCell.m; sourceTree = "<group>"; };
 		4F650E5D1A279AF000C2FA82 /* LibraryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryListViewController.h; sourceTree = "<group>"; };
 		4F650E5E1A279AF000C2FA82 /* LibraryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryListViewController.m; sourceTree = "<group>"; };
 		4F650E601A279E1F00C2FA82 /* LibraryNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryNavigationBar.xib; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		4FA549C91B544731005FB1B3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4FA71CEB1BF68CFD00DC6C0E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		4FA71CEC1BF68CFD00DC6C0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		4FA71CF01BF6C6EC00DC6C0E /* GenreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenreTableViewCell.xib; sourceTree = "<group>"; };
+		4FA71CF01BF6C6EC00DC6C0E /* FilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
 		4FAFCBE61A146A760024A4E5 /* ArtistListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistListViewController.h; sourceTree = "<group>"; };
 		4FAFCBE71A146A760024A4E5 /* ArtistListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ArtistListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4FAFCBE91A1472590024A4E5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -391,9 +391,9 @@
 				4F7A16EC19F885090039508D /* ArtistsNavigationBar.xib */,
 				4F7A16EE19F885260039508D /* ArtistsNavigationBar.h */,
 				4F7A16EF19F885270039508D /* ArtistsNavigationBar.m */,
-				4FA71CF01BF6C6EC00DC6C0E /* GenreTableViewCell.xib */,
-				4F63E84D1BED2E16004B6991 /* GenreTableViewCell.h */,
-				4F63E84E1BED2E16004B6991 /* GenreTableViewCell.m */,
+				4FA71CF01BF6C6EC00DC6C0E /* FilterTableViewCell.xib */,
+				4F63E84D1BED2E16004B6991 /* FilterTableViewCell.h */,
+				4F63E84E1BED2E16004B6991 /* FilterTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -562,7 +562,7 @@
 				4F63E82C1BE56DE3004B6991 /* AlbumTableViewCell.xib in Resources */,
 				4F650E611A279E1F00C2FA82 /* LibraryNavigationBar.xib in Resources */,
 				4F18223E19DA0439006CCA8B /* Images.xcassets in Resources */,
-				4FA71CF11BF6C6EC00DC6C0E /* GenreTableViewCell.xib in Resources */,
+				4FA71CF11BF6C6EC00DC6C0E /* FilterTableViewCell.xib in Resources */,
 				4F7A16ED19F885090039508D /* ArtistsNavigationBar.xib in Resources */,
 				4F0FA8D21B4CD2CB0050A314 /* LoadingView.xib in Resources */,
 				4FFBFF8A19F5E00100EF5FD9 /* ExploreNavigationBar.xib in Resources */,
@@ -602,7 +602,7 @@
 			files = (
 				4F7A16EB19F883F80039508D /* SettingsNavigationBar.m in Sources */,
 				4FD6103019E353DA00EEBD59 /* NotificationList.m in Sources */,
-				4F63E84F1BED2E16004B6991 /* GenreTableViewCell.m in Sources */,
+				4F63E84F1BED2E16004B6991 /* FilterTableViewCell.m in Sources */,
 				4FD2E8131B77002000F35659 /* VariousArtistsNavigationBar.m in Sources */,
 				4F96D9311A23B73C00759C6D /* ArtistViewController.m in Sources */,
 				4F7A16E819F763350039508D /* ExploreNavigationBar.m in Sources */,

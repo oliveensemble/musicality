@@ -52,7 +52,10 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"notFirstRun"];
+    UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *initialViewController = [storyBoard instantiateInitialViewController];
+    [self presentViewController:initialViewController animated:YES completion:nil];
   } else if ([[UserPrefs sharedPrefs] isAutoUpdateEnabled]) {
     [[UserPrefs sharedPrefs] setIsAutoUpdateEnabled:NO];
     [[AutoScan sharedScan] stopScan];
