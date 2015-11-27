@@ -8,6 +8,7 @@
 
 @import StoreKit;
 #import "MStore.h"
+#import "UserPrefs.h"
 #import "ArtistList.h"
 #import "UIImageView+Haneke.h"
 #import "AlbumTableViewCell.h"
@@ -73,6 +74,14 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   self.filterType = latestReleases;
   self.currentFilterTitle = @"Latest Releases";
   [self update];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  
+  if ([[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
+    [self update];
+  }
+  
 }
 
 #pragma mark NSOperation Methods
