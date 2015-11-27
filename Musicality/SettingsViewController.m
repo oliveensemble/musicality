@@ -100,6 +100,9 @@
       [[ArtistList sharedList] removeAllArtists];
       [[Blacklist sharedList] removeAllArtists];
       [[UIApplication sharedApplication] cancelAllLocalNotifications];
+      UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Tutorial" bundle:nil];
+      UIViewController *initialViewController = [storyBoard instantiateInitialViewController];
+      [self presentViewController:initialViewController animated:YES completion:nil];
     }
   }
 }

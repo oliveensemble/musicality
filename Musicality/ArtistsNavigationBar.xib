@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleAspectFit" id="LKd-2d-vIx" customClass="ArtistsNavigationBar">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hQ-zY-eu5">
@@ -25,14 +25,15 @@
                     </state>
                 </button>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zP-D5-xrI">
-                    <rect key="frame" x="263" y="61" width="57" height="30"/>
+                    <rect key="frame" x="263" y="58" width="57" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qK4-43-A7Y" customClass="Button">
-                    <rect key="frame" x="193" y="61" width="70" height="30"/>
+                    <rect key="frame" x="193" y="58" width="70" height="30"/>
                     <animations/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Ue0-63-uCi"/>
                         <constraint firstAttribute="width" constant="70" id="Wb3-6a-RdC"/>
                         <constraint firstAttribute="width" constant="157" id="cjJ-Lp-0Fx"/>
                         <constraint firstAttribute="height" constant="30" id="jTS-TM-C4N"/>
@@ -50,12 +51,12 @@
                     </variation>
                 </button>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Cz-U7-qT7">
-                    <rect key="frame" x="0.0" y="61" width="58" height="30"/>
+                    <rect key="frame" x="0.0" y="58" width="58" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2Y-tg-3cV" customClass="Button">
-                    <rect key="frame" x="58" y="61" width="112" height="30"/>
+                    <rect key="frame" x="58" y="58" width="112" height="30"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="ttX-Ec-iXt"/>
@@ -80,14 +81,14 @@
             <constraints>
                 <constraint firstItem="xB9-Qh-Jdb" firstAttribute="bottom" secondItem="0hQ-zY-eu5" secondAttribute="bottom" id="24U-24-cYk"/>
                 <constraint firstItem="0hQ-zY-eu5" firstAttribute="leading" secondItem="LKd-2d-vIx" secondAttribute="leading" id="3oD-p6-XAM"/>
-                <constraint firstItem="1Cz-U7-qT7" firstAttribute="top" secondItem="xB9-Qh-Jdb" secondAttribute="bottom" constant="8" id="55T-m3-Jvr"/>
+                <constraint firstItem="1Cz-U7-qT7" firstAttribute="top" secondItem="xB9-Qh-Jdb" secondAttribute="bottom" constant="5" id="55T-m3-Jvr"/>
                 <constraint firstItem="f2Y-tg-3cV" firstAttribute="leading" secondItem="1Cz-U7-qT7" secondAttribute="trailing" id="6fh-uN-lK0"/>
                 <constraint firstItem="1zP-D5-xrI" firstAttribute="centerY" secondItem="1Cz-U7-qT7" secondAttribute="centerY" id="8OD-ef-dEW"/>
                 <constraint firstAttribute="centerX" secondItem="f2Y-tg-3cV" secondAttribute="centerX" id="95g-jm-SgS"/>
                 <constraint firstItem="1zP-D5-xrI" firstAttribute="width" secondItem="1Cz-U7-qT7" secondAttribute="width" id="Cqz-fv-4IA"/>
                 <constraint firstAttribute="trailing" secondItem="1zP-D5-xrI" secondAttribute="trailing" id="Deh-zK-E2T"/>
                 <constraint firstAttribute="trailing" secondItem="0hQ-zY-eu5" secondAttribute="trailing" id="EKY-Qj-GUC"/>
-                <constraint firstItem="f2Y-tg-3cV" firstAttribute="top" secondItem="xB9-Qh-Jdb" secondAttribute="bottom" constant="8" id="EtG-ku-qYF"/>
+                <constraint firstItem="f2Y-tg-3cV" firstAttribute="top" secondItem="xB9-Qh-Jdb" secondAttribute="bottom" constant="5" id="EtG-ku-qYF"/>
                 <constraint firstItem="1zP-D5-xrI" firstAttribute="centerY" secondItem="qK4-43-A7Y" secondAttribute="centerY" id="Jkw-lm-emG"/>
                 <constraint firstItem="1Cz-U7-qT7" firstAttribute="leading" secondItem="LKd-2d-vIx" secondAttribute="leading" id="LE6-Gg-XxK"/>
                 <constraint firstItem="f2Y-tg-3cV" firstAttribute="top" secondItem="0hQ-zY-eu5" secondAttribute="bottom" constant="8" id="MKx-Kw-Msh"/>
@@ -100,7 +101,7 @@
                 <constraint firstAttribute="centerX" secondItem="0hQ-zY-eu5" secondAttribute="centerX" id="q0O-6C-E3L"/>
                 <constraint firstItem="xB9-Qh-Jdb" firstAttribute="leading" secondItem="LKd-2d-vIx" secondAttribute="leading" id="rwA-AK-AmE"/>
                 <constraint firstAttribute="trailing" secondItem="xB9-Qh-Jdb" secondAttribute="trailing" id="t4Q-8l-0ix"/>
-                <constraint firstItem="1zP-D5-xrI" firstAttribute="top" secondItem="xB9-Qh-Jdb" secondAttribute="bottom" constant="8" id="t8C-vG-VcF"/>
+                <constraint firstItem="1zP-D5-xrI" firstAttribute="top" secondItem="xB9-Qh-Jdb" secondAttribute="bottom" constant="5" id="t8C-vG-VcF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
@@ -113,6 +114,7 @@
                 <outlet property="artistsLabel" destination="0hQ-zY-eu5" id="Irr-kA-IFL"/>
                 <outlet property="importFromLibraryButton" destination="f2Y-tg-3cV" id="d0a-Fn-Cz7"/>
                 <outlet property="refreshButton" destination="qK4-43-A7Y" id="p2m-Fb-X0n"/>
+                <outlet property="topOfPageButton" destination="xB9-Qh-Jdb" id="nPs-oB-Ffq"/>
             </connections>
             <point key="canvasLocation" x="176" y="321"/>
         </view>

@@ -3,7 +3,7 @@
 //  Musicality
 //
 //  Created by Evan Lewis on 10/14/14.
-//  Copyright (c) 2014 Evan Lewis. All rights reserved.
+//  Copyright © 2014 Evan Lewis. All rights reserved.
 //
 
 @import StoreKit;
@@ -14,7 +14,7 @@
 #import "UserPrefs.h"
 #import "UIImageView+Haneke.h"
 #import "AlbumTableViewCell.h"
-#import "GenreTableViewCell.h"
+#import "FilterTableViewCell.h"
 #import "ExploreNavigationBar.h"
 #import "ArtistViewController.h"
 #import "ExploreViewController.h"
@@ -60,7 +60,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [self.navigationController setNavigationBarHidden:YES animated:NO];
   
   //Register TableView cells
-  [self.tableView registerNib:[UINib nibWithNibName:@"GenreTableViewCell" bundle:nil] forCellReuseIdentifier:@"genreCell"];
+  [self.tableView registerNib:[UINib nibWithNibName:@"FilterTableViewCell" bundle:nil] forCellReuseIdentifier:@"filterCell"];
   [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
   //Tab Bar customization
   UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -130,6 +130,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 }
 
 - (void)exploreFetchDidFinish:(ExploreFetch *)downloader {
+  [self.pendingOperations.requestsInProgress removeObjectForKey:@"ExploreFetch"];
   if (self.viewState == genreSelection) {
     [self toggleGenreSelection:^(bool finished) {}];
   }
@@ -208,16 +209,16 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   if (indexPath.row == 0 || (self.viewState == genreSelection && indexPath.row <= self.genres.count)) {
-    GenreTableViewCell *genreCell = [tableView dequeueReusableCellWithIdentifier:@"genreCell"];
-    NSNumber *genreId;
+    FilterTableViewCell *filterCell = [tableView dequeueReusableCellWithIdentifier:@"filterCell"];
+    NSNumber *filterId;
     if (indexPath.row == 0) {
-      genreId = @-1;
+      filterId = @-1;
     } else {
-      genreId = (NSNumber*)self.genres.allValues[indexPath.row - 1];
+      filterId = (NSNumber*)self.genres.allValues[indexPath.row - 1];
     }
-    genreCell.genreId = genreId.intValue;
-    genreCell.genreLabel.text = self.tableViewArray[indexPath.row];
-    return genreCell;
+    filterCell.filterId = filterId.intValue;
+    filterCell.filterLabel.text = self.tableViewArray[indexPath.row];
+    return filterCell;
   } else {
     Album *album = self.tableViewArray[indexPath.row];
     AlbumTableViewCell *albumCell = [tableView dequeueReusableCellWithIdentifier:@"albumCell"];

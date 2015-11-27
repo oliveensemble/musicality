@@ -14,6 +14,9 @@
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdS-px-YOu" customClass="Button">
                     <rect key="frame" x="53" y="15" width="62" height="30"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Dx2-J9-j4f"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="  Cancel  ">
@@ -24,6 +27,9 @@
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uL-0G-RS6" customClass="Button">
                     <rect key="frame" x="187" y="15" width="88" height="30"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Ogw-LG-haO"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="  Add Artists  ">
