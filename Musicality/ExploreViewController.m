@@ -111,6 +111,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 - (void)fetchFeed {
   NSURL *url;
   
+  DLog(@"Loading");
+  
   if (self.feedType == topCharts) {
     if (self.currentGenreId == -1) {
       url = [NSURL URLWithString:@"https://itunes.apple.com/us/rss/topalbums/explicit=true/limit=100/xml"];
@@ -150,6 +152,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
   [self.tableView endUpdates];
   [self.tableView reloadData];
+  DLog(@"Finished");
 }
 
 #pragma mark TableView Methods
@@ -249,7 +252,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   //If the user selected the first item in the array and the genre selection was closed:
   if (indexPath.row == 0 && self.viewState == browse) {
     //Open genre selection
-    [self toggleGenreSelection:^(bool finished) {}];
+    //[self toggleGenreSelection:^(bool finished) {}];
+    [[Crashlytics sharedInstance] crash];
   } else if (indexPath.row <= self.genres.count && self.viewState == genreSelection) {
       //New genre selected; we need to refetch
       if (indexPath.row == 0) {
