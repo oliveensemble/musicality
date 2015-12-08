@@ -43,6 +43,8 @@
     [self.window setRootViewController:initialViewController];
   }
   
+  [[NotificationList sharedList] determineNotificationItems];
+  
   return YES;
 }
 
@@ -68,12 +70,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [[NotificationList sharedList] clearNotificationItems];
   [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-}
-
-- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-  //DLog(@"Background Fetch");
-  //[self checkRequests];
-  //completionHandler(UIBackgroundFetchResultNewData);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

@@ -86,12 +86,10 @@
   if (self.pendingOperations.requestsInProgress.count == 0) {
     DLog(@"Finished artist search");
     self.isScanning = NO;
-    if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
-      [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
-    }
     [self.pendingOperations.requestQueue cancelAllOperations];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanFinished" object:nil userInfo:nil];
-
+    [[ArtistList sharedList] saveChanges];
+    [[Blacklist sharedList] saveChanges];
   }
 }
 
