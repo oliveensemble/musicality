@@ -38,14 +38,12 @@
 @implementation ArtistViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-  
   [super viewWillAppear:animated];
- for (Artist *artistNotified in [[ArtistList sharedList] artistSet]) {
+  for (Artist *artistNotified in [[ArtistList sharedList] artistSet]) {
     if (artistNotified.artistID == self.artist.artistID) {
       self.isInNotificationList = YES;
     }
   }
-  
 }
 
 - (void)viewDidLoad {

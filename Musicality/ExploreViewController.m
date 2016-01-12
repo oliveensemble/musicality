@@ -111,6 +111,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 - (void)fetchFeed {
   NSURL *url;
   
+  [self beginLoading];
+  
   if (self.feedType == topCharts) {
     if (self.currentGenreId == -1) {
       url = [NSURL URLWithString:@"https://itunes.apple.com/us/rss/topalbums/explicit=true/limit=100/xml"];
@@ -150,6 +152,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
   [self.tableView endUpdates];
   [self.tableView reloadData];
+  
+  [self endLoading];
 }
 
 #pragma mark TableView Methods
@@ -358,9 +362,30 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
+- (void)beginLoading {
+  if (self.viewState == genreSelection) {
+    [self toggleGenreSelection:^(bool finished) {
+      nil;
+    }];
+  }
+  
+  if (self.viewState != loading) {
+    self.viewState = loading;
+    [self.navigationBar beginLoading];
+  }
+}
+
+- (void)endLoading {
+  if (self.viewState == loading) {
+    self.viewState = browse;
+    [self.navigationBar endLoading];
+  }
+}
+
 #pragma mark Navigation
 
 - (void)toiTunes:(NSDictionary*)cellInfo {
+  [self beginLoading];
   // Initialize Product View Controller
   SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
   // Configure View Controller
@@ -368,9 +393,12 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : [mStore formattedAlbumIDFromURL:cellInfo[@"AlbumURL"]], SKStoreProductParameterAffiliateToken : mStore.affiliateToken} completionBlock:^(BOOL result, NSError *error) {
     if (error) {
       DLog(@"Error %@ with User Info %@.", error, [error userInfo]);
+      [self endLoading];
     } else {
       // Present Store Product View Controller
-      [self presentViewController:storeProductViewController animated:YES completion:nil];
+      [self presentViewController:storeProductViewController animated:YES completion:^{
+        [self endLoading];
+      }];
     }
   }];
 }

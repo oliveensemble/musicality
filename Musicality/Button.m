@@ -32,6 +32,18 @@
   self.layer.borderColor = [[UIColor blackColor] CGColor];
 }
 
+- (void)setHighlighted:(BOOL)highlighted {
+  if (highlighted) {
+    [self setBackgroundImage:[mStore imageWithColor:[UIColor blackColor]] forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.layer.borderColor = [[UIColor blackColor] CGColor];
+  } else {
+    [self setBackgroundImage:[mStore imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.layer.borderColor = [[UIColor blackColor] CGColor];
+  }
+}
+
 - (UIImage *)imageWithColor:(UIColor *)color {
   
   CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);

@@ -12,12 +12,30 @@
 @implementation ArtistsNavigationBar
 
 - (void)awakeFromNib {
-  self.layer.shadowOpacity = 0.4;
-  self.layer.shadowRadius = 2.0;
-  self.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-  self.layer.shadowColor = [UIColor blackColor].CGColor;
-  self.layer.backgroundColor = [UIColor whiteColor].CGColor;
+  [super awakeFromNib];
   self.artistsLabel.textColor = [UIColor blackColor];
+}
+
+- (void)beginLoading {
+  self.loadingLabel.alpha = 0;
+  self.loadingLabel.hidden = NO;
+  [UIView animateWithDuration:0.2 animations:^{
+    self.artistsLabel.alpha = 0;
+    self.loadingLabel.alpha = 1.0;
+  }];
+}
+
+- (void)updateLoadingLabelWithString:(NSString*)text  {
+  self.loadingLabel.text = text;
+}
+
+- (void)endLoading {
+  [UIView animateWithDuration:0.5 animations:^{
+    self.loadingLabel.alpha = 0;
+    self.artistsLabel.alpha = 1.0;
+  } completion:^(BOOL finished) {
+    self.loadingLabel.hidden = YES;
+  }];
 }
 
 @end

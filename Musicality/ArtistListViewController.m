@@ -42,6 +42,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 
 @property (nonatomic) NSUInteger viewState;
 @property (nonatomic) NSUInteger filterType;
+@property BOOL isUpdating;
 
 @end
 
@@ -73,23 +74,25 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   self.viewState = browse;
   self.filterType = latestReleases;
   self.currentFilterTitle = @"Latest Releases";
-  [self update];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  
   if ([[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
     [self update];
   }
-  
 }
 
 #pragma mark NSOperation Methods
 
 - (void)update {
   
-  DLog(@"");
+  if (self.viewState == filterSelection) {
+    [self toggleFilterSelection:^(bool finished) {
+      nil;
+    }];
+  }
   
+  [self beginLoading];
   NSOrderedSet *artistSet = [[ArtistList sharedList] artistSet];
   if (artistSet.count == 0) {
     DLog(@"No artists found");
@@ -106,8 +109,8 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   
   if (self.pendingOperations.requestsInProgress.count == 0) {
     [self populate];
+    [self endLoading];
   }
-  
 }
 
 - (PendingOperations *)pendingOperations {
@@ -120,9 +123,11 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 - (void)latestReleaseSearchDidFinish:(LatestReleaseSearch *)downloader {
   [[ArtistList sharedList] updateLatestRelease:downloader.album forArtist:downloader.artist];
   [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Album Search for %@", downloader.artist.name]];
+  [self updateLoadingLabelWithString:[NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
   if (self.pendingOperations.requestsInProgress.count == 0) {
     [[ArtistList sharedList] saveChanges];
     [self populate];
+    [self endLoading];
   }
 }
 
@@ -147,7 +152,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 }
 
 - (NSMutableArray *)sortedAlbums {
-  
   //Sort albums after checking, before they are to be displayed
   NSMutableArray *albumsArray = [NSMutableArray array];
   for (Artist *artist in [[ArtistList sharedList] artistSet]) {
@@ -350,6 +354,27 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 }
 
 #pragma mark Navigation
+
+- (void)beginLoading {
+  if (!self.isUpdating) {
+    self.isUpdating = YES;
+    [self.navigationBar beginLoading];
+  }
+}
+
+- (void)updateLoadingLabelWithString:(NSString*)text {
+  if (self.isUpdating) {
+    [self.navigationBar updateLoadingLabelWithString:text];
+  }
+}
+
+- (void)endLoading {
+  if (self.isUpdating) {
+    self.isUpdating = NO;
+    [self.navigationBar endLoading];
+  }
+}
+
 - (void)toiTunes:(NSDictionary*)cellInfo {
   // Initialize Product View Controller
   SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];

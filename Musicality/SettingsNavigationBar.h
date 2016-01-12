@@ -7,8 +7,9 @@
 //
 
 @import UIKit;
+#import "MNavigationBar.h"
 
-@interface SettingsNavigationBar : UIView
+@interface SettingsNavigationBar : MNavigationBar
 
 @property (weak, nonatomic) IBOutlet UILabel *settingsLabel;
 

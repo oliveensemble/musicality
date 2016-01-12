@@ -15,11 +15,19 @@
 #import "LibraryNavigationBar.h"
 #import "LibraryListViewController.h"
 
+//The different states the view can be in; either selecting a genre or scrolling through albums
+typedef NS_OPTIONS(NSUInteger, ViewState) {
+  browse = 1 << 0,
+  loading = 1 << 1
+};
+
 @interface LibraryListViewController ()
 
 @property (nonatomic, weak) LibraryNavigationBar *navigationBar;
 @property (nonatomic) NSArray *libraryListArray;
 @property (nonatomic) NSMutableArray *selectedArtistsArray;
+
+@property (nonatomic) NSUInteger viewState;
 
 @end
 
@@ -42,15 +50,13 @@
   self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
   self.tabBarController.tabBar.tintColor = [UIColor blackColor];
   
+  self.viewState = browse;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  
   [super viewWillAppear:animated];
-  
   _libraryListArray = [mStore artistsFromUserLibrary];
   _selectedArtistsArray = [NSMutableArray array];
-  
 }
 
 #pragma mark NSOperation Delegate
@@ -92,7 +98,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 60;
+  return 96;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -101,17 +107,28 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArtistCell"];
+  if (!cell) {
+    cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ArtistCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  }
   
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArtistCell" forIndexPath:indexPath];
+  if ([self.selectedArtistsArray containsObject:self.libraryListArray[indexPath.row]]) {
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+  } else {
+    cell.accessoryType = UITableViewCellAccessoryNone;
+  }
+
   cell.textLabel.text = [NSString stringWithFormat:@"%@", [self.libraryListArray[indexPath.row] name]];
   return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (self.viewState == browse) {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    selectedCell.backgroundColor = [UIColor blackColor];
-    selectedCell.textLabel.textColor = [UIColor whiteColor];
+    selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
     [self.selectedArtistsArray addObject:self.libraryListArray[indexPath.row]];
+  }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -135,14 +152,14 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-  selectedCell.backgroundColor = [UIColor whiteColor];
-  selectedCell.textLabel.textColor = [UIColor blackColor];
+  selectedCell.accessoryType = UITableViewCellAccessoryNone;
   [self.selectedArtistsArray removeObjectIdenticalTo:self.libraryListArray[indexPath.row]];
 }
 
 #pragma mark Artist Search
 
 - (void)searchArtists {
+  [self beginLoading];
   NSMutableArray *itemsToRemove = [NSMutableArray array];
   for(Artist* artist in self.selectedArtistsArray) {
     if ([[ArtistList sharedList] isInList:artist]) {
@@ -163,6 +180,7 @@
       [self.pendingOperations.requestQueue addOperation:artistSearch];
     }
   } else {
+    [self endLoading];
     [self toArtistsList:self];
   }
 }
@@ -189,6 +207,20 @@
 }
 
 #pragma mark Loading
+
+- (void)beginLoading {
+  if (self.viewState == browse) {
+    self.viewState = loading;
+    [self.navigationBar beginLoading];
+  }
+}
+
+- (void)endLoading {
+  if (self.viewState == loading) {
+    self.viewState = browse;
+    [self.navigationBar endLoading];
+  }
+}
 
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"toArtistsList" object:nil];
