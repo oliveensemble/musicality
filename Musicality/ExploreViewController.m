@@ -111,7 +111,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 - (void)fetchFeed {
   NSURL *url;
   
-  DLog(@"Loading");
+  [self beginLoading];
   
   if (self.feedType == topCharts) {
     if (self.currentGenreId == -1) {
@@ -152,7 +152,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
   [self.tableView endUpdates];
   [self.tableView reloadData];
-  DLog(@"Finished");
+  
+  [self endLoading];
 }
 
 #pragma mark TableView Methods
@@ -252,8 +253,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   //If the user selected the first item in the array and the genre selection was closed:
   if (indexPath.row == 0 && self.viewState == browse) {
     //Open genre selection
-    //[self toggleGenreSelection:^(bool finished) {}];
-    [[Crashlytics sharedInstance] crash];
+    [self toggleGenreSelection:^(bool finished) {}];
   } else if (indexPath.row <= self.genres.count && self.viewState == genreSelection) {
       //New genre selected; we need to refetch
       if (indexPath.row == 0) {
@@ -362,9 +362,30 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
+- (void)beginLoading {
+  if (self.viewState == genreSelection) {
+    [self toggleGenreSelection:^(bool finished) {
+      nil;
+    }];
+  }
+  
+  if (self.viewState != loading) {
+    self.viewState = loading;
+    [self.navigationBar beginLoading];
+  }
+}
+
+- (void)endLoading {
+  if (self.viewState == loading) {
+    self.viewState = browse;
+    [self.navigationBar endLoading];
+  }
+}
+
 #pragma mark Navigation
 
 - (void)toiTunes:(NSDictionary*)cellInfo {
+  [self beginLoading];
   // Initialize Product View Controller
   SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
   // Configure View Controller
@@ -372,9 +393,12 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : [mStore formattedAlbumIDFromURL:cellInfo[@"AlbumURL"]], SKStoreProductParameterAffiliateToken : mStore.affiliateToken} completionBlock:^(BOOL result, NSError *error) {
     if (error) {
       DLog(@"Error %@ with User Info %@.", error, [error userInfo]);
+      [self endLoading];
     } else {
       // Present Store Product View Controller
-      [self presentViewController:storeProductViewController animated:YES completion:nil];
+      [self presentViewController:storeProductViewController animated:YES completion:^{
+        [self endLoading];
+      }];
     }
   }];
 }

@@ -12,12 +12,26 @@
 @implementation ExploreNavigationBar
 
 - (void)awakeFromNib {
-  self.layer.shadowOpacity = 0.4;
-  self.layer.shadowRadius = 2.0;
-  self.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-  self.layer.shadowColor = [UIColor blackColor].CGColor;
-  self.layer.backgroundColor = [UIColor whiteColor].CGColor;
+  [super awakeFromNib];
   self.exploreLabel.textColor = [UIColor blackColor];
+}
+
+- (void)beginLoading {
+  self.loadingLabel.alpha = 0;
+  self.loadingLabel.hidden = NO;
+  [UIView animateWithDuration:0.4 animations:^{
+    self.exploreLabel.alpha = 0;
+    self.loadingLabel.alpha = 1.0;
+  }];
+}
+
+- (void)endLoading {
+  [UIView animateWithDuration:1.0 animations:^{
+    self.loadingLabel.alpha = 0;
+    self.exploreLabel.alpha = 1.0;
+  } completion:^(BOOL finished) {
+    self.loadingLabel.hidden = YES;
+  }];
 }
 
 @end

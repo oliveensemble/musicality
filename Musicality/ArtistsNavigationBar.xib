@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,27 +11,28 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hQ-zY-eu5">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M2h-97-UTA">
                     <rect key="frame" x="0.0" y="10" width="320" height="43"/>
-                    <animations/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hQ-zY-eu5">
+                    <rect key="frame" x="0.0" y="10" width="320" height="43"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xB9-Qh-Jdb">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
-                    <animations/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zP-D5-xrI">
                     <rect key="frame" x="263" y="58" width="57" height="30"/>
-                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qK4-43-A7Y" customClass="Button">
                     <rect key="frame" x="193" y="58" width="70" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Ue0-63-uCi"/>
                         <constraint firstAttribute="width" constant="70" id="Wb3-6a-RdC"/>
@@ -52,12 +53,10 @@
                 </button>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Cz-U7-qT7">
                     <rect key="frame" x="0.0" y="58" width="58" height="30"/>
-                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2Y-tg-3cV" customClass="Button">
                     <rect key="frame" x="58" y="58" width="112" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="ttX-Ec-iXt"/>
                         <constraint firstAttribute="width" constant="112" id="wPJ-xf-doa"/>
@@ -76,7 +75,6 @@
                     </variation>
                 </button>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="xB9-Qh-Jdb" firstAttribute="bottom" secondItem="0hQ-zY-eu5" secondAttribute="bottom" id="24U-24-cYk"/>
@@ -89,6 +87,7 @@
                 <constraint firstAttribute="trailing" secondItem="1zP-D5-xrI" secondAttribute="trailing" id="Deh-zK-E2T"/>
                 <constraint firstAttribute="trailing" secondItem="0hQ-zY-eu5" secondAttribute="trailing" id="EKY-Qj-GUC"/>
                 <constraint firstItem="f2Y-tg-3cV" firstAttribute="top" secondItem="xB9-Qh-Jdb" secondAttribute="bottom" constant="5" id="EtG-ku-qYF"/>
+                <constraint firstItem="0hQ-zY-eu5" firstAttribute="bottom" secondItem="M2h-97-UTA" secondAttribute="bottom" id="G9G-ca-wIJ"/>
                 <constraint firstItem="1zP-D5-xrI" firstAttribute="centerY" secondItem="qK4-43-A7Y" secondAttribute="centerY" id="Jkw-lm-emG"/>
                 <constraint firstItem="1Cz-U7-qT7" firstAttribute="leading" secondItem="LKd-2d-vIx" secondAttribute="leading" id="LE6-Gg-XxK"/>
                 <constraint firstItem="f2Y-tg-3cV" firstAttribute="top" secondItem="0hQ-zY-eu5" secondAttribute="bottom" constant="8" id="MKx-Kw-Msh"/>
@@ -97,11 +96,14 @@
                 <constraint firstItem="1zP-D5-xrI" firstAttribute="centerY" secondItem="f2Y-tg-3cV" secondAttribute="centerY" id="Zzh-Rw-KAX"/>
                 <constraint firstItem="qK4-43-A7Y" firstAttribute="leading" secondItem="f2Y-tg-3cV" secondAttribute="trailing" constant="23" id="aWV-wZ-0BP"/>
                 <constraint firstItem="xB9-Qh-Jdb" firstAttribute="top" secondItem="LKd-2d-vIx" secondAttribute="top" id="de1-Ij-XRW"/>
+                <constraint firstItem="0hQ-zY-eu5" firstAttribute="top" secondItem="M2h-97-UTA" secondAttribute="top" id="eDt-I7-VA1"/>
                 <constraint firstItem="0hQ-zY-eu5" firstAttribute="top" secondItem="LKd-2d-vIx" secondAttribute="top" constant="10" id="gmR-gX-1Nw"/>
                 <constraint firstAttribute="centerX" secondItem="0hQ-zY-eu5" secondAttribute="centerX" id="q0O-6C-E3L"/>
                 <constraint firstItem="xB9-Qh-Jdb" firstAttribute="leading" secondItem="LKd-2d-vIx" secondAttribute="leading" id="rwA-AK-AmE"/>
                 <constraint firstAttribute="trailing" secondItem="xB9-Qh-Jdb" secondAttribute="trailing" id="t4Q-8l-0ix"/>
                 <constraint firstItem="1zP-D5-xrI" firstAttribute="top" secondItem="xB9-Qh-Jdb" secondAttribute="bottom" constant="5" id="t8C-vG-VcF"/>
+                <constraint firstItem="0hQ-zY-eu5" firstAttribute="trailing" secondItem="M2h-97-UTA" secondAttribute="trailing" id="uCf-ic-dwh"/>
+                <constraint firstItem="0hQ-zY-eu5" firstAttribute="leading" secondItem="M2h-97-UTA" secondAttribute="leading" id="xHb-1f-MAB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
@@ -113,6 +115,7 @@
             <connections>
                 <outlet property="artistsLabel" destination="0hQ-zY-eu5" id="Irr-kA-IFL"/>
                 <outlet property="importFromLibraryButton" destination="f2Y-tg-3cV" id="d0a-Fn-Cz7"/>
+                <outlet property="loadingLabel" destination="M2h-97-UTA" id="rfT-Me-EwX"/>
                 <outlet property="refreshButton" destination="qK4-43-A7Y" id="p2m-Fb-X0n"/>
                 <outlet property="topOfPageButton" destination="xB9-Qh-Jdb" id="nPs-oB-Ffq"/>
             </connections>

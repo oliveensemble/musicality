@@ -47,6 +47,7 @@
 		4F7A16EB19F883F80039508D /* SettingsNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A16EA19F883F80039508D /* SettingsNavigationBar.m */; };
 		4F7A16ED19F885090039508D /* ArtistsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7A16EC19F885090039508D /* ArtistsNavigationBar.xib */; };
 		4F7A16F019F885270039508D /* ArtistsNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A16EF19F885270039508D /* ArtistsNavigationBar.m */; };
+		4F7A63891C44545F003AE595 /* MNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A63881C44545F003AE595 /* MNavigationBar.m */; };
 		4F8771591A563F2F00981495 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8771581A563F2F00981495 /* AVFoundation.framework */; };
 		4F96D9311A23B73C00759C6D /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F96D9301A23B73C00759C6D /* ArtistViewController.m */; };
 		4FA549CA1B544731005FB1B3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA549C91B544731005FB1B3 /* StoreKit.framework */; };
@@ -159,6 +160,8 @@
 		4F7A16EC19F885090039508D /* ArtistsNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtistsNavigationBar.xib; sourceTree = "<group>"; };
 		4F7A16EE19F885260039508D /* ArtistsNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistsNavigationBar.h; sourceTree = "<group>"; };
 		4F7A16EF19F885270039508D /* ArtistsNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistsNavigationBar.m; sourceTree = "<group>"; };
+		4F7A63871C44545F003AE595 /* MNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNavigationBar.h; sourceTree = "<group>"; };
+		4F7A63881C44545F003AE595 /* MNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNavigationBar.m; sourceTree = "<group>"; };
 		4F8771581A563F2F00981495 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4F96D92F1A23B73C00759C6D /* ArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistViewController.h; sourceTree = "<group>"; };
 		4F96D9301A23B73C00759C6D /* ArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ArtistViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -365,6 +368,8 @@
 			children = (
 				4F18223A19DA0439006CCA8B /* Main.storyboard */,
 				4FEC5A871B3646FD00985B0C /* Tutorial.storyboard */,
+				4F7A63871C44545F003AE595 /* MNavigationBar.h */,
+				4F7A63881C44545F003AE595 /* MNavigationBar.m */,
 				4FFBFF8919F5E00100EF5FD9 /* ExploreNavigationBar.xib */,
 				4F7A16E619F763350039508D /* ExploreNavigationBar.h */,
 				4F7A16E719F763350039508D /* ExploreNavigationBar.m */,
@@ -380,6 +385,9 @@
 				4FD2E80F1B76FFE700F35659 /* VariousArtistsNavigationBar.xib */,
 				4FD2E8111B77002000F35659 /* VariousArtistsNavigationBar.h */,
 				4FD2E8121B77002000F35659 /* VariousArtistsNavigationBar.m */,
+				4F7A16EC19F885090039508D /* ArtistsNavigationBar.xib */,
+				4F7A16EE19F885260039508D /* ArtistsNavigationBar.h */,
+				4F7A16EF19F885270039508D /* ArtistsNavigationBar.m */,
 				4F0FA8D11B4CD2CB0050A314 /* LoadingView.xib */,
 				4F0FA8CE1B4B67160050A314 /* LoadingView.h */,
 				4F0FA8CF1B4B67160050A314 /* LoadingView.m */,
@@ -388,9 +396,6 @@
 				4F63E82B1BE56DE3004B6991 /* AlbumTableViewCell.xib */,
 				4FF0A2C31BE56340005E7118 /* AlbumTableViewCell.h */,
 				4FF0A2C41BE56340005E7118 /* AlbumTableViewCell.m */,
-				4F7A16EC19F885090039508D /* ArtistsNavigationBar.xib */,
-				4F7A16EE19F885260039508D /* ArtistsNavigationBar.h */,
-				4F7A16EF19F885270039508D /* ArtistsNavigationBar.m */,
 				4FA71CF01BF6C6EC00DC6C0E /* FilterTableViewCell.xib */,
 				4F63E84D1BED2E16004B6991 /* FilterTableViewCell.h */,
 				4F63E84E1BED2E16004B6991 /* FilterTableViewCell.m */,
@@ -641,6 +646,7 @@
 				4F7A16F019F885270039508D /* ArtistsNavigationBar.m in Sources */,
 				4F0FA8D01B4B67160050A314 /* LoadingView.m in Sources */,
 				4F1520CA19EDFEAD00530B8E /* ExploreViewController.m in Sources */,
+				4F7A63891C44545F003AE595 /* MNavigationBar.m in Sources */,
 				4FC1C26B19F7367900E14360 /* ArtistNavigationBar.m in Sources */,
 				4FEC5A8B1B3666A400985B0C /* TutorialScanViewController.m in Sources */,
 			);
