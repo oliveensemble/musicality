@@ -7,7 +7,6 @@
 //
 
 #import "LibraryNavigationBar.h"
-#import "UserPrefs.h"
 
 @implementation LibraryNavigationBar
 

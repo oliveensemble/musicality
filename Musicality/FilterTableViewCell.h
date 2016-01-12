@@ -8,9 +8,9 @@
 
 @import UIKit;
 
-@interface GenreTableViewCell : UITableViewCell
+@interface FilterTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *genreLabel;
-@property (nonatomic) int genreId;
+@property (weak, nonatomic) IBOutlet UILabel *filterLabel;
+@property (nonatomic) int filterId;
 
 @end
