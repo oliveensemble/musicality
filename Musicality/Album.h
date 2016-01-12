@@ -22,4 +22,6 @@
 
 - (instancetype)initWithAlbumTitle:(NSString*)title artist:(NSString*)album artworkURL:(NSString*)artWorkURL albumURL:(NSString*)albumURL releaseDate:(NSString*)releaseDate;
 
+- (void)addArtistId:(NSString*)artistID;
+
 @end

@@ -237,8 +237,9 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [albumCell.viewArtistButton addTarget:self action:@selector(toArtist:) forControlEvents:UIControlEventTouchUpInside];
     
     //Add user info to cell and button
-    albumCell.viewArtistButton.buttonInfo = @{@"AlbumURL" : album.URL, @"Artist" : album.artist, @"ArtistID" : album.artistID};
-    albumCell.cellInfo = @{@"AlbumURL" : album.URL, @"Artist" : album.artist, @"ArtistID" : album.artistID, @"Album" : album.title};
+    NSDictionary *userInfo = @{@"AlbumURL" : album.URL, @"Artist" : album.artist, @"ArtistID" : album.artistID};
+    albumCell.viewArtistButton.buttonInfo = userInfo;
+    albumCell.cellInfo = userInfo;
     
     //Add gesture recognizer for action sheet
     //Gesture recognizer

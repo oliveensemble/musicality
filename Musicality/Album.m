@@ -31,7 +31,7 @@
       _artworkURL = [NSURL URLWithString:[artWorkURL stringByReplacingOccurrencesOfString:@"170x170"withString:@"250x250"]];
     }
     
-    _artistID = [NSNumber numberWithInt:0];
+    _artistID = [NSNumber numberWithLong:0];
   }
   return self;
 }
@@ -56,6 +56,10 @@
   [aCoder encodeObject:self.artworkURL forKey:@"albumArtworkURL"];
   [aCoder encodeObject:self.releaseDate forKey:@"releaseDate"];
   [aCoder encodeBool:self.isPreOrder forKey:@"isPreOrder"];
+}
+
+- (void)addArtistId:(NSString*)artistID {
+  self.artistID = [NSNumber numberWithLong:artistID.intValue];
 }
 
 - (NSComparisonResult)compare:(Album *)otherAlbum {

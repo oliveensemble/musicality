@@ -46,7 +46,7 @@
       
       NSDictionary *artistDictionary = [jsonObject[@"results"] firstObject];
       if (artistDictionary[@"artistId"] && artistDictionary[@"artistName"]) {
-        self.artist.artistID = artistDictionary[@"artistId"];
+        [self.artist addArtistId: artistDictionary[@"artistId"]];
       } else {
         hasInfo = NO;
       }

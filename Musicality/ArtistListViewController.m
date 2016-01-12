@@ -8,6 +8,7 @@
 
 @import StoreKit;
 #import "MStore.h"
+#import "AutoScan.h"
 #import "UserPrefs.h"
 #import "ArtistList.h"
 #import "UIImageView+Haneke.h"
@@ -74,18 +75,24 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   self.viewState = browse;
   self.filterType = latestReleases;
   self.currentFilterTitle = @"Latest Releases";
+  self.isUpdating = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  if ([[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
+  if ([[UserPrefs sharedPrefs] artistListNeedsUpdating] && ![[AutoScan sharedScan] isScanning]) {
     [self update];
+  }
+  
+  if ([[AutoScan sharedScan] isScanning]) {
+    [self beginLoading];
+    [self updateLoadingLabelWithString:@"Scanning Library"];
   }
 }
 
 #pragma mark NSOperation Methods
 
 - (void)update {
-  
+  [self endLoading];
   if (self.viewState == filterSelection) {
     [self toggleFilterSelection:^(bool finished) {
       nil;
@@ -96,6 +103,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   NSOrderedSet *artistSet = [[ArtistList sharedList] artistSet];
   if (artistSet.count == 0) {
     DLog(@"No artists found");
+    [self endLoading];
     return;
   }
   
@@ -105,11 +113,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
       [self.pendingOperations.requestsInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
       [self.pendingOperations.requestQueue addOperation:albumSearch];
     }
-  }
-  
-  if (self.pendingOperations.requestsInProgress.count == 0) {
-    [self populate];
-    [self endLoading];
   }
 }
 
@@ -124,6 +127,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   [[ArtistList sharedList] updateLatestRelease:downloader.album forArtist:downloader.artist];
   [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Album Search for %@", downloader.artist.name]];
   [self updateLoadingLabelWithString:[NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
+
   if (self.pendingOperations.requestsInProgress.count == 0) {
     [[ArtistList sharedList] saveChanges];
     [self populate];
@@ -350,7 +354,9 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 }
 
 - (void)topOfPage {
-  [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+  if (self.tableViewArray.count > 5) {
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+  }
 }
 
 #pragma mark Navigation

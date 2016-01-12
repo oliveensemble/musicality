@@ -17,6 +17,8 @@
 @property (nonatomic) Album *latestRelease;
 @property (nonatomic) NSDate *lastCheckDate;
 
-- (instancetype)initWithArtistID:(NSNumber*)artistID andName:(NSString*)artistName;
+- (instancetype)initWithArtistID:(NSString*)artistID andName:(NSString*)artistName;
+
+- (void)addArtistId:(NSString*)artistID;
 
 @end
