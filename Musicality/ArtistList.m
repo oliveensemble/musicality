@@ -57,6 +57,7 @@
     //Check if artist is in the set
     for (Artist *listArtist in self.artistSet) {
       if (listArtist.artistID == artist.artistID) {
+        DLog(@"Already added %@", artist.name);
         return;
       }
     }

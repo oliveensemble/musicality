@@ -112,6 +112,11 @@
 
 - (NSString*)formattedAlbumIDFromURL:(NSURL*)url {
   
+  if (!url) {
+    DLog(@"Cannot format, url is empty: %@", url);
+    return nil;
+  }
+  
   NSString *stringUrl = [url absoluteString];
   NSString *idString = @"/id";
   NSString *uoString = @"?";
@@ -127,7 +132,7 @@
     formattedString = [[[stringUrl substringWithRange:intersectionRange] stringByReplacingOccurrencesOfString:idString withString:@""] stringByReplacingOccurrencesOfString:uoString withString:@""];
   }
   @catch (NSException *exception) {
-    DLog(@"Cannot format string");
+    DLog(@"Cannot format string: %@", stringUrl);
   }
   @finally {
     return formattedString;

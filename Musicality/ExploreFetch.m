@@ -20,6 +20,8 @@
   NSString *albumArtFeed;
   NSMutableString *albumURLFeed;
   NSMutableString *releaseDateFeed;
+  NSMutableString *artistURLFeed;
+  NSString *artistID;
   
 }
 
@@ -47,7 +49,6 @@
       return;
     }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-      // do your background tasks here
       NSXMLParser *parser = [[NSXMLParser alloc]initWithContentsOfURL:self.url];
       parser.delegate = self;
       [parser parse];
@@ -62,20 +63,26 @@
   element = elementName;
   
   if ([elementName isEqualToString:@"item"] || [elementName isEqualToString:@"entry"]) {
-    
     album = [[NSMutableDictionary alloc] init];
     albumNameFeed = [[NSMutableString alloc] init];
     artistNameFeed = [[NSMutableString alloc] init];
     albumURLFeed = [[NSMutableString alloc] init];
     releaseDateFeed = [[NSMutableString alloc] init];
-    
+    artistURLFeed = [[NSMutableString alloc] init];
+  }
+  
+  //Get the artist id link from the href attribute
+  if ([elementName isEqualToString:@"im:artist"] && artistID == nil) {
+    NSURL *artistURL = [NSURL URLWithString:[attributeDict valueForKey:@"href"]];
+    if (artistURL) {
+      artistID = [mStore formattedAlbumIDFromURL:artistURL];
+    }
   }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
   
   string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  
   if (string.length == 0) {
     return;
   }
@@ -90,25 +97,32 @@
     [albumURLFeed appendString:string];
   } else if ([element isEqualToString:@"im:releaseDate"]) {
     [releaseDateFeed appendString:string];
+  } else if ([element isEqualToString:@"itms:artistLink"]) {
+    [artistURLFeed appendString:string];
   }
 
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+
   if ([elementName isEqualToString:@"item"] || [elementName isEqualToString:@"entry"]) {
     
-    Album *newAlbum = [[Album alloc] initWithAlbumTitle:albumNameFeed artist:artistNameFeed artworkURL:albumArtFeed albumURL:albumURLFeed releaseDate:releaseDateFeed];
-    newAlbum.artistID = [NSNumber numberWithInt:[mStore formattedAlbumIDFromURL:newAlbum.URL].intValue];
-    [self.albumArray addObject:newAlbum];
+    if (!artistID && artistURLFeed != nil && ![artistURLFeed isEqualToString:@""]) {
+      NSURL *artistURL = [NSURL URLWithString:artistURLFeed];
+      artistID = [mStore formattedAlbumIDFromURL:artistURL];
+    }
     
+    Album *newAlbum = [[Album alloc] initWithAlbumTitle:albumNameFeed artist:artistNameFeed artworkURL:albumArtFeed albumURL:albumURLFeed releaseDate:releaseDateFeed];
+    [newAlbum addArtistId: artistID];
+    [self.albumArray addObject:newAlbum];
     albumNameFeed = nil;
     artistNameFeed = nil;
     albumArtFeed = nil;
     albumURLFeed = nil;
     releaseDateFeed = nil;
-    
+    artistURLFeed = nil;
+    artistID = nil;
   }
-  
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {

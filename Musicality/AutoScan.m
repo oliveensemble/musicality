@@ -69,6 +69,7 @@
 - (void)stopScan {
   [self.pendingOperations.requestQueue cancelAllOperations];
   [self.pendingOperations.requestsInProgress removeAllObjects];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanFinished" object:nil userInfo:nil];
   self.isScanning = NO;
 }
 

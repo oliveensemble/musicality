@@ -193,6 +193,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
       [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
     }
+    [[ArtistList sharedList] saveChanges];
     [self toArtistsList:self];
     [self.pendingOperations.requestQueue cancelAllOperations];
   }

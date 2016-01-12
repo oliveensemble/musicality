@@ -50,6 +50,7 @@
 		4F7A63891C44545F003AE595 /* MNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A63881C44545F003AE595 /* MNavigationBar.m */; };
 		4F8771591A563F2F00981495 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8771581A563F2F00981495 /* AVFoundation.framework */; };
 		4F96D9311A23B73C00759C6D /* ArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F96D9301A23B73C00759C6D /* ArtistViewController.m */; };
+		4FA107E91C449867007CD4BC /* ArtistFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA107E81C449867007CD4BC /* ArtistFetch.m */; };
 		4FA549CA1B544731005FB1B3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA549C91B544731005FB1B3 /* StoreKit.framework */; };
 		4FA71CED1BF68CFD00DC6C0E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA71CEB1BF68CFD00DC6C0E /* Fabric.framework */; };
 		4FA71CEE1BF68CFD00DC6C0E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA71CEC1BF68CFD00DC6C0E /* Crashlytics.framework */; };
@@ -165,6 +166,8 @@
 		4F8771581A563F2F00981495 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4F96D92F1A23B73C00759C6D /* ArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistViewController.h; sourceTree = "<group>"; };
 		4F96D9301A23B73C00759C6D /* ArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ArtistViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		4FA107E71C449867007CD4BC /* ArtistFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistFetch.h; sourceTree = "<group>"; };
+		4FA107E81C449867007CD4BC /* ArtistFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistFetch.m; sourceTree = "<group>"; };
 		4FA549C91B544731005FB1B3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4FA71CEB1BF68CFD00DC6C0E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		4FA71CEC1BF68CFD00DC6C0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -443,14 +446,16 @@
 				4F3B35EA1BEEA4ED0003F96F /* ExploreFetch.m */,
 				4FC3E77C1B13E00200C3C10F /* ArtistSearch.h */,
 				4FC3E77D1B13E00200C3C10F /* ArtistSearch.m */,
+				4FA107E71C449867007CD4BC /* ArtistFetch.h */,
+				4FA107E81C449867007CD4BC /* ArtistFetch.m */,
 				4F3720BB1B154A8C0067E80A /* LatestReleaseSearch.h */,
 				4F3720BC1B154A8C0067E80A /* LatestReleaseSearch.m */,
 				4F3720C41B1940410067E80A /* NotificationCheck.h */,
 				4F3720C51B1940410067E80A /* NotificationCheck.m */,
-				4F718ACD1B13FA8800DA890E /* PendingOperations.h */,
-				4F718ACE1B13FA8800DA890E /* PendingOperations.m */,
 				4FEC5A841B35DD9300985B0C /* AutoScan.h */,
 				4FEC5A851B35DD9300985B0C /* AutoScan.m */,
+				4F718ACD1B13FA8800DA890E /* PendingOperations.h */,
+				4F718ACE1B13FA8800DA890E /* PendingOperations.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -632,6 +637,7 @@
 				4F3B35EB1BEEA4ED0003F96F /* ExploreFetch.m in Sources */,
 				4F63E84A1BE57BCF004B6991 /* UIButton+Haneke.m in Sources */,
 				4F650E5F1A279AF000C2FA82 /* LibraryListViewController.m in Sources */,
+				4FA107E91C449867007CD4BC /* ArtistFetch.m in Sources */,
 				4F6B7E0719FE90D600FFC596 /* Button.m in Sources */,
 				4FEC5A831B34D0DC00985B0C /* Blacklist.m in Sources */,
 				4FD2E80E1B76F77A00F35659 /* VariousArtistsViewController.m in Sources */,

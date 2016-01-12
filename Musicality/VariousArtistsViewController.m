@@ -80,7 +80,7 @@
   for (int i = 1; i < [jsonArray count]; i++) {
     NSDictionary *artistListDictionary = [jsonArray objectAtIndex:i];
     NSString *name;
-    NSNumber *artistID;
+    NSString *artistID;
     
     for (int j = 0; j < [artistListDictionary count]; j++) {
       NSString *nodeTitle = [artistListDictionary allKeys][j];
@@ -209,7 +209,7 @@
 #pragma mark - Navigation
 
 - (void)toArtist:(Artist*)sender {
-  NSNumber *num = sender.artistID;
+  NSString *num = sender.artistID.stringValue;
   NSString *name = sender.name;
   if (num && name) {
     Artist *artist = [[Artist alloc] initWithArtistID:num andName:name];

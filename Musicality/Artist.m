@@ -16,11 +16,11 @@
 
 @implementation Artist
 
-- (instancetype)initWithArtistID:(NSNumber*)artistID andName:(NSString*)artistName {
+- (instancetype)initWithArtistID:(NSString*)artistID andName:(NSString*)artistName {
   
   self = [super init];
   if (self) {
-    _artistID = artistID;
+    _artistID = [NSNumber numberWithLong:artistID.intValue];
     _name = artistName;
     _latestRelease = nil;
     _lastCheckDate = [NSDate dateWithTimeIntervalSinceReferenceDate:0];
@@ -47,6 +47,10 @@
   [aCoder encodeObject:self.name forKey:@"artistName"];
   [aCoder encodeObject:self.latestRelease forKey:@"latestRelease"];
   [aCoder encodeObject:self.lastCheckDate forKey:@"lastCheckDate"];
+}
+
+- (void)addArtistId:(NSString*)artistID {
+  self.artistID = [NSNumber numberWithLong:artistID.intValue];
 }
 
 - (NSString *)description {

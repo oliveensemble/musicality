@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet Button *backButton;
 @property (weak, nonatomic) IBOutlet Button *addToListButton;
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
+@property (weak, nonatomic) IBOutlet UIButton *topOfPageButton;
 
 @end
