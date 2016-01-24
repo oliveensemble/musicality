@@ -69,6 +69,10 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update) name:@"autoScanFinished" object:nil];
   
+  //Clear the badge when the user views the page
+  [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
+  [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+  
   //Filter Items
   _filters = @[@"Latest Releases", @"Artists", @"Hide Pre-Orders"];
   
@@ -76,6 +80,13 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   self.filterType = latestReleases;
   self.currentFilterTitle = @"Latest Releases";
   self.isUpdating = NO;
+  
+  //Add the items to the table view array
+  self.tableViewArray = [NSMutableArray arrayWithObject:self.currentFilterTitle];
+  NSArray *sortedAlbums = [self sortedAlbums];
+  [self.tableViewArray addObjectsFromArray:sortedAlbums];
+  
+  [self update];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -92,6 +103,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 #pragma mark NSOperation Methods
 
 - (void)update {
+  
   [self endLoading];
   if (self.viewState == filterSelection) {
     [self toggleFilterSelection:^(bool finished) {
@@ -108,7 +120,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   }
   
   for (Artist* artist in [[ArtistList sharedList] artistSet]) {
-    if ([mStore thisDate:[NSDate dateWithTimeIntervalSinceNow:-604800] isMoreRecentThan:artist.lastCheckDate]) {
+    if (([mStore thisDate:[NSDate dateWithTimeIntervalSinceNow:-604800] isMoreRecentThan:artist.lastCheckDate]) || artist.lastCheckDate == nil) {
       LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
       [self.pendingOperations.requestsInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
       [self.pendingOperations.requestQueue addOperation:albumSearch];
@@ -189,7 +201,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
   _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationBar.bounds].CGPath;
   [_navigationBar.importFromLibraryButton addTarget:self action:@selector(toLibraryList:) forControlEvents:UIControlEventTouchUpInside];
-  [_navigationBar.refreshButton addTarget:self action:@selector(update) forControlEvents:UIControlEventTouchUpInside];
+  [_navigationBar.refreshButton addTarget:self action:@selector(refresh) forControlEvents:UIControlEventTouchUpInside];
   [_navigationBar.topOfPageButton addTarget:self action:@selector(topOfPage) forControlEvents:UIControlEventTouchUpInside];
   
   return _navigationBar;
@@ -350,6 +362,15 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
       activityVC.popoverPresentationController.sourceView = lp.view;
     }
     [self presentViewController:activityVC animated:YES completion:nil];
+  }
+}
+
+- (void)refresh {
+  DLog(@"Refresh");
+  for (Artist* artist in [[ArtistList sharedList] artistSet]) {
+    LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
+    [self.pendingOperations.requestsInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
+    [self.pendingOperations.requestQueue addOperation:albumSearch];
   }
 }
 

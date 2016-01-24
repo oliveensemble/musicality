@@ -59,6 +59,9 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   self.navigationController.interactivePopGestureRecognizer.delegate = nil;
   [self.navigationController setNavigationBarHidden:YES animated:NO];
   
+  //Register notification
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:@"appDidReceiveNotification" object:nil];
+  
   //Register TableView cells
   [self.tableView registerNib:[UINib nibWithNibName:@"FilterTableViewCell" bundle:nil] forCellReuseIdentifier:@"filterCell"];
   [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
@@ -97,6 +100,18 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   self.currentGenreId = -1;
   self.currentGenreTitle = @"All Genres";
   [self fetchFeed];
+
+  UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+  localNotif.alertAction = NSLocalizedString(@"Check it out", nil);
+  localNotif.soundName = UILocalNotificationDefaultSoundName;
+  localNotif.applicationIconBadgeNumber += 1;
+  localNotif.timeZone = [NSTimeZone defaultTimeZone];
+  localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+  localNotif.alertBody = @"Test";
+  localNotif.userInfo = @{@"albumID" : @"848859596", @"artistName" : @"BOB"};
+  [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+  DLog(@"Scheduled");
+  
 }
 
 #pragma mark NSOperation Delegate
@@ -387,11 +402,20 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 - (void)toiTunes:(NSDictionary*)cellInfo {
   [self beginLoading];
+  
+  NSString *albumID;
+  if (cellInfo[@"albumID"]) {
+    albumID = cellInfo[@"albumID"];
+  } else {
+    //If the dictionary item has a URL then format it
+    albumID = [mStore formattedAlbumIDFromURL:cellInfo[@"AlbumURL"]];
+  }
+  
   // Initialize Product View Controller
   SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
   // Configure View Controller
   storeProductViewController.delegate = self;
-  [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : [mStore formattedAlbumIDFromURL:cellInfo[@"AlbumURL"]], SKStoreProductParameterAffiliateToken : mStore.affiliateToken} completionBlock:^(BOOL result, NSError *error) {
+  [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken} completionBlock:^(BOOL result, NSError *error) {
     if (error) {
       DLog(@"Error %@ with User Info %@.", error, [error userInfo]);
       [self endLoading];
@@ -402,6 +426,21 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
       }];
     }
   }];
+}
+
+- (void)didReceiveNotification:(NSNotification*)notif {
+  NSDictionary *notificationOptions = notif.userInfo;
+  NSDictionary *cellInfo;
+  if ([notificationOptions objectForKey:@"albumID"]) {
+    //Make sure we have an album
+    cellInfo = @{@"albumID":[notificationOptions objectForKey:@"albumID"]};
+    DLog(@"%@",[[notificationOptions objectForKey:@"albumID"] class]);
+    //Set tab bar to new
+    [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:@"New"];
+  } else {
+    return;
+  }
+  [self toiTunes:cellInfo];
 }
 
 - (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {

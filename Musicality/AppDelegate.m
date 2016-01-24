@@ -45,19 +45,6 @@
   return YES;
 }
 
-- (void)checkRequests {
-  //As of now all this will do is check if a user has added artists to their library by checking the artist count
-  if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
-    NSUInteger num = mStore.artistsFromUserLibrary.count;
-    NSUInteger lastLibraryNum = [[UserPrefs sharedPrefs] lastLibraryCount];
-    if (num != lastLibraryNum) {
-      DLog(@"number does not match");
-      [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
-      [[UserPrefs sharedPrefs] setLastLibraryCount:lastLibraryNum];
-    }
-  }
-}
-
 - (void)applicationWillResignActive:(UIApplication *)application {
   [[UserPrefs sharedPrefs] savePrefs];
   [[ArtistList sharedList] saveChanges];
@@ -66,15 +53,12 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   [[NotificationList sharedList] clearNotificationItems];
-  [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidReceiveNotification" object:nil userInfo:userInfo];
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidReceiveNotification" object:nil userInfo:notification.userInfo];
+  if([application applicationState] == UIApplicationStateInactive) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidReceiveNotification" object:nil userInfo:notification.userInfo];
+  }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
