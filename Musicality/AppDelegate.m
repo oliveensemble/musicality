@@ -16,7 +16,6 @@
 #import "ArtistList.h"
 #import "Blacklist.h"
 #import "UserPrefs.h"
-#import "AutoScan.h"
 #import "Artist.h"
 #import "MStore.h"
 

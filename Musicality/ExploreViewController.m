@@ -11,6 +11,7 @@
 #import "Album.h"
 #import "Artist.h"
 #import "MStore.h"
+#import "AutoScan.h"
 #import "UserPrefs.h"
 #import "UIImageView+Haneke.h"
 #import "AlbumTableViewCell.h"
@@ -169,6 +170,11 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [self.tableView reloadData];
   
   [self endLoading];
+  //After the view loads, auto scan
+  if ([[UserPrefs sharedPrefs] isAutoUpdateEnabled]) {
+    [[AutoScan sharedScan] startScan];
+  }
+  
 }
 
 #pragma mark TableView Methods
