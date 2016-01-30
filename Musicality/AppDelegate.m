@@ -10,7 +10,6 @@
 @import Fabric;
 @import Crashlytics;
 
-#import "NotificationListHandler.h"
 #import "NotificationList.h"
 #import "AppDelegate.h"
 #import "ArtistList.h"

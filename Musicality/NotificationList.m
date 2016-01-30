@@ -10,7 +10,6 @@
 #import "UserPrefs.h"
 #import "ArtistList.h"
 #import "NotificationList.h"
-#import "NotificationListHandler.h"
 
 @interface NotificationList ()
 

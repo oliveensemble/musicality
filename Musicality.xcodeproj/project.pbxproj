@@ -22,7 +22,6 @@
 		4F3720BD1B154A8C0067E80A /* LatestReleaseSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720BC1B154A8C0067E80A /* LatestReleaseSearch.m */; };
 		4F3720C61B1940410067E80A /* NotificationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720C51B1940410067E80A /* NotificationCheck.m */; };
 		4F3720C71B1940410067E80A /* NotificationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720C51B1940410067E80A /* NotificationCheck.m */; };
-		4F373B4D1A07D8ED00DA0F34 /* NotificationListHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F373B4C1A07D8ED00DA0F34 /* NotificationListHandler.m */; };
 		4F3836F61A800C4000E872E3 /* LibraryData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F3836F51A800C4000E872E3 /* LibraryData.plist */; };
 		4F3B35EB1BEEA4ED0003F96F /* ExploreFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3B35EA1BEEA4ED0003F96F /* ExploreFetch.m */; };
 		4F4EE9EA1A18EC4300E8F608 /* NotificationData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F4EE9E91A18EC4300E8F608 /* NotificationData.plist */; };
@@ -115,8 +114,6 @@
 		4F3720BC1B154A8C0067E80A /* LatestReleaseSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatestReleaseSearch.m; sourceTree = "<group>"; };
 		4F3720C41B1940410067E80A /* NotificationCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCheck.h; sourceTree = "<group>"; };
 		4F3720C51B1940410067E80A /* NotificationCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCheck.m; sourceTree = "<group>"; };
-		4F373B4B1A07D8ED00DA0F34 /* NotificationListHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationListHandler.h; sourceTree = "<group>"; };
-		4F373B4C1A07D8ED00DA0F34 /* NotificationListHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationListHandler.m; sourceTree = "<group>"; };
 		4F3836F51A800C4000E872E3 /* LibraryData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LibraryData.plist; sourceTree = "<group>"; };
 		4F3B35E91BEEA4ED0003F96F /* ExploreFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreFetch.h; sourceTree = "<group>"; };
 		4F3B35EA1BEEA4ED0003F96F /* ExploreFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreFetch.m; sourceTree = "<group>"; };
@@ -361,7 +358,6 @@
 				4F18223419DA0439006CCA8B /* AppDelegate.h */,
 				4F18223519DA0439006CCA8B /* AppDelegate.m */,
 				4FC3E77B1B13DFD700C3C10F /* Network */,
-				4FC3E77A1B13DE7D00C3C10F /* Subclassed */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -428,15 +424,6 @@
 				4F63E8441BE57BCF004B6991 /* UIView+Haneke.m */,
 			);
 			name = Heneke;
-			sourceTree = "<group>";
-		};
-		4FC3E77A1B13DE7D00C3C10F /* Subclassed */ = {
-			isa = PBXGroup;
-			children = (
-				4F373B4B1A07D8ED00DA0F34 /* NotificationListHandler.h */,
-				4F373B4C1A07D8ED00DA0F34 /* NotificationListHandler.m */,
-			);
-			name = Subclassed;
 			sourceTree = "<group>";
 		};
 		4FC3E77B1B13DFD700C3C10F /* Network */ = {
@@ -644,7 +631,6 @@
 				4F63E8461BE57BCF004B6991 /* HNKDiskCache.m in Sources */,
 				4F18223319DA0439006CCA8B /* main.m in Sources */,
 				4F3720C61B1940410067E80A /* NotificationCheck.m in Sources */,
-				4F373B4D1A07D8ED00DA0F34 /* NotificationListHandler.m in Sources */,
 				4F63E8491BE57BCF004B6991 /* HNKSimpleFetcher.m in Sources */,
 				4F668CEF1B3A2A68008DC2A7 /* UserPrefs.m in Sources */,
 				4F63E8451BE57BCF004B6991 /* HNKCache.m in Sources */,

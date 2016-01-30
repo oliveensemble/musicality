@@ -90,6 +90,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   
   if ([[UserPrefs sharedPrefs] artistListNeedsUpdating] && ![[AutoScan sharedScan] isScanning]) {
     [self update];
