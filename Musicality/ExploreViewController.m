@@ -5,6 +5,7 @@
 //  Created by Evan Lewis on 10/14/14.
 //  Copyright © 2014 Evan Lewis. All rights reserved.
 //
+// The first view that the app loads. The explore tab shows the top albums in iTunes
 
 @import StoreKit;
 @import Crashlytics;
@@ -21,7 +22,7 @@
 #import "ExploreViewController.h"
 #import "VariousArtistsViewController.h"
 
-//The different states the view can be in; either selecting a genre or scrolling through albums
+//The different states the view can be in; either selecting a genre or scrolling through albums. The feed type changes whether it is the top charts or the new albums view
 typedef NS_OPTIONS(NSUInteger, ViewState) {
   browse = 1 << 0,
   genreSelection = 1 << 1,
@@ -48,6 +49,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 @property int currentGenreId;
 @property (nonatomic) NSString *currentGenreTitle;
+
+@property (nonatomic) UIView *loadingView;
 
 @end
 
@@ -374,22 +377,45 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 }
 
 - (void)beginLoading {
+  DLog(@"");
+  //Close genre selection if it's open
   if (self.viewState == genreSelection) {
     [self toggleGenreSelection:^(bool finished) {
       nil;
     }];
   }
   
+  //If it's not loading yet then start
   if (self.viewState != loading) {
+    [self.view setUserInteractionEnabled:false];
     self.viewState = loading;
-    [self.navigationBar beginLoading];
+    self.loadingView = [[UIView alloc] initWithFrame:self.view.frame];
+    self.loadingView.backgroundColor = [UIColor whiteColor];
+    self.loadingView.alpha = 0;
+    UILabel* loadingLabel = [[UILabel alloc] initWithFrame:self.loadingView.frame];
+    loadingLabel.text = @"Loading";
+    loadingLabel.textAlignment = NSTextAlignmentCenter;
+    loadingLabel.textColor = [UIColor blackColor];
+    loadingLabel.center = self.loadingView.center;
+    [self.loadingView addSubview:loadingLabel];
+    [self.view insertSubview:self.loadingView belowSubview:self.navigationBar];
+    [UIView animateWithDuration:0.2 animations:^{
+      self.loadingView.alpha = 1.0;
+    }];
   }
 }
 
 - (void)endLoading {
+  DLog(@"");
   if (self.viewState == loading) {
+    [self.view setUserInteractionEnabled:true];
     self.viewState = browse;
-    [self.navigationBar endLoading];
+    [UIView animateWithDuration:0.2 animations:^{
+      self.loadingView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+      [self.loadingView removeFromSuperview];
+      self.loadingView = nil;
+    }];
   }
 }
 
