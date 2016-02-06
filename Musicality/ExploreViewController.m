@@ -104,7 +104,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   self.currentGenreId = -1;
   self.currentGenreTitle = @"All Genres";
   [self fetchFeed];
-  
+
 }
 
 #pragma mark NSOperation Delegate
