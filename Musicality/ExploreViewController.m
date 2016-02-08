@@ -103,13 +103,26 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   self.feedType = topCharts;
   self.currentGenreId = -1;
   self.currentGenreTitle = @"All Genres";
-  [self fetchFeed];
   
+  UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+  localNotif.alertAction = NSLocalizedString(@"Check it out", nil);
+  localNotif.soundName = UILocalNotificationDefaultSoundName;
+  localNotif.applicationIconBadgeNumber += 1;
+  localNotif.timeZone = [NSTimeZone defaultTimeZone];
+  localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+  localNotif.alertBody = @"Test";
+  localNotif.userInfo = @{@"albumID" : @"848859596", @"artistName" : @"BOB"};
+  [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+  DLog(@"Scheduled");
+  
+  //Check if there was notification to
   NSString *albumID = [[NSUserDefaults standardUserDefaults] valueForKey:@"albumID"];
   if (albumID) {
     [self toiTunes:@{@"albumID" : albumID}];
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"albumID"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+  } else {
+    [self fetchFeed];
   }
 
 }
@@ -450,6 +463,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
       // Present Store Product View Controller
       [self presentViewController:storeProductViewController animated:YES completion:^{
         [self endLoading];
+        [self fetchFeed];
       }];
     }
   }];
