@@ -75,17 +75,21 @@
 }
 
 - (void)determineNotificationItems {
+  BOOL artistListChanged = false;
   for (Artist *artist in [[ArtistList sharedList] artistSet]) {
     if (artist.latestRelease.isPreOrder) {
       //If the pre order was finally released
       if ([mStore isToday:artist.latestRelease.releaseDate] || [mStore thisDate:[NSDate date] isMoreRecentThan:artist.latestRelease.releaseDate]) {
+        artistListChanged = YES;
         artist.latestRelease.isPreOrder = NO;
       } else {
         [self pushAlbumNotificationLater:artist.name album:artist.latestRelease];
       }
     }
   }
-  [[ArtistList sharedList] saveChanges];
+  if (artistListChanged) {
+    [[ArtistList sharedList] saveChanges];
+  }
 }
 
 - (void)clearNotificationItems {

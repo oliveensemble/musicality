@@ -69,10 +69,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update) name:@"autoScanFinished" object:nil];
   
-  //Clear the badge when the user views the page
-  [[[[[self tabBarController] tabBar] items] objectAtIndex:1] setBadgeValue:nil];
-  [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-  
   //Filter Items
   _filters = @[@"Latest Releases", @"Artists", @"Hide Pre-Orders"];
   
