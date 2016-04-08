@@ -104,7 +104,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   self.currentGenreId = -1;
   self.currentGenreTitle = @"All Genres";
   
-  UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+  /*UILocalNotification *localNotif = [[UILocalNotification alloc] init];
   localNotif.alertAction = NSLocalizedString(@"Check it out", nil);
   localNotif.soundName = UILocalNotificationDefaultSoundName;
   localNotif.applicationIconBadgeNumber += 1;
@@ -113,7 +113,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   localNotif.alertBody = @"Test";
   localNotif.userInfo = @{@"albumID" : @"848859596", @"artistName" : @"BOB"};
   [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-  DLog(@"Scheduled");
+  DLog(@"Scheduled");*/
   
   //Check if there was notification to
   NSString *albumID = [[NSUserDefaults standardUserDefaults] valueForKey:@"albumID"];

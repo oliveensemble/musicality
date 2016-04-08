@@ -402,7 +402,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     self.isUpdating = YES;
     _loadingBar = nil;
     _loadingBar = [[UIView alloc] initWithFrame:CGRectMake(0, (self.view.bounds.size.height - self.tabBarController.tabBar.bounds.size.height) - 30, self.view.bounds.size.width, 30)];
-    _loadingBar.backgroundColor = [UIColor greenColor];
+    _loadingBar.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.loadingBar];
   }
 }
