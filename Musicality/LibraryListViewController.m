@@ -58,8 +58,12 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     self.tabBarController.tabBar.tintColor = [[ColorScheme sharedScheme] secondaryColor];
     [self.tableView headerViewForSection:1];
     
+    self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+    
     _libraryListArray = [mStore artistsFromUserLibrary];
     _selectedArtistsArray = [NSMutableArray array];
+    self.tableView.tintColor = [[ColorScheme sharedScheme] secondaryColor];
+    [self.tableView reloadData];
 }
 
 #pragma mark NSOperation Delegate
@@ -109,6 +113,29 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     return self.libraryListArray.count;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Remove seperator inset
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        cell.separatorInset = UIEdgeInsetsZero;
+    }
+    
+    // Prevent the cell from inheriting the Table View's margin settings
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
+        cell.preservesSuperviewLayoutMargins = NO;
+    }
+    
+    // Explictly set your cell's layout margins
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        cell.layoutMargins = UIEdgeInsetsZero;
+    }
+    
+    cell.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+    cell.textLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    cell.detailTextLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    cell.accessoryView.tintColor = [[ColorScheme sharedScheme] secondaryColor];
+    cell.tintColor = [[ColorScheme sharedScheme] secondaryColor];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArtistCell"];
     if (!cell) {
@@ -132,25 +159,6 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
         selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
         [self.selectedArtistsArray addObject:self.libraryListArray[indexPath.row]];
     }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // Remove seperator inset
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        cell.separatorInset = UIEdgeInsetsZero;
-    }
-    
-    // Prevent the cell from inheriting the Table View's margin settings
-    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
-        cell.preservesSuperviewLayoutMargins = NO;
-    }
-    
-    // Explictly set your cell's layout margins
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        cell.layoutMargins = UIEdgeInsetsZero;
-    }
-    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {

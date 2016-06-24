@@ -103,6 +103,8 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     if ([[AutoScan sharedScan] isScanning]) {
         [self beginLoading];
     }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark NSOperation Methods

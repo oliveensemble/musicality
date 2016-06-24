@@ -29,19 +29,6 @@
 
 @implementation ArtistViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self configureView];
-    [self.navigationBar configureView];
-    
-    for (Artist *artistNotified in [[ArtistList sharedList] artistSet]) {
-        if (artistNotified.artistID == self.artist.artistID) {
-            self.isInNotificationList = YES;
-        }
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -59,6 +46,16 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil] forCellReuseIdentifier:@"albumCell"];
     _tableViewArray = [NSMutableArray array];
     [self fetchAlbums];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    for (Artist *artistNotified in [[ArtistList sharedList] artistSet]) {
+        if (artistNotified.artistID == self.artist.artistID) {
+            self.isInNotificationList = YES;
+        }
+    }
 }
 
 #pragma mark NSOperation Delegate

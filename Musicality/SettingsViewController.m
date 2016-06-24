@@ -117,6 +117,7 @@
             [[AutoScan sharedScan] stopScan];
             [[ArtistList sharedList] removeAllArtists];
             [[Blacklist sharedList] removeAllArtists];
+            [[UserPrefs sharedPrefs] setIsDarkModeEnabled:NO];
             [[UIApplication sharedApplication] cancelAllLocalNotifications];
             UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Tutorial" bundle:nil];
             UIViewController *initialViewController = [storyBoard instantiateInitialViewController];
@@ -182,11 +183,13 @@
                 self.isDarkModeEnabled = NO;
                 [[UserPrefs sharedPrefs] setIsDarkModeEnabled:NO];
                 cell.detailTextLabel.text = @"Off";
+                self.darkModeText = @"Off";
                 DLog(@"Dark mode off");
             } else {
                 self.isDarkModeEnabled = YES;
                 [[UserPrefs sharedPrefs] setIsDarkModeEnabled:YES];
                 cell.detailTextLabel.text = @"On";
+                self.darkModeText = @"On";
                 DLog(@"Dark mode on");
             }
             [self toggleDarkMode];

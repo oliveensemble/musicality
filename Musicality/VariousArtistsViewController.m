@@ -11,6 +11,7 @@
 #import "Artist.h"
 #import "MStore.h"
 #import "UserPrefs.h"
+#import "ColorScheme.h"
 #import "ArtistViewController.h"
 #import "VariousArtistsNavigationBar.h"
 #import "VariousArtistsViewController.h"
@@ -47,18 +48,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self configureView];
-    [self.navigationBar configureView];
-    
     //Tab Bar customization
     UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.tabBarItem.selectedImage = selectedImage;
-    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
-    self.tabBarController.tabBar.tintColor = [UIColor blackColor];
-    
+    self.tabBarController.tabBar.barTintColor = [[ColorScheme sharedScheme] primaryColor];
+    self.tabBarController.tabBar.tintColor = [[ColorScheme sharedScheme] secondaryColor];
     [self.tableView headerViewForSection:0];
-    [self.tableView reloadData];
     
+    self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

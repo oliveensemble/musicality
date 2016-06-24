@@ -9,6 +9,7 @@
 #import "MStore.h"
 #import "Button.h"
 #import "UserPrefs.h"
+#import "ColorScheme.h"
 #import "PrivacyPolicyViewController.h"
 
 @interface PrivacyPolicyViewController ()
@@ -27,15 +28,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self configureView];
-}
-
-- (void)configureView {
-    if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
-        self.view.backgroundColor = [UIColor blackColor];
-    } else {
-        self.view.backgroundColor = [UIColor whiteColor];
-    }
+    
+    self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+    self.introText.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.titleLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.policyText.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    
 }
 
 @end
