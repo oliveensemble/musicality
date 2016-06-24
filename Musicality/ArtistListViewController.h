@@ -10,8 +10,9 @@
 
 #import "PendingOperations.h"
 #import "LatestReleaseSearch.h"
+#import "MTableViewController.h"
 
-@interface ArtistListViewController : UITableViewController <LatestReleaseSearchDelegate>
+@interface ArtistListViewController : MTableViewController <LatestReleaseSearchDelegate>
 
 @property (nonatomic, strong) PendingOperations *pendingOperations;
 

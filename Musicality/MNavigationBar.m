@@ -11,12 +11,16 @@
 @implementation MNavigationBar
 
 - (void)awakeFromNib {
-  [super awakeFromNib];
-  self.layer.shadowOpacity = 0.4;
-  self.layer.shadowRadius = 2.0;
-  self.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-  self.layer.shadowColor = [UIColor blackColor].CGColor;
-  self.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    [super awakeFromNib];
+    self.layer.shadowOpacity = 0.4;
+    self.layer.shadowRadius = 2.0;
+    self.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.backgroundColor = [UIColor whiteColor].CGColor;
+}
+
+- (void)configureView {
+    // Implemented in the subclasses
 }
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yS8-BL-qul">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yS8-BL-qul">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -10,14 +10,14 @@
         <!--Tab Bar Controller-->
         <scene sceneID="7Fb-GW-Th5">
             <objects>
-                <tabBarController id="yS8-BL-qul" sceneMemberID="viewController">
+                <tabBarController id="yS8-BL-qul" customClass="MTabBarController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="U6X-Df-rkg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="BVM-BQ-CYP" kind="relationship" relationship="viewControllers" id="ikg-Dc-lMD"/>
@@ -27,7 +27,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayK-mL-HNO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1250" y="131"/>
+            <point key="canvasLocation" x="-1084" y="131"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Y6Y-oo-ur8">
@@ -41,7 +41,7 @@
                         <sections>
                             <tableViewSection id="pP3-Xg-hph">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="5Xa-r1-Kel" rowHeight="60" style="IBUITableViewCellStyleDefault" id="qaM-CZ-ovw">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="5Xa-r1-Kel" rowHeight="60" style="IBUITableViewCellStyleDefault" id="qaM-CZ-ovw" customClass="SettingsTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qaM-CZ-ovw" id="tq5-7m-Mab">
@@ -56,19 +56,47 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="xR7-S4-t5Z" detailTextLabel="KfS-IL-3j2" rowHeight="60" style="IBUITableViewCellStyleValue1" id="1J8-QT-YCL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="6oj-xd-B8O" detailTextLabel="rcs-NO-8kW" rowHeight="60" style="IBUITableViewCellStyleValue1" id="f39-7S-kEs" customClass="SettingsTableViewCell">
                                         <rect key="frame" x="0.0" y="60" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f39-7S-kEs" id="97W-ie-oa6">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Scan Library Automatically" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6oj-xd-B8O">
+                                                    <rect key="frame" x="15" y="18" width="239" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Off" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rcs-NO-8kW">
+                                                    <rect key="frame" x="563" y="23" width="22" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="xR7-S4-t5Z" detailTextLabel="KfS-IL-3j2" rowHeight="60" style="IBUITableViewCellStyleValue1" id="1J8-QT-YCL" customClass="SettingsTableViewCell">
+                                        <rect key="frame" x="0.0" y="120" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1J8-QT-YCL" id="F1S-QF-49z">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Scan Library Automatically" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xR7-S4-t5Z">
-                                                    <rect key="frame" x="15" y="18" width="239" height="24"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Dark Mode" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xR7-S4-t5Z">
+                                                    <rect key="frame" x="15" y="18" width="99" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -82,12 +110,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="B0x-vw-pHC" rowHeight="60" style="IBUITableViewCellStyleDefault" id="7PT-JV-mtv">
-                                        <rect key="frame" x="0.0" y="120" width="600" height="60"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="B0x-vw-pHC" rowHeight="60" style="IBUITableViewCellStyleDefault" id="7PT-JV-mtv" customClass="SettingsTableViewCell">
+                                        <rect key="frame" x="0.0" y="180" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7PT-JV-mtv" id="Gnq-RT-aiv">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
@@ -101,12 +130,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="DBE-FR-jzW" rowHeight="60" style="IBUITableViewCellStyleDefault" id="k0x-dN-Dak">
-                                        <rect key="frame" x="0.0" y="180" width="600" height="60"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="DBE-FR-jzW" rowHeight="60" style="IBUITableViewCellStyleDefault" id="k0x-dN-Dak" customClass="SettingsTableViewCell">
+                                        <rect key="frame" x="0.0" y="240" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k0x-dN-Dak" id="yw3-bz-dPW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
@@ -120,6 +150,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -127,8 +158,8 @@
                                             <segue destination="Tjm-g1-8IZ" kind="presentation" id="N5H-Lb-807"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="plu-Rg-RZE" rowHeight="60" style="IBUITableViewCellStyleDefault" id="xw3-zR-iMt">
-                                        <rect key="frame" x="0.0" y="240" width="600" height="60"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="plu-Rg-RZE" rowHeight="60" style="IBUITableViewCellStyleDefault" id="xw3-zR-iMt" customClass="SettingsTableViewCell">
+                                        <rect key="frame" x="0.0" y="300" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xw3-zR-iMt" id="ffj-3M-IQU">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
@@ -142,6 +173,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -166,7 +198,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3a-AE-usq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="880"/>
+            <point key="canvasLocation" x="260" y="816"/>
         </scene>
         <!--Privacy Policy View Controller-->
         <scene sceneID="T7i-ci-3IM">
@@ -260,7 +292,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MY5-rB-FPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="880"/>
+            <point key="canvasLocation" x="932" y="816"/>
         </scene>
         <!--Explore View Controller-->
         <scene sceneID="SIw-QZ-CPP">
@@ -307,7 +339,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igc-2y-REg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="131"/>
+            <point key="canvasLocation" x="260" y="131"/>
         </scene>
         <!--Artist View Controller-->
         <scene sceneID="UGn-BG-bsn">
@@ -330,7 +362,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGO-eU-IdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969" y="131"/>
+            <point key="canvasLocation" x="1601" y="131"/>
         </scene>
         <!--Various Artists View Controller-->
         <scene sceneID="uzi-Hq-g08">
@@ -370,7 +402,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNe-xt-Rcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969" y="880"/>
+            <point key="canvasLocation" x="1601" y="816"/>
         </scene>
         <!--Artist List View Controller-->
         <scene sceneID="wJD-wS-xWN">
@@ -382,7 +414,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" rowHeight="65" id="s8F-yh-FzZ">
+                            <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" rowHeight="65" id="s8F-yh-FzZ" customClass="FilterTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="600" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s8F-yh-FzZ" id="eCU-QC-Yjk">
@@ -405,7 +437,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" rowHeight="195" id="Air-9f-M5x">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" rowHeight="195" id="Air-9f-M5x" customClass="AlbumTableViewCell">
                                 <rect key="frame" x="0.0" y="151" width="600" height="195"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Air-9f-M5x" id="tzF-iw-n9l">
@@ -463,7 +495,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                                 <gestureRecognizers/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PreOrderAlbumCell" rowHeight="195" id="vR2-9C-Luz">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PreOrderAlbumCell" rowHeight="195" id="vR2-9C-Luz" customClass="AlbumTableViewCell">
                                 <rect key="frame" x="0.0" y="346" width="600" height="195"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vR2-9C-Luz" id="dWX-Om-3mW">
@@ -549,7 +581,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IMv-bd-8go" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="-622"/>
+            <point key="canvasLocation" x="932" y="-560"/>
         </scene>
         <!--Library List View Controller-->
         <scene sceneID="Te4-pf-72q">
@@ -588,7 +620,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7w-kz-jS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969" y="-622"/>
+            <point key="canvasLocation" x="1601" y="-560"/>
         </scene>
         <!--Explore-->
         <scene sceneID="7Xu-oN-c0I">
@@ -626,7 +658,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQk-aa-ovJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="-622"/>
+            <point key="canvasLocation" x="260" y="-560"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4lN-ZS-rDu">
@@ -645,7 +677,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4B2-qB-c80" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="131"/>
+            <point key="canvasLocation" x="932" y="131"/>
         </scene>
     </scenes>
     <resources>
@@ -654,7 +686,7 @@ If you have any further questions, please contact us at musicality.help@gmail.co
         <image name="settings_icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5jn-Hg-aFt"/>
+        <segue reference="NMO-CG-dgE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

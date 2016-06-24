@@ -16,10 +16,5 @@
 @property (weak, nonatomic) IBOutlet Button *refreshButton;
 @property (weak, nonatomic) IBOutlet UILabel *artistsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *topOfPageButton;
-@property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
-
-- (void)beginLoading;
-- (void)updateLoadingLabelWithString:(NSString*)text;
-- (void)endLoading;
 
 @end

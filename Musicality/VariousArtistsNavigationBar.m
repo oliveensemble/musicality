@@ -7,13 +7,15 @@
 //
 
 #import "VariousArtistsNavigationBar.h"
+#import "ColorScheme.h"
 #import "UserPrefs.h"
 
 @implementation VariousArtistsNavigationBar
 
 - (void)awakeFromNib {
-  [super awakeFromNib];
-  self.variousArtistsLabel.textColor = [UIColor blackColor];
+    [super awakeFromNib];
+    
+    self.variousArtistsLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
 }
 
 @end
