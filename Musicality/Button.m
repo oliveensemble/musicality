@@ -19,7 +19,6 @@
     [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
     self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
     [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-    [self setBackgroundImage:[[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
     self.layer.borderWidth = 2.0f;
 }
 
@@ -27,7 +26,6 @@
     [self setTitleColor: [[ColorScheme sharedScheme] primaryColor] forState:UIControlStateNormal];
     self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
     [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[[ColorScheme sharedScheme] secondaryColor]] forState:UIControlStateNormal];
-    [self setBackgroundImage:[[ColorScheme sharedScheme] imageWithColor:[[ColorScheme sharedScheme] primaryColor]] forState:UIControlStateHighlighted];
     self.layer.borderWidth = 2.0f;
 }
 
@@ -35,7 +33,6 @@
     [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
     self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
     [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-    [self setBackgroundImage:[[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
     self.layer.borderWidth = 2.0f;
 }
 
