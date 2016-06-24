@@ -7,25 +7,15 @@
 //
 
 #import "LibraryNavigationBar.h"
+#import "ColorScheme.h"
+#import "UserPrefs.h"
 
 @implementation LibraryNavigationBar
 
-- (void)beginLoading {
-  self.loadingLabel.alpha = 0;
-  self.loadingLabel.hidden = NO;
-  [UIView animateWithDuration:0.4 animations:^{
-    self.libraryArtistsLabel.alpha = 0;
-    self.loadingLabel.alpha = 1.0;
-  }];
-}
-
-- (void)endLoading {
-  [UIView animateWithDuration:1.0 animations:^{
-    self.loadingLabel.alpha = 0;
-    self.libraryArtistsLabel.alpha = 1.0;
-  } completion:^(BOOL finished) {
-    self.loadingLabel.hidden = YES;
-  }];
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.libraryArtistsLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
 }
 
 @end

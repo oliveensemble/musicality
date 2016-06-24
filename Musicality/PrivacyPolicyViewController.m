@@ -22,8 +22,20 @@
 @implementation PrivacyPolicyViewController
 
 - (IBAction)back:(id)sender {
-  [self dismissViewControllerAnimated:YES
-                           completion:nil];
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self configureView];
+}
+
+- (void)configureView {
+    if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
+        self.view.backgroundColor = [UIColor blackColor];
+    } else {
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
 }
 
 @end

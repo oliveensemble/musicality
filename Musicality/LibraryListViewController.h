@@ -10,8 +10,9 @@
 
 #import "PendingOperations.h"
 #import "ArtistSearch.h"
+#import "MTableViewController.h"
 
-@interface LibraryListViewController : UITableViewController <ArtistSearchDelegate>
+@interface LibraryListViewController : MTableViewController <ArtistSearchDelegate>
 
 @property (nonatomic, strong) PendingOperations *pendingOperations;
 

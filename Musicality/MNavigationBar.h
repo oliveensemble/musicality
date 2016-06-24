@@ -10,4 +10,6 @@
 
 @interface MNavigationBar : UIView
 
+- (void)configureView;
+
 @end

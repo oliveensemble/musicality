@@ -8,23 +8,28 @@
 
 #import "AlbumTableViewCell.h"
 #import "UserPrefs.h"
+#import "ColorScheme.h"
 
 @implementation AlbumTableViewCell
 
 - (void)awakeFromNib {
-  self.backgroundColor = [UIColor whiteColor];
-  self.contentView.backgroundColor = [UIColor whiteColor];
-  self.albumLabel.textColor = [UIColor blackColor];
-  self.artistLabel.textColor = [UIColor blackColor];
+  self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+  self.albumLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+  self.artistLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
 }
 
 - (void)setSelected:(BOOL)selected {
   if (selected) {
-    self.backgroundColor = [UIColor blackColor];
-    self.contentView.backgroundColor = [UIColor blackColor];
-    self.albumLabel.textColor = [UIColor blackColor];
-    self.artistLabel.textColor = [UIColor blackColor];
+    self.backgroundColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.albumLabel.textColor = [[ColorScheme sharedScheme] primaryColor];
+    self.artistLabel.textColor = [[ColorScheme sharedScheme] primaryColor];
   }
+}
+
+- (void)prepareForReuse {
+    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+    self.albumLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.artistLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
 }
 
 @end

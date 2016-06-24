@@ -7,13 +7,16 @@
 //
 
 #import "SettingsNavigationBar.h"
+#import "ColorScheme.h"
 #import "UserPrefs.h"
 
 @implementation SettingsNavigationBar
 
 - (void)awakeFromNib {
-  [super awakeFromNib];
-  self.settingsLabel.textColor = [UIColor blackColor];
+    [super awakeFromNib];
+    
+    self.settingsLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
 }
 
 @end
