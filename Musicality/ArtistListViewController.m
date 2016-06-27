@@ -129,29 +129,24 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     for (Artist* artist in [[ArtistList sharedList] artistSet]) {
         if (([mStore thisDate:[NSDate dateWithTimeIntervalSinceNow:-604800] isMoreRecentThan:artist.lastCheckDate]) || artist.lastCheckDate == nil) {
             LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
-            [self.pendingOperations.requestsInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
-            [self.pendingOperations.requestQueue addOperation:albumSearch];
+            [[[PendingOperations sharedOperations] requestsInProgress] setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
+            [[[PendingOperations sharedOperations] requestQueue] addOperation:albumSearch];
             artistsNeedUpdating = YES;
         }
     }
     
     if (!artistsNeedUpdating) {
         [self endLoading];
+    } else {
+        [[PendingOperations sharedOperations] beginOperations];
     }
-}
-
-- (PendingOperations *)pendingOperations {
-    if (!_pendingOperations) {
-        _pendingOperations = [[PendingOperations alloc] init];
-    }
-    return _pendingOperations;
 }
 
 - (void)latestReleaseSearchDidFinish:(LatestReleaseSearch *)downloader {
     [[ArtistList sharedList] updateLatestRelease:downloader.album forArtist:downloader.artist];
-    [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Album Search for %@", downloader.artist.name]];
-    
-    if (self.pendingOperations.requestsInProgress.count == 0) {
+    [[[PendingOperations sharedOperations] requestsInProgress] removeObjectForKey:[NSString stringWithFormat:@"Album Search for %@", downloader.artist.name]];
+    [[PendingOperations sharedOperations] updateProgress];
+    if ([[[PendingOperations sharedOperations] requestsInProgress] count] == 0) {
         [[ArtistList sharedList] saveChanges];
         [self populate];
         [self endLoading];
@@ -382,8 +377,8 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     
     for (Artist* artist in [[ArtistList sharedList] artistSet]) {
         LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
-        [self.pendingOperations.requestsInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
-        [self.pendingOperations.requestQueue addOperation:albumSearch];
+        [[[PendingOperations sharedOperations] requestsInProgress] setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
+        [[[PendingOperations sharedOperations] requestQueue] addOperation:albumSearch];
         artistsNeedUpdating = YES;
     }
     
@@ -407,7 +402,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
         self.isUpdating = YES;
         _loadingBar = nil;
         _loadingBar = [[UIView alloc] initWithFrame:CGRectMake(0, (self.view.bounds.size.height - self.tabBarController.tabBar.bounds.size.height) - 30, self.view.bounds.size.width, 30)];
-        _loadingBar.backgroundColor = [UIColor clearColor];
+        _loadingBar.backgroundColor = [UIColor orangeColor];
         [self.view addSubview:self.loadingBar];
     }
 }

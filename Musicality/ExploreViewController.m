@@ -72,26 +72,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
     
     //List of genres
-    _genres = @{@"Alternative" : @20,
-                @"Blues" : @2,
-                @"Children's Music" : @4,
-                @"Christian & Gospel" : @22,
-                @"Classical" : @5,
-                @"Comedy" : @3,
-                @"Country" : @6,
-                @"Dance" : @17,
-                @"Electronic" : @7,
-                @"Fitness & Workout" : @50,
-                @"Hip-Hop/Rap" : @18,
-                @"Jazz" : @11,
-                @"Latino" : @12,
-                @"Pop" : @14,
-                @"R&B/Soul" : @15,
-                @"Reggae" : @24,
-                @"Rock" : @21,
-                @"Singer/Songwriter" : @10,
-                @"Soundtrack" : @16,
-                @"World" : @19};
+    _genres = @{@"Alternative" : @20, @"Blues" : @2, @"Children's Music" : @4, @"Christian & Gospel" : @22, @"Classical" : @5, @"Comedy" : @3, @"Country" : @6, @"Dance" : @17, @"Electronic" : @7, @"Fitness & Workout" : @50, @"Hip-Hop/Rap" : @18, @"Jazz" : @11, @"Latino" : @12, @"Pop" : @14, @"R&B/Soul" : @15, @"Reggae" : @24, @"Rock" : @21, @"Singer/Songwriter" : @10, @"Soundtrack" : @16, @"World" : @19};
     
     self.tableViewArray = [NSMutableArray arrayWithObject:@"All Genres"];
     self.viewState = browse;
@@ -100,18 +81,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     self.currentGenreTitle = @"All Genres";
     
     [self fetchFeed];
-    
-    /*UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-     localNotif.alertAction = NSLocalizedString(@"Check it out", nil);
-     localNotif.soundName = UILocalNotificationDefaultSoundName;
-     localNotif.applicationIconBadgeNumber += 1;
-     localNotif.timeZone = [NSTimeZone defaultTimeZone];
-     localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
-     localNotif.alertBody = @"Test";
-     localNotif.userInfo = @{@"albumID" : @"848859596", @"artistName" : @"BOB"};
-     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-     DLog(@"Scheduled");*/
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -139,13 +108,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 #pragma mark NSOperation Delegate
 
-- (PendingOperations *)pendingOperations {
-    if (!_pendingOperations) {
-        _pendingOperations = [[PendingOperations alloc] init];
-    }
-    return _pendingOperations;
-}
-
 - (void)fetchFeed {
     NSURL *url;
     
@@ -165,12 +127,14 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
         }
     }
     ExploreFetch *exploreFetch = [[ExploreFetch alloc] initWithURL:url delegate:self];
-    [self.pendingOperations.requestsInProgress setObject:exploreFetch forKey:@"ExploreFetch"];
-    [self.pendingOperations.requestQueue addOperation:exploreFetch];
+    [[[PendingOperations sharedOperations] requestsInProgress] setObject:exploreFetch forKey:@"ExploreFetch"];
+    [[[PendingOperations sharedOperations] requestQueue] addOperation:exploreFetch];
+    [[PendingOperations sharedOperations] beginOperations];
 }
 
 - (void)exploreFetchDidFinish:(ExploreFetch *)downloader {
-    [self.pendingOperations.requestsInProgress removeObjectForKey:@"ExploreFetch"];
+    [[[PendingOperations sharedOperations] requestsInProgress] removeObjectForKey:@"ExploreFetch"];
+    [[PendingOperations sharedOperations] updateProgress];
     if (self.viewState == genreSelection) {
         [self toggleGenreSelection:^(bool finished) {}];
     }

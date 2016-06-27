@@ -60,21 +60,16 @@
 
 #pragma mark NSOperation Delegate
 
-- (PendingOperations *)pendingOperations {
-    if (!_pendingOperations) {
-        _pendingOperations = [[PendingOperations alloc] init];
-    }
-    return _pendingOperations;
-}
-
 - (void)fetchAlbums {
     ArtistFetch *artistFetch = [[ArtistFetch alloc] initWithArtist:self.artist delegate:self];
-    [self.pendingOperations.requestsInProgress setObject:artistFetch forKey:@"ArtistFetch"];
-    [self.pendingOperations.requestQueue addOperation:artistFetch];
+    [[[PendingOperations sharedOperations] requestsInProgress] setObject:artistFetch forKey:@"ArtistFetch"];
+    [[[PendingOperations sharedOperations] requestQueue] addOperation:artistFetch];
+    [[PendingOperations sharedOperations] beginOperations];
 }
 
 - (void)artistFetchDidFinish:(ArtistFetch *)downloader {
-    [self.pendingOperations.requestsInProgress removeObjectForKey:@"ArtistFetch"];
+    [[[PendingOperations sharedOperations] requestsInProgress] removeObjectForKey:@"ArtistFetch"];
+    [[PendingOperations sharedOperations] updateProgress];
     [self.tableView beginUpdates];
     _tableViewArray = [NSMutableArray array];
     [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];

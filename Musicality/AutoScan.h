@@ -20,6 +20,4 @@
 
 @property BOOL isScanning;
 
-@property (nonatomic, strong) PendingOperations *pendingOperations;
-
 @end

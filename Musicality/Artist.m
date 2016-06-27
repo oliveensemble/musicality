@@ -39,7 +39,6 @@
     _lastCheckDate = [aDecoder decodeObjectForKey:@"lastCheckDate"];
   }
   return self;
-  
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {

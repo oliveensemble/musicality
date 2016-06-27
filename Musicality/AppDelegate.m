@@ -49,12 +49,6 @@
   return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-  [[UserPrefs sharedPrefs] savePrefs];
-  [[ArtistList sharedList] saveChanges];
-  [[Blacklist sharedList] saveChanges];
-}
-
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   application.applicationIconBadgeNumber = 0;
   [[NotificationList sharedList] clearNotificationItems];

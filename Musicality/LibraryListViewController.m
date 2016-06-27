@@ -66,15 +66,6 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     [self.tableView reloadData];
 }
 
-#pragma mark NSOperation Delegate
-
-- (PendingOperations *)pendingOperations {
-    if (!_pendingOperations) {
-        _pendingOperations = [[PendingOperations alloc] init];
-    }
-    return _pendingOperations;
-}
-
 #pragma mark Table View Data
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -187,9 +178,10 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     if (self.selectedArtistsArray.count > 0) {
         for (Artist *artist in self.selectedArtistsArray) {
             ArtistSearch *artistSearch = [[ArtistSearch alloc] initWithArtist:artist delegate:self];
-            [self.pendingOperations.requestsInProgress setObject:artistSearch forKey:[NSString stringWithFormat:@"Artist Search for %@", artist.name]];
-            [self.pendingOperations.requestQueue addOperation:artistSearch];
+            [[[PendingOperations sharedOperations] requestsInProgress] setObject:artistSearch forKey:[NSString stringWithFormat:@"Artist Search for %@", artist.name]];
+            [[[PendingOperations sharedOperations] requestQueue] addOperation:artistSearch];
         }
+        [[PendingOperations sharedOperations] beginOperations];
     } else {
         [self endLoading];
         [self toArtistsList:self];
@@ -198,15 +190,16 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 
 - (void)artistSearchDidFinish:(ArtistSearch *)downloader {
     [[ArtistList sharedList] addArtistToList:downloader.artist];
-    [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Artist Search for %@", downloader.artist.name]];
-    if (self.pendingOperations.requestsInProgress.count == 0) {
+    [[[PendingOperations sharedOperations] requestsInProgress] removeObjectForKey:[NSString stringWithFormat:@"Artist Search for %@", downloader.artist.name]];
+    [[PendingOperations sharedOperations] updateProgress];
+    if ([[[PendingOperations sharedOperations] requestsInProgress] count] == 0) {
         DLog(@"Finished");
         if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
             [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
         }
         [[ArtistList sharedList] saveChanges];
         [self toArtistsList:self];
-        [self.pendingOperations.requestQueue cancelAllOperations];
+        [[[PendingOperations sharedOperations] requestQueue] cancelAllOperations];
     }
 }
 

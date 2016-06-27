@@ -14,6 +14,4 @@
 
 @interface ExploreViewController : MTableViewController
 
-@property (nonatomic, strong) PendingOperations *pendingOperations;
-
 @end

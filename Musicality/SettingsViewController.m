@@ -152,10 +152,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0: {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/musicality-never-miss-a-beat/id945094708?ls=1&mt=8"]];
+            
         }
             break;
         case 1: {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/musicality-never-miss-a-beat/id945094708?ls=1&mt=8"]];
+        }
+            break;
+        case 2: {
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             if (self.isAutoUpdateEnabled) {
                 self.isAutoUpdateEnabled = NO;
@@ -177,7 +181,7 @@
             [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
             break;
         }
-        case 2: {
+        case 3: {
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             if (self.isDarkModeEnabled) {
                 self.isDarkModeEnabled = NO;
@@ -193,9 +197,9 @@
                 DLog(@"Dark mode on");
             }
             [self toggleDarkMode];
-            break;
         }
-        case 3: {
+            break;
+        case 4: {
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
                 mail.mailComposeDelegate = self;
@@ -208,11 +212,12 @@
             }
         }
             break;
-        case 5: {
+        case 6: {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear all data" message:@"Are you sure? You can turn 'Scan Library Automatically' on to restart library search" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Clear", nil];
             alert.tag = 2;
             [alert show];
         }
+            break;
         default:
             break;
     }

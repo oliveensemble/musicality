@@ -14,6 +14,4 @@
 
 @interface LibraryListViewController : MTableViewController <ArtistSearchDelegate>
 
-@property (nonatomic, strong) PendingOperations *pendingOperations;
-
 @end

@@ -381,7 +381,7 @@
 		4F2C437B19F0023C00909D01 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4F79AE031D1D6CB200E7AEE9 /* XIB */,
+				4F79AE031D1D6CB200E7AEE9 /* Storyboards and XIBs */,
 				4F7A16E619F763350039508D /* ExploreNavigationBar.h */,
 				4F7A16E719F763350039508D /* ExploreNavigationBar.m */,
 				4FC1C26919F7367900E14360 /* ArtistNavigationBar.h */,
@@ -438,7 +438,7 @@
 			name = Heneke;
 			sourceTree = "<group>";
 		};
-		4F79AE031D1D6CB200E7AEE9 /* XIB */ = {
+		4F79AE031D1D6CB200E7AEE9 /* Storyboards and XIBs */ = {
 			isa = PBXGroup;
 			children = (
 				4F18223A19DA0439006CCA8B /* Main.storyboard */,
@@ -454,7 +454,7 @@
 				4FA71CF01BF6C6EC00DC6C0E /* FilterTableViewCell.xib */,
 				4F8008AC1D1C326F005EBE37 /* SettingsTableViewCell.xib */,
 			);
-			name = XIB;
+			name = "Storyboards and XIBs";
 			sourceTree = "<group>";
 		};
 		4FC3E77B1B13DFD700C3C10F /* Network */ = {

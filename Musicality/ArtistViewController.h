@@ -15,6 +15,5 @@
 @interface ArtistViewController : MTableViewController
 
 @property (nonatomic, strong) Artist *artist;
-@property (nonatomic, strong) PendingOperations *pendingOperations;
 
 @end
