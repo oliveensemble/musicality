@@ -9,7 +9,6 @@
 @import Foundation;
 
 #import "ArtistSearch.h"
-#import "PendingOperations.h"
 
 @interface AutoScan : NSObject <ArtistSearchDelegate>
 

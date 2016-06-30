@@ -10,6 +10,7 @@
 
 @interface LoadingView : UIView
 
-@property (nonatomic, weak) IBOutlet UILabel* viewLabel;
+@property (nonatomic, weak) IBOutlet UILabel *viewLabel;
+@property (nonatomic, weak) IBOutlet UILabel *progressLabel;
 
 @end

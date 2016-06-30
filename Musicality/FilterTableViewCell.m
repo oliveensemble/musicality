@@ -17,9 +17,9 @@
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
-  if (highlighted) {
-      [self applyColorScheme];
-  }
+    if (highlighted) {
+        [self applyColorScheme];
+    }
 }
 
 - (void)prepareForReuse {

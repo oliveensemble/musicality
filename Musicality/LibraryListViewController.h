@@ -8,10 +8,12 @@
 
 @import UIKit;
 
-#import "PendingOperations.h"
 #import "ArtistSearch.h"
 #import "MTableViewController.h"
+#import "ArtistScanPendingOperations.h"
 
 @interface LibraryListViewController : MTableViewController <ArtistSearchDelegate>
+
+@property (nonatomic, strong) NSMutableArray *selectedArtistsArray;
 
 @end

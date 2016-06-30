@@ -11,15 +11,18 @@
 #import "Album.h"
 #import "Button.h"
 #import "MStore.h"
+#import "ArtistFetch.h"
 #import "UserPrefs.h"
 #import "ArtistList.h"
 #import "ColorScheme.h"
+#import "ArtistPendingOperations.h"
+#import "ArtistViewModel.h"
 #import "AlbumTableViewCell.h"
 #import "UIImageView+Haneke.h"
 #import "ArtistNavigationBar.h"
 #import "ArtistViewController.h"
 
-@interface ArtistViewController () <SKStoreProductViewControllerDelegate, ArtistFetchDelegate>
+@interface ArtistViewController () <SKStoreProductViewControllerDelegate, ArtistViewModelDelegate, ArtistFetchDelegate>
 
 @property (nonatomic) NSMutableArray *tableViewArray;
 @property (nonatomic, weak) ArtistNavigationBar *navigationBar;
@@ -39,13 +42,17 @@
     self.tabBarController.tabBar.tintColor = [[ColorScheme sharedScheme] secondaryColor];
     [self.tableView headerViewForSection:0];
     
+    self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+    
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    DLog(@"ARTIST %@\n\n\n\n\n" , self.artist.description);
     
     [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil] forCellReuseIdentifier:@"albumCell"];
     _tableViewArray = [NSMutableArray array];
-    [self fetchAlbums];
+    ArtistFetch *artistFetch = [[ArtistFetch alloc] initWithArtist: self.artist delegate:self];
+    [[[ArtistPendingOperations sharedOperations] artistRequestsInProgress] setObject: artistFetch forKey:@"ArtistFetch"];
+    [[[ArtistPendingOperations sharedOperations] artistRequestQueue] addOperation:artistFetch];
+    [[ArtistPendingOperations sharedOperations] beginOperations];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,26 +67,21 @@
 
 #pragma mark NSOperation Delegate
 
-- (void)fetchAlbums {
-    ArtistFetch *artistFetch = [[ArtistFetch alloc] initWithArtist:self.artist delegate:self];
-    [[[PendingOperations sharedOperations] requestsInProgress] setObject:artistFetch forKey:@"ArtistFetch"];
-    [[[PendingOperations sharedOperations] requestQueue] addOperation:artistFetch];
-    [[PendingOperations sharedOperations] beginOperations];
+- (void)artistFetchDidFinish:(ArtistFetch *)downloader {
+    [self didFinishFetchingArtistAlbums:downloader.albumArray];
 }
 
-- (void)artistFetchDidFinish:(ArtistFetch *)downloader {
-    [[[PendingOperations sharedOperations] requestsInProgress] removeObjectForKey:@"ArtistFetch"];
-    [[PendingOperations sharedOperations] updateProgress];
+- (void)didFinishFetchingArtistAlbums:(NSArray *)albumArray {
     [self.tableView beginUpdates];
     _tableViewArray = [NSMutableArray array];
     [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     //Add the items to the table view array
-    [self.tableViewArray addObjectsFromArray:downloader.albumArray];
+    [self.tableViewArray addObjectsFromArray: albumArray];
     
     NSMutableArray *indexPaths = [NSMutableArray array];
     //Then add the required number of index paths
-    for (int i = 0; i < downloader.albumArray.count; i++) {
+    for (int i = 0; i < albumArray.count; i++) {
         NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
         [indexPaths addObject:indexpath];
     }

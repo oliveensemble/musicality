@@ -64,7 +64,7 @@
     } else {
         self.darkModeText = @"Off";
     }
- 
+    
 }
 
 - (void)viewDidLoad {
@@ -152,14 +152,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0: {
-            
-        }
-            break;
-        case 1: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/musicality-never-miss-a-beat/id945094708?ls=1&mt=8"]];
         }
             break;
-        case 2: {
+        case 1: {
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             if (self.isAutoUpdateEnabled) {
                 self.isAutoUpdateEnabled = NO;
@@ -181,7 +177,7 @@
             [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
             break;
         }
-        case 3: {
+        case 2: {
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             if (self.isDarkModeEnabled) {
                 self.isDarkModeEnabled = NO;
@@ -199,7 +195,7 @@
             [self toggleDarkMode];
         }
             break;
-        case 4: {
+        case 3: {
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
                 mail.mailComposeDelegate = self;
@@ -212,7 +208,7 @@
             }
         }
             break;
-        case 6: {
+        case 5: {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear all data" message:@"Are you sure? You can turn 'Scan Library Automatically' on to restart library search" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Clear", nil];
             alert.tag = 2;
             [alert show];

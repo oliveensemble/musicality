@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Evan Lewis. All rights reserved.
 //
 
-#import "UserPrefs.h"
 #import "ColorScheme.h"
+#import "UserPrefs.h"
 #import "MStore.h"
 #import "Button.h"
 

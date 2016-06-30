@@ -11,6 +11,7 @@
 #import "AutoScan.h"
 #import "UserPrefs.h"
 #import "ArtistList.h"
+#import "AutoScanPendingOperations.h"
 
 @implementation AutoScan
 
@@ -56,33 +57,35 @@
                         self.isScanning = YES;
                     }
                     ArtistSearch *artistSearch = [[ArtistSearch alloc] initWithArtist:artist delegate:self];
-                    [[[PendingOperations sharedOperations] requestsInProgress] setObject:artistSearch forKey:[NSString stringWithFormat:@"Artist Search for %@", artist.name]];
-                    [[[PendingOperations sharedOperations] requestQueue] addOperation:artistSearch];
+                    artistSearch.queuePriority = NSOperationQueuePriorityLow;
+                    [[[AutoScanPendingOperations sharedOperations] artistRequestsInProgress] setObject:artistSearch forKey:[NSString stringWithFormat:@"Scanning %@", artist.name]];
+                    [[[AutoScanPendingOperations sharedOperations] artistRequestQueue] addOperation:artistSearch];
                 } 
             } 
         }
-        [[PendingOperations sharedOperations] beginOperations];
+        [[AutoScanPendingOperations sharedOperations] beginOperations];
     } else { 
         DLog(@"A scan is already in progress"); 
     }
 }
 
 - (void)stopScan {
-    [[[PendingOperations sharedOperations] requestQueue] cancelAllOperations];
-    [[[PendingOperations sharedOperations] requestsInProgress] removeAllObjects];
+    [[[AutoScanPendingOperations sharedOperations] artistRequestQueue] cancelAllOperations];
+    [[[AutoScanPendingOperations sharedOperations] artistRequestsInProgress] removeAllObjects];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanFinished" object:nil userInfo:nil];
     self.isScanning = NO;
 }
 
 - (void)artistSearchDidFinish:(ArtistSearch *)downloader {
     [[ArtistList sharedList] addArtistToList:downloader.artist];
-    [[[PendingOperations sharedOperations] requestsInProgress] removeObjectForKey:[NSString stringWithFormat:@"Artist Search for %@", downloader.artist.name]];
-    [[PendingOperations sharedOperations] updateProgress];
+    [[[AutoScanPendingOperations sharedOperations] artistRequestsInProgress] removeObjectForKey:[NSString stringWithFormat:@"Scanning %@", downloader.artist.name]];
+    [[AutoScanPendingOperations sharedOperations] updateProgress:[NSString stringWithFormat:@"Scanning %@", downloader.artist.name]];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanUpdate" object:nil userInfo:@{@"artistName": downloader.artist.name}];
-    if ([[[PendingOperations sharedOperations] requestsInProgress] count] == 0) {
+    if ([[[AutoScanPendingOperations sharedOperations] artistRequestsInProgress] count] == 0) {
         DLog(@"Finished artist search");
         self.isScanning = NO;
-        [[[PendingOperations sharedOperations] requestQueue] cancelAllOperations];
+        [mStore setLastLibraryScanDate:[NSDate date]];
+        [[[AutoScanPendingOperations sharedOperations] artistRequestQueue] cancelAllOperations];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanFinished" object:nil userInfo:nil];
         [[ArtistList sharedList] saveChanges];
         [[Blacklist sharedList] saveChanges];

@@ -15,6 +15,7 @@
 #import "AutoScan.h"
 #import "UserPrefs.h"
 #import "ColorScheme.h"
+#import "ExploreViewModel.h"
 #import "UIImageView+Haneke.h"
 #import "AlbumTableViewCell.h"
 #import "FilterTableViewCell.h"
@@ -35,9 +36,10 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     topCharts = 1 << 1
 };
 
-@interface ExploreViewController () <SKStoreProductViewControllerDelegate, ExploreFetchDelegate>
+@interface ExploreViewController () <SKStoreProductViewControllerDelegate, ExploreViewModelDelegate>
 
 @property (nonatomic, weak) ExploreNavigationBar *navigationBar;
+@property (nonatomic) ExploreViewModel *exploreViewModel;
 
 @property (nonatomic) NSMutableArray *tableViewArray;
 @property (nonatomic) NSDictionary *genres;
@@ -70,6 +72,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     //Register TableView cells
     [self.tableView registerNib:[UINib nibWithNibName:@"FilterTableViewCell" bundle:nil] forCellReuseIdentifier:@"filterCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
+    
+    _exploreViewModel = [[ExploreViewModel alloc] initWithDelegate:self];
     
     //List of genres
     _genres = @{@"Alternative" : @20, @"Blues" : @2, @"Children's Music" : @4, @"Christian & Gospel" : @22, @"Classical" : @5, @"Comedy" : @3, @"Country" : @6, @"Dance" : @17, @"Electronic" : @7, @"Fitness & Workout" : @50, @"Hip-Hop/Rap" : @18, @"Jazz" : @11, @"Latino" : @12, @"Pop" : @14, @"R&B/Soul" : @15, @"Reggae" : @24, @"Rock" : @21, @"Singer/Songwriter" : @10, @"Soundtrack" : @16, @"World" : @19};
@@ -104,37 +108,21 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"albumID"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    
+    if (self.tableViewArray.count < 2 && self.viewState != loading) {
+        [self fetchFeed];
+    }
+    
 }
 
 #pragma mark NSOperation Delegate
 
 - (void)fetchFeed {
-    NSURL *url;
-    
     [self beginLoading];
-    
-    if (self.feedType == topCharts) {
-        if (self.currentGenreId == -1) {
-            url = [NSURL URLWithString:@"https://itunes.apple.com/us/rss/topalbums/explicit=true/limit=100/xml"];
-        } else {
-            url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/rss/topalbums/explicit=true/limit=100/genre=%i/xml", self.currentGenreId]];
-        }
-    } else {
-        if (self.currentGenreId == -1) {
-            url = [NSURL URLWithString:@"https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/explicit=true/limit=100/rss.xml"];
-        } else {
-            url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/explicit=true/limit=100/genre=%i/rss.xml", self.currentGenreId]];
-        }
-    }
-    ExploreFetch *exploreFetch = [[ExploreFetch alloc] initWithURL:url delegate:self];
-    [[[PendingOperations sharedOperations] requestsInProgress] setObject:exploreFetch forKey:@"ExploreFetch"];
-    [[[PendingOperations sharedOperations] requestQueue] addOperation:exploreFetch];
-    [[PendingOperations sharedOperations] beginOperations];
+    [self.exploreViewModel beginWithFeedType:self.feedType andGenre:self.currentGenreId];
 }
 
-- (void)exploreFetchDidFinish:(ExploreFetch *)downloader {
-    [[[PendingOperations sharedOperations] requestsInProgress] removeObjectForKey:@"ExploreFetch"];
-    [[PendingOperations sharedOperations] updateProgress];
+- (void)didFinishFetchingFeed:(NSArray *)albumArray {
     if (self.viewState == genreSelection) {
         [self toggleGenreSelection:^(bool finished) {}];
     }
@@ -143,11 +131,11 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     //Add the items to the table view array
     self.tableViewArray = [NSMutableArray arrayWithObject:self.currentGenreTitle];
-    [self.tableViewArray addObjectsFromArray:downloader.albumArray];
+    [self.tableViewArray addObjectsFromArray: albumArray];
     
     NSMutableArray *indexPaths = [NSMutableArray array];
     //Then add the required number of index paths
-    for (int i = 0; i < downloader.albumArray.count; i++) {
+    for (int i = 0; i < albumArray.count; i++) {
         NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i + 1 inSection:0];
         [indexPaths addObject:indexpath];
     }
@@ -156,8 +144,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [self.tableView reloadData];
     
     [self endLoading];
-    //After the view loads, auto scan
-    if ([[UserPrefs sharedPrefs] isAutoUpdateEnabled]) {
+    
+    if (![mStore isToday: mStore.lastLibraryScanDate] && [[UserPrefs sharedPrefs] isAutoUpdateEnabled] && ![[AutoScan sharedScan] isScanning]) {
         [[AutoScan sharedScan] startScan];
     }
 }
@@ -165,7 +153,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 #pragma mark TableView Methods
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
     //Create Navigation Bar and set its bounds
     _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"ExploreNavigationBar" owner:self options:nil] objectAtIndex:0];
     _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
@@ -384,12 +371,12 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
         [self.view setUserInteractionEnabled:false];
         self.viewState = loading;
         self.loadingView = [[UIView alloc] initWithFrame:self.view.frame];
-        self.loadingView.backgroundColor = [UIColor whiteColor];
+        self.loadingView.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
         self.loadingView.alpha = 0;
         UILabel* loadingLabel = [[UILabel alloc] initWithFrame:self.loadingView.frame];
         loadingLabel.text = @"Loading";
         loadingLabel.textAlignment = NSTextAlignmentCenter;
-        loadingLabel.textColor = [UIColor blackColor];
+        loadingLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
         loadingLabel.center = self.loadingView.center;
         [self.loadingView addSubview:loadingLabel];
         [self.view insertSubview:self.loadingView belowSubview:self.navigationBar];
@@ -416,8 +403,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 #pragma mark Navigation
 
 - (void)toiTunes:(NSDictionary*)cellInfo {
-    [self beginLoading];
-    
     NSString *albumID;
     if (cellInfo[@"albumID"]) {
         albumID = cellInfo[@"albumID"];
@@ -433,13 +418,9 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken} completionBlock:^(BOOL result, NSError *error) {
         if (error) {
             DLog(@"Error %@ with User Info %@.", error, [error userInfo]);
-            [self endLoading];
         } else {
             // Present Store Product View Controller
-            [self presentViewController:storeProductViewController animated:YES completion:^{
-                [self endLoading];
-                [self fetchFeed];
-            }];
+            [self presentViewController:storeProductViewController animated:YES completion: nil];
         }
     }];
 }

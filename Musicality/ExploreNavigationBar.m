@@ -7,8 +7,8 @@
 //
 
 #import "ExploreNavigationBar.h"
-#import "UserPrefs.h"
 #import "ColorScheme.h"
+#import "UserPrefs.h"
 #import "MStore.h"
 
 @implementation ExploreNavigationBar

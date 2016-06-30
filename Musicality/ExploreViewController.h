@@ -8,8 +8,6 @@
 
 @import UIKit;
 
-#import "ExploreFetch.h"
-#import "PendingOperations.h"
 #import "MTableViewController.h"
 
 @interface ExploreViewController : MTableViewController

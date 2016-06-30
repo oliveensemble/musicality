@@ -8,8 +8,6 @@
 
 @import UIKit;
 #import "Artist.h"
-#import "ArtistFetch.h"
-#import "PendingOperations.h"
 #import "MTableViewController.h"
 
 @interface ArtistViewController : MTableViewController
