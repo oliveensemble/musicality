@@ -12,6 +12,7 @@
 #import "Blacklist.h"
 #import "UserPrefs.h"
 #import "ArtistList.h"
+#import "LoadingView.h"
 #import "ColorScheme.h"
 #import "LibraryNavigationBar.h"
 #import "LibraryListViewController.h"
@@ -26,9 +27,10 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 
 @property (nonatomic, weak) LibraryNavigationBar *navigationBar;
 @property (nonatomic) NSArray *libraryListArray;
-@property (nonatomic) NSMutableArray *selectedArtistsArray;
 
 @property (nonatomic) NSUInteger viewState;
+@property (nonatomic) LoadingView *loadingBar;
+
 
 @end
 
@@ -64,15 +66,6 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     _selectedArtistsArray = [NSMutableArray array];
     self.tableView.tintColor = [[ColorScheme sharedScheme] secondaryColor];
     [self.tableView reloadData];
-}
-
-#pragma mark NSOperation Delegate
-
-- (PendingOperations *)pendingOperations {
-    if (!_pendingOperations) {
-        _pendingOperations = [[PendingOperations alloc] init];
-    }
-    return _pendingOperations;
 }
 
 #pragma mark Table View Data
@@ -129,6 +122,12 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
         cell.layoutMargins = UIEdgeInsetsZero;
     }
     
+    if ([self.selectedArtistsArray containsObject: self.libraryListArray[indexPath.row]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     cell.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
     cell.textLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
     cell.detailTextLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
@@ -142,13 +141,6 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ArtistCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
-    if ([self.selectedArtistsArray containsObject:self.libraryListArray[indexPath.row]]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [self.libraryListArray[indexPath.row] name]];
     return cell;
 }
@@ -187,26 +179,30 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     if (self.selectedArtistsArray.count > 0) {
         for (Artist *artist in self.selectedArtistsArray) {
             ArtistSearch *artistSearch = [[ArtistSearch alloc] initWithArtist:artist delegate:self];
-            [self.pendingOperations.requestsInProgress setObject:artistSearch forKey:[NSString stringWithFormat:@"Artist Search for %@", artist.name]];
-            [self.pendingOperations.requestQueue addOperation:artistSearch];
+            [[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] setObject:artistSearch forKey:[NSString stringWithFormat:@"Updating %@", artist.name]];
+            [[[ArtistScanPendingOperations sharedOperations] artistRequestQueue] addOperation:artistSearch];
         }
+        [[ArtistScanPendingOperations sharedOperations] beginOperations];
     } else {
         [self endLoading];
-        [self toArtistsList:self];
+        [self performSegueWithIdentifier:@"exitToArtistList" sender:self];
     }
 }
 
 - (void)artistSearchDidFinish:(ArtistSearch *)downloader {
     [[ArtistList sharedList] addArtistToList:downloader.artist];
-    [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Artist Search for %@", downloader.artist.name]];
-    if (self.pendingOperations.requestsInProgress.count == 0) {
+    [[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] removeObjectForKey:[NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
+    [[ArtistScanPendingOperations sharedOperations] updateProgress: [NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
+    self.loadingBar.progressLabel.text = [NSString stringWithFormat:@"%i%%", (int)[[ArtistScanPendingOperations sharedOperations] currentProgress]];
+    
+    if ([[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] count] == 0) {
         DLog(@"Finished");
         if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
             [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
         }
         [[ArtistList sharedList] saveChanges];
-        [self toArtistsList:self];
-        [self.pendingOperations.requestQueue cancelAllOperations];
+        [[[ArtistScanPendingOperations sharedOperations] artistRequestQueue] cancelAllOperations];
+        [self performSegueWithIdentifier:@"exitToArtistList" sender:self];
     }
 }
 
@@ -223,12 +219,20 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 - (void)beginLoading {
     if (self.viewState == browse) {
         self.viewState = loading;
+        CGRect frame = CGRectMake(0, (self.view.bounds.size.height - self.tabBarController.tabBar.bounds.size.height) - 40, self.view.bounds.size.width, 40);
+        frame.origin.y = self.tableView.contentOffset.y + self.tableView.frame.size.height - 40;
+        [self.view bringSubviewToFront:self.loadingBar];
+        _loadingBar = [[[NSBundle mainBundle] loadNibNamed:@"LoadingView" owner:self options:nil] firstObject];
+        _loadingBar.frame = frame;
+        [self.view addSubview:self.loadingBar];
     }
 }
 
 - (void)endLoading {
     if (self.viewState == loading) {
         self.viewState = browse;
+        [self.loadingBar removeFromSuperview];
+        self.loadingBar = nil;
     }
 }
 

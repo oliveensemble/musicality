@@ -64,7 +64,7 @@
     } else {
         self.darkModeText = @"Off";
     }
- 
+    
 }
 
 - (void)viewDidLoad {
@@ -193,8 +193,8 @@
                 DLog(@"Dark mode on");
             }
             [self toggleDarkMode];
-            break;
         }
+            break;
         case 3: {
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
@@ -213,6 +213,7 @@
             alert.tag = 2;
             [alert show];
         }
+            break;
         default:
             break;
     }

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Evan Lewis. All rights reserved.
 //
 
-#import "UserPrefs.h"
 #import "ColorScheme.h"
+#import "UserPrefs.h"
 #import "MStore.h"
 #import "Button.h"
 
@@ -16,6 +16,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
+    self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
+    [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+    self.layer.borderWidth = 2.0f;
+}
+
+- (void)applyColorScheme {
     [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
     self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
     [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];

@@ -617,8 +617,12 @@ If you have any further questions, please contact us at musicality.help@gmail.co
                             <outlet property="delegate" destination="Ngn-1p-jmz" id="wdh-qA-hhg"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="rPt-cP-BMN" kind="unwind" identifier="exitToArtistList" unwindAction="didExitLibraryList:" id="cGj-Uz-iTr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7w-kz-jS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rPt-cP-BMN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1601" y="-560"/>
         </scene>

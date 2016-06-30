@@ -9,9 +9,12 @@
 @import StoreKit;
 #import "MStore.h"
 #import "AutoScan.h"
+#import "Blacklist.h"
 #import "UserPrefs.h"
 #import "ArtistList.h"
 #import "ColorScheme.h"
+#import "LoadingView.h"
+#import "ArtistListViewModel.h"
 #import "UIImageView+Haneke.h"
 #import "AlbumTableViewCell.h"
 #import "FilterTableViewCell.h"
@@ -33,9 +36,10 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     hidePreOrders = 1 << 2,
 };
 
-@interface ArtistListViewController () <SKStoreProductViewControllerDelegate>
+@interface ArtistListViewController () <SKStoreProductViewControllerDelegate, ArtistListViewModelDelegate>
 
 @property (nonatomic, weak) ArtistsNavigationBar *navigationBar;
+@property (nonatomic) ArtistListViewModel *artistListViewModel;
 
 @property (nonatomic) NSMutableArray *tableViewArray;
 @property (nonatomic) NSArray *filters;
@@ -45,7 +49,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 @property (nonatomic) NSUInteger viewState;
 @property (nonatomic) NSUInteger filterType;
 
-@property (nonatomic) UIView *loadingBar;
+@property (nonatomic) LoadingView *loadingBar;
 @property BOOL isUpdating;
 
 @end
@@ -63,7 +67,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     [self.tableView registerNib:[UINib nibWithNibName:@"FilterTableViewCell" bundle:nil] forCellReuseIdentifier:@"filterCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update) name:@"autoScanFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUpdatingList) name:@"autoScanFinished" object:nil];
     
     //Filter Items
     _filters = @[@"Latest Releases", @"Artists", @"Hide Pre-Orders"];
@@ -78,13 +82,18 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     NSArray *sortedAlbums = [self sortedAlbums];
     [self.tableViewArray addObjectsFromArray:sortedAlbums];
     
-    [self update];
-    [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:NO];
+    _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate:self];
+    [self.artistListViewModel beginUpdates];
+    [self beginLoading];
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (self.isUpdating || [[AutoScan sharedScan] isScanning]) {
+        [self beginLoading];
+    }
     
     //Tab Bar customization
     UIImage *selectedImage = [[UIImage imageNamed:@"mic_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -94,14 +103,10 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     [self.tableView headerViewForSection:1];
     
     self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
-    
-    if ([[UserPrefs sharedPrefs] artistListNeedsUpdating] && ![[AutoScan sharedScan] isScanning] && !self.isUpdating) {
-        [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:NO];
-        [self update];
-    }
-    
-    if ([[AutoScan sharedScan] isScanning]) {
-        [self beginLoading];
+    if (self.loadingBar) {
+        self.loadingBar.viewLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+        self.loadingBar.progressLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+        self.loadingBar.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
     }
     
     [self.tableView reloadData];
@@ -109,56 +114,29 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 
 #pragma mark NSOperation Methods
 
-- (void)update {
+- (void)didUpdateList:(NSDictionary *)statusInfo {
+    self.isUpdating = YES;
     
-    BOOL artistsNeedUpdating = NO;
-    
+    if (self.loadingBar == nil) {
+        [self beginLoading];
+    }
+    CGRect frame = CGRectMake(self.loadingBar.frame.origin.x, self.loadingBar.frame.origin.y, self.loadingBar.frame.size.width, 40);
+    self.loadingBar.frame = frame;
+    self.loadingBar.viewLabel.text = statusInfo[@"updateStatus"];
+    self.loadingBar.progressLabel.text = [NSString stringWithFormat:@"%@%%", statusInfo[@"updateProgress"]];
+}
+
+- (void)didFinishUpdatingList {
+    [self populate];
+    [self endLoading];
+}
+
+- (void)populate {
     if (self.viewState == filterSelection) {
         [self toggleFilterSelection:^(bool finished) {
             nil;
         }];
     }
-    
-    [self beginLoading];
-    NSOrderedSet *artistSet = [[ArtistList sharedList] artistSet];
-    if (artistSet.count == 0) {
-        [self endLoading];
-        return;
-    }
-    
-    for (Artist* artist in [[ArtistList sharedList] artistSet]) {
-        if (([mStore thisDate:[NSDate dateWithTimeIntervalSinceNow:-604800] isMoreRecentThan:artist.lastCheckDate]) || artist.lastCheckDate == nil) {
-            LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
-            [self.pendingOperations.requestsInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
-            [self.pendingOperations.requestQueue addOperation:albumSearch];
-            artistsNeedUpdating = YES;
-        }
-    }
-    
-    if (!artistsNeedUpdating) {
-        [self endLoading];
-    }
-}
-
-- (PendingOperations *)pendingOperations {
-    if (!_pendingOperations) {
-        _pendingOperations = [[PendingOperations alloc] init];
-    }
-    return _pendingOperations;
-}
-
-- (void)latestReleaseSearchDidFinish:(LatestReleaseSearch *)downloader {
-    [[ArtistList sharedList] updateLatestRelease:downloader.album forArtist:downloader.artist];
-    [self.pendingOperations.requestsInProgress removeObjectForKey:[NSString stringWithFormat:@"Album Search for %@", downloader.artist.name]];
-    
-    if (self.pendingOperations.requestsInProgress.count == 0) {
-        [[ArtistList sharedList] saveChanges];
-        [self populate];
-        [self endLoading];
-    }
-}
-
-- (void)populate {
     [self.tableView beginUpdates];
     [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
@@ -378,19 +356,10 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 
 - (void)refresh {
     DLog(@"Refresh");
-    BOOL artistsNeedUpdating = NO;
-    
-    for (Artist* artist in [[ArtistList sharedList] artistSet]) {
-        LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
-        [self.pendingOperations.requestsInProgress setObject:albumSearch forKey:[NSString stringWithFormat:@"Album Search for %@", artist.name]];
-        [self.pendingOperations.requestQueue addOperation:albumSearch];
-        artistsNeedUpdating = YES;
+    if (!self.artistListViewModel) {
+        _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate:self];
     }
-    
-    if (artistsNeedUpdating) {
-        [self beginLoading];
-    }
-    
+    [self.artistListViewModel beginUpdates];
 }
 
 - (void)topOfPage {
@@ -402,23 +371,23 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 #pragma mark Navigation
 
 - (void)beginLoading {
-    if (!self.isUpdating) {
-        DLog(@"");
+    DLog(@"");
+    if (!self.isUpdating || !self.loadingBar) {
         self.isUpdating = YES;
-        _loadingBar = nil;
-        _loadingBar = [[UIView alloc] initWithFrame:CGRectMake(0, (self.view.bounds.size.height - self.tabBarController.tabBar.bounds.size.height) - 30, self.view.bounds.size.width, 30)];
-        _loadingBar.backgroundColor = [UIColor clearColor];
+        CGRect frame = CGRectMake(0, (self.view.bounds.size.height - self.tabBarController.tabBar.bounds.size.height) - 40, self.view.bounds.size.width, 40);
+        frame.origin.y = ([[UIScreen mainScreen] bounds].size.height - self.tabBarController.tabBar.bounds.size.height) - 40;
+        _loadingBar = [[[NSBundle mainBundle] loadNibNamed:@"LoadingView" owner:self options:nil] firstObject];
+        _loadingBar.frame = frame;
         [self.view addSubview:self.loadingBar];
+        [self.view bringSubviewToFront:self.loadingBar];
     }
 }
 
 - (void)endLoading {
-    if (self.isUpdating) {
-        DLog(@"");
-        self.isUpdating = NO;
-        [self.loadingBar removeFromSuperview];
-        self.loadingBar = nil;
-    }
+    DLog(@"");
+    self.isUpdating = NO;
+    [self.loadingBar removeFromSuperview];
+    self.loadingBar = nil;
 }
 
 - (void)toiTunes:(NSDictionary*)cellInfo {
@@ -453,6 +422,13 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     [self performSegueWithIdentifier:@"toLibraryList" sender:self];
 }
 
+- (IBAction)didExitLibraryList:(UIStoryboardSegue *)unwindSegue {
+    if (!self.artistListViewModel) {
+        _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate: self];
+    }
+    [self.artistListViewModel beginUpdates];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"toArtist"]) {
         ArtistViewController *artistVC = segue.destinationViewController;
@@ -461,6 +437,14 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
         VariousArtistsViewController *variousArtistsVC = segue.destinationViewController;
         variousArtistsVC.albumLink = sender;
     }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGRect frame = self.loadingBar.frame;
+    frame.origin.y = scrollView.contentOffset.y + self.tableView.frame.size.height - self.loadingBar.frame.size.height;
+    frame.size.height = 40;
+    self.loadingBar.frame = frame;
+    [self.view bringSubviewToFront:self.loadingBar];
 }
 
 - (void)dealloc {

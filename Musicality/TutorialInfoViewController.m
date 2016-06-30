@@ -16,17 +16,17 @@
 @implementation TutorialInfoViewController
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  // Do any additional setup after loading the view.
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)toScan:(Button *)sender {
-  [self performSegueWithIdentifier:@"toScan" sender:sender];
+    [self performSegueWithIdentifier:@"toScan" sender:sender];
 }
 
 @end
