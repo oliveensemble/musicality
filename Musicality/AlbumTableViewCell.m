@@ -18,11 +18,15 @@
     self.artistLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
 }
 
-- (void)setSelected:(BOOL)selected {
-    if (selected) {
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    if (highlighted) {
         self.backgroundColor = [[ColorScheme sharedScheme] secondaryColor];
         self.albumLabel.textColor = [[ColorScheme sharedScheme] primaryColor];
         self.artistLabel.textColor = [[ColorScheme sharedScheme] primaryColor];
+    } else {
+        self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+        self.albumLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+        self.artistLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
     }
 }
 
