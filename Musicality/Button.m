@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Evan Lewis. All rights reserved.
 //
 
+#import "ColorScheme.h"
 #import "UserPrefs.h"
 #import "MStore.h"
 #import "Button.h"
@@ -13,50 +14,49 @@
 @implementation Button
 
 - (void)awakeFromNib {
-  [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-  self.layer.borderColor = [[UIColor blackColor] CGColor];
-  [self setBackgroundImage:[self imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-  [self setBackgroundImage:[self imageWithColor:[UIColor clearColor]] forState:UIControlStateHighlighted];
-  self.layer.borderWidth = 2.0f;
-}
-
-- (void)setSelectedStyle {
-  [self setBackgroundImage:[mStore imageWithColor:[UIColor blackColor]] forState:UIControlStateNormal];
-  [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-  self.layer.borderColor = [[UIColor blackColor] CGColor];
-}
-
-- (void)setDeselectedStyle {
-  [self setBackgroundImage:[mStore imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-  [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-  self.layer.borderColor = [[UIColor blackColor] CGColor];
+    [super awakeFromNib];
+    
+    [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
+    self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
+    [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+    self.layer.borderWidth = 2.0f;
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
-  if (highlighted) {
-    [self setBackgroundImage:[mStore imageWithColor:[UIColor blackColor]] forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.layer.borderColor = [[UIColor blackColor] CGColor];
-  } else {
-    [self setBackgroundImage:[mStore imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.layer.borderColor = [[UIColor blackColor] CGColor];
-  }
+    [super setHighlighted: highlighted];
+    
+    if (highlighted) {
+        [self setTitleColor: [[ColorScheme sharedScheme] primaryColor] forState:UIControlStateNormal];
+        self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
+        [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[[ColorScheme sharedScheme] secondaryColor]] forState:UIControlStateHighlighted];
+        self.layer.borderWidth = 2.0f;
+    } else {
+        [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
+        self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
+        [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+        self.layer.borderWidth = 2.0f;
+    }
 }
 
-- (UIImage *)imageWithColor:(UIColor *)color {
-  
-  CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-  UIGraphicsBeginImageContext(rect.size);
-  CGContextRef context = UIGraphicsGetCurrentContext();
-  
-  CGContextSetFillColorWithColor(context, [color CGColor]);
-  CGContextFillRect(context, rect);
-  
-  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-  UIGraphicsEndImageContext();
-  
-  return image;
+- (void)applyColorScheme {
+    [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
+    self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
+    [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+    self.layer.borderWidth = 2.0f;
+}
+
+- (void)setSelectedStyle {
+    [self setTitleColor: [[ColorScheme sharedScheme] primaryColor] forState:UIControlStateNormal];
+    self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
+    [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[[ColorScheme sharedScheme] secondaryColor]] forState:UIControlStateNormal];
+    self.layer.borderWidth = 2.0f;
+}
+
+- (void)setDeselectedStyle {
+    [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
+    self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
+    [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+    self.layer.borderWidth = 2.0f;
 }
 
 @end

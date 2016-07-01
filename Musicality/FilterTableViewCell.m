@@ -8,19 +8,27 @@
 
 #import "FilterTableViewCell.h"
 #import "UserPrefs.h"
+#import "ColorScheme.h"
 
 @implementation FilterTableViewCell
 
 - (void)awakeFromNib {
-  self.backgroundColor = [UIColor whiteColor];
-  self.filterLabel.textColor = [UIColor blackColor];
+    [self applyColorScheme];
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
-  if (highlighted) {
-    self.backgroundColor = [UIColor blackColor];
-    self.filterLabel.textColor = [UIColor whiteColor];
-  }
+    if (highlighted) {
+        [self applyColorScheme];
+    }
+}
+
+- (void)prepareForReuse {
+    [self applyColorScheme];
+}
+
+- (void)applyColorScheme {
+    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+    self.filterLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
 }
 
 @end

@@ -16,14 +16,14 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             symbolName = "UIViewAlertForUnsatisfiableConstraints"
             moduleName = "">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "UIViewAlertForUnsatisfiableConstraints"
@@ -40,13 +40,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Musicality/Blacklist.m"
-            timestampString = "475470951.806632"
+            filePath = "Musicality/TutorialScanViewController.m"
+            timestampString = "488927308.998117"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-isInList:"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -56,13 +56,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Musicality/ArtistList.m"
-            timestampString = "475471028.611157"
+            filePath = "Musicality/LibraryListViewController.m"
+            timestampString = "488951141.759294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-isInList:"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-tableView:willDisplayCell:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

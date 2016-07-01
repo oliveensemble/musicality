@@ -7,8 +7,9 @@
 //
 
 @import UIKit;
+#import "MTableViewController.h"
 
-@interface VariousArtistsViewController : UITableViewController
+@interface VariousArtistsViewController : MTableViewController
 
 @property (nonatomic) NSURL* albumLink;
 

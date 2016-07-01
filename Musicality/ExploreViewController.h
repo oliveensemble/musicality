@@ -8,11 +8,8 @@
 
 @import UIKit;
 
-#import "ExploreFetch.h"
-#import "PendingOperations.h"
+#import "MTableViewController.h"
 
-@interface ExploreViewController : UITableViewController
-
-@property (nonatomic, strong) PendingOperations *pendingOperations;
+@interface ExploreViewController : MTableViewController
 
 @end
