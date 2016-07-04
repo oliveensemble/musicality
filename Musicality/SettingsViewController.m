@@ -19,15 +19,15 @@
 #import "SettingsNavigationBar.h"
 #import "SettingsViewController.h"
 
-@interface SettingsViewController () <MFMailComposeViewControllerDelegate, SKStoreProductViewControllerDelegate, UIAlertViewDelegate>
+@interface SettingsViewController () <MFMailComposeViewControllerDelegate, SKStoreProductViewControllerDelegate, UIAlertViewDelegate, MViewControllerDelegate>
 
 @property (nonatomic, weak) SettingsNavigationBar *navigationBar;
 
 @property BOOL isAutoUpdateEnabled;
 @property BOOL isDarkModeEnabled;
 
-@property (nonatomic) NSString *autoupdateText;
-@property (nonatomic) NSString *darkModeText;
+@property (copy, nonatomic) NSString *autoupdateText;
+@property (copy, nonatomic) NSString *darkModeText;
 @property (nonatomic) NSNumber *alertViewActionID;
 
 @property (nonatomic) UIAlertView *alertView;
@@ -64,38 +64,60 @@
     } else {
         self.darkModeText = @"Off";
     }
-    
+    [self viewMovedToForeground];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:@"appDidReceiveNotification" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - MViewController Delegate
+- (void)viewMovedToForeground {
+    DLog(@"Moved to foreground");
+    [self checkForNotification: mStore.localNotification];
+}
+
+- (void)checkForNotification:(UILocalNotification *)localNotification {
+    if (localNotification) {
+        DLog(@"Local Notification: %@", mStore.localNotification);
+        // Remove the local notification when we're finished with it so it doesn't get reused
+        [mStore setLocalNotification:nil];
+        [self loadStoreProductViewController:localNotification.userInfo];
+    }
+}
+
+- (void)loadStoreProductViewController:(NSDictionary *)userInfo {
+    NSNumber *albumID = userInfo[@"albumID"];
+    if (!albumID) {
+        return;
+    }
+    
+    // Initialize Product View Controller
+    if ([SKStoreProductViewController class] != nil) {
+        // Configure View Controller
+        SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+        [storeViewController setDelegate:self];
+        NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
+        [storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+            if (error) {
+                // handle the error
+                NSLog(@"%@",error.description);
+            }
+            [self presentViewController:storeViewController animated:YES completion:nil];
+        }];
+    }
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Alert View
 
-- (void)didReceiveNotification:(NSNotification*)notif {
-    NSDictionary *notificationOptions = notif.userInfo;
-    NSNumber *num = [notificationOptions objectForKey:@"albumID"];
-    NSString *artistName = [notificationOptions objectForKey:@"artistName"];
-    if (num && artistName && !self.alertView) {
-        _alertView = [[UIAlertView alloc] initWithTitle:@"Check it out!" message:[NSString stringWithFormat:@"New release by %@", artistName] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"View", nil];
-        self.alertViewActionID = num;
-        self.alertView.tag = 1;
-        [self.alertView show];
-    }
-}
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 1) {
         if (buttonIndex == 1) {
             SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
@@ -153,8 +175,8 @@
     switch (indexPath.row) {
         case 0: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/musicality-never-miss-a-beat/id945094708?ls=1&mt=8"]];
-        }
             break;
+        }
         case 1: {
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             if (self.isAutoUpdateEnabled) {
@@ -193,8 +215,8 @@
                 DLog(@"Dark mode on");
             }
             [self toggleDarkMode];
-        }
             break;
+        }
         case 3: {
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
@@ -206,14 +228,14 @@
             } else {
                 DLog(@"This device cannot send email");
             }
-        }
             break;
+        }
         case 5: {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear all data" message:@"Are you sure? You can turn 'Scan Library Automatically' on to restart library search" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Clear", nil];
             alert.tag = 2;
             [alert show];
-        }
             break;
+        }
         default:
             break;
     }
@@ -223,7 +245,6 @@
 }
 
 - (void)toggleDarkMode {
-    
     if (self.isDarkModeEnabled) {
         self.view.backgroundColor = [UIColor blackColor];
         //Tab Bar customization
@@ -238,7 +259,6 @@
         self.navigationBar.backgroundColor = [UIColor whiteColor];
         self.navigationBar.settingsLabel.textColor = [UIColor blackColor];
     }
-    
     [self.tableView reloadData];
 }
 
@@ -248,11 +268,8 @@
 
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
     [[UserPrefs sharedPrefs] savePrefs];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"appDidReceiveNotification" object:nil];
 }
 
 @end

@@ -111,7 +111,7 @@
     return NO;
 }
 
-- (NSString*)formattedAlbumIDFromURL:(NSURL*)url {
+- (NSNumber*)formattedAlbumIDFromURL:(NSURL*)url {
     
     if (!url) {
         DLog(@"Cannot format, url is empty: %@", url);
@@ -136,42 +136,10 @@
         DLog(@"Cannot format string: %@", stringUrl);
     }
     @finally {
-        return formattedString;
+        NSInteger albumID = [formattedString integerValue];
+        return [NSNumber numberWithInteger: albumID];
     }
     return nil;
-    
-}
-
-#pragma mark alerts
-- (void)showAlertPromptWithText:(NSString*)text {
-    
-    UIWindow *mainWindow = [[UIApplication sharedApplication] keyWindow];
-    CGFloat viewHeight = CGRectGetHeight(mainWindow.bounds)/10;
-    CGFloat viewWidth = CGRectGetWidth(mainWindow.bounds);
-    
-    UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(0, -viewHeight, viewWidth, viewHeight)];
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:alertView.bounds];
-    textLabel.textAlignment = NSTextAlignmentCenter;
-    textLabel.font = [UIFont systemFontOfSize:18];
-    textLabel.text = text;
-    [alertView addSubview:textLabel];
-    
-    [mainWindow addSubview:alertView];
-    [mainWindow bringSubviewToFront:alertView];
-    
-    [UIView animateWithDuration:.2 animations:^{
-        alertView.frame = CGRectMake(0, 0, viewWidth, viewHeight);
-    }];
-    
-    double delayInSeconds = 3.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds  *NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [UIView animateWithDuration:.2 animations:^{
-            alertView.frame = CGRectMake(0, -viewHeight, viewWidth, viewHeight);
-        } completion:^(BOOL finished) {
-            [alertView removeFromSuperview];
-        }];
-    });
     
 }
 

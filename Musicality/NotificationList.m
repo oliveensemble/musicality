@@ -13,7 +13,7 @@
 
 @interface NotificationList ()
 
-@property (nonatomic) NSString *path;
+@property (copy, nonatomic) NSString *path;
 @property (nonatomic, retain) NSMutableArray *notifArray;
 
 @end
@@ -144,7 +144,7 @@
     localNotif.userInfo = @{@"albumID" : [mStore formattedAlbumIDFromURL:album.URL], @"artistName" : artistName};
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     [self.notifArray addObject:localNotif];
-    DLog(@"Setting notification later for %@ date: %@", artistName, fireDate);
+    DLog(@"Setting notification later for %@ albumName: %@ date: %@", artistName, album.title, fireDate);
     
 }
 

@@ -114,7 +114,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOU-xI-33f" customClass="Button">
-                                <rect key="frame" x="248" y="314" width="104" height="41"/>
+                                <rect key="frame" x="248" y="314" width="104" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="jjx-H3-reP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="  Explore  ">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

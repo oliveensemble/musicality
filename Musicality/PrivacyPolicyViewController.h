@@ -7,7 +7,7 @@
 //
 
 @import UIKit;
-#import "MTableViewController.h"
+#import "MViewControllerDelegate.h"
 
 @interface PrivacyPolicyViewController : UIViewController
 

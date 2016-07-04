@@ -8,8 +8,8 @@
 
 @import UIKit;
 
-#import "MTableViewController.h"
+#import "MViewControllerDelegate.h"
 
-@interface ExploreViewController : MTableViewController
+@interface ExploreViewController : UITableViewController
 
 @end

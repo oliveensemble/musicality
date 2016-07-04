@@ -13,7 +13,7 @@
 @interface Artist : NSObject <NSCoding>
 
 @property (nonatomic) NSNumber *artistID;
-@property (nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *name;
 @property (nonatomic) Album *latestRelease;
 @property (nonatomic) NSDate *lastCheckDate;
 

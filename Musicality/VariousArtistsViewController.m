@@ -16,7 +16,7 @@
 #import "VariousArtistsNavigationBar.h"
 #import "VariousArtistsViewController.h"
 
-@interface VariousArtistsViewController() <SKStoreProductViewControllerDelegate, UIAlertViewDelegate>
+@interface VariousArtistsViewController() <SKStoreProductViewControllerDelegate, UIAlertViewDelegate, MViewControllerDelegate>
 
 @property (nonatomic, weak) VariousArtistsNavigationBar *navigationBar;
 
@@ -40,7 +40,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     self.clearsSelectionOnViewWillAppear = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:@"appDidReceiveNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
     [self addArtistList];
     
 }
@@ -57,11 +57,48 @@
     
     self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
     [self.tableView reloadData];
+    [self viewMovedToForeground];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - MViewController Delegate
+- (void)viewMovedToForeground {
+    DLog(@"Moved to foreground");
+    [self checkForNotification: mStore.localNotification];
+}
+
+- (void)checkForNotification:(UILocalNotification *)localNotification {
+    if (localNotification) {
+        DLog(@"Local Notification: %@", mStore.localNotification);
+        // Remove the local notification when we're finished with it so it doesn't get reused
+        [mStore setLocalNotification:nil];
+        [self loadStoreProductViewController:localNotification.userInfo];
+    }
+}
+
+- (void)loadStoreProductViewController:(NSDictionary *)userInfo {
+    NSNumber *albumID = userInfo[@"albumID"];
+    if (!albumID) {
+        return;
+    }
+    
+    // Initialize Product View Controller
+    if ([SKStoreProductViewController class] != nil) {
+        // Configure View Controller
+        SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+        [storeViewController setDelegate:self];
+        NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
+        [storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+            if (error) {
+                // handle the error
+                NSLog(@"%@",error.description);
+            }
+            [self presentViewController:storeViewController animated:YES completion:nil];
+        }];
+    }
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)addArtistList {
@@ -123,17 +160,6 @@
 
 #pragma mark Alert View
 
-- (void)didReceiveNotification:(NSNotification*)notif {
-    NSDictionary *notificationOptions = notif.userInfo;
-    NSNumber *num = [notificationOptions objectForKey:@"albumID"];
-    NSString *artistName = [notificationOptions objectForKey:@"artistName"];
-    if (num && artistName && !self.alertView) {
-        _alertView = [[UIAlertView alloc] initWithTitle:@"Check it out!" message:[NSString stringWithFormat:@"New release by %@", artistName] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"View", nil];
-        self.alertViewActionID = num;
-        [self.alertView show];
-    }
-}
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
@@ -150,10 +176,6 @@
         }];
     }
     self.alertViewActionID = nil;
-}
-
-- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -219,8 +241,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"appDidReceiveNotification" object:nil];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 @end

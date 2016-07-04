@@ -8,9 +8,9 @@
 
 @import UIKit;
 #import "Artist.h"
-#import "MTableViewController.h"
+#import "MViewControllerDelegate.h"
 
-@interface ArtistViewController : MTableViewController
+@interface ArtistViewController : UITableViewController
 
 @property (nonatomic, strong) Artist *artist;
 

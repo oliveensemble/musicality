@@ -22,7 +22,7 @@
 #import "ArtistNavigationBar.h"
 #import "ArtistViewController.h"
 
-@interface ArtistViewController () <SKStoreProductViewControllerDelegate, ArtistViewModelDelegate, ArtistFetchDelegate>
+@interface ArtistViewController () <SKStoreProductViewControllerDelegate, MViewControllerDelegate, ArtistViewModelDelegate, ArtistFetchDelegate>
 
 @property (nonatomic) NSMutableArray *tableViewArray;
 @property (nonatomic, weak) ArtistNavigationBar *navigationBar;
@@ -35,6 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
     //Tab Bar customization
     UIImage *selectedImage = [[UIImage imageNamed:@"mic_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.tabBarItem.selectedImage = selectedImage;
@@ -62,6 +63,44 @@
         if (artistNotified.artistID == self.artist.artistID) {
             self.isInNotificationList = YES;
         }
+    }
+    [self viewMovedToForeground];
+}
+
+#pragma mark - MViewController Delegate
+- (void)viewMovedToForeground {
+    DLog(@"Moved to foreground");
+    [self checkForNotification: mStore.localNotification];
+}
+
+- (void)checkForNotification:(UILocalNotification *)localNotification {
+    if (localNotification) {
+        DLog(@"Local Notification: %@", mStore.localNotification);
+        // Remove the local notification when we're finished with it so it doesn't get reused
+        [mStore setLocalNotification:nil];
+        [self loadStoreProductViewController:localNotification.userInfo];
+    }
+}
+
+- (void)loadStoreProductViewController:(NSDictionary *)userInfo {
+    NSNumber *albumID = userInfo[@"albumID"];
+    if (!albumID) {
+        return;
+    }
+    
+    // Initialize Product View Controller
+    if ([SKStoreProductViewController class] != nil) {
+        // Configure View Controller
+        SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+        [storeViewController setDelegate:self];
+        NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
+        [storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+            if (error) {
+                // handle the error
+                NSLog(@"%@",error.description);
+            }
+            [self presentViewController:storeViewController animated:YES completion:nil];
+        }];
     }
 }
 

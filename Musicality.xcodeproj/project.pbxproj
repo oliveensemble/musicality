@@ -59,7 +59,7 @@
 		4FA71CF11BF6C6EC00DC6C0E /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FA71CF01BF6C6EC00DC6C0E /* FilterTableViewCell.xib */; };
 		4FAFCBE81A146A760024A4E5 /* ArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAFCBE71A146A760024A4E5 /* ArtistListViewController.m */; };
 		4FAFCBEB1A1472590024A4E5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAFCBEA1A1472590024A4E5 /* SettingsViewController.m */; };
-		4FC089301D10605E00CABB8D /* MTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC0892F1D10605E00CABB8D /* MTableViewController.m */; };
+		4FC089301D10605E00CABB8D /* MViewControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC0892F1D10605E00CABB8D /* MViewControllerDelegate.m */; };
 		4FC089361D107E9300CABB8D /* MTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC089351D107E9300CABB8D /* MTabBarController.m */; };
 		4FC1C26B19F7367900E14360 /* ArtistNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC1C26A19F7367900E14360 /* ArtistNavigationBar.m */; };
 		4FC3E7791B13957000C3C10F /* ArtistList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC3E7781B13957000C3C10F /* ArtistList.m */; };
@@ -189,8 +189,8 @@
 		4FAFCBE71A146A760024A4E5 /* ArtistListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ArtistListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4FAFCBE91A1472590024A4E5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4FAFCBEA1A1472590024A4E5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		4FC0892E1D10605E00CABB8D /* MTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTableViewController.h; sourceTree = "<group>"; };
-		4FC0892F1D10605E00CABB8D /* MTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTableViewController.m; sourceTree = "<group>"; };
+		4FC0892E1D10605E00CABB8D /* MViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MViewControllerDelegate.h; sourceTree = "<group>"; };
+		4FC0892F1D10605E00CABB8D /* MViewControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MViewControllerDelegate.m; sourceTree = "<group>"; };
 		4FC089341D107E9300CABB8D /* MTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTabBarController.h; sourceTree = "<group>"; };
 		4FC089351D107E9300CABB8D /* MTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTabBarController.m; sourceTree = "<group>"; };
 		4FC130FD1A588E0D0086707D /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -375,6 +375,8 @@
 		4F2C437A19F0022600909D01 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4FC0892E1D10605E00CABB8D /* MViewControllerDelegate.h */,
+				4FC0892F1D10605E00CABB8D /* MViewControllerDelegate.m */,
 				4F1520C819EDFEAD00530B8E /* ExploreViewController.h */,
 				4F1520C919EDFEAD00530B8E /* ExploreViewController.m */,
 				4FAFCBE61A146A760024A4E5 /* ArtistListViewController.h */,
@@ -423,8 +425,6 @@
 				4F63E84E1BED2E16004B6991 /* FilterTableViewCell.m */,
 				4F8008A91D1B9AF3005EBE37 /* SettingsTableViewCell.h */,
 				4F8008AA1D1B9AF3005EBE37 /* SettingsTableViewCell.m */,
-				4FC0892E1D10605E00CABB8D /* MTableViewController.h */,
-				4FC0892F1D10605E00CABB8D /* MTableViewController.m */,
 				4F7A63871C44545F003AE595 /* MNavigationBar.h */,
 				4F7A63881C44545F003AE595 /* MNavigationBar.m */,
 				4FC089341D107E9300CABB8D /* MTabBarController.h */,
@@ -699,7 +699,7 @@
 				4FF5C50C1D241FF6000CE9F7 /* ArtistViewModel.m in Sources */,
 				4F018C731D1B43C500999334 /* ColorScheme.m in Sources */,
 				4F650E5F1A279AF000C2FA82 /* LibraryListViewController.m in Sources */,
-				4FC089301D10605E00CABB8D /* MTableViewController.m in Sources */,
+				4FC089301D10605E00CABB8D /* MViewControllerDelegate.m in Sources */,
 				4FA107E91C449867007CD4BC /* ArtistFetch.m in Sources */,
 				4F6B7E0719FE90D600FFC596 /* Button.m in Sources */,
 				4FEC5A831B34D0DC00985B0C /* Blacklist.m in Sources */,
