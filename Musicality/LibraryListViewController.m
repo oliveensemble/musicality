@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Evan Lewis. All rights reserved.
 //
 
+@import StoreKit;
 #import "Artist.h"
 #import "Button.h"
 #import "MStore.h"
@@ -23,7 +24,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     loading = 1 << 1
 };
 
-@interface LibraryListViewController ()
+@interface LibraryListViewController () <MViewControllerDelegate, SKStoreProductViewControllerDelegate>
 
 @property (nonatomic, weak) LibraryNavigationBar *navigationBar;
 @property (nonatomic) NSArray *libraryListArray;
@@ -39,6 +40,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
     //Allows swipe back to function
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     [self.navigationController setNavigationBarHidden:YES animated:NO];
@@ -66,6 +68,48 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     _selectedArtistsArray = [NSMutableArray array];
     self.tableView.tintColor = [[ColorScheme sharedScheme] secondaryColor];
     [self.tableView reloadData];
+    [self viewMovedToForeground];
+}
+
+#pragma mark - MViewController Delegate
+- (void)viewMovedToForeground {
+    DLog(@"Moved to foreground");
+    [self checkForNotification: mStore.localNotification];
+}
+
+- (void)checkForNotification:(UILocalNotification *)localNotification {
+    if (localNotification) {
+        DLog(@"Local Notification: %@", mStore.localNotification);
+        // Remove the local notification when we're finished with it so it doesn't get reused
+        [mStore setLocalNotification:nil];
+        [self loadStoreProductViewController:localNotification.userInfo];
+    }
+}
+
+- (void)loadStoreProductViewController:(NSDictionary *)userInfo {
+    NSNumber *albumID = userInfo[@"albumID"];
+    if (!albumID) {
+        return;
+    }
+    
+    // Initialize Product View Controller
+    if ([SKStoreProductViewController class] != nil) {
+        // Configure View Controller
+        SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+        [storeViewController setDelegate:self];
+        NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
+        [storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+            if (error) {
+                // handle the error
+                NSLog(@"%@",error.description);
+            }
+            [self presentViewController:storeViewController animated:YES completion:nil];
+        }];
+    }
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Table View Data
@@ -236,8 +280,9 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     }
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"toArtistsList" object:nil];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 @end

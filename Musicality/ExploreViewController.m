@@ -65,12 +65,11 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Allows swipe back to function
+    //Allows swipe back to functiondidReceiveNotification
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     //Register notification
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:@"appDidReceiveNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
 
     //Register TableView cells
@@ -90,16 +89,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     
     [self fetchFeed];
     
-    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    localNotif.alertAction = NSLocalizedString(@"Check it out", nil);
-    localNotif.soundName = UILocalNotificationDefaultSoundName;
-    localNotif.applicationIconBadgeNumber += 1;
-    localNotif.timeZone = [NSTimeZone defaultTimeZone];
-    localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
-    localNotif.alertBody = @"Test";
-    localNotif.userInfo = @{@"albumID" : [NSNumber numberWithInteger: 1107053773], @"artistName" : @"BOB"};
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-    DLog(@"Scheduled");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -127,10 +116,11 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     if (self.tableViewArray.count < 2 && self.viewState != loading) {
         [self fetchFeed];
     }
+
     [self viewMovedToForeground];
-    
 }
 
+#pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
     DLog(@"Moved to foreground");
     [self checkForNotification: mStore.localNotification];
@@ -139,10 +129,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 - (void)checkForNotification:(UILocalNotification *)localNotification {
     if (localNotification) {
         DLog(@"Local Notification: %@", mStore.localNotification);
-        if([[UIApplication sharedApplication] applicationState] == UIApplicationStateInactive) {
-            DLog(@"(Background) Local Notification");
-        }
-        
         // Remove the local notification when we're finished with it so it doesn't get reused
         [mStore setLocalNotification:nil];
         DLog(@"Not background, calling toiTunes");
@@ -437,19 +423,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 #pragma mark Navigation
 
-- (void)didReceiveNotification:(NSNotification*)notif {
-    NSDictionary *notificationOptions = notif.userInfo;
-    NSDictionary *cellInfo;
-    if ([notificationOptions objectForKey:@"albumID"]) {
-        //Make sure we have an album
-        cellInfo = @{@"albumID":[notificationOptions objectForKey:@"albumID"]};
-        DLog(@"%@",[[notificationOptions objectForKey:@"albumID"] class]);
-    } else {
-        return;
-    }
-    //[self loadStoreProductViewController:]
-}
-
 - (void)toArtist:(Button*)sender {
     if (![sender.buttonInfo[@"ArtistID"] isEqual: @0]) {
         Artist *artist = [[Artist alloc] initWithArtistID:sender.buttonInfo[@"ArtistID"] andName:sender.buttonInfo[@"Artist"]];
@@ -495,7 +468,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)dealloc {
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 

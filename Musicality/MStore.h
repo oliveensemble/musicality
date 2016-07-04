@@ -36,6 +36,4 @@
 
 - (UIImage *)imageWithColor:(UIColor *)color;
 
-- (void)showAlertPromptWithText:(NSString *)text;
-
 @end

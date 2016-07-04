@@ -21,16 +21,6 @@
 
 @implementation TutorialScanViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)manual:(Button *)sender {
     [[UserPrefs sharedPrefs] setIsAutoUpdateEnabled:NO];
     [self showAlertBodyWithString:@"You music library will not be scanned until you import or add artists to your list. You can change this in the settings"];

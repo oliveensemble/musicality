@@ -36,7 +36,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     hidePreOrders = 1 << 2,
 };
 
-@interface ArtistListViewController () <SKStoreProductViewControllerDelegate, ArtistListViewModelDelegate>
+@interface ArtistListViewController () <SKStoreProductViewControllerDelegate, MViewControllerDelegate, ArtistListViewModelDelegate>
 
 @property (nonatomic, weak) ArtistsNavigationBar *navigationBar;
 @property (nonatomic) ArtistListViewModel *artistListViewModel;
@@ -68,6 +68,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishUpdatingList) name:@"autoScanFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
     
     //Filter Items
     _filters = @[@"Latest Releases", @"Artists", @"Hide Pre-Orders"];
@@ -85,7 +86,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate:self];
     [self.artistListViewModel beginUpdates];
     [self beginLoading];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,6 +110,48 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     }
     
     [self.tableView reloadData];
+    [self viewMovedToForeground];
+}
+
+#pragma mark - MViewController Delegate
+- (void)viewMovedToForeground {
+    DLog(@"Moved to foreground");
+    [self checkForNotification: mStore.localNotification];
+}
+
+- (void)checkForNotification:(UILocalNotification *)localNotification {
+    if (localNotification) {
+        DLog(@"Local Notification: %@", mStore.localNotification);        
+        // Remove the local notification when we're finished with it so it doesn't get reused
+        [mStore setLocalNotification:nil];
+        [self loadStoreProductViewController:localNotification.userInfo];
+    }
+}
+
+- (void)loadStoreProductViewController:(NSDictionary *)userInfo {
+    NSNumber *albumID = userInfo[@"albumID"];
+    if (!albumID) {
+        return;
+    }
+    
+    // Initialize Product View Controller
+    if ([SKStoreProductViewController class] != nil) {
+        // Configure View Controller
+        SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+        [storeViewController setDelegate:self];
+        NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
+        [storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+            if (error) {
+                // handle the error
+                NSLog(@"%@",error.description);
+            }
+            [self presentViewController:storeViewController animated:YES completion:nil];
+        }];
+    }
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark NSOperation Methods
@@ -287,7 +329,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
         [self populate];
     } else if ((indexPath.row > self.filters.count && self.viewState == filterSelection) || (indexPath.row > 0 && self.viewState == browse)){
         AlbumTableViewCell *albumCell = [self.tableView cellForRowAtIndexPath:indexPath];
-        [self toiTunes:albumCell.cellInfo];
+        [self loadStoreProductViewController: albumCell.cellInfo];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -390,25 +432,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     self.loadingBar = nil;
 }
 
-- (void)toiTunes:(NSDictionary*)cellInfo {
-    // Initialize Product View Controller
-    SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
-    // Configure View Controller
-    storeProductViewController.delegate = self;
-    [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : [mStore formattedAlbumIDFromURL:cellInfo[@"AlbumURL"]], SKStoreProductParameterAffiliateToken : mStore.affiliateToken} completionBlock:^(BOOL result, NSError *error) {
-        if (error) {
-            DLog(@"Error %@ with User Info %@.", error, [error userInfo]);
-        } else {
-            // Present Store Product View Controller
-            [self presentViewController:storeProductViewController animated:YES completion:nil];
-        }
-    }];
-}
-
-- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)toArtist:(Button*)sender {
     if (![sender.buttonInfo[@"ArtistID"] isEqual: @0]) {
         Artist *artist = [[Artist alloc] initWithArtistID:sender.buttonInfo[@"ArtistID"] andName:sender.buttonInfo[@"Artist"]];
@@ -447,8 +470,9 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     [self.view bringSubviewToFront:self.loadingBar];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"autoScanDone" object:nil];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 @end

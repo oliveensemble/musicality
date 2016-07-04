@@ -38,10 +38,11 @@
         [self.window setRootViewController:initialViewController];
     }
     
+    // If the application was woken by a notification, store it
     UILocalNotification *notification = [launchOptions valueForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (notification) {
-        [[NSUserDefaults standardUserDefaults] setValue:notification.userInfo[@"albumID"] forKey:@"albumID"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        DLog(@"Setting notification");
+        [mStore setLocalNotification:notification];
     }
     
     [[NotificationList sharedList] determineNotificationItems];
@@ -55,8 +56,13 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    DLog(@"Setting notification");
-    [mStore setLocalNotification:notification];
+    if ([application applicationState] == UIApplicationStateInactive) {
+        DLog(@"Setting notification");
+        [mStore setLocalNotification:notification];
+    } else {
+        DLog(@"Received notification while application is running");
+    }
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
