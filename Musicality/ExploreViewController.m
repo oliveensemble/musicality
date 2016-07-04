@@ -43,6 +43,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 @property (nonatomic) ExploreViewModel *exploreViewModel;
 
 @property (nonatomic) NSMutableArray *tableViewArray;
+@property (nonatomic) NSArray *albumArray;
 @property (nonatomic) NSDictionary *genres;
 
 @property (nonatomic) NSUInteger viewState;
@@ -88,7 +89,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     self.currentGenreTitle = @"All Genres";
     
     [self fetchFeed];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -113,16 +113,15 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
-    if (self.tableViewArray.count < 2 && self.viewState != loading) {
-        [self fetchFeed];
-    }
-
     [self viewMovedToForeground];
 }
 
 #pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
     DLog(@"Moved to foreground");
+    if ((!self.albumArray || [self.albumArray count] == 0) && self.viewState != loading) {
+        [self fetchFeed];
+    }
     [self checkForNotification: mStore.localNotification];
 }
 
@@ -147,6 +146,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     if (self.viewState == genreSelection) {
         [self toggleGenreSelection:^(bool finished) {}];
     }
+    
     [self.tableView beginUpdates];
     [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
@@ -255,6 +255,13 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
         NSDictionary *userInfo = @{@"AlbumURL" : album.URL, @"Artist" : album.artist, @"ArtistID" : album.artistID, @"albumID" : [mStore formattedAlbumIDFromURL:album.URL]};
         albumCell.viewArtistButton.buttonInfo = userInfo;
         albumCell.cellInfo = userInfo;
+        if ([album.artistID isEqual: @0]) {
+            [albumCell.viewArtistButton setTitle:@"View Artists" forState:UIControlStateNormal];
+            [albumCell.viewArtistButton setTitle:@"View Artists" forState:UIControlStateHighlighted];
+        } else {
+            [albumCell.viewArtistButton setTitle:@"View Artist" forState:UIControlStateNormal];
+            [albumCell.viewArtistButton setTitle:@"View Artist" forState:UIControlStateHighlighted];
+        }
         
         //Add gesture recognizer for action sheet
         //Gesture recognizer
