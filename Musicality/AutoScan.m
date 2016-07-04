@@ -49,7 +49,6 @@
         }
         
         DLog(@"Autoscan started");
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"AutoScan Finished"];
         for (Artist *artist in mStore.artistsFromUserLibrary) {
             if (![[Blacklist sharedList] isInList:artist]) {
                 if (![[ArtistList sharedList] isInList:artist]) {

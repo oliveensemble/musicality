@@ -103,16 +103,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     
     self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
     
-    [self.tableView reloadData];
-    
-    //Check if there was notification to
-    NSString *albumID = [[NSUserDefaults standardUserDefaults] valueForKey:@"albumID"];
-    if (albumID) {
-        //[self toiTunes:@{@"albumID" : albumID}];
-        [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"albumID"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
+    [self.tableView reloadData];    
     [self viewMovedToForeground];
 }
 
