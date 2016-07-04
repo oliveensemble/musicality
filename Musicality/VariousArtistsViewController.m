@@ -161,43 +161,29 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     //Add navigation bar to header
     _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"VariousArtistsNavigationBar" owner:self options:nil] objectAtIndex:0];
-    _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, _navigationBar.frame.size.height);
-    _navigationBar.backgroundColor = self.bwBackgroundColor;
-    _navigationBar.layer.shadowColor = [self.bwTextColor CGColor];
-    _navigationBar.layer.shadowOpacity = 0.4;
-    _navigationBar.layer.shadowRadius = 2.0;
-    _navigationBar.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:_navigationBar.bounds].CGPath;
-    
-    _navigationBar.variousArtistsLabel.textColor = self.bwTextColor;
+    _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
+    _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationBar.bounds].CGPath;
     [_navigationBar.backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [_navigationBar.backButton addTarget:self
-                                  action:@selector(topOfPage)
-                        forControlEvents:UIControlEventTouchUpInside];
-    
     UIButton *topOfPageButton = (UIButton*)[self.navigationBar viewWithTag:2];
     [topOfPageButton addTarget:self
                         action:@selector(topOfPage)
               forControlEvents:UIControlEventTouchUpInside];
-    
     return _navigationBar;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 110;
+    return 96;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.artistArray.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ArtistNameCell" forIndexPath:indexPath];
     cell.textLabel.text = [self.artistArray[indexPath.row] name];
-    cell.backgroundColor = self.bwBackgroundColor;
-    cell.textLabel.textColor = self.bwTextColor;
+    cell.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+    cell.textLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
     return cell;
 }
 

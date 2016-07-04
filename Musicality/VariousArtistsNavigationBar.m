@@ -16,6 +16,7 @@
     [super awakeFromNib];
     
     self.variousArtistsLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
 }
 
 @end
