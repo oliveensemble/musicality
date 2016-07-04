@@ -49,10 +49,10 @@
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     </label>
                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbg-ZQ-MLo" customClass="Button">
-                        <rect key="frame" x="141" y="91" width="80" height="28"/>
+                        <rect key="frame" x="141" y="91" width="84" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="T8q-00-R8T"/>
-                            <constraint firstAttribute="width" constant="80" id="gyN-dl-gW2"/>
+                            <constraint firstAttribute="width" constant="84" id="gyN-dl-gW2"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="  View Artist  ">
