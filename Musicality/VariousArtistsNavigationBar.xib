@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleAspectFit" id="UXm-Fk-jvh" customClass="VariousArtistsNavigationBar">
+        <view alpha="0.97999999999999998" contentMode="scaleAspectFit" id="UXm-Fk-jvh" customClass="VariousArtistsNavigationBar">
             <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -30,7 +30,7 @@
                     </state>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIB-7J-Qex" customClass="Button">
-                    <rect key="frame" x="130" y="67" width="60" height="30"/>
+                    <rect key="frame" x="130" y="61" width="60" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="NrZ-Eg-ffs"/>
                         <constraint firstAttribute="height" constant="30" id="Zyu-ep-z1L"/>
@@ -38,15 +38,16 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="  Back  ">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="YBc-Jf-nnZ" firstAttribute="baseline" secondItem="0Yt-b3-0Hd" secondAttribute="baseline" id="4KQ-Gr-RRt"/>
                 <constraint firstAttribute="centerX" secondItem="VIB-7J-Qex" secondAttribute="centerX" id="8hg-dw-lDF"/>
-                <constraint firstItem="VIB-7J-Qex" firstAttribute="top" secondItem="YBc-Jf-nnZ" secondAttribute="bottom" constant="16" id="BMJ-v5-Dve"/>
+                <constraint firstItem="VIB-7J-Qex" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YBc-Jf-nnZ" secondAttribute="bottom" constant="10" id="BMJ-v5-Dve"/>
                 <constraint firstAttribute="trailing" secondItem="0Yt-b3-0Hd" secondAttribute="trailing" id="Toz-Of-NI5"/>
                 <constraint firstItem="YBc-Jf-nnZ" firstAttribute="top" secondItem="UXm-Fk-jvh" secondAttribute="top" id="a5C-5V-HGl"/>
                 <constraint firstItem="YBc-Jf-nnZ" firstAttribute="leading" secondItem="UXm-Fk-jvh" secondAttribute="leading" id="cvX-b7-oAp"/>
@@ -54,6 +55,7 @@
                 <constraint firstAttribute="centerX" secondItem="0Yt-b3-0Hd" secondAttribute="centerX" id="dKC-3S-qUk"/>
                 <constraint firstAttribute="trailing" secondItem="YBc-Jf-nnZ" secondAttribute="trailing" id="fZw-ZT-n7c"/>
                 <constraint firstItem="0Yt-b3-0Hd" firstAttribute="leading" secondItem="UXm-Fk-jvh" secondAttribute="leading" id="msw-mZ-WaK"/>
+                <constraint firstAttribute="bottom" secondItem="VIB-7J-Qex" secondAttribute="bottom" constant="5" id="vRW-zc-kPu"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
