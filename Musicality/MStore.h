@@ -19,22 +19,23 @@
 @interface MStore : NSObject
 
 @property (nonatomic) NSDate *lastLibraryScanDate;
-@property (nonatomic, readonly) NSString* affiliateToken;
+@property (nonatomic, readonly) NSString *affiliateToken;
+@property (nonatomic) UILocalNotification *localNotification;
 
 
 + (instancetype)sharedStore;
 
-- (NSString*)formattedAlbumIDFromURL:(NSURL*)url;
+- (NSString *)formattedAlbumIDFromURL:(NSURL *)url;
 
-- (NSDate*)formattedDateFromString:(NSString*)unFormattedDate;
-- (BOOL)thisDate:(NSDate*)date1 isMoreRecentThan:(NSDate*)date2;
-- (BOOL)isSameDay:(NSDate*)date1 as:(NSDate*)date2;
+- (NSDate *)formattedDateFromString:(NSString *)unFormattedDate;
+- (BOOL)thisDate:(NSDate *)date1 isMoreRecentThan:(NSDate *)date2;
+- (BOOL)isSameDay:(NSDate *)date1 as:(NSDate *)date2;
 - (BOOL)isToday:(NSDate *)date;
 
-- (NSArray*)artistsFromUserLibrary;
+- (NSArray *)artistsFromUserLibrary;
 
-- (UIImage*)imageWithColor:(UIColor *)color;
+- (UIImage *)imageWithColor:(UIColor *)color;
 
-- (void)showAlertPromptWithText:(NSString*)text;
+- (void)showAlertPromptWithText:(NSString *)text;
 
 @end

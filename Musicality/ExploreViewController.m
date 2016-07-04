@@ -85,6 +85,17 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     self.currentGenreTitle = @"All Genres";
     
     [self fetchFeed];
+    
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    localNotif.alertAction = NSLocalizedString(@"Check it out", nil);
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    localNotif.applicationIconBadgeNumber += 1;
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+    localNotif.alertBody = @"Test";
+    localNotif.userInfo = @{@"albumID" : @"848859596", @"artistName" : @"BOB"};
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    DLog(@"Scheduled");
 }
 
 - (void)viewWillAppear:(BOOL)animated {

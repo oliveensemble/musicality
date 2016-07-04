@@ -55,9 +55,8 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    if([application applicationState] == UIApplicationStateInactive) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"appDidReceiveNotification" object:nil userInfo:notification.userInfo];
-    }
+    DLog(@"Setting notification");
+    [mStore setLocalNotification:notification];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
