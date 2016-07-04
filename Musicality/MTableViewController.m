@@ -19,12 +19,4 @@
     [super viewWillAppear:animated];
 }
 
-- (void)configureView {
-    if ([[UserPrefs sharedPrefs] isDarkModeEnabled]) {
-        self.view.backgroundColor = [UIColor blackColor];
-    } else {
-        self.view.backgroundColor = [UIColor whiteColor];
-    }
-}
-
 @end

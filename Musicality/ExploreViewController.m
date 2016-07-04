@@ -51,7 +51,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 @property (nonatomic) UIColor *cellBackgroundColor;
 
 @property int currentGenreId;
-@property (nonatomic) NSString *currentGenreTitle;
+@property (copy, nonatomic) NSString *currentGenreTitle;
 
 @property (nonatomic) UIView *loadingView;
 

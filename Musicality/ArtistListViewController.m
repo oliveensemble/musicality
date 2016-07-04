@@ -44,7 +44,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 @property (nonatomic) NSMutableArray *tableViewArray;
 @property (nonatomic) NSArray *filters;
 
-@property (nonatomic) NSString *currentFilterTitle;
+@property (copy, nonatomic) NSString *currentFilterTitle;
 
 @property (nonatomic) NSUInteger viewState;
 @property (nonatomic) NSUInteger filterType;

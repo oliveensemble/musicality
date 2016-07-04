@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSOperationQueue *artistRequestQueue;
 @property (nonatomic) int totalOperations;
 @property (nonatomic) float currentProgress;
-@property (nonatomic, strong) NSString *currentProgressText;
+@property (copy, nonatomic) NSString *currentProgressText;
 
 - (void)beginOperations;
 - (void)updateProgress:(NSString *)progressText;

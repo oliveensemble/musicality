@@ -12,7 +12,7 @@
 
 @interface ArtistList ()
 
-@property (nonatomic) NSString *path;
+@property (copy, nonatomic) NSString *path;
 
 @end
 

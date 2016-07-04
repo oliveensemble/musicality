@@ -375,6 +375,8 @@
 		4F2C437A19F0022600909D01 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4FC0892E1D10605E00CABB8D /* MTableViewController.h */,
+				4FC0892F1D10605E00CABB8D /* MTableViewController.m */,
 				4F1520C819EDFEAD00530B8E /* ExploreViewController.h */,
 				4F1520C919EDFEAD00530B8E /* ExploreViewController.m */,
 				4FAFCBE61A146A760024A4E5 /* ArtistListViewController.h */,
@@ -423,8 +425,6 @@
 				4F63E84E1BED2E16004B6991 /* FilterTableViewCell.m */,
 				4F8008A91D1B9AF3005EBE37 /* SettingsTableViewCell.h */,
 				4F8008AA1D1B9AF3005EBE37 /* SettingsTableViewCell.m */,
-				4FC0892E1D10605E00CABB8D /* MTableViewController.h */,
-				4FC0892F1D10605E00CABB8D /* MTableViewController.m */,
 				4F7A63871C44545F003AE595 /* MNavigationBar.h */,
 				4F7A63881C44545F003AE595 /* MNavigationBar.m */,
 				4FC089341D107E9300CABB8D /* MTabBarController.h */,

@@ -11,8 +11,8 @@
 
 @interface Album : NSObject <NSCoding>
 
-@property (nonatomic) NSString *title;
-@property (nonatomic) NSString *artist;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *artist;
 @property (nonatomic) NSURL *artworkURL;
 @property (nonatomic) NSURL *URL;
 @property (nonatomic) NSDate *releaseDate;

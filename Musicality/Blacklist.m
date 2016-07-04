@@ -12,7 +12,7 @@
 
 @interface Blacklist ()
 
-@property (nonatomic) NSString *path;
+@property (copy, nonatomic) NSString *path;
 @property (nonatomic) NSMutableOrderedSet* artistSet;
 
 @end

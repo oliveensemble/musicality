@@ -26,8 +26,8 @@
 @property BOOL isAutoUpdateEnabled;
 @property BOOL isDarkModeEnabled;
 
-@property (nonatomic) NSString *autoupdateText;
-@property (nonatomic) NSString *darkModeText;
+@property (copy, nonatomic) NSString *autoupdateText;
+@property (copy, nonatomic) NSString *darkModeText;
 @property (nonatomic) NSNumber *alertViewActionID;
 
 @property (nonatomic) UIAlertView *alertView;
@@ -153,8 +153,8 @@
     switch (indexPath.row) {
         case 0: {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/musicality-never-miss-a-beat/id945094708?ls=1&mt=8"]];
-        }
             break;
+        }
         case 1: {
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             if (self.isAutoUpdateEnabled) {
@@ -193,8 +193,8 @@
                 DLog(@"Dark mode on");
             }
             [self toggleDarkMode];
-        }
             break;
+        }
         case 3: {
             if ([MFMailComposeViewController canSendMail]) {
                 MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
@@ -206,14 +206,14 @@
             } else {
                 DLog(@"This device cannot send email");
             }
-        }
             break;
+        }
         case 5: {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Clear all data" message:@"Are you sure? You can turn 'Scan Library Automatically' on to restart library search" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Clear", nil];
             alert.tag = 2;
             [alert show];
-        }
             break;
+        }
         default:
             break;
     }
@@ -223,7 +223,6 @@
 }
 
 - (void)toggleDarkMode {
-    
     if (self.isDarkModeEnabled) {
         self.view.backgroundColor = [UIColor blackColor];
         //Tab Bar customization
@@ -238,7 +237,6 @@
         self.navigationBar.backgroundColor = [UIColor whiteColor];
         self.navigationBar.settingsLabel.textColor = [UIColor blackColor];
     }
-    
     [self.tableView reloadData];
 }
 

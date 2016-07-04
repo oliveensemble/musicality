@@ -13,7 +13,7 @@
 
 @interface NotificationList ()
 
-@property (nonatomic) NSString *path;
+@property (copy, nonatomic) NSString *path;
 @property (nonatomic, retain) NSMutableArray *notifArray;
 
 @end
