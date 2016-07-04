@@ -8,9 +8,9 @@
 
 @import UIKit;
 
-#import "MTableViewController.h"
+#import "MViewControllerDelegate.h"
 #import "ArtistViewModel.h"
 
-@interface ArtistListViewController : MTableViewController
+@interface ArtistListViewController : UITableViewController
 
 @end

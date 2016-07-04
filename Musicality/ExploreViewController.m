@@ -22,6 +22,7 @@
 #import "ExploreNavigationBar.h"
 #import "ArtistViewController.h"
 #import "ExploreViewController.h"
+#import "MViewControllerDelegate.h"
 #import "VariousArtistsViewController.h"
 
 //The different states the view can be in; either selecting a genre or scrolling through albums. The feed type changes whether it is the top charts or the new albums view
@@ -36,7 +37,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     topCharts = 1 << 1
 };
 
-@interface ExploreViewController () <SKStoreProductViewControllerDelegate, ExploreViewModelDelegate>
+@interface ExploreViewController () <ExploreViewModelDelegate, MViewControllerDelegate, SKStoreProductViewControllerDelegate>
 
 @property (nonatomic, weak) ExploreNavigationBar *navigationBar;
 @property (nonatomic) ExploreViewModel *exploreViewModel;
@@ -59,6 +60,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 @implementation ExploreViewController
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -68,7 +71,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     
     //Register notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:@"appDidReceiveNotification" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
+
     //Register TableView cells
     [self.tableView registerNib:[UINib nibWithNibName:@"FilterTableViewCell" bundle:nil] forCellReuseIdentifier:@"filterCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
@@ -93,7 +97,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     localNotif.timeZone = [NSTimeZone defaultTimeZone];
     localNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
     localNotif.alertBody = @"Test";
-    localNotif.userInfo = @{@"albumID" : @"848859596", @"artistName" : @"BOB"};
+    localNotif.userInfo = @{@"albumID" : [NSNumber numberWithInteger: 1107053773], @"artistName" : @"BOB"};
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     DLog(@"Scheduled");
 }
@@ -115,7 +119,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     //Check if there was notification to
     NSString *albumID = [[NSUserDefaults standardUserDefaults] valueForKey:@"albumID"];
     if (albumID) {
-        [self toiTunes:@{@"albumID" : albumID}];
+        //[self toiTunes:@{@"albumID" : albumID}];
         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"albumID"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
@@ -123,7 +127,27 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     if (self.tableViewArray.count < 2 && self.viewState != loading) {
         [self fetchFeed];
     }
+    [self viewMovedToForeground];
     
+}
+
+- (void)viewMovedToForeground {
+    DLog(@"Moved to foreground");
+    [self checkForNotification: mStore.localNotification];
+}
+
+- (void)checkForNotification:(UILocalNotification *)localNotification {
+    if (localNotification) {
+        DLog(@"Local Notification: %@", mStore.localNotification);
+        if([[UIApplication sharedApplication] applicationState] == UIApplicationStateInactive) {
+            DLog(@"(Background) Local Notification");
+        }
+        
+        // Remove the local notification when we're finished with it so it doesn't get reused
+        [mStore setLocalNotification:nil];
+        DLog(@"Not background, calling toiTunes");
+        [self loadStoreProductViewController:localNotification.userInfo];
+    }
 }
 
 #pragma mark NSOperation Delegate
@@ -242,7 +266,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
         [albumCell.viewArtistButton addTarget:self action:@selector(toArtist:) forControlEvents:UIControlEventTouchUpInside];
         
         //Add user info to cell and button
-        NSDictionary *userInfo = @{@"AlbumURL" : album.URL, @"Artist" : album.artist, @"ArtistID" : album.artistID};
+        NSDictionary *userInfo = @{@"AlbumURL" : album.URL, @"Artist" : album.artist, @"ArtistID" : album.artistID, @"albumID" : [mStore formattedAlbumIDFromURL:album.URL]};
         albumCell.viewArtistButton.buttonInfo = userInfo;
         albumCell.cellInfo = userInfo;
         
@@ -283,7 +307,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
         }
     } else if ((indexPath.row > self.genres.count && self.viewState == genreSelection) || (indexPath.row > 0 && self.viewState == browse)){
         AlbumTableViewCell *albumCell = [self.tableView cellForRowAtIndexPath:indexPath];
-        [self toiTunes:albumCell.cellInfo];
+        [self loadStoreProductViewController:albumCell.cellInfo];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -413,29 +437,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 #pragma mark Navigation
 
-- (void)toiTunes:(NSDictionary*)cellInfo {
-    NSString *albumID;
-    if (cellInfo[@"albumID"]) {
-        albumID = cellInfo[@"albumID"];
-    } else {
-        //If the dictionary item has a URL then format it
-        albumID = [mStore formattedAlbumIDFromURL:cellInfo[@"AlbumURL"]];
-    }
-    
-    // Initialize Product View Controller
-    SKStoreProductViewController *storeProductViewController = [[SKStoreProductViewController alloc] init];
-    // Configure View Controller
-    storeProductViewController.delegate = self;
-    [storeProductViewController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken} completionBlock:^(BOOL result, NSError *error) {
-        if (error) {
-            DLog(@"Error %@ with User Info %@.", error, [error userInfo]);
-        } else {
-            // Present Store Product View Controller
-            [self presentViewController:storeProductViewController animated:YES completion: nil];
-        }
-    }];
-}
-
 - (void)didReceiveNotification:(NSNotification*)notif {
     NSDictionary *notificationOptions = notif.userInfo;
     NSDictionary *cellInfo;
@@ -446,11 +447,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     } else {
         return;
     }
-    [self toiTunes:cellInfo];
-}
-
-- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self loadStoreProductViewController:]
 }
 
 - (void)toArtist:(Button*)sender {
@@ -470,6 +467,36 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
         VariousArtistsViewController *variousArtistsVC = segue.destinationViewController;
         variousArtistsVC.albumLink = sender;
     }
+}
+
+- (void)loadStoreProductViewController:(NSDictionary *)userInfo {
+    NSNumber *albumID = userInfo[@"albumID"];
+    if (!albumID) {
+        return;
+    }
+    
+    // Initialize Product View Controller
+    if ([SKStoreProductViewController class] != nil) {
+        // Configure View Controller
+        SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
+        [storeViewController setDelegate:self];
+        NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
+        [storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+            if (error) {
+                // handle the error
+                NSLog(@"%@",error.description);
+            }
+            [self presentViewController:storeViewController animated:YES completion:nil];
+        }];
+    }
+}
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
 @end

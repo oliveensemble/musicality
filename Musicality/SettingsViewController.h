@@ -7,8 +7,8 @@
 //
 
 @import UIKit;
-#import "MTableViewController.h"
+#import "MViewControllerDelegate.h"
 
-@interface SettingsViewController : MTableViewController
+@interface SettingsViewController : UITableViewController
 
 @end

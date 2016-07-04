@@ -111,7 +111,7 @@
     return NO;
 }
 
-- (NSString*)formattedAlbumIDFromURL:(NSURL*)url {
+- (NSNumber*)formattedAlbumIDFromURL:(NSURL*)url {
     
     if (!url) {
         DLog(@"Cannot format, url is empty: %@", url);
@@ -136,7 +136,8 @@
         DLog(@"Cannot format string: %@", stringUrl);
     }
     @finally {
-        return formattedString;
+        NSInteger albumID = [formattedString integerValue];
+        return [NSNumber numberWithInteger: albumID];
     }
     return nil;
     
