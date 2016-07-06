@@ -9,7 +9,6 @@
 @import Foundation;
 
 #import "ArtistSearch.h"
-#import "PendingOperations.h"
 
 @interface AutoScan : NSObject <ArtistSearchDelegate>
 
@@ -19,7 +18,5 @@
 - (void)stopScan;
 
 @property BOOL isScanning;
-
-@property (nonatomic, strong) PendingOperations *pendingOperations;
 
 @end

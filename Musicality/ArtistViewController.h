@@ -8,12 +8,10 @@
 
 @import UIKit;
 #import "Artist.h"
-#import "ArtistFetch.h"
-#import "PendingOperations.h"
+#import "MViewControllerDelegate.h"
 
 @interface ArtistViewController : UITableViewController
 
 @property (nonatomic, strong) Artist *artist;
-@property (nonatomic, strong) PendingOperations *pendingOperations;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+#import "MViewControllerDelegate.h"
 
 @interface SettingsViewController : UITableViewController
 

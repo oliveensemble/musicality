@@ -19,7 +19,4 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *topOfPageButton;
 
-- (void)beginLoading;
-- (void)endLoading;
-
 @end

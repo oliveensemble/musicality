@@ -9,8 +9,9 @@
 @import UIKit;
 
 #import "Button.h"
+#import "MNavigationBar.h"
 
-@interface VariousArtistsNavigationBar : UIView
+@interface VariousArtistsNavigationBar : MNavigationBar
 
 @property (weak, nonatomic) IBOutlet UILabel *variousArtistsLabel;
 @property (weak, nonatomic) IBOutlet Button *backButton;

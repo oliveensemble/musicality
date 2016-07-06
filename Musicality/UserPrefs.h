@@ -15,6 +15,7 @@
 
 @property (nonatomic, assign) BOOL artistListNeedsUpdating;
 @property (nonatomic, assign) BOOL isAutoUpdateEnabled;
+@property (nonatomic, assign) BOOL isDarkModeEnabled;
 @property (nonatomic, assign) BOOL noArtists;
 
 @property (nonatomic, assign) NSUInteger lastLibraryCount;

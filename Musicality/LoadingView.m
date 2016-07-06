@@ -7,13 +7,15 @@
 //
 
 #import "LoadingView.h"
+#import "ColorScheme.h"
 #import "UserPrefs.h"
 
 @implementation LoadingView
 
 - (void)awakeFromNib {
-  self.backgroundColor = [UIColor whiteColor];
-  self.viewLabel.textColor = [UIColor blackColor];
+    self.viewLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.progressLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
 }
 
 @end
