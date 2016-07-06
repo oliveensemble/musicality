@@ -470,9 +470,9 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     [self.view bringSubviewToFront:self.loadingBar];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver: self];
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"autoScanFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 @end
