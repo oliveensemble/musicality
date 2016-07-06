@@ -115,7 +115,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 
 #pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
-    DLog(@"Moved to foreground");
     [self checkForNotification: mStore.localNotification];
 }
 

@@ -76,7 +76,6 @@
 
 #pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
-    DLog(@"Moved to foreground");
     [self checkForNotification: mStore.localNotification];
 }
 

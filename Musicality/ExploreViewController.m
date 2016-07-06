@@ -87,8 +87,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     self.feedType = topCharts;
     self.currentGenreId = -1;
     self.currentGenreTitle = @"All Genres";
-    
-    [self fetchFeed];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -109,10 +107,10 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 #pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
-    DLog(@"Moved to foreground");
     if ((!self.albumArray || [self.albumArray count] == 0) && self.viewState != loading) {
         [self fetchFeed];
     }
+    
     [self checkForNotification: mStore.localNotification];
 }
 
@@ -142,8 +140,9 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     //Add the items to the table view array
-    self.tableViewArray = [NSMutableArray arrayWithObject:self.currentGenreTitle];
-    [self.tableViewArray addObjectsFromArray: albumArray];
+    self.tableViewArray = [NSMutableArray arrayWithObject: self.currentGenreTitle];
+    _albumArray = [NSArray arrayWithArray: albumArray];
+    [self.tableViewArray addObjectsFromArray: self.albumArray];
     
     NSMutableArray *indexPaths = [NSMutableArray array];
     //Then add the required number of index paths
