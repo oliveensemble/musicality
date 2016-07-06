@@ -100,8 +100,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [self.tableView headerViewForSection:0];
     
     self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
-    
-    [self.tableView reloadData];    
+    [self.tableView reloadData];
     [self viewMovedToForeground];
 }
 
@@ -386,7 +385,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     
     //If it's not loading yet then start
     if (self.viewState != loading) {
-        [self.view setUserInteractionEnabled:false];
         self.viewState = loading;
         self.loadingView = [[UIView alloc] initWithFrame:self.view.frame];
         self.loadingView.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
@@ -407,7 +405,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 - (void)endLoading {
     DLog(@"");
     if (self.viewState == loading) {
-        [self.view setUserInteractionEnabled:true];
         self.viewState = browse;
         [UIView animateWithDuration:0.2 animations:^{
             self.loadingView.alpha = 0.0;
@@ -465,9 +462,17 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver: self];
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (self.loadingView) {
+        CGRect frame = self.loadingView.frame;
+        frame.origin.y = scrollView.contentOffset.y;
+        self.loadingView.frame = frame;
+    }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 @end

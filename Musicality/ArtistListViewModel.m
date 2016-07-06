@@ -90,4 +90,9 @@
     [(NSObject *)self.delegate performSelectorOnMainThread:@selector(didFinishUpdatingList) withObject:nil waitUntilDone:NO];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"autoScanUpdate" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"autoScanFinished" object:nil];
+}
+
 @end
