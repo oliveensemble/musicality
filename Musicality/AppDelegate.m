@@ -25,50 +25,50 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Fabric with:@[[Crashlytics class]]];
-    
-    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-    application.minimumBackgroundFetchInterval = UIApplicationBackgroundFetchIntervalMinimum;
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"notFirstRun"]) {
-        UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Tutorial" bundle:nil];
-        UIViewController *initialViewController = [storyBoard instantiateInitialViewController];
-        [self.window setRootViewController:initialViewController];
-    }
-    
-    // If the application was woken by a notification, store it
-    UILocalNotification *notification = [launchOptions valueForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-    if (notification) {
-        DLog(@"Setting notification");
-        [mStore setLocalNotification:notification];
-    }
-    
-    [[NotificationList sharedList] determineNotificationItems];
-    
-    return YES;
+  [Fabric with:@[[Crashlytics class]]];
+  
+  UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+  UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+  [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+  application.minimumBackgroundFetchInterval = UIApplicationBackgroundFetchIntervalMinimum;
+  
+  if (![[NSUserDefaults standardUserDefaults] boolForKey:@"notFirstRun"]) {
+    UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Tutorial" bundle:nil];
+    UIViewController *initialViewController = [storyBoard instantiateInitialViewController];
+    [self.window setRootViewController:initialViewController];
+  }
+  
+  // If the application was woken by a notification, store it
+  UILocalNotification *notification = [launchOptions valueForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+  if (notification) {
+    DLog(@"Setting notification");
+    [mStore setLocalNotification:notification];
+  }
+  
+  [[NotificationList sharedList] determineNotificationItems];
+  
+  return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    application.applicationIconBadgeNumber = 0;
-    [[NotificationList sharedList] clearNotificationItems];
+  application.applicationIconBadgeNumber = 0;
+  [[NotificationList sharedList] clearNotificationItems];
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    if ([application applicationState] == UIApplicationStateInactive) {
-        DLog(@"Setting notification");
-        [mStore setLocalNotification:notification];
-    } else {
-        DLog(@"Received notification while application is running");
-    }
-
+  if ([application applicationState] == UIApplicationStateInactive) {
+    DLog(@"Setting notification");
+    [mStore setLocalNotification:notification];
+  } else {
+    DLog(@"Received notification while application is running");
+  }
+  
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [[UserPrefs sharedPrefs] savePrefs];
-    [[ArtistList sharedList] saveChanges];
-    [[Blacklist sharedList] saveChanges];
+  [[UserPrefs sharedPrefs] savePrefs];
+  [[ArtistList sharedList] saveChanges];
+  [[Blacklist sharedList] saveChanges];
 }
 
 @end

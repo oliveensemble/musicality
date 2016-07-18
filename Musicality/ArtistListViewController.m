@@ -43,6 +43,8 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 @property (nonatomic, weak) ArtistsNavigationBar *navigationBar;
 @property (nonatomic) ArtistListViewModel *artistListViewModel;
 
+@property (nonatomic) SKStoreProductViewController *storeViewController;
+
 @property (nonatomic) NSMutableArray *tableViewArray;
 @property (nonatomic) NSArray *filters;
 
@@ -117,6 +119,10 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 
 #pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
+  if (self.storeViewController) {
+    [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
+  }
+  
   [self checkForNotification: mStore.localNotification];
   self.refresh.tintColor = [[ColorScheme sharedScheme] secondaryColor];
 }
@@ -139,21 +145,22 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   // Initialize Product View Controller
   if ([SKStoreProductViewController class] != nil) {
     // Configure View Controller
-    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
-    [storeViewController setDelegate:self];
+    _storeViewController = [[SKStoreProductViewController alloc] init];
+    [self.storeViewController setDelegate:self];
     NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
-    [storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+    [self.storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
       if (error) {
         // handle the error
         NSLog(@"%@",error.description);
       }
-      [self presentViewController:storeViewController animated:YES completion:nil];
+      [self presentViewController:self.storeViewController animated:YES completion:nil];
     }];
   }
 }
 
 - (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
   [self dismissViewControllerAnimated:YES completion:nil];
+  self.storeViewController = nil;
 }
 
 #pragma mark NSOperation Methods
@@ -480,7 +487,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 
 -(void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"autoScanFinished" object:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 @end

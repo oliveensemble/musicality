@@ -43,6 +43,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 @property (nonatomic, weak) ExploreNavigationBar *navigationBar;
 @property (nonatomic) ExploreViewModel *exploreViewModel;
 
+@property (nonatomic) SKStoreProductViewController *storeViewController;
+
 @property (nonatomic) NSMutableArray *tableViewArray;
 @property (nonatomic) NSArray *albumArray;
 @property (nonatomic) NSDictionary *genres;
@@ -107,6 +109,11 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 #pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
+  DLog(@"Moved to foreground");
+  if (self.storeViewController) {
+    [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
+  }
+  
   if ((!self.albumArray || [self.albumArray count] == 0) && self.viewState != loading) {
     [self fetchFeed];
   }
@@ -459,15 +466,15 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   // Initialize Product View Controller
   if ([SKStoreProductViewController class] != nil) {
     // Configure View Controller
-    SKStoreProductViewController *storeViewController = [[SKStoreProductViewController alloc] init];
-    [storeViewController setDelegate:self];
+    _storeViewController = [[SKStoreProductViewController alloc] init];
+    [self.storeViewController setDelegate:self];
     NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
-    [storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+    [self.storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
       if (error) {
         // handle the error
         NSLog(@"%@",error.description);
       }
-      [self presentViewController:storeViewController animated:YES completion:nil];
+      [self presentViewController:self.storeViewController animated:YES completion:nil];
     }];
   }
 }
@@ -483,10 +490,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     frame.origin.y = scrollView.contentOffset.y;
     self.loadingView.frame = frame;
   }
-}
-
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 @end
