@@ -60,6 +60,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backButton" destination="VIB-7J-Qex" id="SXb-pB-iMm"/>
+                <outlet property="topOfPageButton" destination="YBc-Jf-nnZ" id="QnP-pm-x1l"/>
                 <outlet property="variousArtistsLabel" destination="0Yt-b3-0Hd" id="hps-27-xoh"/>
             </connections>
             <point key="canvasLocation" x="176" y="958.5"/>

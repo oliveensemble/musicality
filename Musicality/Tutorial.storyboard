@@ -13,6 +13,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PFK-aj-oiW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="vkF-23-vrP" kind="relationship" relationship="rootViewController" id="yJu-rE-ZWn"/>
@@ -182,4 +185,5 @@
             <point key="canvasLocation" x="-110" y="190"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
