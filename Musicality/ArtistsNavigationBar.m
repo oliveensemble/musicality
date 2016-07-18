@@ -8,7 +8,6 @@
 
 #import "ArtistsNavigationBar.h"
 #import "ColorScheme.h"
-#import "UserPrefs.h"
 
 @implementation ArtistsNavigationBar
 

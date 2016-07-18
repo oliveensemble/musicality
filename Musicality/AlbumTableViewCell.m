@@ -8,7 +8,6 @@
 
 #import "AlbumTableViewCell.h"
 #import "ColorScheme.h"
-#import "UserPrefs.h"
 
 @implementation AlbumTableViewCell
 
