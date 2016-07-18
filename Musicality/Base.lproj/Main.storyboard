@@ -332,7 +332,14 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="n8K-6d-NJr"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="U5h-Bn-pvz">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="fS1-Ab-aWE" eventType="valueChanged" id="acX-S5-sqf"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
+                        <outlet property="refresh" destination="U5h-Bn-pvz" id="Np2-kb-2o6"/>
                         <segue destination="ajY-br-dZQ" kind="show" identifier="toArtist" id="5jn-Hg-aFt"/>
                         <segue destination="jRZ-RO-AZZ" kind="show" identifier="toVariousArtists" id="OJd-mv-FB1"/>
                     </connections>
@@ -574,7 +581,14 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="jmC-gY-G3a"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Y7S-CK-dFS">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="qKV-iy-SCQ" eventType="valueChanged" id="i5V-9f-YGy"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
+                        <outlet property="refresh" destination="Y7S-CK-dFS" id="uJn-tZ-lkn"/>
                         <segue destination="Ngn-1p-jmz" kind="show" identifier="toLibraryList" id="2he-bs-iiq"/>
                         <segue destination="ajY-br-dZQ" kind="show" identifier="toArtist" id="NMO-CG-dgE"/>
                     </connections>
