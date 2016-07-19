@@ -62,6 +62,8 @@
 		4FAACD291D3D704D00A362CC /* SearchArtistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACD281D3D704D00A362CC /* SearchArtistTableViewCell.m */; };
 		4FAACD2C1D3D705B00A362CC /* SearchAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACD2B1D3D705B00A362CC /* SearchAlbumTableViewCell.m */; };
 		4FAACD2F1D3D8ED000A362CC /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACD2E1D3D8ED000A362CC /* SearchViewController.m */; };
+		4FAACD321D3D919000A362CC /* SearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACD311D3D919000A362CC /* SearchViewModel.m */; };
+		4FAACD351D3D92CC00A362CC /* SearchFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAACD341D3D92CC00A362CC /* SearchFetch.m */; };
 		4FAFCBE81A146A760024A4E5 /* ArtistListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAFCBE71A146A760024A4E5 /* ArtistListViewController.m */; };
 		4FAFCBEB1A1472590024A4E5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAFCBEA1A1472590024A4E5 /* SettingsViewController.m */; };
 		4FC089301D10605E00CABB8D /* MViewControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC0892F1D10605E00CABB8D /* MViewControllerDelegate.m */; };
@@ -199,6 +201,10 @@
 		4FAACD2B1D3D705B00A362CC /* SearchAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAlbumTableViewCell.m; sourceTree = "<group>"; };
 		4FAACD2D1D3D8ED000A362CC /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		4FAACD2E1D3D8ED000A362CC /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		4FAACD301D3D919000A362CC /* SearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewModel.h; sourceTree = "<group>"; };
+		4FAACD311D3D919000A362CC /* SearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewModel.m; sourceTree = "<group>"; };
+		4FAACD331D3D92CC00A362CC /* SearchFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFetch.h; sourceTree = "<group>"; };
+		4FAACD341D3D92CC00A362CC /* SearchFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFetch.m; sourceTree = "<group>"; };
 		4FAFCBE61A146A760024A4E5 /* ArtistListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistListViewController.h; sourceTree = "<group>"; };
 		4FAFCBE71A146A760024A4E5 /* ArtistListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ArtistListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4FAFCBE91A1472590024A4E5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -504,6 +510,8 @@
 			children = (
 				4F3B35E91BEEA4ED0003F96F /* ExploreFetch.h */,
 				4F3B35EA1BEEA4ED0003F96F /* ExploreFetch.m */,
+				4FAACD331D3D92CC00A362CC /* SearchFetch.h */,
+				4FAACD341D3D92CC00A362CC /* SearchFetch.m */,
 				4FC3E77C1B13E00200C3C10F /* ArtistSearch.h */,
 				4FC3E77D1B13E00200C3C10F /* ArtistSearch.m */,
 				4FA107E71C449867007CD4BC /* ArtistFetch.h */,
@@ -546,6 +554,8 @@
 				4FF5C5081D2340A1000CE9F7 /* ArtistListViewModel.m */,
 				4FF5C50A1D241FF6000CE9F7 /* ArtistViewModel.h */,
 				4FF5C50B1D241FF6000CE9F7 /* ArtistViewModel.m */,
+				4FAACD301D3D919000A362CC /* SearchViewModel.h */,
+				4FAACD311D3D919000A362CC /* SearchViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -711,6 +721,7 @@
 				4FEC5A8F1B36672300985B0C /* TutorialInfoViewController.m in Sources */,
 				4FE1039E19DB9425004F27BB /* Artist.m in Sources */,
 				4F63E84B1BE57BCF004B6991 /* UIImageView+Haneke.m in Sources */,
+				4FAACD351D3D92CC00A362CC /* SearchFetch.m in Sources */,
 				4F718ACF1B13FA8800DA890E /* ExplorePendingOperations.m in Sources */,
 				4FF5C4FF1D2306C2000CE9F7 /* AutoScanPendingOperations.m in Sources */,
 				4FE103A119DBA0DB004F27BB /* Album.m in Sources */,
@@ -739,6 +750,7 @@
 				4FF5C5051D2324EB000CE9F7 /* ExploreViewModel.m in Sources */,
 				4F668CEF1B3A2A68008DC2A7 /* UserPrefs.m in Sources */,
 				4F63E8451BE57BCF004B6991 /* HNKCache.m in Sources */,
+				4FAACD321D3D919000A362CC /* SearchViewModel.m in Sources */,
 				4F63E8481BE57BCF004B6991 /* HNKNetworkFetcher.m in Sources */,
 				4F7A16F019F885270039508D /* ArtistsNavigationBar.m in Sources */,
 				4FAACD261D3D5FE600A362CC /* SearchNavigationBar.m in Sources */,
