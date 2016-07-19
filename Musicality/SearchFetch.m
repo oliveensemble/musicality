@@ -79,7 +79,6 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
           }
         } else if (self.searchType == artists) {
           // Iterate through the artists in the json file
-          // Iterate through the albums in the json file
           for (NSDictionary *artistDictionary in jsonArray) {
             if (artistDictionary[@"artistName"] && artistDictionary[@"artistId"]) {
               Artist *artistResult = [[Artist alloc] initWithArtistID:artistDictionary[@"artistId"] andName:artistDictionary[@"artistName"]];

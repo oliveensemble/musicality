@@ -21,6 +21,6 @@
 
 @protocol SearchFetchDelegate <NSObject>
 
-- (void)searchFetchDidFinish:(SearchFetch *)downloader;
+- (void)searchFetchDidFinish:(NSMutableArray *)searchResultsArray;
 
 @end
