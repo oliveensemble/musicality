@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *filterLabel;
 @property (nonatomic) int filterId;
 
+- (void)configure;
+
 @end

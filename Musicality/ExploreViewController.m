@@ -24,6 +24,7 @@
 #import "ExploreViewController.h"
 #import "MViewControllerDelegate.h"
 #import "VariousArtistsViewController.h"
+#import "MViewControllerDelegate.h"
 
 //The different states the view can be in; either selecting a genre or scrolling through albums. The feed type changes whether it is the top charts or the new albums view
 typedef NS_OPTIONS(NSUInteger, ViewState) {
@@ -178,8 +179,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"ExploreNavigationBar" owner:self options:nil] objectAtIndex:0];
   _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
   _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationBar.bounds].CGPath;
-  [_navigationBar.topChartsButton addTarget:self action:@selector(showTopCharts:) forControlEvents:UIControlEventTouchUpInside];
-  [_navigationBar.exploreNewButton addTarget:self action:@selector(showNewReleases:) forControlEvents:UIControlEventTouchUpInside];
+  [_navigationBar.topChartsButton addTarget:self action:@selector(showTopCharts) forControlEvents:UIControlEventTouchUpInside];
+  [_navigationBar.exploreNewButton addTarget:self action:@selector(showNewReleases) forControlEvents:UIControlEventTouchUpInside];
   [_navigationBar.topOfPageButton addTarget:self action:@selector(topOfPage) forControlEvents:UIControlEventTouchUpInside];
   if (self.feedType == topCharts) {
     [_navigationBar.topChartsButton setSelectedStyle];
@@ -226,7 +227,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  
   if (indexPath.row == 0 || (self.viewState == genreSelection && indexPath.row <= self.genres.count)) {
     FilterTableViewCell *filterCell = [tableView dequeueReusableCellWithIdentifier:@"filterCell"];
     NSNumber *filterId;
@@ -273,12 +273,12 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  //If the user selected the first item in the array and the genre selection was closed:
+  // If the user selected the first item in the array and the genre selection was closed:
   if (indexPath.row == 0 && self.viewState == browse) {
-    //Open genre selection
+    // Open genre selection
     [self toggleGenreSelection:^(bool finished) {}];
   } else if (indexPath.row <= self.genres.count && self.viewState == genreSelection) {
-    //New genre selected; we need to refetch
+    // New genre selected; we need to refetch
     if (indexPath.row == 0) {
       [self toggleGenreSelection:^(bool finished) {
         self.currentGenreId = -1;
@@ -288,7 +288,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     } else {
       NSNumber *selectedGenreValue = self.genres.allValues[indexPath.row - 1];
       if (selectedGenreValue.intValue == self.currentGenreId) {
-        //Close genre selection
+        // Close genre selection
         [self toggleGenreSelection:^(bool finished) {}];
       } else {
         [self toggleGenreSelection:^(bool finished) {
@@ -340,14 +340,14 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   completion(YES);
 }
 
-- (void)showTopCharts:(Button*)sender {
+- (void)showTopCharts {
   self.feedType = topCharts;
   [self.navigationBar.topChartsButton setSelectedStyle];
   [self.navigationBar.exploreNewButton setDeselectedStyle];
   [self fetchFeed];
 }
 
-- (void)showNewReleases:(Button*)sender {
+- (void)showNewReleases {
   self.feedType = new;
   [self.navigationBar.exploreNewButton setSelectedStyle];
   [self.navigationBar.topChartsButton setDeselectedStyle];
@@ -355,7 +355,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 }
 
 - (void)showActionSheet:(id)sender {
-  
   UILongPressGestureRecognizer *longPress = sender;
   
   if (longPress.state == UIGestureRecognizerStateBegan) {
@@ -459,6 +458,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 - (void)loadStoreProductViewController:(NSDictionary *)userInfo {
   NSNumber *albumID = userInfo[@"albumID"];
+  
   if (!albumID) {
     return;
   }
@@ -484,7 +484,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-  
   if (self.loadingView) {
     CGRect frame = self.loadingView.frame;
     frame.origin.y = scrollView.contentOffset.y;
