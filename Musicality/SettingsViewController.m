@@ -48,7 +48,7 @@
   self.tabBarItem.selectedImage = selectedImage;
   self.tabBarController.tabBar.barTintColor = [[ColorScheme sharedScheme] primaryColor];
   self.tabBarController.tabBar.tintColor = [[ColorScheme sharedScheme] secondaryColor];
-  [self.tableView headerViewForSection:2];
+  [self.tableView headerViewForSection:3];
   
   self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
   

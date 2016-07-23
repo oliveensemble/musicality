@@ -19,7 +19,6 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
 
 @property (nonatomic) NSUInteger searchType;
 @property (copy, nonatomic) NSString *searchTerm;
-@property (nonatomic) NSMutableArray *searchResultsArray;
 
 @end
 
@@ -49,7 +48,7 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
     self.searchTerm = [self.searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
     if (self.searchType == albums) {
-      requestString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=album&attribute=albumTerm&limit=25", self.searchTerm];
+      requestString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=album&attribute=albumTerm&limit=50", self.searchTerm];
     } else {
       requestString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=musicArtist&limit=25", self.searchTerm];
     }
@@ -66,14 +65,23 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
       NSError *error;
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:searchData options:NSJSONReadingMutableContainers error:&error];
       NSArray *jsonArray = jsonObject[@"results"];
-      _searchResultsArray = [NSMutableArray arrayWithCapacity:25];
+      _searchResultsArray = [NSMutableArray arrayWithCapacity:50];
       
       if (jsonArray.count > 1) {
         if (self.searchType == albums) {
           // Iterate through the albums in the json file
           for (NSDictionary *albumDictionary in jsonArray) {
             if (albumDictionary[@"collectionCensoredName"] && albumDictionary[@"collectionViewUrl"]) {
-              Album *albumResult = [[Album alloc] initWithAlbumTitle: albumDictionary[@"collectionCensoredName"] artist: albumDictionary[@"artistName"] artworkURL:albumDictionary[@"artworkUrl100"]albumURL:albumDictionary[@"collectionViewUrl"] releaseDate: albumDictionary[@"releaseDate"]];
+              Album *albumResult = [[Album alloc] initWithAlbumTitle: albumDictionary[@"collectionCensoredName"]
+                                                              artist: albumDictionary[@"artistName"]
+                                                          artworkURL: albumDictionary[@"artworkUrl100"]
+                                                            albumURL: albumDictionary[@"collectionViewUrl"]
+                                                         releaseDate: albumDictionary[@"releaseDate"]];
+              
+              if (![albumResult.artist isEqualToString:@"Various Artists"]) {
+                [albumResult addArtistId: albumDictionary[@"artistId"]];
+              }
+              
               [self.searchResultsArray addObject: albumResult];
             }
           }
@@ -95,7 +103,7 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
       }
       
       //Cast the operation to NSObject, and notify the caller on the main thread.
-      [(NSObject *)self.delegate performSelectorOnMainThread:@selector(searchFetchDidFinish:) withObject:self waitUntilDone:NO];
+      [(NSObject *)self.delegate performSelectorOnMainThread:@selector(searchFetchDidFinish:) withObject:self.searchResultsArray waitUntilDone:NO];
     }
     
   }

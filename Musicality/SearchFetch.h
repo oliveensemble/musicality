@@ -14,6 +14,7 @@
 @interface SearchFetch : NSOperation
 
 @property (weak, nonatomic) id<SearchFetchDelegate> delegate;
+@property (nonatomic) NSMutableArray *searchResultsArray;
 
 - (instancetype)initWithSearchType:(NSUInteger)searchType searchTerm: (NSString *)searchTerm delegate:(id<SearchFetchDelegate>) delegate;
 

@@ -36,12 +36,12 @@
 }
 
 - (void)beginOperations {
-  self.totalOperations = (int)self.exploreRequestsInProgress.count;
+  self.totalOperations = (int)self.searchRequestsInProgress.count;
   self.currentProgress = 0.0;
 }
 
 - (void)updateProgress:(NSString *)progressText {
-  int currentCount = (int)self.totalOperations - (int)self.exploreRequestsInProgress.count;
+  int currentCount = (int)self.totalOperations - (int)self.searchRequestsInProgress.count;
   if (currentCount == 0) {
     self.currentProgress = 100.0;
   }
@@ -49,17 +49,17 @@
   self.currentProgressText = progressText;
 }
 
-- (NSMutableDictionary *)exploreRequestsInProgress {
+- (NSMutableDictionary *)searchRequestsInProgress {
   if (!_searchRequestsInProgress) {
     _searchRequestsInProgress = [[NSMutableDictionary alloc] init];
   }
   return _searchRequestsInProgress;
 }
 
-- (NSOperationQueue *)exploreRequestQueue {
+- (NSOperationQueue *)searchRequestQueue {
   if (!_searchRequestQueue) {
     _searchRequestQueue = [[NSOperationQueue alloc] init];
-    _searchRequestQueue.name = @"Explore Request Queue";
+    _searchRequestQueue.name = @"Search Request Queue";
   }
   return _searchRequestQueue;
 }

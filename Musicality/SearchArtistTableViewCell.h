@@ -12,6 +12,7 @@
 @interface SearchArtistTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *artistLabel;
-@property (weak, nonatomic) IBOutlet Button *viewArtistButton;
+
+@property (nonatomic) NSDictionary* cellInfo;
 
 @end
