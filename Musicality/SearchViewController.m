@@ -19,6 +19,7 @@
 #import "UIImageView+Haneke.h"
 #import "ArtistViewController.h"
 #import "VariousArtistsViewController.h"
+#import "MTextField.h"
 
 typedef NS_OPTIONS(NSUInteger, SearchType) {
   artists = 1 << 0,
@@ -36,7 +37,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 @property (nonatomic) NSUInteger searchType;
 @property (copy, nonatomic) NSString *searchTerm;
 
-@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+@property (weak, nonatomic) IBOutlet MTextField *searchTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSMutableArray *tableViewArray;
 
@@ -122,6 +123,9 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     [self.activityIndicator stopAnimating]; 
   }
   
+  [self.searchTextField setColorButtonClearNormal:[[ColorScheme sharedScheme] secondaryColor]];
+  [self.searchTextField setColorButtonClearHighlighted:[[ColorScheme sharedScheme] primaryColor]];
+  [self.searchTextField layoutSubviews];
   self.searchTextField.textColor = [[ColorScheme sharedScheme] secondaryColor];
   self.searchTextField.tintColor = [[ColorScheme sharedScheme] secondaryColor];
   [self underlineTextField];
@@ -170,20 +174,23 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     _tableViewArray = [NSMutableArray arrayWithCapacity:50];
   }
   
-  [self.tableView beginUpdates];
-  [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-  [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
-  //Add the items to the table view array
-  [self.tableViewArray addObjectsFromArray: searchResultsArray];
-  
-  NSMutableArray *indexPaths = [NSMutableArray array];
-  //Then add the required number of index paths
-  for (int i = 0; i < searchResultsArray.count; i++) {
-    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
-    [indexPaths addObject:indexpath];
+  if (searchResultsArray.count > 0) {
+    [self.tableView beginUpdates];
+    [self.tableViewArray removeAllObjects];
+    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+    //Add the items to the table view array
+    [self.tableViewArray addObjectsFromArray: searchResultsArray];
+    
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    //Then add the required number of index paths
+    for (int i = 0; i < searchResultsArray.count; i++) {
+      NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
+      [indexPaths addObject:indexpath];
+    }
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];
   }
-  [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-  [self.tableView endUpdates];
   [self.tableView reloadData];
   [self.activityIndicator stopAnimating];
   self.viewState = browsing;

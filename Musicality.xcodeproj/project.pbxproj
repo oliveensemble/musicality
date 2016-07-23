@@ -49,6 +49,7 @@
 		4F7A16ED19F885090039508D /* ArtistsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7A16EC19F885090039508D /* ArtistsNavigationBar.xib */; };
 		4F7A16F019F885270039508D /* ArtistsNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A16EF19F885270039508D /* ArtistsNavigationBar.m */; };
 		4F7A63891C44545F003AE595 /* MNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A63881C44545F003AE595 /* MNavigationBar.m */; };
+		4F7B5C1F1D44086600EDF768 /* MTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B5C1E1D44086600EDF768 /* MTextField.m */; };
 		4F8008AB1D1B9AF3005EBE37 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8008AA1D1B9AF3005EBE37 /* SettingsTableViewCell.m */; };
 		4F8008AD1D1C326F005EBE37 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8008AC1D1C326F005EBE37 /* SettingsTableViewCell.xib */; };
 		4F8771591A563F2F00981495 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8771581A563F2F00981495 /* AVFoundation.framework */; };
@@ -183,6 +184,8 @@
 		4F7A16EF19F885270039508D /* ArtistsNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistsNavigationBar.m; sourceTree = "<group>"; };
 		4F7A63871C44545F003AE595 /* MNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNavigationBar.h; sourceTree = "<group>"; };
 		4F7A63881C44545F003AE595 /* MNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNavigationBar.m; sourceTree = "<group>"; };
+		4F7B5C1D1D44086600EDF768 /* MTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTextField.h; sourceTree = "<group>"; };
+		4F7B5C1E1D44086600EDF768 /* MTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTextField.m; sourceTree = "<group>"; };
 		4F8008A91D1B9AF3005EBE37 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
 		4F8008AA1D1B9AF3005EBE37 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
 		4F8008AC1D1C326F005EBE37 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 				4F7A63881C44545F003AE595 /* MNavigationBar.m */,
 				4FC089341D107E9300CABB8D /* MTabBarController.h */,
 				4FC089351D107E9300CABB8D /* MTabBarController.m */,
+				4F7B5C1D1D44086600EDF768 /* MTextField.h */,
+				4F7B5C1E1D44086600EDF768 /* MTextField.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -743,6 +748,7 @@
 				4F018C731D1B43C500999334 /* ColorScheme.m in Sources */,
 				4F650E5F1A279AF000C2FA82 /* LibraryListViewController.m in Sources */,
 				4FC089301D10605E00CABB8D /* MViewControllerDelegate.m in Sources */,
+				4F7B5C1F1D44086600EDF768 /* MTextField.m in Sources */,
 				4FA107E91C449867007CD4BC /* ArtistFetch.m in Sources */,
 				4F6B7E0719FE90D600FFC596 /* Button.m in Sources */,
 				4FEC5A831B34D0DC00985B0C /* Blacklist.m in Sources */,
