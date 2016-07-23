@@ -15,7 +15,10 @@
 
 - (void)awakeFromNib {
   [super awakeFromNib];
-  
+  [self configure];
+}
+
+- (void)configure {
   [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
   self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
   [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
@@ -39,13 +42,6 @@
       self.layer.borderWidth = 2.0f;
     }
   }
-}
-
-- (void)applyColorScheme {
-  [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
-  self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
-  [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-  self.layer.borderWidth = 2.0f;
 }
 
 - (void)setSelectedStyle {

@@ -13,20 +13,20 @@
 @implementation FilterTableViewCell
 
 - (void)awakeFromNib {
-    [self applyColorScheme];
+    [self configure];
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
     if (highlighted) {
-        [self applyColorScheme];
+        [self configure];
     }
 }
 
 - (void)prepareForReuse {
-    [self applyColorScheme];
+    [self configure];
 }
 
-- (void)applyColorScheme {
+- (void)configure {
     self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
     self.filterLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
 }

@@ -77,24 +77,6 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
   self.tabBarController.tabBar.tintColor = [[ColorScheme sharedScheme] secondaryColor];
   [self.tableView headerViewForSection:2];
   
-  // Create Navigation Bar and set its bounds
-  if (!self.navigationBar) {
-    _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"SearchNavigationBar" owner:self options:nil] objectAtIndex:0];
-    _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
-    _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationBar.bounds].CGPath;
-    [_navigationBar.artistsButton addTarget:self action:@selector(switchToArtistsSearch:) forControlEvents:UIControlEventTouchUpInside];
-    [_navigationBar.albumsButton addTarget:self action:@selector(switchToAlbumsSearch:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.navigationBar];
-  }
-  
-  if (self.searchType == artists) {
-    [self.navigationBar.artistsButton setSelectedStyle];
-    [self.navigationBar.albumsButton setDeselectedStyle];
-  } else {
-    [self.navigationBar.albumsButton setSelectedStyle];
-    [self.navigationBar.artistsButton setDeselectedStyle];
-  }
-  
   self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
   
   [self.tableView reloadData];
@@ -113,6 +95,26 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
   }
   
+  if (!self.navigationBar) {
+    _navigationBar = [[[NSBundle mainBundle] loadNibNamed:@"SearchNavigationBar" owner:self options:nil] objectAtIndex:0];
+    _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
+    _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationBar.bounds].CGPath;
+    [_navigationBar.artistsButton addTarget:self action:@selector(switchToArtistsSearch:) forControlEvents:UIControlEventTouchUpInside];
+    [_navigationBar.albumsButton addTarget:self action:@selector(switchToAlbumsSearch:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.navigationBar];
+  }
+  
+  [self.navigationBar configureView];
+  
+  // Create Navigation Bar and set its bounds
+  if (self.searchType == artists) {
+    [self.navigationBar.artistsButton setSelectedStyle];
+    [self.navigationBar.albumsButton setDeselectedStyle];
+  } else {
+    [self.navigationBar.albumsButton setSelectedStyle];
+    [self.navigationBar.artistsButton setDeselectedStyle];
+  }
+  
   self.activityIndicator.color = [[ColorScheme sharedScheme] secondaryColor];
   if (self.viewState == loading) {
     [self.activityIndicator startAnimating];
@@ -120,6 +122,8 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     [self.activityIndicator stopAnimating]; 
   }
   
+  self.searchTextField.textColor = [[ColorScheme sharedScheme] secondaryColor];
+  self.searchTextField.tintColor = [[ColorScheme sharedScheme] secondaryColor];
   [self underlineTextField];
   
   [self checkForNotification: mStore.localNotification];
@@ -153,7 +157,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
   CGPathAddLineToPoint(path, NULL, layerFrame.size.width, layerFrame.size.height); // bottom line
   CAShapeLayer * line = [CAShapeLayer layer];
   line.path = path;
-  line.lineWidth = 4;
+  line.lineWidth = 5;
   line.frame = layerFrame;
   line.strokeColor = [[ColorScheme sharedScheme] secondaryColor].CGColor;
   [self.searchTextField.layer addSublayer:line];
@@ -163,7 +167,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 - (void)didFinishSearch:(NSArray *)searchResultsArray {
   DLog(@"Finished search");
   if (!self.tableViewArray) {
-    _tableViewArray = [NSMutableArray arrayWithCapacity:25];
+    _tableViewArray = [NSMutableArray arrayWithCapacity:50];
   }
   
   [self.tableView beginUpdates];

@@ -52,7 +52,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="254" identifier="SearchWidth&gt;=254" id="j7i-4k-u9R"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
                                     <outlet property="delegate" destination="xge-uT-Fd0" id="WXM-tP-WQh"/>
                                 </connections>

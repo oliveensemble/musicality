@@ -13,6 +13,6 @@
 
 - (void)setSelectedStyle;
 - (void)setDeselectedStyle;
-- (void)applyColorScheme;
+- (void)configure;
 
 @end
