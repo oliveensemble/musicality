@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *searchLabel;
 @property (weak, nonatomic) IBOutlet UIButton *topOfPageButton;
 
+- (void)configureView;
+
 @end
