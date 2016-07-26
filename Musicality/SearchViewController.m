@@ -232,7 +232,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
   if (self.searchType == artists) {
     return 44;
   } else {
-    return 120;
+    return 80;
   }
 }
 

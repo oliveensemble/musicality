@@ -9,6 +9,7 @@
 #import "SearchFetch.h"
 #import "Album.h"
 #import "Artist.h"
+#import "MStore.h"
 
 typedef NS_OPTIONS(NSUInteger, SearchType) {
   artists = 1 << 0,
@@ -50,11 +51,13 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
     if (self.searchType == albums) {
       requestString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=album&attribute=albumTerm&limit=50", self.searchTerm];
     } else {
-      requestString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=musicArtist&limit=25", self.searchTerm];
+      requestString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=musicArtist&limit=50", self.searchTerm];
     }
     
     NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSData *searchData = [[NSData alloc] initWithContentsOfURL:requestURL];
+    
+    DLog(@"Searching: %@", requestURL.absoluteString);
     
     if (self.isCancelled) {
       searchData = nil;
@@ -67,7 +70,7 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
       NSArray *jsonArray = jsonObject[@"results"];
       _searchResultsArray = [NSMutableArray arrayWithCapacity:50];
       
-      if (jsonArray.count > 1) {
+      if (jsonArray.count > 0) {
         if (self.searchType == albums) {
           // Iterate through the albums in the json file
           for (NSDictionary *albumDictionary in jsonArray) {
