@@ -19,7 +19,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   
   NSMutableDictionary *album;
   NSString *element;
-
+  
   NSMutableString *albumNameFeed;
   NSMutableString *artistNameFeed;
   NSString *albumArtFeed;

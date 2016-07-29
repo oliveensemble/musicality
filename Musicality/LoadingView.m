@@ -13,9 +13,9 @@
 @implementation LoadingView
 
 - (void)awakeFromNib {
-    self.viewLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-    self.progressLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+  self.viewLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+  self.progressLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+  self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
 }
 
 @end

@@ -16,7 +16,7 @@
 @implementation TutorialInfoViewController
 
 - (IBAction)toScan:(Button *)sender {
-    [self performSegueWithIdentifier:@"toScan" sender:sender];
+  [self performSegueWithIdentifier:@"toScan" sender:sender];
 }
 
 @end

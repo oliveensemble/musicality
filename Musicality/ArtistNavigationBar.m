@@ -13,10 +13,10 @@
 @implementation ArtistNavigationBar
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.artistLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+  [super awakeFromNib];
+  
+  self.artistLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+  self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
 }
 
 @end

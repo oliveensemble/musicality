@@ -62,7 +62,6 @@
   } else {
     DLog(@"Received notification while application is running");
   }
-  
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
