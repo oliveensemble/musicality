@@ -6,23 +6,23 @@
 //  Copyright © 2015 Evan Lewis. All rights reserved.
 //
 
+
 @import Foundation;
 
 @protocol ExploreFetchDelegate;
 
 //Fetches an array of albums for the explore view
-@interface ExploreFetch : NSOperation <NSXMLParserDelegate>
+@interface ExploreFetch : NSOperation
 
 @property (nonatomic, weak) id<ExploreFetchDelegate> delegate;
-@property (nonatomic) NSURL *url;
-@property (nonatomic) NSMutableArray *albumArray;
 
-- (instancetype)initWithURL:(NSURL*)url delegate:(id<ExploreFetchDelegate>) delegate;
+- (instancetype)initWithDelegate:(id<ExploreFetchDelegate>)delegate;
+- (void)fetchWithFeedType:(NSUInteger)feedType andGenre:(int)genreID;
 
 @end
 
 @protocol ExploreFetchDelegate <NSObject>
 
-- (void)exploreFetchDidFinish:(ExploreFetch*)downloader;
+- (void)didFinishFetchingFeed:(NSArray *)albumArray;
 
 @end

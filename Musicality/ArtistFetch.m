@@ -5,6 +5,7 @@
 //  Created by Evan Lewis on 1/11/16.
 //  Copyright © 2016 Evan Lewis. All rights reserved.
 //
+// Responsible for
 
 #import "ArtistFetch.h"
 #import "MStore.h"

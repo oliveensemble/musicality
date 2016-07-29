@@ -141,6 +141,7 @@
     if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
         [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
     }
+  
     localNotif.userInfo = @{@"albumID" : [mStore formattedAlbumIDFromURL:album.URL], @"artistName" : artistName};
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     [self.notifArray addObject:localNotif];

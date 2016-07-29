@@ -8,23 +8,20 @@
 // The first view that the app loads. The explore tab shows the top albums in iTunes
 
 @import StoreKit;
-@import Crashlytics;
-#import "Album.h"
-#import "Artist.h"
-#import "MStore.h"
-#import "AutoScan.h"
-#import "UserPrefs.h"
-#import "ColorScheme.h"
-#import "ExploreViewModel.h"
-#import "UIImageView+Haneke.h"
-#import "AlbumTableViewCell.h"
-#import "FilterTableViewCell.h"
-#import "ExploreNavigationBar.h"
-#import "ArtistViewController.h"
 #import "ExploreViewController.h"
 #import "MViewControllerDelegate.h"
+#import "ExploreFetch.h"
+#import "ExploreNavigationBar.h"
+#import "ColorScheme.h"
+#import "MStore.h"
+#import "UserPrefs.h"
+#import "AutoScan.h"
+#import "FilterTableViewCell.h"
+#import "Album.h"
+#import "AlbumTableViewCell.h"
+#import "UIImageView+Haneke.h"
+#import "ArtistViewController.h"
 #import "VariousArtistsViewController.h"
-#import "MViewControllerDelegate.h"
 
 //The different states the view can be in; either selecting a genre or scrolling through albums. The feed type changes whether it is the top charts or the new albums view
 typedef NS_OPTIONS(NSUInteger, ViewState) {
@@ -38,11 +35,10 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   topCharts = 1 << 1
 };
 
-@interface ExploreViewController () <ExploreViewModelDelegate, MViewControllerDelegate, SKStoreProductViewControllerDelegate>
+@interface ExploreViewController () <ExploreFetchDelegate, MViewControllerDelegate, SKStoreProductViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIRefreshControl *refresh;
 @property (nonatomic, weak) ExploreNavigationBar *navigationBar;
-@property (nonatomic) ExploreViewModel *exploreViewModel;
 
 @property (nonatomic) SKStoreProductViewController *storeViewController;
 
@@ -75,13 +71,11 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [self.navigationController setNavigationBarHidden:YES animated:NO];
   
   //Register notification
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
   
   //Register TableView cells
   [self.tableView registerNib:[UINib nibWithNibName:@"FilterTableViewCell" bundle:nil] forCellReuseIdentifier:@"filterCell"];
   [self.tableView registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil]forCellReuseIdentifier:@"albumCell"];
-  
-  _exploreViewModel = [[ExploreViewModel alloc] initWithDelegate:self];
   
   //List of genres
   _genres = @{@"Alternative" : @20, @"Blues" : @2, @"Children's Music" : @4, @"Christian & Gospel" : @22, @"Classical" : @5, @"Comedy" : @3, @"Country" : @6, @"Dance" : @17, @"Electronic" : @7, @"Fitness & Workout" : @50, @"Hip-Hop/Rap" : @18, @"Jazz" : @11, @"Latino" : @12, @"Pop" : @14, @"R&B/Soul" : @15, @"Reggae" : @24, @"Rock" : @21, @"Singer/Songwriter" : @10, @"Soundtrack" : @16, @"World" : @19};
@@ -91,6 +85,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   self.feedType = topCharts;
   self.currentGenreId = -1;
   self.currentGenreTitle = @"All Genres";
+  [self endLoading];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -133,11 +128,17 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   }
 }
 
+- (void)viewDidBecomeActive {
+  [self fetchFeed];
+  [self viewMovedToForeground];
+}
+
 #pragma mark NSOperation Delegate
 
 - (void)fetchFeed {
   [self beginLoading];
-  [self.exploreViewModel beginWithFeedType:self.feedType andGenre:self.currentGenreId];
+  ExploreFetch *exploreFetch = [[ExploreFetch alloc] initWithDelegate:self];
+  [exploreFetch fetchWithFeedType: self.feedType andGenre: self.currentGenreId];
 }
 
 - (void)didFinishFetchingFeed:(NSArray *)albumArray {

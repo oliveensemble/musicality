@@ -24,6 +24,8 @@
 #import "ArtistListViewController.h"
 #import "LibraryListViewController.h"
 #import "VariousArtistsViewController.h"
+#import "MViewControllerDelegate.h"
+#import "ArtistViewModel.h"
 
 typedef NS_OPTIONS(NSUInteger, ViewState) {
   browse = 1 << 0,

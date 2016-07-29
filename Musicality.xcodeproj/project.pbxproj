@@ -43,7 +43,6 @@
 		4F668CEF1B3A2A68008DC2A7 /* UserPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F668CEE1B3A2A68008DC2A7 /* UserPrefs.m */; };
 		4F6B7E0719FE90D600FFC596 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6B7E0619FE90D600FFC596 /* Button.m */; };
 		4F70CB0B1D3DD63200DD97DB /* SearchPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F70CB0A1D3DD63200DD97DB /* SearchPendingOperations.m */; };
-		4F718ACF1B13FA8800DA890E /* ExplorePendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F718ACE1B13FA8800DA890E /* ExplorePendingOperations.m */; };
 		4F7A16E819F763350039508D /* ExploreNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A16E719F763350039508D /* ExploreNavigationBar.m */; };
 		4F7A16EB19F883F80039508D /* SettingsNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A16EA19F883F80039508D /* SettingsNavigationBar.m */; };
 		4F7A16ED19F885090039508D /* ArtistsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7A16EC19F885090039508D /* ArtistsNavigationBar.xib */; };
@@ -90,7 +89,6 @@
 		4FF0A2C51BE56340005E7118 /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0A2C41BE56340005E7118 /* AlbumTableViewCell.m */; };
 		4FF5C4FC1D23056B000CE9F7 /* ArtistScanPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C4FB1D23056B000CE9F7 /* ArtistScanPendingOperations.m */; };
 		4FF5C4FF1D2306C2000CE9F7 /* AutoScanPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C4FE1D2306C2000CE9F7 /* AutoScanPendingOperations.m */; };
-		4FF5C5051D2324EB000CE9F7 /* ExploreViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C5041D2324EB000CE9F7 /* ExploreViewModel.m */; };
 		4FF5C5091D2340A1000CE9F7 /* ArtistListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C5081D2340A1000CE9F7 /* ArtistListViewModel.m */; };
 		4FF5C50C1D241FF6000CE9F7 /* ArtistViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C50B1D241FF6000CE9F7 /* ArtistViewModel.m */; };
 		4FF5C50F1D2424E9000CE9F7 /* ArtistPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C50E1D2424E9000CE9F7 /* ArtistPendingOperations.m */; };
@@ -173,8 +171,6 @@
 		4F6B7E0619FE90D600FFC596 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
 		4F70CB091D3DD63200DD97DB /* SearchPendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPendingOperations.h; sourceTree = "<group>"; };
 		4F70CB0A1D3DD63200DD97DB /* SearchPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPendingOperations.m; sourceTree = "<group>"; };
-		4F718ACD1B13FA8800DA890E /* ExplorePendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplorePendingOperations.h; sourceTree = "<group>"; };
-		4F718ACE1B13FA8800DA890E /* ExplorePendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplorePendingOperations.m; sourceTree = "<group>"; };
 		4F7A16E619F763350039508D /* ExploreNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreNavigationBar.h; sourceTree = "<group>"; };
 		4F7A16E719F763350039508D /* ExploreNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreNavigationBar.m; sourceTree = "<group>"; };
 		4F7A16E919F883F80039508D /* SettingsNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsNavigationBar.h; sourceTree = "<group>"; };
@@ -255,8 +251,6 @@
 		4FF5C4FB1D23056B000CE9F7 /* ArtistScanPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistScanPendingOperations.m; sourceTree = "<group>"; };
 		4FF5C4FD1D2306C2000CE9F7 /* AutoScanPendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoScanPendingOperations.h; sourceTree = "<group>"; };
 		4FF5C4FE1D2306C2000CE9F7 /* AutoScanPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoScanPendingOperations.m; sourceTree = "<group>"; };
-		4FF5C5031D2324EB000CE9F7 /* ExploreViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreViewModel.h; sourceTree = "<group>"; };
-		4FF5C5041D2324EB000CE9F7 /* ExploreViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreViewModel.m; sourceTree = "<group>"; };
 		4FF5C5071D2340A1000CE9F7 /* ArtistListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistListViewModel.h; sourceTree = "<group>"; };
 		4FF5C5081D2340A1000CE9F7 /* ArtistListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistListViewModel.m; sourceTree = "<group>"; };
 		4FF5C50A1D241FF6000CE9F7 /* ArtistViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistViewModel.h; sourceTree = "<group>"; };
@@ -374,6 +368,7 @@
 		4F18225C19DA4FA6006CCA8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4FC3E77B1B13DFD700C3C10F /* Network */,
 				4F63E8331BE57BB8004B6991 /* Heneke */,
 				4F18225919DA4F6C006CCA8B /* MStore.h */,
 				4F18225A19DA4F6C006CCA8B /* MStore.m */,
@@ -401,7 +396,6 @@
 		4F2C437A19F0022600909D01 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4FC3E77B1B13DFD700C3C10F /* Network */,
 				4FEC5A8C1B3666AD00985B0C /* Tutorial */,
 				4FC0892E1D10605E00CABB8D /* MViewControllerDelegate.h */,
 				4FC0892F1D10605E00CABB8D /* MViewControllerDelegate.m */,
@@ -530,8 +524,6 @@
 				4F3720C51B1940410067E80A /* NotificationCheck.m */,
 				4FEC5A841B35DD9300985B0C /* AutoScan.h */,
 				4FEC5A851B35DD9300985B0C /* AutoScan.m */,
-				4F718ACD1B13FA8800DA890E /* ExplorePendingOperations.h */,
-				4F718ACE1B13FA8800DA890E /* ExplorePendingOperations.m */,
 				4F70CB091D3DD63200DD97DB /* SearchPendingOperations.h */,
 				4F70CB0A1D3DD63200DD97DB /* SearchPendingOperations.m */,
 				4FF5C50D1D2424E9000CE9F7 /* ArtistPendingOperations.h */,
@@ -558,8 +550,6 @@
 		4FF5C5061D2324FB000CE9F7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				4FF5C5031D2324EB000CE9F7 /* ExploreViewModel.h */,
-				4FF5C5041D2324EB000CE9F7 /* ExploreViewModel.m */,
 				4FF5C5071D2340A1000CE9F7 /* ArtistListViewModel.h */,
 				4FF5C5081D2340A1000CE9F7 /* ArtistListViewModel.m */,
 				4FF5C50A1D241FF6000CE9F7 /* ArtistViewModel.h */,
@@ -732,7 +722,6 @@
 				4FE1039E19DB9425004F27BB /* Artist.m in Sources */,
 				4F63E84B1BE57BCF004B6991 /* UIImageView+Haneke.m in Sources */,
 				4FAACD351D3D92CC00A362CC /* SearchFetch.m in Sources */,
-				4F718ACF1B13FA8800DA890E /* ExplorePendingOperations.m in Sources */,
 				4FF5C4FF1D2306C2000CE9F7 /* AutoScanPendingOperations.m in Sources */,
 				4FE103A119DBA0DB004F27BB /* Album.m in Sources */,
 				4FC3E7791B13957000C3C10F /* ArtistList.m in Sources */,
@@ -758,7 +747,6 @@
 				4F3720C61B1940410067E80A /* NotificationCheck.m in Sources */,
 				4F63E8491BE57BCF004B6991 /* HNKSimpleFetcher.m in Sources */,
 				4F8008AB1D1B9AF3005EBE37 /* SettingsTableViewCell.m in Sources */,
-				4FF5C5051D2324EB000CE9F7 /* ExploreViewModel.m in Sources */,
 				4F668CEF1B3A2A68008DC2A7 /* UserPrefs.m in Sources */,
 				4F63E8451BE57BCF004B6991 /* HNKCache.m in Sources */,
 				4FAACD321D3D919000A362CC /* SearchViewModel.m in Sources */,
