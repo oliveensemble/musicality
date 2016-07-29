@@ -1,5 +1,5 @@
 //
-//  ArtistScanPendingOperations.h
+//  ArtistUpdatePendingOperations.h
 //  Musicality
 //
 //  Created by Evan Lewis on 6/28/16.
@@ -8,7 +8,7 @@
 
 @import Foundation;
 
-@interface ArtistScanPendingOperations : NSObject
+@interface ArtistUpdatePendingOperations : NSObject
 
 + (instancetype)sharedOperations;
 

@@ -7,25 +7,20 @@
 //
 
 @import StoreKit;
-#import "MStore.h"
-#import "AutoScan.h"
-#import "Blacklist.h"
-#import "UserPrefs.h"
-#import "ArtistList.h"
-#import "ColorScheme.h"
-#import "LoadingView.h"
-#import "ArtistListViewModel.h"
-#import "UIImageView+Haneke.h"
-#import "AlbumTableViewCell.h"
-#import "FilterTableViewCell.h"
-#import "LatestReleaseSearch.h"
-#import "ArtistViewController.h"
-#import "ArtistsNavigationBar.h"
 #import "ArtistListViewController.h"
-#import "LibraryListViewController.h"
-#import "VariousArtistsViewController.h"
 #import "MViewControllerDelegate.h"
-#import "ArtistViewModel.h"
+#import "ArtistListViewModel.h"
+#import "ArtistsNavigationBar.h"
+#import "LoadingView.h"
+#import "AutoScan.h"
+#import "ColorScheme.h"
+#import "MStore.h"
+#import "ArtistList.h"
+#import "FilterTableViewCell.h"
+#import "AlbumTableViewCell.h"
+#import "UIImageView+Haneke.h"
+#import "ArtistViewController.h"
+#import "VariousArtistsViewController.h"
 
 typedef NS_OPTIONS(NSUInteger, ViewState) {
   browse = 1 << 0,

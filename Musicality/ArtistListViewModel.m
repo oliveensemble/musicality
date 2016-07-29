@@ -8,7 +8,7 @@
 
 #import "ArtistListViewModel.h"
 #import "LatestReleaseSearch.h"
-#import "ArtistScanPendingOperations.h"
+#import "ArtistUpdatePendingOperations.h"
 #import "AutoScanPendingOperations.h"
 #import "ArtistList.h"
 #import "MStore.h"
@@ -46,25 +46,25 @@
     for (Artist* artist in [[ArtistList sharedList] artistSet]) {
         if (([mStore thisDate:[NSDate dateWithTimeIntervalSinceNow:-604800] isMoreRecentThan:artist.lastCheckDate]) || artist.lastCheckDate == nil) {
             LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
-            [[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] setObject:albumSearch forKey:[NSString stringWithFormat:@"Updating %@", artist.name]];
-            [[[ArtistScanPendingOperations sharedOperations] artistRequestQueue] addOperation:albumSearch];
+            [[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] setObject:albumSearch forKey:[NSString stringWithFormat:@"Updating %@", artist.name]];
+            [[[ArtistUpdatePendingOperations sharedOperations] artistRequestQueue] addOperation:albumSearch];
         }
     }
     
-    if ([[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] count] == 0) {
+    if ([[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] count] == 0) {
         [self didFinishUpdatingList];
         return;
     }
     
-    [[ArtistScanPendingOperations sharedOperations] beginOperations];
+    [[ArtistUpdatePendingOperations sharedOperations] beginOperations];
 }
 
 - (void)latestReleaseSearchDidFinish:(LatestReleaseSearch *)downloader {
     [[ArtistList sharedList] updateLatestRelease:downloader.album forArtist:downloader.artist];
-    [[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] removeObjectForKey:[NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
-    [[ArtistScanPendingOperations sharedOperations] updateProgress:[NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
-    [self didUpdateList:[NSString stringWithFormat:@"Updating %@", downloader.artist.name] atPercentage:[[ArtistScanPendingOperations sharedOperations] currentProgress]];
-    if ([[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] count] == 0) {
+    [[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] removeObjectForKey:[NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
+    [[ArtistUpdatePendingOperations sharedOperations] updateProgress:[NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
+    [self didUpdateList:[NSString stringWithFormat:@"Updating %@", downloader.artist.name] atPercentage:[[ArtistUpdatePendingOperations sharedOperations] currentProgress]];
+    if ([[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] count] == 0) {
         [[ArtistList sharedList] saveChanges];
         [self didFinishUpdatingList];
     }

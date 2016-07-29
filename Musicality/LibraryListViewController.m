@@ -17,6 +17,8 @@
 #import "ColorScheme.h"
 #import "LibraryNavigationBar.h"
 #import "LibraryListViewController.h"
+#import "MViewControllerDelegate.h"
+#import "ArtistUpdatePendingOperations.h"
 
 //The different states the view can be in; either selecting a genre or scrolling through albums
 typedef NS_OPTIONS(NSUInteger, ViewState) {
@@ -227,10 +229,10 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
   if (self.selectedArtistsArray.count > 0) {
     for (Artist *artist in self.selectedArtistsArray) {
       ArtistSearch *artistSearch = [[ArtistSearch alloc] initWithArtist:artist delegate:self];
-      [[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] setObject:artistSearch forKey:[NSString stringWithFormat:@"Updating %@", artist.name]];
-      [[[ArtistScanPendingOperations sharedOperations] artistRequestQueue] addOperation:artistSearch];
+      [[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] setObject:artistSearch forKey:[NSString stringWithFormat:@"Updating %@", artist.name]];
+      [[[ArtistUpdatePendingOperations sharedOperations] artistRequestQueue] addOperation:artistSearch];
     }
-    [[ArtistScanPendingOperations sharedOperations] beginOperations];
+    [[ArtistUpdatePendingOperations sharedOperations] beginOperations];
   } else {
     [self endLoading];
     [self performSegueWithIdentifier:@"exitToArtistList" sender:self];
@@ -239,17 +241,17 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 
 - (void)artistSearchDidFinish:(ArtistSearch *)downloader {
   [[ArtistList sharedList] addArtistToList:downloader.artist];
-  [[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] removeObjectForKey:[NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
-  [[ArtistScanPendingOperations sharedOperations] updateProgress: [NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
-  self.loadingBar.progressLabel.text = [NSString stringWithFormat:@"%i%%", (int)[[ArtistScanPendingOperations sharedOperations] currentProgress]];
+  [[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] removeObjectForKey:[NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
+  [[ArtistUpdatePendingOperations sharedOperations] updateProgress: [NSString stringWithFormat:@"Updating %@", downloader.artist.name]];
+  self.loadingBar.progressLabel.text = [NSString stringWithFormat:@"%i%%", (int)[[ArtistUpdatePendingOperations sharedOperations] currentProgress]];
   
-  if ([[[ArtistScanPendingOperations sharedOperations] artistRequestsInProgress] count] == 0) {
+  if ([[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] count] == 0) {
     DLog(@"Finished");
     if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
       [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
     }
     [[ArtistList sharedList] saveChanges];
-    [[[ArtistScanPendingOperations sharedOperations] artistRequestQueue] cancelAllOperations];
+    [[[ArtistUpdatePendingOperations sharedOperations] artistRequestQueue] cancelAllOperations];
     [self performSegueWithIdentifier:@"exitToArtistList" sender:self];
   }
 }

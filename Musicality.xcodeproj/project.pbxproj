@@ -87,11 +87,9 @@
 		4FEC5A8B1B3666A400985B0C /* TutorialScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC5A8A1B3666A400985B0C /* TutorialScanViewController.m */; };
 		4FEC5A8F1B36672300985B0C /* TutorialInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC5A8E1B36672300985B0C /* TutorialInfoViewController.m */; };
 		4FF0A2C51BE56340005E7118 /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0A2C41BE56340005E7118 /* AlbumTableViewCell.m */; };
-		4FF5C4FC1D23056B000CE9F7 /* ArtistScanPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C4FB1D23056B000CE9F7 /* ArtistScanPendingOperations.m */; };
+		4FF5C4FC1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C4FB1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m */; };
 		4FF5C4FF1D2306C2000CE9F7 /* AutoScanPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C4FE1D2306C2000CE9F7 /* AutoScanPendingOperations.m */; };
 		4FF5C5091D2340A1000CE9F7 /* ArtistListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C5081D2340A1000CE9F7 /* ArtistListViewModel.m */; };
-		4FF5C50C1D241FF6000CE9F7 /* ArtistViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C50B1D241FF6000CE9F7 /* ArtistViewModel.m */; };
-		4FF5C50F1D2424E9000CE9F7 /* ArtistPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C50E1D2424E9000CE9F7 /* ArtistPendingOperations.m */; };
 		4FFBFF8819F5DFD400EF5FD9 /* ArtistNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8719F5DFD400EF5FD9 /* ArtistNavigationBar.xib */; };
 		4FFBFF8A19F5E00100EF5FD9 /* ExploreNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8919F5E00100EF5FD9 /* ExploreNavigationBar.xib */; };
 		4FFBFF8C19F5E01400EF5FD9 /* SettingsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8B19F5E01400EF5FD9 /* SettingsNavigationBar.xib */; };
@@ -247,16 +245,12 @@
 		4FEC5A8E1B36672300985B0C /* TutorialInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialInfoViewController.m; sourceTree = "<group>"; };
 		4FF0A2C31BE56340005E7118 /* AlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewCell.h; sourceTree = "<group>"; };
 		4FF0A2C41BE56340005E7118 /* AlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewCell.m; sourceTree = "<group>"; };
-		4FF5C4FA1D23056B000CE9F7 /* ArtistScanPendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistScanPendingOperations.h; sourceTree = "<group>"; };
-		4FF5C4FB1D23056B000CE9F7 /* ArtistScanPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistScanPendingOperations.m; sourceTree = "<group>"; };
+		4FF5C4FA1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistUpdatePendingOperations.h; sourceTree = "<group>"; };
+		4FF5C4FB1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistUpdatePendingOperations.h.m; sourceTree = "<group>"; };
 		4FF5C4FD1D2306C2000CE9F7 /* AutoScanPendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoScanPendingOperations.h; sourceTree = "<group>"; };
 		4FF5C4FE1D2306C2000CE9F7 /* AutoScanPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoScanPendingOperations.m; sourceTree = "<group>"; };
 		4FF5C5071D2340A1000CE9F7 /* ArtistListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistListViewModel.h; sourceTree = "<group>"; };
 		4FF5C5081D2340A1000CE9F7 /* ArtistListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistListViewModel.m; sourceTree = "<group>"; };
-		4FF5C50A1D241FF6000CE9F7 /* ArtistViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistViewModel.h; sourceTree = "<group>"; };
-		4FF5C50B1D241FF6000CE9F7 /* ArtistViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistViewModel.m; sourceTree = "<group>"; };
-		4FF5C50D1D2424E9000CE9F7 /* ArtistPendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistPendingOperations.h; sourceTree = "<group>"; };
-		4FF5C50E1D2424E9000CE9F7 /* ArtistPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistPendingOperations.m; sourceTree = "<group>"; };
 		4FFBFF8719F5DFD400EF5FD9 /* ArtistNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtistNavigationBar.xib; sourceTree = "<group>"; };
 		4FFBFF8919F5E00100EF5FD9 /* ExploreNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreNavigationBar.xib; sourceTree = "<group>"; };
 		4FFBFF8B19F5E01400EF5FD9 /* SettingsNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsNavigationBar.xib; sourceTree = "<group>"; };
@@ -526,10 +520,8 @@
 				4FEC5A851B35DD9300985B0C /* AutoScan.m */,
 				4F70CB091D3DD63200DD97DB /* SearchPendingOperations.h */,
 				4F70CB0A1D3DD63200DD97DB /* SearchPendingOperations.m */,
-				4FF5C50D1D2424E9000CE9F7 /* ArtistPendingOperations.h */,
-				4FF5C50E1D2424E9000CE9F7 /* ArtistPendingOperations.m */,
-				4FF5C4FA1D23056B000CE9F7 /* ArtistScanPendingOperations.h */,
-				4FF5C4FB1D23056B000CE9F7 /* ArtistScanPendingOperations.m */,
+				4FF5C4FA1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h */,
+				4FF5C4FB1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m */,
 				4FF5C4FD1D2306C2000CE9F7 /* AutoScanPendingOperations.h */,
 				4FF5C4FE1D2306C2000CE9F7 /* AutoScanPendingOperations.m */,
 			);
@@ -552,8 +544,6 @@
 			children = (
 				4FF5C5071D2340A1000CE9F7 /* ArtistListViewModel.h */,
 				4FF5C5081D2340A1000CE9F7 /* ArtistListViewModel.m */,
-				4FF5C50A1D241FF6000CE9F7 /* ArtistViewModel.h */,
-				4FF5C50B1D241FF6000CE9F7 /* ArtistViewModel.m */,
 				4FAACD301D3D919000A362CC /* SearchViewModel.h */,
 				4FAACD311D3D919000A362CC /* SearchViewModel.m */,
 			);
@@ -732,7 +722,6 @@
 				4F63E84C1BE57BCF004B6991 /* UIView+Haneke.m in Sources */,
 				4F3B35EB1BEEA4ED0003F96F /* ExploreFetch.m in Sources */,
 				4F63E84A1BE57BCF004B6991 /* UIButton+Haneke.m in Sources */,
-				4FF5C50C1D241FF6000CE9F7 /* ArtistViewModel.m in Sources */,
 				4FAACD291D3D704D00A362CC /* SearchArtistTableViewCell.m in Sources */,
 				4F018C731D1B43C500999334 /* ColorScheme.m in Sources */,
 				4F650E5F1A279AF000C2FA82 /* LibraryListViewController.m in Sources */,
@@ -754,10 +743,9 @@
 				4F7A16F019F885270039508D /* ArtistsNavigationBar.m in Sources */,
 				4FAACD261D3D5FE600A362CC /* SearchNavigationBar.m in Sources */,
 				4F0FA8D01B4B67160050A314 /* LoadingView.m in Sources */,
-				4FF5C50F1D2424E9000CE9F7 /* ArtistPendingOperations.m in Sources */,
 				4F70CB0B1D3DD63200DD97DB /* SearchPendingOperations.m in Sources */,
 				4F1520CA19EDFEAD00530B8E /* ExploreViewController.m in Sources */,
-				4FF5C4FC1D23056B000CE9F7 /* ArtistScanPendingOperations.m in Sources */,
+				4FF5C4FC1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m in Sources */,
 				4F7A63891C44545F003AE595 /* MNavigationBar.m in Sources */,
 				4FC1C26B19F7367900E14360 /* ArtistNavigationBar.m in Sources */,
 				4FEC5A8B1B3666A400985B0C /* TutorialScanViewController.m in Sources */,

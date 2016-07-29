@@ -1,17 +1,17 @@
 //
-//  ArtistScanPendingOperations.m
+//  ArtistUpdatePendingOperations.m
 //  Musicality
 //
 //  Created by Evan Lewis on 6/28/16.
 //  Copyright (c) 2015 Evan Lewis. All rights reserved.
 //
 
-#import "ArtistScanPendingOperations.h"
+#import "ArtistUpdatePendingOperations.h"
 
-@implementation ArtistScanPendingOperations
+@implementation ArtistUpdatePendingOperations
 
 + (instancetype)sharedOperations {
-    static ArtistScanPendingOperations *sharedOperations = nil;
+    static ArtistUpdatePendingOperations *sharedOperations = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
