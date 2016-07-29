@@ -97,7 +97,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   }
   
   //Tab Bar customization
-  UIImage *selectedImage = [[UIImage imageNamed:@"mic_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+  UIImage *selectedImage = [[UIImage imageNamed:@"mic_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
   self.tabBarItem.selectedImage = selectedImage;
   self.tabBarController.tabBar.barTintColor = [[ColorScheme sharedScheme] primaryColor];
   self.tabBarController.tabBar.tintColor = [[ColorScheme sharedScheme] secondaryColor];

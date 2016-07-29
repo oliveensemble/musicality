@@ -92,7 +92,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [super viewWillAppear:animated];
   
   //Tab Bar customization
-  UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+  UIImage *selectedImage = [[UIImage imageNamed:@"explore_selected_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
   self.tabBarItem.selectedImage = selectedImage;
   self.tabBarController.tabBar.barTintColor = [[ColorScheme sharedScheme] primaryColor];
   self.tabBarController.tabBar.tintColor = [[ColorScheme sharedScheme] secondaryColor];

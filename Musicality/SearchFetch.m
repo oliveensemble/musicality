@@ -73,7 +73,7 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:searchData options:NSJSONReadingMutableContainers error:&error];
       NSArray *jsonArray = jsonObject[@"results"];
       NSMutableArray *searchResultsArray = [NSMutableArray arrayWithCapacity:50];
-
+      
       if (jsonArray.count > 0) {
         if (self.searchType == albums) {
           // Iterate through the albums in the json file
