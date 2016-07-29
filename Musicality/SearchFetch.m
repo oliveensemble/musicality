@@ -25,15 +25,19 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
 
 @implementation SearchFetch
 
-- (instancetype)initWithSearchType:(NSUInteger)searchType searchTerm:(NSString *)searchTerm delegate:(id<SearchFetchDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<SearchFetchDelegate>)delegate {
   self = [super init];
   if (self) {
     _delegate = delegate;
-    _searchType = searchType;
-    _searchTerm = searchTerm;
     self.queuePriority = NSOperationQueuePriorityVeryHigh;
   }
   return self;
+}
+
+- (void)fetchItemsForSearchTerm:(NSString *)searchTerm withType:(NSUInteger)searchType {
+  _searchTerm = searchTerm;
+  _searchType = searchType;
+  [self start];
 }
 
 - (void)main {
@@ -68,8 +72,8 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
       NSError *error;
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:searchData options:NSJSONReadingMutableContainers error:&error];
       NSArray *jsonArray = jsonObject[@"results"];
-      _searchResultsArray = [NSMutableArray arrayWithCapacity:50];
-      
+      NSMutableArray *searchResultsArray = [NSMutableArray arrayWithCapacity:50];
+
       if (jsonArray.count > 0) {
         if (self.searchType == albums) {
           // Iterate through the albums in the json file
@@ -85,7 +89,7 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
                 [albumResult addArtistId: albumDictionary[@"artistId"]];
               }
               
-              [self.searchResultsArray addObject: albumResult];
+              [searchResultsArray addObject: albumResult];
             }
           }
         } else if (self.searchType == artists) {
@@ -93,7 +97,7 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
           for (NSDictionary *artistDictionary in jsonArray) {
             if (artistDictionary[@"artistName"] && artistDictionary[@"artistId"]) {
               Artist *artistResult = [[Artist alloc] initWithArtistID:artistDictionary[@"artistId"] andName:artistDictionary[@"artistName"]];
-              [self.searchResultsArray addObject: artistResult];
+              [searchResultsArray addObject: artistResult];
             }
           }
         }
@@ -106,11 +110,9 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
       }
       
       //Cast the operation to NSObject, and notify the caller on the main thread.
-      [(NSObject *)self.delegate performSelectorOnMainThread:@selector(searchFetchDidFinish:) withObject:self.searchResultsArray waitUntilDone:NO];
+      [(NSObject *)self.delegate performSelectorOnMainThread:@selector(didFinishSearchWithResults:) withObject:[searchResultsArray copy] waitUntilDone:NO];
     }
-    
   }
-  
 }
 
 @end

@@ -14,14 +14,14 @@
 @interface SearchFetch : NSOperation
 
 @property (weak, nonatomic) id<SearchFetchDelegate> delegate;
-@property (nonatomic) NSMutableArray *searchResultsArray;
 
-- (instancetype)initWithSearchType:(NSUInteger)searchType searchTerm: (NSString *)searchTerm delegate:(id<SearchFetchDelegate>) delegate;
+- (instancetype)initWithDelegate:(id<SearchFetchDelegate>)delegate;
+- (void)fetchItemsForSearchTerm:(NSString *)searchTerm withType:(NSUInteger)searchType;
 
 @end
 
 @protocol SearchFetchDelegate <NSObject>
 
-- (void)searchFetchDidFinish:(NSMutableArray *)searchResultsArray;
+- (void)didFinishSearchWithResults:(NSArray *)searchResults;
 
 @end

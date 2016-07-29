@@ -8,18 +8,18 @@
 
 @import StoreKit;
 #import "SearchViewController.h"
-#import "SearchViewModel.h"
 #import "MViewControllerDelegate.h"
+#import "MTextField.h"
 #import "SearchNavigationBar.h"
 #import "ColorScheme.h"
 #import "MStore.h"
-#import "SearchAlbumTableViewCell.h"
 #import "SearchArtistTableViewCell.h"
 #import "Artist.h"
+#import "SearchAlbumTableViewCell.h"
 #import "UIImageView+Haneke.h"
 #import "ArtistViewController.h"
 #import "VariousArtistsViewController.h"
-#import "MTextField.h"
+#import "SearchFetch.h"
 
 typedef NS_OPTIONS(NSUInteger, SearchType) {
   artists = 1 << 0,
@@ -31,18 +31,16 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
   browsing = 1 << 1
 };
 
-@interface SearchViewController () <SearchViewModelDelegate, MViewControllerDelegate, UITextFieldDelegate, SKStoreProductViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SearchViewController () <MViewControllerDelegate, SearchFetchDelegate, UITextFieldDelegate, SKStoreProductViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) NSUInteger viewState;
 @property (nonatomic) NSUInteger searchType;
-@property (copy, nonatomic) NSString *searchTerm;
 
 @property (weak, nonatomic) IBOutlet MTextField *searchTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSMutableArray *tableViewArray;
 
 @property (nonatomic, weak) SearchNavigationBar *navigationBar;
-@property (nonatomic) SearchViewModel *searchViewModel;
 
 @property (nonatomic) SKStoreProductViewController *storeViewController;
 
@@ -63,7 +61,6 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
   //Register notification
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
   
-  _searchViewModel = [[SearchViewModel alloc] initWithDelegate:self];
   _searchType = artists;
   
   self.viewState = browsing;
@@ -149,7 +146,8 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     DLog(@"Searching");
     [self.activityIndicator startAnimating];
     self.viewState = loading;
-    [self.searchViewModel beginWithSearchType:self.searchType searchTerm:textField.text];
+    SearchFetch *searchFetch = [[SearchFetch alloc] initWithDelegate:self];
+    [searchFetch fetchItemsForSearchTerm:textField.text withType:self.searchType];
   }
   return [textField resignFirstResponder];
 }
@@ -168,23 +166,23 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 }
 
 #pragma mark - SearchViewModelDelegate
-- (void)didFinishSearch:(NSArray *)searchResultsArray {
+- (void)didFinishSearchWithResults:(NSArray *)searchResults {
   DLog(@"Finished search");
   if (!self.tableViewArray) {
     _tableViewArray = [NSMutableArray arrayWithCapacity:50];
   }
   
-  if (searchResultsArray.count > 0) {
+  if (searchResults.count > 0) {
     [self.tableView beginUpdates];
     [self.tableViewArray removeAllObjects];
     [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     //Add the items to the table view array
-    [self.tableViewArray addObjectsFromArray: searchResultsArray];
+    [self.tableViewArray addObjectsFromArray: searchResults];
     
     NSMutableArray *indexPaths = [NSMutableArray array];
     //Then add the required number of index paths
-    for (int i = 0; i < searchResultsArray.count; i++) {
+    for (int i = 0; i < searchResults.count; i++) {
       NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
       [indexPaths addObject:indexpath];
     }
@@ -249,6 +247,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     }
     return searchArtistTableViewCell;
   }
+  
   SearchAlbumTableViewCell *searchAlbumTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"AlbumCell" forIndexPath:indexPath];
   // Check if the items in the tableview are album objects
   if ([self.tableViewArray[indexPath.row] isKindOfClass:[Album class]]) {
