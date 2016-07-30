@@ -106,7 +106,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
 #pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
-  DLog(@"Moved to foreground");
   if (self.storeViewController) {
     [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
   }

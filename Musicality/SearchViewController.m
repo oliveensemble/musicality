@@ -88,7 +88,6 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 
 #pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
-  DLog(@"Moved to foreground");
   // If there was a store view already open when the user returns to this view, close it
   if (self.storeViewController) {
     [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
