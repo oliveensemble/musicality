@@ -20,6 +20,7 @@
 #import "ArtistViewController.h"
 #import "VariousArtistsViewController.h"
 #import "SearchFetch.h"
+#import "NotificationManager.h"
 
 typedef NS_OPTIONS(NSUInteger, SearchType) {
   artists = 1 << 0,
@@ -127,14 +128,14 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
   self.searchTextField.tintColor = [[ColorScheme sharedScheme] secondaryColor];
   [self underlineTextField];
   
-  [self checkForNotification: mStore.localNotification];
+  [self checkForNotification: [[NotificationManager sharedManager] localNotification]];
 }
 
 - (void)checkForNotification:(UILocalNotification *)localNotification {
   if (localNotification) {
-    DLog(@"Local Notification: %@", mStore.localNotification);
+    DLog(@"Local Notification: %@", [[NotificationManager sharedManager] localNotification]);
     // Remove the local notification when we're finished with it so it doesn't get reused
-    [mStore setLocalNotification:nil];
+    [[NotificationManager sharedManager] setLocalNotification:nil];
     DLog(@"Not background, calling toiTunes");
     [self loadStoreProductViewController:localNotification.userInfo];
   }

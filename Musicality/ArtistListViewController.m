@@ -21,6 +21,7 @@
 #import "UIImageView+Haneke.h"
 #import "ArtistViewController.h"
 #import "VariousArtistsViewController.h"
+#import "NotificationManager.h"
 
 typedef NS_OPTIONS(NSUInteger, ViewState) {
   browse = 1 << 0,
@@ -120,15 +121,15 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
   }
   
-  [self checkForNotification: mStore.localNotification];
+  [self checkForNotification: [[NotificationManager sharedManager] localNotification]];
   self.refresh.tintColor = [[ColorScheme sharedScheme] secondaryColor];
 }
 
 - (void)checkForNotification:(UILocalNotification *)localNotification {
   if (localNotification) {
-    DLog(@"Local Notification: %@", mStore.localNotification);        
+    DLog(@"Local Notification: %@", [[NotificationManager sharedManager] localNotification]);        
     // Remove the local notification when we're finished with it so it doesn't get reused
-    [mStore setLocalNotification:nil];
+    [[NotificationManager sharedManager] setLocalNotification:nil];
     [self loadStoreProductViewController:localNotification.userInfo];
   }
 }

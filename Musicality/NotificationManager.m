@@ -1,5 +1,5 @@
 //
-//  NotificationList.m
+//  NotificationManager.m
 //  Musicality
 //
 //  Created by Evan Lewis on 10/6/14.
@@ -9,24 +9,24 @@
 #import "MStore.h"
 #import "UserPrefs.h"
 #import "ArtistList.h"
-#import "NotificationList.h"
+#import "NotificationManager.h"
 
-@interface NotificationList ()
+@interface NotificationManager ()
 
 @property (copy, nonatomic) NSString *path;
 @property (nonatomic, retain) NSMutableArray *notifArray;
 
 @end
 
-@implementation NotificationList
+@implementation NotificationManager
 
-+ (instancetype)sharedList {
-  static NotificationList *sharedList = nil;
++ (instancetype)sharedManager {
+  static NotificationManager *sharedManager = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    sharedList = [[self alloc] initPrivate];
+    sharedManager = [[self alloc] initPrivate];
   });
-  return sharedList;
+  return sharedManager;
 }
 
 - (instancetype)initPrivate {

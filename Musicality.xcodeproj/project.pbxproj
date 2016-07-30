@@ -75,7 +75,7 @@
 		4FD2E80E1B76F77A00F35659 /* VariousArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2E80D1B76F77A00F35659 /* VariousArtistsViewController.m */; };
 		4FD2E8101B76FFE700F35659 /* VariousArtistsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD2E80F1B76FFE700F35659 /* VariousArtistsNavigationBar.xib */; };
 		4FD2E8131B77002000F35659 /* VariousArtistsNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2E8121B77002000F35659 /* VariousArtistsNavigationBar.m */; };
-		4FD6103019E353DA00EEBD59 /* NotificationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6102F19E353DA00EEBD59 /* NotificationList.m */; };
+		4FD6103019E353DA00EEBD59 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6102F19E353DA00EEBD59 /* NotificationManager.m */; };
 		4FE1039E19DB9425004F27BB /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1039D19DB9425004F27BB /* Artist.m */; };
 		4FE103A119DBA0DB004F27BB /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE103A019DBA0DB004F27BB /* Album.m */; };
 		4FEC5A801B34CF5700985B0C /* Blacklist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC5A7F1B34CF5700985B0C /* Blacklist.plist */; };
@@ -221,8 +221,8 @@
 		4FD2E80F1B76FFE700F35659 /* VariousArtistsNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VariousArtistsNavigationBar.xib; sourceTree = "<group>"; };
 		4FD2E8111B77002000F35659 /* VariousArtistsNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariousArtistsNavigationBar.h; sourceTree = "<group>"; };
 		4FD2E8121B77002000F35659 /* VariousArtistsNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariousArtistsNavigationBar.m; sourceTree = "<group>"; };
-		4FD6102E19E353DA00EEBD59 /* NotificationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationList.h; sourceTree = "<group>"; };
-		4FD6102F19E353DA00EEBD59 /* NotificationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationList.m; sourceTree = "<group>"; };
+		4FD6102E19E353DA00EEBD59 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
+		4FD6102F19E353DA00EEBD59 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
 		4FE1039C19DB9425004F27BB /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
 		4FE1039D19DB9425004F27BB /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
 		4FE1039F19DBA0DB004F27BB /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
@@ -370,8 +370,8 @@
 				4FC3E7781B13957000C3C10F /* ArtistList.m */,
 				4FEC5A811B34D0DC00985B0C /* Blacklist.h */,
 				4FEC5A821B34D0DC00985B0C /* Blacklist.m */,
-				4FD6102E19E353DA00EEBD59 /* NotificationList.h */,
-				4FD6102F19E353DA00EEBD59 /* NotificationList.m */,
+				4FD6102E19E353DA00EEBD59 /* NotificationManager.h */,
+				4FD6102F19E353DA00EEBD59 /* NotificationManager.m */,
 				4F018C711D1B43C500999334 /* ColorScheme.h */,
 				4F018C721D1B43C500999334 /* ColorScheme.m */,
 				4FEC5A7F1B34CF5700985B0C /* Blacklist.plist */,
@@ -682,7 +682,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F7A16EB19F883F80039508D /* SettingsNavigationBar.m in Sources */,
-				4FD6103019E353DA00EEBD59 /* NotificationList.m in Sources */,
+				4FD6103019E353DA00EEBD59 /* NotificationManager.m in Sources */,
 				4F63E84F1BED2E16004B6991 /* FilterTableViewCell.m in Sources */,
 				4FD2E8131B77002000F35659 /* VariousArtistsNavigationBar.m in Sources */,
 				4FAACD2F1D3D8ED000A362CC /* SearchViewController.m in Sources */,

@@ -22,6 +22,7 @@
 #import "UIImageView+Haneke.h"
 #import "ArtistViewController.h"
 #import "VariousArtistsViewController.h"
+#import "NotificationManager.h"
 
 //The different states the view can be in; either selecting a genre or scrolling through albums. The feed type changes whether it is the top charts or the new albums view
 typedef NS_OPTIONS(NSUInteger, ViewState) {
@@ -115,14 +116,14 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   }
   
   self.refresh.tintColor = [[ColorScheme sharedScheme] secondaryColor];
-  [self checkForNotification: mStore.localNotification];
+  [self checkForNotification: [[NotificationManager sharedManager] localNotification]];
 }
 
 - (void)checkForNotification:(UILocalNotification *)localNotification {
   if (localNotification) {
-    DLog(@"Local Notification: %@", mStore.localNotification);
+    DLog(@"Local Notification: %@", [[NotificationManager sharedManager] localNotification]);
     // Remove the local notification when we're finished with it so it doesn't get reused
-    [mStore setLocalNotification:nil];
+    [[NotificationManager sharedManager] setLocalNotification:nil];
     DLog(@"Not background, calling toiTunes");
     [self loadStoreProductViewController:localNotification.userInfo];
   }

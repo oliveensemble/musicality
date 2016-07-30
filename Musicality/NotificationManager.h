@@ -1,5 +1,5 @@
 //
-//  NotificationList.h
+//  NotificationManager.h
 //  Musicality
 //
 //  Created by Evan Lewis on 10/6/14.
@@ -10,9 +10,9 @@
 
 #import "Artist.h"
 
-@interface NotificationList : NSObject
+@interface NotificationManager : NSObject
 
-+ (instancetype)sharedList;
++ (instancetype)sharedManager;
 
 - (void)addArtistToList:(Artist *)artist;
 - (void)removeArtist:(Artist *)artist;
@@ -20,11 +20,13 @@
 - (void)determineNotificationItems;
 - (void)clearNotificationItems;
 
-- (NSMutableOrderedSet*)loadData;
+- (NSMutableOrderedSet *)loadData;
 - (void)saveChanges;
 
-- (void)pushAlbumNotificationLater:(NSString*)artistName album:(Album*)album;
+- (void)pushAlbumNotificationLater:(NSString *)artistName album:(Album *)album;
 
-@property (nonatomic) NSMutableOrderedSet* artistSet;
+@property (nonatomic) NSMutableOrderedSet *artistSet;
+
+@property (nonatomic) UILocalNotification *localNotification;
 
 @end

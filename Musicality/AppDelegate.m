@@ -10,7 +10,7 @@
 @import Fabric;
 @import Crashlytics;
 
-#import "NotificationList.h"
+#import "NotificationManager.h"
 #import "AppDelegate.h"
 #import "ArtistList.h"
 #import "Blacklist.h"
@@ -42,23 +42,24 @@
   UILocalNotification *notification = [launchOptions valueForKey:UIApplicationLaunchOptionsLocalNotificationKey];
   if (notification) {
     DLog(@"Setting notification");
-    [mStore setLocalNotification:notification];
+    [[NotificationManager sharedManager] setLocalNotification:notification];
   }
   
-  [[NotificationList sharedList] determineNotificationItems];
+  // Checks if any pre orders were released
+  [[NotificationManager sharedManager] determineNotificationItems];
   
   return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   application.applicationIconBadgeNumber = 0;
-  [[NotificationList sharedList] clearNotificationItems];
+  [[NotificationManager sharedManager] clearNotificationItems];
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
   if ([application applicationState] == UIApplicationStateInactive) {
     DLog(@"Setting notification");
-    [mStore setLocalNotification:notification];
+    [[NotificationManager sharedManager] setLocalNotification:notification];
   } else {
     DLog(@"Received notification while application is running");
   }

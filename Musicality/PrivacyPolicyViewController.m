@@ -13,6 +13,7 @@
 #import "ColorScheme.h"
 #import "PrivacyPolicyViewController.h"
 #import "MViewControllerDelegate.h"
+#import "NotificationManager.h"
 
 @interface PrivacyPolicyViewController () <MViewControllerDelegate, SKStoreProductViewControllerDelegate>
 
@@ -50,14 +51,14 @@
     [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
   }
   
-  [self checkForNotification: mStore.localNotification];
+  [self checkForNotification: [[NotificationManager sharedManager] localNotification]];
 }
 
 - (void)checkForNotification:(UILocalNotification *)localNotification {
   if (localNotification) {
-    DLog(@"Local Notification: %@", mStore.localNotification);
+    DLog(@"Local Notification: %@", [[NotificationManager sharedManager] localNotification]);
     // Remove the local notification when we're finished with it so it doesn't get reused
-    [mStore setLocalNotification:nil];
+    [[NotificationManager sharedManager] setLocalNotification:nil];
     [self loadStoreProductViewController:localNotification.userInfo];
   }
 }
