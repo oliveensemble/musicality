@@ -568,6 +568,9 @@
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					4F18224519DA043A006CCA8B = {
@@ -930,7 +933,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)/**";
 				PRODUCT_BUNDLE_IDENTIFIER = com.evanlewis.musicality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5bcad9cc-4ff7-4658-b5d7-6414294b4e7c";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -950,10 +953,11 @@
 				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = Musicality/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "";
-				LIBRARY_SEARCH_PATHS = "$(inherited)/**";
+				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evanlewis.musicality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "75db37e3-62b9-471b-b575-cc87f1eebdb3";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
