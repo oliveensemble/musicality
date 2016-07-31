@@ -40,7 +40,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musicality lets you view new releases from your favorite artists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ID5-P0-lWk">
                                 <rect key="frame" x="50" y="279" width="500" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUT-V1-DTS" customClass="Button">
@@ -127,7 +127,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turning on notifications will allow you to be notified whenever the artists you follow release new music" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4J-ax-wlN">
                                 <rect key="frame" x="50" y="279" width="500" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIm-qm-6UQ" customClass="Button">
@@ -136,6 +136,9 @@
                                     <constraint firstAttribute="width" constant="60" id="GCn-Nm-Ynd"/>
                                 </constraints>
                                 <state key="normal" title="Cool!"/>
+                                <connections>
+                                    <segue destination="Wlt-vc-ayy" kind="show" identifier="toScanView" id="oMQ-zD-5oc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,47 +190,57 @@
                                     <constraint firstItem="oHB-I3-Xp1" firstAttribute="centerX" secondItem="iTK-RV-EZw" secondAttribute="centerX" id="mIO-rx-iSg"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Musicality can automatically scan your music library for new releases by your favorite artists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VM5-F5-1iy">
-                                <rect key="frame" x="49" y="157" width="501" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musicality can automatically scan your music library for new releases by your favorite artists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VM5-F5-1iy">
+                                <rect key="frame" x="50" y="142" width="500" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="If not, you can always search and follow artists manually. You can change this at any time under settings" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EQ-Ia-109">
-                                <rect key="frame" x="49" y="310" width="501" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If not, you can always search and follow artists manually. You can change this at any time under settings" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EQ-Ia-109">
+                                <rect key="frame" x="50" y="265" width="500" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsZ-GY-0Dn" customClass="Button">
-                                <rect key="frame" x="177" y="491" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsZ-GY-0Dn" customClass="Button">
+                                <rect key="frame" x="70" y="393" width="100" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="P5I-YU-1ZR"/>
+                                    <constraint firstAttribute="width" constant="100" id="P5I-YU-1ZR"/>
                                 </constraints>
-                                <state key="normal" title="Cool!"/>
+                                <state key="normal" title="Manual Scan"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rci-Nm-WG8" customClass="Button">
-                                <rect key="frame" x="367" y="467" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rci-Nm-WG8" customClass="Button">
+                                <rect key="frame" x="430" y="393" width="100" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="K13-om-EgF"/>
+                                    <constraint firstAttribute="width" constant="100" id="K13-om-EgF"/>
                                 </constraints>
-                                <state key="normal" title="Cool!"/>
+                                <state key="normal" title="Auto Scan"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Rci-Nm-WG8" firstAttribute="centerY" secondItem="GsZ-GY-0Dn" secondAttribute="centerY" id="06I-iW-fwt"/>
                             <constraint firstItem="iTK-RV-EZw" firstAttribute="leading" secondItem="hw1-y6-c05" secondAttribute="leading" id="3Jx-c1-f8I"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VM5-F5-1iy" secondAttribute="trailing" constant="30" id="4Fw-Py-FBg"/>
                             <constraint firstAttribute="trailing" secondItem="iTK-RV-EZw" secondAttribute="trailing" id="6cj-Lc-51u"/>
                             <constraint firstItem="GsZ-GY-0Dn" firstAttribute="top" secondItem="5EQ-Ia-109" secondAttribute="bottom" constant="85" id="96o-nr-QoQ"/>
+                            <constraint firstItem="5EQ-Ia-109" firstAttribute="top" secondItem="VM5-F5-1iy" secondAttribute="bottom" constant="80" id="Fb7-wF-8xk"/>
+                            <constraint firstItem="GsZ-GY-0Dn" firstAttribute="leading" secondItem="hw1-y6-c05" secondAttribute="leadingMargin" constant="50" id="NSP-nE-3A9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VM5-F5-1iy" secondAttribute="trailing" constant="30" id="SCB-H5-w7t"/>
+                            <constraint firstItem="5EQ-Ia-109" firstAttribute="leading" secondItem="VM5-F5-1iy" secondAttribute="leading" id="Six-q9-eBd"/>
+                            <constraint firstItem="VM5-F5-1iy" firstAttribute="top" secondItem="oHB-I3-Xp1" secondAttribute="bottom" constant="100" id="UQb-tY-YJc"/>
+                            <constraint firstItem="5EQ-Ia-109" firstAttribute="trailing" secondItem="VM5-F5-1iy" secondAttribute="trailing" id="bbO-mt-7YN"/>
                             <constraint firstItem="5EQ-Ia-109" firstAttribute="centerX" secondItem="hw1-y6-c05" secondAttribute="centerX" id="cHz-QA-R1h"/>
+                            <constraint firstItem="Rci-Nm-WG8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GsZ-GY-0Dn" secondAttribute="trailing" constant="10" id="dg9-8b-J5S"/>
                             <constraint firstItem="iTK-RV-EZw" firstAttribute="top" secondItem="hw1-y6-c05" secondAttribute="top" id="hZo-nl-lbQ"/>
-                            <constraint firstItem="VM5-F5-1iy" firstAttribute="centerX" secondItem="hw1-y6-c05" secondAttribute="centerX" id="qnC-QI-cMB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5EQ-Ia-109" secondAttribute="trailing" constant="30" id="sw1-J4-2JR"/>
-                            <constraint firstItem="5EQ-Ia-109" firstAttribute="leading" secondItem="hw1-y6-c05" secondAttribute="leadingMargin" constant="30" id="wTi-Xr-W67"/>
-                            <constraint firstItem="VM5-F5-1iy" firstAttribute="leading" secondItem="hw1-y6-c05" secondAttribute="leadingMargin" constant="30" id="yPw-oq-yYB"/>
+                            <constraint firstItem="VM5-F5-1iy" firstAttribute="leading" secondItem="hw1-y6-c05" secondAttribute="leadingMargin" constant="30" id="iPQ-lj-c05"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rci-Nm-WG8" secondAttribute="trailing" constant="50" id="pln-Aa-viO"/>
+                            <constraint firstItem="bj3-8d-8Zo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GsZ-GY-0Dn" secondAttribute="bottom" constant="25" id="qdp-RH-d3f"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cHz-QA-R1h"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZp-K3-xhX" userLabel="First Responder" sceneMemberID="firstResponder"/>
