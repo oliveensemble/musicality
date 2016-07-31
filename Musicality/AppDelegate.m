@@ -27,9 +27,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [Fabric with:@[[Crashlytics class]]];
   
+  // Ask to allow push notifications
   UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
   UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
   [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+  
   application.minimumBackgroundFetchInterval = UIApplicationBackgroundFetchIntervalMinimum;
   
   if (![[NSUserDefaults standardUserDefaults] boolForKey:@"notFirstRun"]) {

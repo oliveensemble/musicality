@@ -1,18 +1,18 @@
 //
-//  TutorialScanViewController.m
+//  TutorialPopularArtistsViewController.m
 //  Musicality
 //
 //  Created by Evan Lewis on 7/30/16.
 //  Copyright © 2016 Evan Lewis. All rights reserved.
 //
 
-#import "TutorialScanViewController.h"
+#import "TutorialPopularArtistsViewController.h"
 
-@interface TutorialScanViewController ()
+@interface TutorialPopularArtistsViewController ()
 
 @end
 
-@implementation TutorialScanViewController
+@implementation TutorialPopularArtistsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
