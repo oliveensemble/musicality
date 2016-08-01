@@ -791,7 +791,6 @@
 				4F6B7E0719FE90D600FFC596 /* Button.m in Sources */,
 				4FEC5A831B34D0DC00985B0C /* Blacklist.m in Sources */,
 				4FD2E80E1B76F77A00F35659 /* VariousArtistsViewController.m in Sources */,
-				4F63E8461BE57BCF004B6991 /* HNKDiskCache.m in Sources */,
 				4F18CC081D4D44D80005957D /* TutorialNotificationViewController.m in Sources */,
 				4F18223319DA0439006CCA8B /* main.m in Sources */,
 				4F18CC0B1D4D44F40005957D /* TutorialScanViewController.m in Sources */,
