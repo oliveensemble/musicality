@@ -144,9 +144,9 @@
   [_navigationBar.backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
   
   if (self.isInNotificationList) {
-    [self.navigationBar.addToListButton setTitle:@"  Remove from list  " forState:UIControlStateNormal];
+    [self.navigationBar.addToListButton setTitle:@"  Unfollow  " forState:UIControlStateNormal];
   } else {
-    [self.navigationBar.addToListButton setTitle:@"  Add to list  " forState:UIControlStateNormal];
+    [self.navigationBar.addToListButton setTitle:@"  Follow  " forState:UIControlStateNormal];
   }
   return _navigationBar;
 }
@@ -250,11 +250,11 @@
   
   if (!self.isInNotificationList) {
     [[ArtistList sharedList] addArtistToList:self.artist];
-    [self.navigationBar.addToListButton setTitle:@"  Remove from list  " forState:UIControlStateNormal];
+    [self.navigationBar.addToListButton setTitle:@"  Unfollow  " forState:UIControlStateNormal];
     self.isInNotificationList = YES;
   } else {
     [[ArtistList sharedList] removeArtist:self.artist];
-    [self.navigationBar.addToListButton setTitle:@"  Add to list  " forState:UIControlStateNormal];
+    [self.navigationBar.addToListButton setTitle:@"  Follow  " forState:UIControlStateNormal];
     self.isInNotificationList = NO;
   }
   

@@ -7,6 +7,7 @@
 //
 
 #import "TutorialPopularArtistsViewController.h"
+#import "ArtistList.h"
 
 @interface TutorialPopularArtistsViewController ()
 
@@ -14,24 +15,21 @@
 
 @implementation TutorialPopularArtistsViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (IBAction)followPopularArtistsButtonTapped:(id)sender {
+  [[ArtistList sharedList] addPopularArtists];
+  [self loadMainStoryboard];
+}
+  
+- (IBAction)dontFollowPopularArtistsButtonTapped:(id)sender {
+  [self loadMainStoryboard];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)loadMainStoryboard {
+  [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"notFirstRun"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+  UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+  UIViewController *initialViewController = [storyBoard instantiateInitialViewController];
+  [self presentViewController:initialViewController animated:YES completion:nil];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

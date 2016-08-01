@@ -223,7 +223,12 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   if (self.filterType == latestReleases) {
     return [[[[albumsArray sortedArrayUsingSelector:@selector(compare:)] reverseObjectEnumerator] allObjects] mutableCopy];
   } else if (self.filterType == artists) {
-    return albumsArray;
+    // Sort alphabetically
+    NSArray *sortedArray;
+    sortedArray = [albumsArray sortedArrayUsingComparator:^NSComparisonResult(Album *a, Album *b) {
+      return [a.artist compare:b.artist];
+    }];
+    return [sortedArray mutableCopy];
   } else if (self.filterType == hidePreOrders) {
     NSArray *albums = [albumsArray filteredArrayUsingPredicate:filterPreOrders];
     return [[[[albums sortedArrayUsingSelector:@selector(compare:)] reverseObjectEnumerator] allObjects] mutableCopy];
@@ -483,7 +488,11 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   [self.view bringSubviewToFront:self.loadingBar];
 }
 
--(void)dealloc {
+- (void)viewWillDisappear:(BOOL)animated {
+  [self.refresh endRefreshing];
+}
+
+- (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self name:@"autoScanFinished" object:nil];
 }
 

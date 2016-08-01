@@ -6,7 +6,7 @@
 //  Copyright © 2016 Evan Lewis. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface TutorialNotificationViewController : UIViewController
 
