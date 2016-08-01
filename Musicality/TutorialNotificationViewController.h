@@ -1,5 +1,5 @@
 //
-//  TutorialScanViewController.h
+//  TutorialNotificationViewController.h
 //  Musicality
 //
 //  Created by Evan Lewis on 7/30/16.
@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface TutorialScanViewController : UIViewController
+@interface TutorialNotificationViewController : UIViewController
 
 @end

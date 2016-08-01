@@ -492,4 +492,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+  [self.refresh endRefreshing];
+}
+
 @end

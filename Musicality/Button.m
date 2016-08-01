@@ -32,13 +32,13 @@
   if (self.adjustsImageWhenHighlighted == YES) {
     if (highlighted) {
       [self setTitleColor: [[ColorScheme sharedScheme] primaryColor] forState:UIControlStateNormal];
-      self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
       [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[[ColorScheme sharedScheme] secondaryColor]] forState:UIControlStateHighlighted];
+      self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
       self.layer.borderWidth = 2.0f;
     } else {
       [self setTitleColor: [[ColorScheme sharedScheme] secondaryColor] forState:UIControlStateNormal];
-      self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
       [self setBackgroundImage: [[ColorScheme sharedScheme] imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+      self.layer.borderColor = [[[ColorScheme sharedScheme] secondaryColor] CGColor];
       self.layer.borderWidth = 2.0f;
     }
   }

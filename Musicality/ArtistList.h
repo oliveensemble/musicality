@@ -11,19 +11,20 @@
 
 @interface ArtistList : NSObject
 
+@property (nonatomic) NSMutableOrderedSet* artistSet;
+
 + (instancetype)sharedList;
 
 - (void)addArtistToList:(Artist*)artist;
 - (void)removeArtist:(Artist*)artist;
 - (void)updateLatestRelease:(Album*)album forArtist:(Artist *)artist;
 - (void)removeAllArtists;
+- (void)addPopularArtists;
 
 - (void)saveChanges;
 
 //Checks by name if artist is in list
 - (BOOL)isInList:(Artist *)artist;
 - (Artist *)getArtist:(NSString *)artistName;
-
-@property (nonatomic) NSMutableOrderedSet* artistSet;
 
 @end
