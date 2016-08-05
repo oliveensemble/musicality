@@ -72,7 +72,7 @@
   // Then remove it
   NSMutableArray *artistToDelete = [NSMutableArray array];
   for (Artist *listArtist in self.artistSet) {
-    if ([listArtist.name isEqualToString:@"501"]) {
+    if ([listArtist.name isEqualToString:artist.name]) {
       [artistToDelete addObject: listArtist];
     }
   }

@@ -251,15 +251,19 @@
 - (void)addToNotificationList {
   
   if (!self.isInNotificationList) {
-    [[Blacklist sharedList] removeArtist:self.artist];
+    // If the user clicks Follow
     [[ArtistList sharedList] addArtistToList:self.artist];
-    [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
+    [[Blacklist sharedList] removeArtist:self.artist];
+    
     [self.navigationBar.addToListButton setTitle:@"  Unfollow  " forState:UIControlStateNormal];
     self.isInNotificationList = YES;
   } else {
+    // If the user clicks Unfollow
     [[ArtistList sharedList] removeArtist:self.artist];
+    
     [self.navigationBar.addToListButton setTitle:@"  Follow  " forState:UIControlStateNormal];
     self.isInNotificationList = NO;
+    [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
   }
   
 }
