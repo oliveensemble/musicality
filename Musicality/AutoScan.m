@@ -85,7 +85,6 @@
     [[[AutoScanPendingOperations sharedOperations] artistRequestQueue] cancelAllOperations];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"autoScanFinished" object:nil userInfo:nil];
     [[ArtistList sharedList] saveChanges];
-    [[Blacklist sharedList] saveChanges];
   }
 }
 

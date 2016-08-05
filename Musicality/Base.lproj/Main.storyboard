@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yS8-BL-qul">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yS8-BL-qul">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -633,135 +633,6 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumCell" rowHeight="195" id="Air-9f-M5x" customClass="AlbumTableViewCell">
-                                <rect key="frame" x="0.0" y="151" width="600" height="195"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Air-9f-M5x" id="tzF-iw-n9l">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="194"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MBa-5f-HTn">
-                                            <rect key="frame" x="22" y="28" width="138" height="138"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="MBa-5f-HTn" secondAttribute="height" multiplier="1:1" id="YGD-zs-1hm"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jz-av-GmM">
-                                            <rect key="frame" x="160" y="53" width="418" height="24"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p9h-hP-B4G">
-                                            <rect key="frame" x="160" y="85" width="418" height="22"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z84-6P-xgC" customClass="Button">
-                                            <rect key="frame" x="487" y="115" width="91" height="26"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" priority="999" constant="26" id="3nG-EE-kTa"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="upT-F4-1Ar"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <state key="normal" title="  View Artist  ">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="p9h-hP-B4G" firstAttribute="leading" secondItem="MBa-5f-HTn" secondAttribute="trailing" id="8Xr-qI-E9A"/>
-                                        <constraint firstAttribute="centerY" secondItem="MBa-5f-HTn" secondAttribute="centerY" id="HZJ-AG-F9C"/>
-                                        <constraint firstItem="z84-6P-xgC" firstAttribute="top" secondItem="p9h-hP-B4G" secondAttribute="bottom" constant="8" id="Lvn-sr-EN7"/>
-                                        <constraint firstItem="z84-6P-xgC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MBa-5f-HTn" secondAttribute="trailing" constant="1" id="OGa-ua-EAd"/>
-                                        <constraint firstItem="z84-6P-xgC" firstAttribute="trailing" secondItem="p9h-hP-B4G" secondAttribute="trailing" id="P0i-kz-eq8"/>
-                                        <constraint firstItem="z84-6P-xgC" firstAttribute="trailing" secondItem="7Jz-av-GmM" secondAttribute="trailing" id="Sx8-WM-Y76"/>
-                                        <constraint firstItem="MBa-5f-HTn" firstAttribute="leading" secondItem="tzF-iw-n9l" secondAttribute="leadingMargin" constant="14" id="c1E-t6-Oyz"/>
-                                        <constraint firstItem="7Jz-av-GmM" firstAttribute="top" secondItem="tzF-iw-n9l" secondAttribute="topMargin" constant="45" id="dsa-4s-jI4"/>
-                                        <constraint firstItem="p9h-hP-B4G" firstAttribute="top" secondItem="7Jz-av-GmM" secondAttribute="bottom" constant="8" id="jGu-Ja-qSV"/>
-                                        <constraint firstItem="7Jz-av-GmM" firstAttribute="leading" secondItem="MBa-5f-HTn" secondAttribute="trailing" id="m5i-VC-qnu"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="7Jz-av-GmM" secondAttribute="trailing" constant="14" id="sQd-dH-E5C"/>
-                                        <constraint firstItem="MBa-5f-HTn" firstAttribute="top" secondItem="tzF-iw-n9l" secondAttribute="topMargin" priority="999" constant="20" id="xdD-HQ-yXb"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <gestureRecognizers/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PreOrderAlbumCell" rowHeight="195" id="vR2-9C-Luz" customClass="AlbumTableViewCell">
-                                <rect key="frame" x="0.0" y="346" width="600" height="195"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vR2-9C-Luz" id="dWX-Om-3mW">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="194"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TSa-Va-tJ0">
-                                            <rect key="frame" x="22" y="28" width="138" height="138"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="TSa-Va-tJ0" secondAttribute="height" multiplier="1:1" id="QnK-BJ-4SN"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fmD-dP-gcE">
-                                            <rect key="frame" x="160" y="38" width="418" height="24"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RMp-5B-6dS">
-                                            <rect key="frame" x="160" y="70" width="418" height="22"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igf-IL-NXs" customClass="Button">
-                                            <rect key="frame" x="487" y="100" width="91" height="26"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="26" id="O1k-Wx-1Gq"/>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="110" id="zeS-xN-UaN"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <state key="normal" title="  View Artist  ">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pre-Order" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kmy-bK-YQu">
-                                            <rect key="frame" x="512" y="134" width="66" height="20"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="Mve-Tn-6aM"/>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="r5n-ZA-PJy"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="TSa-Va-tJ0" firstAttribute="top" secondItem="dWX-Om-3mW" secondAttribute="topMargin" priority="999" constant="20" id="0mC-Xe-cei"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="fmD-dP-gcE" secondAttribute="trailing" constant="14" id="BAt-ER-fA8"/>
-                                        <constraint firstItem="igf-IL-NXs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TSa-Va-tJ0" secondAttribute="trailing" constant="1" id="Bgr-ew-oBk"/>
-                                        <constraint firstItem="RMp-5B-6dS" firstAttribute="top" secondItem="fmD-dP-gcE" secondAttribute="bottom" constant="8" id="CAS-hI-KBu"/>
-                                        <constraint firstItem="fmD-dP-gcE" firstAttribute="trailing" secondItem="Kmy-bK-YQu" secondAttribute="trailing" id="HnZ-9u-Bp4"/>
-                                        <constraint firstItem="TSa-Va-tJ0" firstAttribute="leading" secondItem="dWX-Om-3mW" secondAttribute="leadingMargin" constant="14" id="SGY-Gb-Bqk"/>
-                                        <constraint firstAttribute="centerY" secondItem="TSa-Va-tJ0" secondAttribute="centerY" id="SUh-zz-QQq"/>
-                                        <constraint firstItem="Kmy-bK-YQu" firstAttribute="top" secondItem="igf-IL-NXs" secondAttribute="bottom" constant="8" id="Y93-Xw-6Pg"/>
-                                        <constraint firstItem="igf-IL-NXs" firstAttribute="top" secondItem="RMp-5B-6dS" secondAttribute="bottom" constant="8" id="fZK-k1-6Fu"/>
-                                        <constraint firstItem="RMp-5B-6dS" firstAttribute="leading" secondItem="TSa-Va-tJ0" secondAttribute="trailing" id="hHl-7L-oZz"/>
-                                        <constraint firstItem="igf-IL-NXs" firstAttribute="trailing" secondItem="RMp-5B-6dS" secondAttribute="trailing" id="mM2-PL-Hdk"/>
-                                        <constraint firstItem="fmD-dP-gcE" firstAttribute="leading" secondItem="TSa-Va-tJ0" secondAttribute="trailing" id="n1S-yN-4yA"/>
-                                        <constraint firstItem="igf-IL-NXs" firstAttribute="trailing" secondItem="fmD-dP-gcE" secondAttribute="trailing" id="sKD-fk-MAb"/>
-                                        <constraint firstItem="fmD-dP-gcE" firstAttribute="top" secondItem="dWX-Om-3mW" secondAttribute="topMargin" constant="30" id="tNq-NM-JTO"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <gestureRecognizers/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="qKV-iy-SCQ" id="7VB-0b-hhb"/>
@@ -913,7 +784,7 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="P3I-8o-bjq"/>
-        <segue reference="qf3-OR-EQf"/>
+        <segue reference="NMO-CG-dgE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

@@ -24,11 +24,7 @@
 - (void)main {
   
   @autoreleasepool {
-    
-    if (self.isCancelled) {
-      return;
-    }
-    
+        
     NSString *formattedArtistName = [[self.artist.name stringByReplacingOccurrencesOfString:@" " withString:@"+"] lowercaseString];
     NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=musicArtist&limit=1", formattedArtistName];
     NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -36,10 +32,7 @@
     
     if (self.isCancelled) {
       artistData = nil;
-      return;
     }
-    
-    BOOL hasInfo = YES;
     
     if (artistData) {
       NSError *error;
@@ -48,21 +41,10 @@
       NSDictionary *artistDictionary = [jsonObject[@"results"] firstObject];
       if (artistDictionary[@"artistId"] && artistDictionary[@"artistName"]) {
         [self.artist addArtistId: artistDictionary[@"artistId"]];
-      } else {
-        hasInfo = NO;
       }
-    } else {
-      hasInfo = NO;
-    }
-    
-    artistData = nil;
-    
-    if (!hasInfo) {
-      [[Blacklist sharedList] addArtistToList:self.artist];
-    }
-    
-    if (self.isCancelled) {
-      return;
+      
+      artistData = nil;
+
     }
     
     //Cast the operation to NSObject, and notify the caller on the main thread.

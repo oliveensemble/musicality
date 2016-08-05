@@ -26,7 +26,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [Fabric with:@[[Crashlytics class]]];
-
+  
   application.minimumBackgroundFetchInterval = UIApplicationBackgroundFetchIntervalMinimum;
   
   if (![[NSUserDefaults standardUserDefaults] boolForKey:@"notFirstRun"]) {
@@ -63,6 +63,14 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+  [self save];
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+  [self save];
+}
+
+- (void)save {
   [[UserPrefs sharedPrefs] savePrefs];
   [[ArtistList sharedList] saveChanges];
   [[Blacklist sharedList] saveChanges];

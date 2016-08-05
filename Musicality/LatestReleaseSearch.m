@@ -31,17 +31,12 @@
   
   @autoreleasepool {
     
-    if (self.isCancelled) {
-      return;
-    }
-    
     NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@&entity=album&limit=1&sort=recent", self.artist.artistID];
     NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSData *albumData = [[NSData alloc] initWithContentsOfURL:requestURL];
     
     if (self.isCancelled) {
       albumData = nil;
-      return;
     }
     
     if (albumData) {
@@ -59,10 +54,6 @@
     }
     
     albumData = nil;
-    
-    if (self.isCancelled) {
-      return;
-    }
     
     //Cast the operation to NSObject, and notify the caller on the main thread.
     [(NSObject *)self.delegate performSelectorOnMainThread:@selector(latestReleaseSearchDidFinish:) withObject:self waitUntilDone:NO];

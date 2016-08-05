@@ -36,68 +36,54 @@
   
   @autoreleasepool {
     
-    if (self.isCancelled) {
-      return;
-    }
-    
     NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@&entity=album&sort=recent", self.artist.artistID];
     NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSData *albumData = [[NSData alloc] initWithContentsOfURL:requestURL];
-    
-    if (self.isCancelled) {
-      albumData = nil;
-      return;
-    }
-    
-    if (!albumData) {
-      return;
-    }
-    
-    NSError *error;
-    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:albumData options:NSJSONReadingMutableContainers error:&error];
-    NSArray *jsonArray = jsonObject[@"results"];
     NSMutableArray *albumArray = [NSMutableArray array];
     
-    for (int i = 1; i < [jsonArray count]; i++) {
-      NSDictionary *albumDictionary = [jsonArray objectAtIndex:i];
-      NSString *name;
-      NSString *buyURL;
-      NSString *artworkURL;
-      NSString *releaseDate;
-      NSNumber *trackCount;
-      for (int j = 0; j < [albumDictionary count]; j++) {
-        NSString *nodeTitle = [albumDictionary allKeys][j];
-        id nodeValue = [albumDictionary allValues][j];
-        
-        if ([nodeTitle isEqualToString:@"collectionCensoredName"]) {
-          name = nodeValue;
-        } else if ([nodeTitle isEqualToString:@"collectionViewUrl"]) {
-          buyURL = nodeValue;
-        } else if ([nodeTitle isEqualToString:@"artworkUrl100"]) {
-          artworkURL = nodeValue;
-        } else if ([nodeTitle isEqualToString:@"releaseDate"]) {
-          releaseDate = nodeValue;
-        } else if ([nodeTitle isEqualToString:@"trackCount"]) {
-          trackCount = [NSNumber numberWithInt:[nodeValue intValue]];
+    if (albumData) {
+      
+      NSError *error;
+      NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:albumData options:NSJSONReadingMutableContainers error:&error];
+      NSArray *jsonArray = jsonObject[@"results"];
+      
+      for (int i = 1; i < [jsonArray count]; i++) {
+        NSDictionary *albumDictionary = [jsonArray objectAtIndex:i];
+        NSString *name;
+        NSString *buyURL;
+        NSString *artworkURL;
+        NSString *releaseDate;
+        NSNumber *trackCount;
+        for (int j = 0; j < [albumDictionary count]; j++) {
+          NSString *nodeTitle = [albumDictionary allKeys][j];
+          id nodeValue = [albumDictionary allValues][j];
+          
+          if ([nodeTitle isEqualToString:@"collectionCensoredName"]) {
+            name = nodeValue;
+          } else if ([nodeTitle isEqualToString:@"collectionViewUrl"]) {
+            buyURL = nodeValue;
+          } else if ([nodeTitle isEqualToString:@"artworkUrl100"]) {
+            artworkURL = nodeValue;
+          } else if ([nodeTitle isEqualToString:@"releaseDate"]) {
+            releaseDate = nodeValue;
+          } else if ([nodeTitle isEqualToString:@"trackCount"]) {
+            trackCount = [NSNumber numberWithInt:[nodeValue intValue]];
+          }
         }
+        
+        Album *newAlbum = [[Album alloc] initWithAlbumTitle:name
+                                                     artist:self.artist.name
+                                                 artworkURL:artworkURL
+                                                   albumURL:buyURL
+                                                releaseDate:releaseDate];
+        newAlbum.trackCount = trackCount;
+        [albumArray addObject:newAlbum];
+        
+        name = nil;
+        buyURL = nil;
+        artworkURL = nil;
+        releaseDate = nil;
       }
-      
-      Album *newAlbum = [[Album alloc] initWithAlbumTitle:name
-                                                   artist:self.artist.name
-                                               artworkURL:artworkURL
-                                                 albumURL:buyURL
-                                              releaseDate:releaseDate];
-      newAlbum.trackCount = trackCount;
-      [albumArray addObject:newAlbum];
-      
-      name = nil;
-      buyURL = nil;
-      artworkURL = nil;
-      releaseDate = nil;
-    }
-    
-    if (self.isCancelled) {
-      return;
     }
     
     //Cast the operation to NSObject, and notify the caller on the main thread.

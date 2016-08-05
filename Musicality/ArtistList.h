@@ -11,7 +11,8 @@
 
 @interface ArtistList : NSObject
 
-@property (nonatomic) NSMutableOrderedSet* artistSet;
+@property (nonatomic) NSMutableOrderedSet *artistSet;
+@property (nonatomic) BOOL viewNeedsUpdates;
 
 + (instancetype)sharedList;
 

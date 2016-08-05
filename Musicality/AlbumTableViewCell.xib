@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,9 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJy-wD-vmO">
-                        <rect key="frame" x="141" y="64" width="441" height="20"/>
+                        <rect key="frame" x="141" y="65" width="441" height="20"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="6Ky-Qb-OOZ"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="XY5-Yu-I94"/>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="110" id="qwa-Hr-7rr"/>
                         </constraints>
@@ -40,7 +41,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-N4-3vl">
-                        <rect key="frame" x="141" y="37" width="441" height="22"/>
+                        <rect key="frame" x="141" y="38" width="441" height="22"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -49,7 +50,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     </label>
                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbg-ZQ-MLo" customClass="Button">
-                        <rect key="frame" x="141" y="91" width="84" height="28"/>
+                        <rect key="frame" x="141" y="90" width="84" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="T8q-00-R8T"/>
                             <constraint firstAttribute="width" constant="84" id="gyN-dl-gW2"/>
@@ -79,11 +80,11 @@
                     <constraint firstItem="mJy-wD-vmO" firstAttribute="leading" secondItem="mCW-N4-3vl" secondAttribute="leading" id="2Ih-LB-mKm"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Wbg-ZQ-MLo" secondAttribute="bottom" constant="8" id="3dD-So-Emh"/>
                     <constraint firstAttribute="trailingMargin" secondItem="mCW-N4-3vl" secondAttribute="trailing" constant="10" id="3ft-Qx-aO3"/>
-                    <constraint firstItem="mCW-N4-3vl" firstAttribute="top" secondItem="lfF-3v-dHJ" secondAttribute="bottom" constant="7" id="3oL-tH-RJ2"/>
+                    <constraint firstItem="mCW-N4-3vl" firstAttribute="top" secondItem="lfF-3v-dHJ" secondAttribute="bottom" priority="999" constant="8" id="3oL-tH-RJ2"/>
                     <constraint firstItem="lfF-3v-dHJ" firstAttribute="trailing" secondItem="mJy-wD-vmO" secondAttribute="trailing" id="49c-qu-giZ"/>
                     <constraint firstItem="Bjm-Gk-erf" firstAttribute="leading" secondItem="MLb-n1-dTO" secondAttribute="leadingMargin" constant="10" id="H37-oZ-yLV"/>
                     <constraint firstItem="mJy-wD-vmO" firstAttribute="trailing" secondItem="mCW-N4-3vl" secondAttribute="trailing" id="J6h-4i-fji"/>
-                    <constraint firstItem="Wbg-ZQ-MLo" firstAttribute="top" secondItem="mJy-wD-vmO" secondAttribute="bottom" priority="999" constant="7" id="L8q-5c-29i"/>
+                    <constraint firstItem="Wbg-ZQ-MLo" firstAttribute="top" secondItem="mJy-wD-vmO" secondAttribute="bottom" constant="5" id="L8q-5c-29i"/>
                     <constraint firstItem="Bjm-Gk-erf" firstAttribute="centerY" secondItem="MLb-n1-dTO" secondAttribute="centerY" id="LCA-1N-iZ4"/>
                     <constraint firstItem="mCW-N4-3vl" firstAttribute="leading" secondItem="Bjm-Gk-erf" secondAttribute="trailing" constant="10" id="SNi-8l-4eZ"/>
                     <constraint firstItem="lfF-3v-dHJ" firstAttribute="leading" secondItem="Wbg-ZQ-MLo" secondAttribute="leading" id="YES-sd-tE6"/>

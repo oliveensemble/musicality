@@ -19,6 +19,8 @@
 #import "AlbumTableViewCell.h"
 #import "UIImageView+Haneke.h"
 #import "NotificationManager.h"
+#import "Blacklist.h"
+#import "UserPrefs.h"
 
 @interface ArtistViewController () <SKStoreProductViewControllerDelegate, MViewControllerDelegate, ArtistFetchDelegate>
 
@@ -249,7 +251,9 @@
 - (void)addToNotificationList {
   
   if (!self.isInNotificationList) {
+    [[Blacklist sharedList] removeArtist:self.artist];
     [[ArtistList sharedList] addArtistToList:self.artist];
+    [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
     [self.navigationBar.addToListButton setTitle:@"  Unfollow  " forState:UIControlStateNormal];
     self.isInNotificationList = YES;
   } else {

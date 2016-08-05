@@ -22,6 +22,7 @@
 #import "ArtistViewController.h"
 #import "VariousArtistsViewController.h"
 #import "NotificationManager.h"
+#import "UserPrefs.h"
 
 typedef NS_OPTIONS(NSUInteger, ViewState) {
   browse = 1 << 0,
@@ -85,9 +86,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   NSArray *sortedAlbums = [self sortedAlbums];
   [self.tableViewArray addObjectsFromArray:sortedAlbums];
   
-  _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate:self];
-  [self.artistListViewModel beginUpdates];
-  [self beginLoading];
+  [[UserPrefs sharedPrefs] setArtistListNeedsUpdating: YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -119,6 +118,16 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 - (void)viewMovedToForeground {
   if (self.storeViewController) {
     [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
+  }
+  
+  if ([[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
+    [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:NO];
+    DLog(@"Needed some updates");
+    _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate:self];
+    [self.artistListViewModel beginUpdates];
+  } else if ([[ArtistList sharedList] viewNeedsUpdates]) {
+    [[ArtistList sharedList] setViewNeedsUpdates:NO];
+    [self populate];
   }
   
   [self checkForNotification: [[NotificationManager sharedManager] localNotification]];
@@ -182,11 +191,13 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 }
 
 - (void)populate {
+  DLog(@"Populate");
   if (self.viewState == filterSelection) {
     [self toggleFilterSelection:^(bool finished) {
       nil;
     }];
   }
+  
   [self.tableView beginUpdates];
   [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
   [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
@@ -201,6 +212,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i + 1 inSection:0];
     [indexPaths addObject:indexpath];
   }
+  
   [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
   [self.tableView endUpdates];
   [self.tableView reloadData];
@@ -209,6 +221,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 - (NSMutableArray *)sortedAlbums {
   //Sort albums after checking, before they are to be displayed
   NSMutableArray *albumsArray = [NSMutableArray array];
+  
   for (Artist *artist in [[ArtistList sharedList] artistSet]) {
     if (artist.latestRelease) {
       artist.latestRelease.artistID = artist.artistID;
@@ -294,11 +307,13 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     AlbumTableViewCell *albumCell = [tableView dequeueReusableCellWithIdentifier:@"albumCell"];
     albumCell.albumLabel.text = album.title;
     albumCell.artistLabel.text = album.artist;
+    
     if (album.isPreOrder) {
       albumCell.preOrderLabel.hidden = NO;
     } else {
       albumCell.preOrderLabel.hidden = YES;
     }
+    
     [albumCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
     [albumCell.viewArtistButton addTarget:self action:@selector(toArtist:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -415,6 +430,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     if (!self.artistListViewModel) {
       _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate:self];
     }
+    
     [self.artistListViewModel beginUpdates];
   } else {
     // If the VC calls the method, end refreshing
@@ -467,6 +483,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   if (!self.artistListViewModel) {
     _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate: self];
   }
+  
   [self.artistListViewModel beginUpdates];
 }
 

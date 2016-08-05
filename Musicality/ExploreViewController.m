@@ -101,6 +101,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   
   self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
   [self.tableView reloadData];
+
   [self viewMovedToForeground];
 }
 
@@ -115,16 +116,14 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   }
   
   self.refresh.tintColor = [[ColorScheme sharedScheme] secondaryColor];
-  [self checkForNotification: [[NotificationManager sharedManager] localNotification]];
 }
 
 - (void)checkForNotification:(UILocalNotification *)localNotification {
   if (localNotification) {
     DLog(@"Local Notification: %@", [[NotificationManager sharedManager] localNotification]);
+    [self loadStoreProductViewController:localNotification.userInfo];
     // Remove the local notification when we're finished with it so it doesn't get reused
     [[NotificationManager sharedManager] setLocalNotification:nil];
-    DLog(@"Not background, calling toiTunes");
-    [self loadStoreProductViewController:localNotification.userInfo];
   }
 }
 
@@ -167,6 +166,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   [self.tableView reloadData];
   
   [self endLoading];
+  
+  [self checkForNotification: [[NotificationManager sharedManager] localNotification]];
   
   if (![mStore isToday: mStore.lastLibraryScanDate] && [[UserPrefs sharedPrefs] isAutoUpdateEnabled] && ![[AutoScan sharedScan] isScanning]) {
     [[AutoScan sharedScan] startScan];
@@ -470,11 +471,14 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     _storeViewController = [[SKStoreProductViewController alloc] init];
     [self.storeViewController setDelegate:self];
     NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
+    
     [self.storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
       if (error) {
         // handle the error
         NSLog(@"%@",error.description);
       }
+      DLog(@"%@", productParams);
+      
       [self presentViewController:self.storeViewController animated:YES completion:nil];
     }];
   }

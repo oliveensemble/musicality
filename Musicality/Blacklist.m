@@ -13,7 +13,7 @@
 @interface Blacklist ()
 
 @property (copy, nonatomic) NSString *path;
-@property (nonatomic) NSMutableOrderedSet* artistSet;
+@property (nonatomic) NSMutableOrderedSet *artistSet;
 
 @end
 
@@ -54,7 +54,7 @@
 
 - (BOOL)isInList:(Artist *)artist {
   for (Artist *listArtist in self.artistSet) {
-    if ([artist.name isEqualToString:listArtist.name]) {
+    if ([[artist.name lowercaseString] isEqualToString:[listArtist.name lowercaseString]]) {
       return YES;
     }
   }
@@ -67,21 +67,13 @@
 }
 
 - (void)addArtistToList:(Artist *)artist {
-  for (Artist *listArtist in self.artistSet) {
-    if ([listArtist.name isEqualToString:artist.name]) {
-      return;
-    }
-  }
-  [[ArtistList sharedList] removeArtist:artist];
   [self.artistSet addObject:artist];
-  DLog(@"Successfully added %@ to blacklist", artist.name);
 }
 
 - (void)removeArtist:(Artist *)artist {
   for (Artist *listArtist in self.artistSet) {
-    if ([listArtist.name isEqualToString:artist.name]) {
+    if (listArtist.artistID == artist.artistID) {
       [self.artistSet removeObject:listArtist];
-      DLog(@"Successfully removed %@ from blacklist", artist.name);
       return;
     }
   }

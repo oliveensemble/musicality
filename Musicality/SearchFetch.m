@@ -43,11 +43,7 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
 - (void)main {
   
   @autoreleasepool {
-    
-    if (self.isCancelled) {
-      return;
-    }
-    
+
     NSString *requestString;
     self.searchTerm = [self.searchTerm lowercaseString];
     self.searchTerm = [self.searchTerm stringByReplacingOccurrencesOfString:@" " withString:@"+"];
@@ -65,7 +61,6 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
     
     if (self.isCancelled) {
       searchData = nil;
-      return;
     }
     
     if (searchData) {
@@ -104,10 +99,6 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
       }
       
       searchData = nil;
-      
-      if (self.isCancelled) {
-        return;
-      }
       
       //Cast the operation to NSObject, and notify the caller on the main thread.
       [(NSObject *)self.delegate performSelectorOnMainThread:@selector(didFinishSearchWithResults:) withObject:[searchResultsArray copy] waitUntilDone:NO];

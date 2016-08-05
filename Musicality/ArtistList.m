@@ -9,6 +9,7 @@
 #import "ArtistList.h"
 #import "UserPrefs.h"
 #import "MStore.h"
+#import "Blacklist.h"
 
 @interface ArtistList ()
 
@@ -53,32 +54,31 @@
 
 - (void)addArtistToList:(Artist*)artist {
   if (artist.artistID) {
-    //Check if artist is in the set
-    for (Artist *listArtist in self.artistSet) {
-      if (listArtist.artistID == artist.artistID) {
-        DLog(@"Already added %@", artist.name);
-        return;
-      }
-    }
-    
     [self.artistSet addObject:artist];
-    DLog(@"%@ has been added to the artists list", artist.name);
-    if (![[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
-      [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:YES];
-    }
+    [self setViewNeedsUpdates:YES];
   }
 }
 
 - (void)removeArtist:(Artist*)artist {
-  NSMutableArray *toDelete = [NSMutableArray array];
-  for (Artist *listArtist in self.artistSet) {
-    if (listArtist.artistID == artist.artistID) {
-      [toDelete addObject:listArtist];
-      DLog(@"Successfully removed %@ from artist list", artist.name);
-      return;
+  
+  for (Artist *libraryArtist in [mStore artistsFromUserLibrary]) {
+    // If we are trying to remove an artist that's in the users library, add it to the blacklist
+    if ([[artist.name lowercaseString] isEqualToString:[libraryArtist.name lowercaseString]]) {
+      [[Blacklist sharedList] addArtistToList:artist];
+      break;
     }
   }
-  [self.artistSet removeObjectsInArray:toDelete];
+  
+  // Then remove it
+  NSMutableArray *artistToDelete = [NSMutableArray array];
+  for (Artist *listArtist in self.artistSet) {
+    if ([listArtist.name isEqualToString:@"501"]) {
+      [artistToDelete addObject: listArtist];
+    }
+  }
+  
+  [self.artistSet removeObjectsInArray: artistToDelete];
+  [self setViewNeedsUpdates:YES];
 }
 
 - (Artist *)getArtist:(NSString *)artistName {
@@ -92,7 +92,7 @@
 
 - (BOOL)isInList:(Artist *)artist {
   for (Artist *listArtist in self.artistSet) {
-    if ([artist.name isEqualToString:listArtist.name]) {
+    if ([[artist.name lowercaseString] isEqualToString:[listArtist.name lowercaseString]]) {
       return YES;
     }
   }
@@ -109,10 +109,9 @@
     if (listArtist.artistID == artist.artistID) {
       if (![album.title isEqualToString:artist.latestRelease.title]) {
         listArtist.latestRelease = album;
-        DLog(@"%@ has been updated", artist.name);
-      } else {
-        DLog(@"Update not needed for %@", artist.name);
+        //DLog(@"%@ has been updated", artist.name);
       }
+      
       listArtist.lastCheckDate = [NSDate date];
       return;
     }
@@ -249,7 +248,7 @@
                                     @"Jessie J" : @"405360400",
                                     @"Fall Out Boy" : @"28673423",
                                     @"Ghost Town Djs" : @"266863959"
-   };
+                                    };
   
   for (int i = 0; i < popularArtists.count; i++) {
     NSString *artistName = popularArtists.allKeys[i];
