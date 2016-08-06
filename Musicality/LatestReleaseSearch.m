@@ -30,14 +30,10 @@
 - (void)main {
   
   @autoreleasepool {
-    
+
     NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@&entity=album&limit=1&sort=recent", self.artist.artistID];
     NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSData *albumData = [[NSData alloc] initWithContentsOfURL:requestURL];
-    
-    if (self.isCancelled) {
-      albumData = nil;
-    }
     
     if (albumData) {
       NSError *error;

@@ -53,7 +53,7 @@
 }
 
 - (void)addArtistToList:(Artist*)artist {
-  if (artist.artistID) {
+  if (artist.name != nil && ![artist.name isEqualToString:@""] && artist.artistID != nil) {
     [self.artistSet addObject:artist];
     [self setViewNeedsUpdates:YES];
   }
@@ -109,7 +109,7 @@
     if (listArtist.artistID == artist.artistID) {
       if (![album.title isEqualToString:artist.latestRelease.title]) {
         listArtist.latestRelease = album;
-        //DLog(@"%@ has been updated", artist.name);
+        DLog(@"%@ has been updated", artist.name);
       }
       
       listArtist.lastCheckDate = [NSDate date];

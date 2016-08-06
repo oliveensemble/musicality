@@ -224,6 +224,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
       }
     }
   }
+  
   [self.selectedArtistsArray removeObjectsInArray:itemsToRemove];
   [[Blacklist sharedList] saveChanges];
   

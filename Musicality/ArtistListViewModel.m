@@ -13,6 +13,7 @@
 #import "ArtistList.h"
 #import "MStore.h"
 #import "AutoScan.h"
+#import "Blacklist.h"
 
 @interface ArtistListViewModel() <LatestReleaseSearchDelegate>
 
@@ -43,12 +44,31 @@
     return;
   }
   
-  for (Artist* artist in [[ArtistList sharedList] artistSet]) {
-    if (([mStore thisDate:[NSDate dateWithTimeIntervalSinceNow:-604800] isMoreRecentThan:artist.lastCheckDate]) || artist.lastCheckDate == nil) {
-      LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
-      [[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] setObject:albumSearch forKey:[NSString stringWithFormat:@"Updating %@", artist.name]];
-      [[[ArtistUpdatePendingOperations sharedOperations] artistRequestQueue] addOperation:albumSearch];
+  NSMutableArray *artistsToDelete = [NSMutableArray array];
+  NSMutableArray *artistsToAddToPendingOperations = [NSMutableArray array];
+  
+  for (Artist *artist in [[ArtistList sharedList] artistSet]) {
+    // If artist is a group artist
+    if ([artist.name containsString:@"&"] || [artist.name containsString:@"feat."]) {
+      for (Artist *otherArtist in [[ArtistList sharedList] artistSet]) {
+        // And there's already an artist in the list that isn't a group artist but has the same id
+        if ((otherArtist.artistID == artist.artistID) && (![otherArtist.name containsString:@"&"] && ![otherArtist.name containsString:@"feat."])) {
+          DLog(@"Found group artist %@, original artist is %@", artist.name, otherArtist.name);
+          DLog(@"Adding %@ to be deleted", artist.name);
+          [artistsToDelete addObject:artist];
+        }
+      }
+    } else {
+      [artistsToAddToPendingOperations addObject:artist];
     }
+  }
+  
+  for (Artist *artist in artistsToDelete) {
+    [[ArtistList sharedList] removeArtist:artist];
+  }
+  
+  for (Artist *artist in artistsToAddToPendingOperations) {
+    [self addArtistToPendingOperations:artist];
   }
   
   if ([[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] count] == 0) {
@@ -57,6 +77,15 @@
   }
   
   [[ArtistUpdatePendingOperations sharedOperations] beginOperations];
+}
+
+- (void)addArtistToPendingOperations:(Artist*)artist {
+  if (([mStore thisDate:[NSDate dateWithTimeIntervalSinceNow:-604800] isMoreRecentThan:artist.lastCheckDate]) || artist.lastCheckDate == nil) {
+    LatestReleaseSearch *albumSearch = [[LatestReleaseSearch alloc] initWithArtist:artist delegate:self];
+    [[[ArtistUpdatePendingOperations sharedOperations] artistRequestsInProgress] setObject:albumSearch forKey:[NSString stringWithFormat:@"Updating %@", artist.name]];
+    DLog(@"Updating %@", artist.name);
+    [[[ArtistUpdatePendingOperations sharedOperations] artistRequestQueue] addOperation:albumSearch];
+  }
 }
 
 - (void)latestReleaseSearchDidFinish:(LatestReleaseSearch *)downloader {

@@ -30,10 +30,6 @@
     NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSData *artistData = [[NSData alloc] initWithContentsOfURL:requestURL];
     
-    if (self.isCancelled) {
-      artistData = nil;
-    }
-    
     if (artistData) {
       NSError *error;
       NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:artistData options:NSJSONReadingMutableContainers error:&error];
