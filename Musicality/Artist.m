@@ -49,6 +49,17 @@
   self.artistID = [NSNumber numberWithLong:artistID.intValue];
 }
 
+- (BOOL)isEqualToArtist:(Artist*)artist {
+  if (!artist) {
+    return NO;
+  }
+  
+  BOOL haveEqualNames = (!self.name && !artist.name) || [[self.name lowercaseString] isEqualToString:[artist.name lowercaseString]];
+  BOOL haveEqualArtistIds = (!self.artistID && !artist.artistID) || self.artistID == artist.artistID;
+  
+  return haveEqualNames && haveEqualArtistIds;
+}
+
 - (NSString *)description {
   return [NSString stringWithFormat:@"\nArtist: %@\nID: %@", self.name, self.artistID];
 }

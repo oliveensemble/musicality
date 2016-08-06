@@ -122,7 +122,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
   
   if ([[UserPrefs sharedPrefs] artistListNeedsUpdating]) {
     [[UserPrefs sharedPrefs] setArtistListNeedsUpdating:NO];
-    DLog(@"Needed some updates");
     _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate:self];
     [self.artistListViewModel beginUpdates];
   } else if ([[ArtistList sharedList] viewNeedsUpdates]) {
@@ -191,7 +190,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 }
 
 - (void)populate {
-  DLog(@"Populate");
   if (self.viewState == filterSelection) {
     [self toggleFilterSelection:^(bool finished) {
       nil;
@@ -427,6 +425,11 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 - (IBAction)refresh:(id)sender {
   // If the user pulls down to refresh, start refreshing
   if ([sender isKindOfClass:[UIRefreshControl class]]) {
+    
+    if (self.isUpdating) {
+      [self.refresh endRefreshing];
+    }
+    
     if (!self.artistListViewModel) {
       _artistListViewModel = [[ArtistListViewModel alloc] initWithDelegate:self];
     }
@@ -447,7 +450,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 #pragma mark Navigation
 
 - (void)beginLoading {
-  DLog(@"");
   if (!self.isUpdating || !self.loadingBar) {
     self.isUpdating = YES;
     CGRect frame = CGRectMake(0, (self.view.bounds.size.height - self.tabBarController.tabBar.bounds.size.height) - 40, self.view.bounds.size.width, 40);
@@ -460,7 +462,6 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 }
 
 - (void)endLoading {
-  DLog(@"");
   self.isUpdating = NO;
   [self.loadingBar removeFromSuperview];
   self.loadingBar = nil;

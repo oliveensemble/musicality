@@ -68,15 +68,18 @@
 
 - (void)addArtistToList:(Artist *)artist {
   [self.artistSet addObject:artist];
+  DLog(@"Sucessfully added %@ to the blacklist", artist.name);
 }
 
 - (void)removeArtist:(Artist *)artist {
+  NSMutableArray *artistToDelete = [NSMutableArray arrayWithCapacity:1];
   for (Artist *listArtist in self.artistSet) {
     if (listArtist.artistID == artist.artistID) {
-      [self.artistSet removeObject:listArtist];
-      return;
+      [artistToDelete addObject:listArtist];
+      break;
     }
   }
+  [self.artistSet removeObjectsInArray:artistToDelete];
 }
 
 - (NSMutableOrderedSet*)loadData {
