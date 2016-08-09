@@ -20,5 +20,6 @@
 - (instancetype)initWithArtistID:(NSString*)artistID andName:(NSString*)artistName;
 
 - (void)addArtistId:(NSString*)artistID;
+- (BOOL)isEqualToArtist:(Artist*)artist;
 
 @end

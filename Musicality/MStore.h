@@ -20,8 +20,6 @@
 
 @property (nonatomic) NSDate *lastLibraryScanDate;
 @property (nonatomic, readonly) NSString *affiliateToken;
-@property (nonatomic) UILocalNotification *localNotification;
-
 
 + (instancetype)sharedStore;
 

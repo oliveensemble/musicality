@@ -13,10 +13,10 @@
 @implementation SettingsNavigationBar
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.settingsLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+  [super awakeFromNib];
+  
+  self.settingsLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+  self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
 }
 
 @end

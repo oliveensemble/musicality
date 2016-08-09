@@ -13,6 +13,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PFK-aj-oiW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="vkF-23-vrP" kind="relationship" relationship="rootViewController" id="yJu-rE-ZWn"/>
@@ -22,83 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-867" y="190"/>
         </scene>
-        <!--Automatically Scan?-->
-        <scene sceneID="afw-4X-VeQ">
-            <objects>
-                <viewController id="ONB-XD-b14" customClass="TutorialScanViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yk9-O3-OQ5"/>
-                        <viewControllerLayoutGuide type="bottom" id="q96-26-bC4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fkv-hT-Nuj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have a lot of artists (500+) this may take some time. You can also manually import artists in the &quot;Artists&quot; tab" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWM-KM-9wy">
-                                <rect key="frame" x="34" y="279" width="533" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mw6-rM-9dF" customClass="Button">
-                                <rect key="frame" x="34" y="414" width="137" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="  Manual Scan  ">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="manual:" destination="ONB-XD-b14" eventType="touchUpInside" id="9JF-0s-gW3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yry-vI-PQa" customClass="Button">
-                                <rect key="frame" x="453" y="414" width="113" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="eiy-w1-ssf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="  Auto Scan  ">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="autoScan:" destination="ONB-XD-b14" eventType="touchUpInside" id="lSu-Pj-33h"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musicality can automatically scan your entire music library for new releases by your favorite artists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6q-ud-2hK">
-                                <rect key="frame" x="34" y="84" width="533" height="185"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Yry-vI-PQa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mw6-rM-9dF" secondAttribute="trailing" constant="5" id="9u8-9Z-t10"/>
-                            <constraint firstAttribute="centerX" secondItem="QWM-KM-9wy" secondAttribute="centerX" id="BFb-wt-m4q"/>
-                            <constraint firstItem="QWM-KM-9wy" firstAttribute="leading" secondItem="fkv-hT-Nuj" secondAttribute="leadingMargin" constant="14" id="DCs-E2-KEZ"/>
-                            <constraint firstItem="QWM-KM-9wy" firstAttribute="top" secondItem="H6q-ud-2hK" secondAttribute="bottom" constant="10" id="DFM-0a-O1Z"/>
-                            <constraint firstItem="mw6-rM-9dF" firstAttribute="top" secondItem="QWM-KM-9wy" secondAttribute="bottom" constant="94" id="F6i-su-kcW"/>
-                            <constraint firstAttribute="centerX" secondItem="H6q-ud-2hK" secondAttribute="centerX" id="SJg-qg-dKJ"/>
-                            <constraint firstItem="Yry-vI-PQa" firstAttribute="height" secondItem="mw6-rM-9dF" secondAttribute="height" id="Soz-Nr-5hw"/>
-                            <constraint firstItem="H6q-ud-2hK" firstAttribute="top" secondItem="yk9-O3-OQ5" secondAttribute="bottom" constant="20" id="bME-iK-1EN"/>
-                            <constraint firstItem="QWM-KM-9wy" firstAttribute="leading" secondItem="mw6-rM-9dF" secondAttribute="leading" id="fFm-yy-hRz"/>
-                            <constraint firstAttribute="centerY" secondItem="QWM-KM-9wy" secondAttribute="centerY" id="pdh-Ts-d7P"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Yry-vI-PQa" secondAttribute="trailing" constant="14" id="qdR-wN-SpF"/>
-                            <constraint firstItem="Yry-vI-PQa" firstAttribute="centerY" secondItem="mw6-rM-9dF" secondAttribute="centerY" id="rjM-Sc-ltP"/>
-                            <constraint firstItem="H6q-ud-2hK" firstAttribute="leading" secondItem="fkv-hT-Nuj" secondAttribute="leadingMargin" constant="14" id="zOS-WD-F8E"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Automatically Scan?" id="NtI-8k-sAP"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="muO-6E-CK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="600" y="190"/>
-        </scene>
-        <!--Welcome!-->
+        <!--Tutorial Intro View Controller-->
         <scene sceneID="RXi-ep-Bil">
             <objects>
-                <viewController id="vkF-23-vrP" customClass="TutorialInfoViewController" sceneMemberID="viewController">
+                <viewController id="vkF-23-vrP" customClass="TutorialIntroViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RM9-PC-HjE"/>
                         <viewControllerLayoutGuide type="bottom" id="B43-l1-pHh"/>
@@ -107,79 +37,296 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfO-PV-0Cb">
-                                <rect key="frame" x="262" y="215" width="77" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musicality lets you view new releases from your favorite artists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ID5-P0-lWk">
+                                <rect key="frame" x="50" y="279" width="500" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOU-xI-33f" customClass="Button">
-                                <rect key="frame" x="248" y="314" width="104" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUT-V1-DTS" customClass="Button">
+                                <rect key="frame" x="270" y="407" width="60" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="jjx-H3-reP"/>
+                                    <constraint firstAttribute="width" constant="60" id="btR-YZ-HWs"/>
+                                    <constraint firstAttribute="height" constant="30" id="puT-5m-yEU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="  Explore  ">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cool!">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="toScan:" destination="vkF-23-vrP" eventType="touchUpInside" id="TRz-6t-jib"/>
+                                    <segue destination="pzE-rR-ZU2" kind="show" identifier="toNotificationView" id="fVT-p5-e6s"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yg-EH-l2k">
-                                <rect key="frame" x="257" y="99" width="86" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mao-AV-Uth">
-                                <rect key="frame" x="25" y="138" width="550" height="67"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">The Explore tab allows you to view new and top albums in iTunes. You can add artists to your Artist list by tapping on the "Notify Me" button. Click on any album to view tracks and purchase through iTunes.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMk-cu-Sca">
-                                <rect key="frame" x="25" y="254" width="550" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">The artists tab contains a list of your artists and their most recent release. You can add more artists in the explore view, or by importing them from your music library.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdu-SU-98p" customClass="MNavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTX-s1-0z5">
+                                        <rect key="frame" x="140" y="8" width="320" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="Mqd-9C-9fX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dTX-s1-0z5" firstAttribute="centerX" secondItem="kdu-SU-98p" secondAttribute="centerX" id="XRC-9w-xyD"/>
+                                    <constraint firstItem="dTX-s1-0z5" firstAttribute="top" secondItem="kdu-SU-98p" secondAttribute="topMargin" id="aK8-gB-Lbh"/>
+                                    <constraint firstAttribute="height" constant="50" id="s7H-JZ-MxL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Mao-AV-Uth" firstAttribute="top" secondItem="0Yg-EH-l2k" secondAttribute="bottom" constant="10" id="1jM-Mb-YOF"/>
-                            <constraint firstItem="Mao-AV-Uth" firstAttribute="width" secondItem="FMk-cu-Sca" secondAttribute="width" id="GeP-rt-nvS"/>
-                            <constraint firstItem="xfO-PV-0Cb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Mao-AV-Uth" secondAttribute="bottom" id="Ghe-IQ-3Ay"/>
-                            <constraint firstItem="xfO-PV-0Cb" firstAttribute="top" secondItem="Mao-AV-Uth" secondAttribute="bottom" constant="10" id="Paa-qn-xBF"/>
-                            <constraint firstAttribute="centerX" secondItem="Mao-AV-Uth" secondAttribute="centerX" id="UVV-YJ-Ifj"/>
-                            <constraint firstItem="FMk-cu-Sca" firstAttribute="top" secondItem="xfO-PV-0Cb" secondAttribute="bottom" constant="10" id="VLl-o4-Em9"/>
-                            <constraint firstAttribute="centerX" secondItem="FMk-cu-Sca" secondAttribute="centerX" id="VQz-31-AnV"/>
-                            <constraint firstItem="JOU-xI-33f" firstAttribute="top" secondItem="FMk-cu-Sca" secondAttribute="bottom" constant="10" id="W1M-Zo-eMA"/>
-                            <constraint firstItem="Mao-AV-Uth" firstAttribute="leading" secondItem="NX2-W7-W64" secondAttribute="leadingMargin" constant="5" id="YFG-jc-A03"/>
-                            <constraint firstAttribute="centerX" secondItem="xfO-PV-0Cb" secondAttribute="centerX" id="gYB-lN-HED"/>
-                            <constraint firstAttribute="centerX" secondItem="0Yg-EH-l2k" secondAttribute="centerX" id="iDt-bT-UyR"/>
-                            <constraint firstItem="JOU-xI-33f" firstAttribute="leading" secondItem="FMk-cu-Sca" secondAttribute="trailing" constant="-331" id="opK-cw-8qO"/>
-                            <constraint firstAttribute="centerX" secondItem="JOU-xI-33f" secondAttribute="centerX" id="r4B-ES-Fdm"/>
-                            <constraint firstItem="0Yg-EH-l2k" firstAttribute="top" secondItem="RM9-PC-HjE" secondAttribute="bottom" constant="35" id="tNT-08-LXG"/>
+                            <constraint firstItem="ID5-P0-lWk" firstAttribute="leading" secondItem="NX2-W7-W64" secondAttribute="leadingMargin" constant="30" id="0IZ-rF-7MW"/>
+                            <constraint firstItem="tUT-V1-DTS" firstAttribute="top" secondItem="ID5-P0-lWk" secondAttribute="bottom" constant="85" id="29m-GF-M2Z"/>
+                            <constraint firstItem="kdu-SU-98p" firstAttribute="leading" secondItem="NX2-W7-W64" secondAttribute="leading" id="45D-yf-zAF"/>
+                            <constraint firstItem="tUT-V1-DTS" firstAttribute="centerX" secondItem="ID5-P0-lWk" secondAttribute="centerX" id="8H4-rI-rAd"/>
+                            <constraint firstItem="ID5-P0-lWk" firstAttribute="centerY" secondItem="NX2-W7-W64" secondAttribute="centerY" id="BxB-XF-2Eg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ID5-P0-lWk" secondAttribute="trailing" constant="30" id="Czn-Ls-iJ6"/>
+                            <constraint firstAttribute="trailing" secondItem="kdu-SU-98p" secondAttribute="trailing" id="QHj-fU-YBR"/>
+                            <constraint firstItem="kdu-SU-98p" firstAttribute="top" secondItem="RM9-PC-HjE" secondAttribute="bottom" id="rHK-qa-l4H"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Ghe-IQ-3Ay"/>
-                                <exclude reference="opK-cw-8qO"/>
-                            </mask>
-                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Welcome!" id="7H3-37-rTa"/>
-                    <connections>
-                        <segue destination="ONB-XD-b14" kind="show" identifier="toScan" id="tQM-aQ-7gb"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="7H3-37-rTa"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiY-uK-fza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-110" y="190"/>
         </scene>
+        <!--Tutorial Notification View Controller-->
+        <scene sceneID="ipO-c4-5Ow">
+            <objects>
+                <viewController id="pzE-rR-ZU2" customClass="TutorialNotificationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EJc-6t-uGy"/>
+                        <viewControllerLayoutGuide type="bottom" id="dXA-S6-e1E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KwJ-GP-xhw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0U-mD-UV0" customClass="MNavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fnv-b0-DqG">
+                                        <rect key="frame" x="140" y="8" width="320" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="hYm-jd-CtX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="fnv-b0-DqG" firstAttribute="top" secondItem="P0U-mD-UV0" secondAttribute="topMargin" id="RQ0-Pt-LTd"/>
+                                    <constraint firstAttribute="height" constant="50" id="adH-gt-nE6"/>
+                                    <constraint firstItem="fnv-b0-DqG" firstAttribute="centerX" secondItem="P0U-mD-UV0" secondAttribute="centerX" id="m1Z-hi-90Q"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turning on notifications will allow you to be notified whenever the artists you follow release new music" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4J-ax-wlN">
+                                <rect key="frame" x="50" y="279" width="500" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIm-qm-6UQ" customClass="Button">
+                                <rect key="frame" x="270" y="407" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="GCn-Nm-Ynd"/>
+                                    <constraint firstAttribute="height" constant="30" id="pgN-QA-BbZ"/>
+                                </constraints>
+                                <state key="normal" title="Got it"/>
+                                <connections>
+                                    <action selector="notificationButtonTapped:" destination="pzE-rR-ZU2" eventType="touchUpInside" id="UB0-jI-6QK"/>
+                                    <segue destination="Wlt-vc-ayy" kind="show" identifier="toScanView" id="oMQ-zD-5oc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eIm-qm-6UQ" firstAttribute="top" secondItem="q4J-ax-wlN" secondAttribute="bottom" constant="85" id="7b9-8w-cPM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="q4J-ax-wlN" secondAttribute="trailing" constant="30" id="7qB-nA-Ruy"/>
+                            <constraint firstItem="q4J-ax-wlN" firstAttribute="leading" secondItem="KwJ-GP-xhw" secondAttribute="leadingMargin" constant="30" id="Sfi-98-7JP"/>
+                            <constraint firstItem="q4J-ax-wlN" firstAttribute="centerY" secondItem="KwJ-GP-xhw" secondAttribute="centerY" id="TLR-Hm-cJH"/>
+                            <constraint firstItem="P0U-mD-UV0" firstAttribute="leading" secondItem="KwJ-GP-xhw" secondAttribute="leading" id="Uow-uz-EBX"/>
+                            <constraint firstAttribute="trailing" secondItem="P0U-mD-UV0" secondAttribute="trailing" id="m18-rd-kYk"/>
+                            <constraint firstItem="eIm-qm-6UQ" firstAttribute="centerX" secondItem="q4J-ax-wlN" secondAttribute="centerX" id="q8d-zE-Fdl"/>
+                            <constraint firstItem="P0U-mD-UV0" firstAttribute="top" secondItem="EJc-6t-uGy" secondAttribute="bottom" id="uPR-xY-3gR"/>
+                            <constraint firstItem="q4J-ax-wlN" firstAttribute="centerX" secondItem="KwJ-GP-xhw" secondAttribute="centerX" id="wdT-RL-Ue8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wye-em-i0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="608" y="190"/>
+        </scene>
+        <!--Tutorial Scan View Controller-->
+        <scene sceneID="V8b-gY-BcB">
+            <objects>
+                <viewController id="Wlt-vc-ayy" customClass="TutorialScanViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UF1-TH-K0e"/>
+                        <viewControllerLayoutGuide type="bottom" id="bj3-8d-8Zo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hw1-y6-c05">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTK-RV-EZw" customClass="MNavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan Library?" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oHB-I3-Xp1">
+                                        <rect key="frame" x="140" y="8" width="320" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="LWx-4V-S0M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6Lo-f0-9gj"/>
+                                    <constraint firstItem="oHB-I3-Xp1" firstAttribute="top" secondItem="iTK-RV-EZw" secondAttribute="topMargin" id="PVU-Hc-ypN"/>
+                                    <constraint firstItem="oHB-I3-Xp1" firstAttribute="centerX" secondItem="iTK-RV-EZw" secondAttribute="centerX" id="mIO-rx-iSg"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musicality can automatically scan your music library for new releases by your favorite artists" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VM5-F5-1iy">
+                                <rect key="frame" x="50" y="142" width="500" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If not, you can always search and follow artists manually. You can change this at any time under settings" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EQ-Ia-109">
+                                <rect key="frame" x="50" y="265" width="500" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsZ-GY-0Dn" customClass="Button">
+                                <rect key="frame" x="70" y="393" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="P5I-YU-1ZR"/>
+                                    <constraint firstAttribute="height" constant="30" id="yAg-0k-4Tf"/>
+                                </constraints>
+                                <state key="normal" title="Manual Scan"/>
+                                <connections>
+                                    <action selector="manualScanButtonTapped:" destination="Wlt-vc-ayy" eventType="touchUpInside" id="Clm-dL-m6V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rci-Nm-WG8" customClass="Button">
+                                <rect key="frame" x="430" y="393" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="K13-om-EgF"/>
+                                    <constraint firstAttribute="height" constant="30" id="lMd-XI-MdB"/>
+                                </constraints>
+                                <state key="normal" title="Auto Scan"/>
+                                <connections>
+                                    <action selector="autoScanButtonTapped:" destination="Wlt-vc-ayy" eventType="touchUpInside" id="o4e-ul-1qg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rci-Nm-WG8" firstAttribute="centerY" secondItem="GsZ-GY-0Dn" secondAttribute="centerY" id="06I-iW-fwt"/>
+                            <constraint firstItem="iTK-RV-EZw" firstAttribute="leading" secondItem="hw1-y6-c05" secondAttribute="leading" id="3Jx-c1-f8I"/>
+                            <constraint firstAttribute="trailing" secondItem="iTK-RV-EZw" secondAttribute="trailing" id="6cj-Lc-51u"/>
+                            <constraint firstItem="GsZ-GY-0Dn" firstAttribute="top" secondItem="5EQ-Ia-109" secondAttribute="bottom" constant="85" id="96o-nr-QoQ"/>
+                            <constraint firstItem="5EQ-Ia-109" firstAttribute="top" secondItem="VM5-F5-1iy" secondAttribute="bottom" constant="80" id="Fb7-wF-8xk"/>
+                            <constraint firstItem="GsZ-GY-0Dn" firstAttribute="leading" secondItem="hw1-y6-c05" secondAttribute="leadingMargin" constant="50" id="NSP-nE-3A9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VM5-F5-1iy" secondAttribute="trailing" constant="30" id="SCB-H5-w7t"/>
+                            <constraint firstItem="5EQ-Ia-109" firstAttribute="leading" secondItem="VM5-F5-1iy" secondAttribute="leading" id="Six-q9-eBd"/>
+                            <constraint firstItem="VM5-F5-1iy" firstAttribute="top" secondItem="oHB-I3-Xp1" secondAttribute="bottom" constant="100" id="UQb-tY-YJc"/>
+                            <constraint firstItem="5EQ-Ia-109" firstAttribute="trailing" secondItem="VM5-F5-1iy" secondAttribute="trailing" id="bbO-mt-7YN"/>
+                            <constraint firstItem="5EQ-Ia-109" firstAttribute="centerX" secondItem="hw1-y6-c05" secondAttribute="centerX" id="cHz-QA-R1h"/>
+                            <constraint firstItem="Rci-Nm-WG8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GsZ-GY-0Dn" secondAttribute="trailing" constant="10" id="dg9-8b-J5S"/>
+                            <constraint firstItem="iTK-RV-EZw" firstAttribute="top" secondItem="hw1-y6-c05" secondAttribute="top" id="hZo-nl-lbQ"/>
+                            <constraint firstItem="VM5-F5-1iy" firstAttribute="leading" secondItem="hw1-y6-c05" secondAttribute="leadingMargin" constant="30" id="iPQ-lj-c05"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rci-Nm-WG8" secondAttribute="trailing" constant="50" id="pln-Aa-viO"/>
+                            <constraint firstItem="bj3-8d-8Zo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GsZ-GY-0Dn" secondAttribute="bottom" constant="25" id="qdp-RH-d3f"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cHz-QA-R1h"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <segue destination="G1D-A3-mSq" kind="show" identifier="toPopularArtists" id="Msj-5P-gYS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zZp-K3-xhX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1354" y="190"/>
+        </scene>
+        <!--Tutorial Popular Artists View Controller-->
+        <scene sceneID="v1r-Pa-Ov5">
+            <objects>
+                <viewController id="G1D-A3-mSq" customClass="TutorialPopularArtistsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cte-fS-XK7"/>
+                        <viewControllerLayoutGuide type="bottom" id="OwF-FI-5cG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Mw-rh-UmY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdy-Wp-Ama" customClass="Button">
+                                <rect key="frame" x="250" y="384" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="DmV-17-tmA"/>
+                                    <constraint firstAttribute="height" constant="30" id="eBK-3n-NK9"/>
+                                </constraints>
+                                <state key="normal" title="Sure!"/>
+                                <connections>
+                                    <action selector="followPopularArtistsButtonTapped:" destination="G1D-A3-mSq" eventType="touchUpInside" id="PuA-Qw-vFv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yv-uw-vNg" customClass="Button">
+                                <rect key="frame" x="250" y="454" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mxH-Q4-lbg"/>
+                                    <constraint firstAttribute="width" constant="100" id="r6T-YB-aJX"/>
+                                </constraints>
+                                <state key="normal" title="No thanks"/>
+                                <connections>
+                                    <action selector="dontFollowPopularArtistsButtonTapped:" destination="G1D-A3-mSq" eventType="touchUpInside" id="VoO-Ia-2HW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you’d like, you can get started by following popular artists " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdB-9u-Xsv">
+                                <rect key="frame" x="150" y="254" width="300" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="60E-sk-tZu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GdB-9u-Xsv" firstAttribute="centerY" secondItem="2Mw-rh-UmY" secondAttribute="centerY" id="DGI-SG-lcK"/>
+                            <constraint firstItem="2Yv-uw-vNg" firstAttribute="top" secondItem="mdy-Wp-Ama" secondAttribute="bottom" constant="40" id="Eou-EV-JTD"/>
+                            <constraint firstItem="mdy-Wp-Ama" firstAttribute="centerX" secondItem="GdB-9u-Xsv" secondAttribute="centerX" id="GfH-IX-KoT"/>
+                            <constraint firstItem="mdy-Wp-Ama" firstAttribute="top" secondItem="GdB-9u-Xsv" secondAttribute="bottom" constant="39" id="HQ9-Vq-Xun"/>
+                            <constraint firstItem="2Yv-uw-vNg" firstAttribute="centerX" secondItem="GdB-9u-Xsv" secondAttribute="centerX" id="MsM-9Q-o9x"/>
+                            <constraint firstItem="GdB-9u-Xsv" firstAttribute="centerX" secondItem="2Mw-rh-UmY" secondAttribute="centerX" id="h5R-qf-SQP"/>
+                            <constraint firstItem="GdB-9u-Xsv" firstAttribute="top" secondItem="cte-fS-XK7" secondAttribute="bottom" constant="254" id="iBo-93-ISE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4aF-sz-BtH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2101" y="190"/>
+        </scene>
     </scenes>
+    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

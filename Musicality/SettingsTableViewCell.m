@@ -12,23 +12,23 @@
 @implementation SettingsTableViewCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.textLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-    self.detailTextLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+  [super awakeFromNib];
+  
+  self.textLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+  self.detailTextLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+  self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    if (selected) {
-        self.textLabel.textColor = [[ColorScheme sharedScheme] primaryColor];
-        self.detailTextLabel.textColor = [[ColorScheme sharedScheme] primaryColor];
-        self.backgroundColor = [[ColorScheme sharedScheme] secondaryColor];
-    } else {
-        self.textLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-        self.detailTextLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-        self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
-    }
+  if (selected) {
+    self.textLabel.textColor = [[ColorScheme sharedScheme] primaryColor];
+    self.detailTextLabel.textColor = [[ColorScheme sharedScheme] primaryColor];
+    self.backgroundColor = [[ColorScheme sharedScheme] secondaryColor];
+  } else {
+    self.textLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.detailTextLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+  }
 }
 
 @end

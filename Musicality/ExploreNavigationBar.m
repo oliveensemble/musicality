@@ -14,10 +14,10 @@
 @implementation ExploreNavigationBar
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    self.exploreLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-    self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+  [super awakeFromNib];
+  
+  self.exploreLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+  self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
 }
 
 @end

@@ -9,8 +9,6 @@
 @import UIKit;
 
 #import "ArtistSearch.h"
-#import "MViewControllerDelegate.h"
-#import "ArtistScanPendingOperations.h"
 
 @interface LibraryListViewController : UITableViewController <ArtistSearchDelegate>
 
