@@ -15,7 +15,9 @@
 @implementation TutorialIntroViewController
 
 - (void)awakeFromNib {
-  [self.navigationController setNavigationBarHidden:true];
+    [super awakeFromNib];
+    
+    [self.navigationController setNavigationBarHidden:true];
 }
 
 @end
