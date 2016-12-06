@@ -7,6 +7,7 @@
 //
 
 @import StoreKit;
+@import SafariServices;
 #import "MStore.h"
 #import "Button.h"
 #import "UserPrefs.h"
@@ -28,69 +29,76 @@
 @implementation PrivacyPolicyViewController
 
 - (IBAction)back:(id)sender {
-  [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  
-  self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
-  self.introText.textColor = [[ColorScheme sharedScheme] secondaryColor];
-  self.titleLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
-  self.policyText.textColor = [[ColorScheme sharedScheme] secondaryColor];
-  [self viewMovedToForeground];
+    [super viewWillAppear:animated];
+
+    self.view.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
+    self.introText.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.titleLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    self.policyText.textColor = [[ColorScheme sharedScheme] secondaryColor];
+    [self viewMovedToForeground];
 }
 
 #pragma mark - MViewController Delegate
 - (void)viewMovedToForeground {
-  if (self.storeViewController) {
-    [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
-  }
-  
-  [self checkForNotification: [[NotificationManager sharedManager] localNotification]];
+    if (self.storeViewController) {
+        [self.storeViewController dismissViewControllerAnimated:NO completion:nil];
+    }
+
+    [self checkForNotification: [[NotificationManager sharedManager] localNotification]];
 }
 
 - (void)checkForNotification:(UILocalNotification *)localNotification {
-  if (localNotification) {
-    DLog(@"Local Notification: %@", [[NotificationManager sharedManager] localNotification]);
-    // Remove the local notification when we're finished with it so it doesn't get reused
-    [[NotificationManager sharedManager] setLocalNotification:nil];
-    [self loadStoreProductViewController:localNotification.userInfo];
-  }
+    if (localNotification) {
+        DLog(@"Local Notification: %@", [[NotificationManager sharedManager] localNotification]);
+        // Remove the local notification when we're finished with it so it doesn't get reused
+        [[NotificationManager sharedManager] setLocalNotification:nil];
+        [self loadStoreProductViewController:localNotification.userInfo];
+    }
 }
 
 - (void)loadStoreProductViewController:(NSDictionary *)userInfo {
-  NSNumber *albumID = userInfo[@"albumID"];
-  if (!albumID) {
-    return;
-  }
-  
-  // Initialize Product View Controller
-  if ([SKStoreProductViewController class] != nil) {
-    // Configure View Controller
-    _storeViewController = [[SKStoreProductViewController alloc] init];
-    [self.storeViewController setDelegate:self];
-    NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
-    [self.storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
-      if (error) {
-        // handle the error
-        NSLog(@"%@",error.description);
-      }
-      [self presentViewController:self.storeViewController animated:YES completion:nil];
-    }];
-  }
+    NSNumber *albumID = userInfo[@"albumID"];
+    if (!albumID) {
+        return;
+    }
+
+    if ([[UserPrefs sharedPrefs] isAppleMusicEnabled]) {
+        SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://geo.itunes.apple.com/us/album/id%@?app=music&at=1l3vuBC", albumID]]];
+        [self presentViewController:safariVC animated:true completion:^{
+            [self dismissViewControllerAnimated:true completion:nil];
+        }];
+    } else {
+        // Initialize Product View Controller
+        if ([SKStoreProductViewController class] != nil) {
+            // Configure View Controller
+            _storeViewController = [[SKStoreProductViewController alloc] init];
+            [self.storeViewController setDelegate:self];
+            NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
+            [self.storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+                if (error) {
+                    // handle the error
+                    NSLog(@"%@",error.description);
+                }
+                [self presentViewController:self.storeViewController animated:YES completion:nil];
+            }];
+        }
+    }
 }
 
 - (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
-  [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 @end
