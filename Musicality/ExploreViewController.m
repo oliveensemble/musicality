@@ -467,7 +467,8 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     }
 
     if ([[UserPrefs sharedPrefs] isAppleMusicEnabled]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/album/roar/id%@?i=%@&app=music&at=1l3vuBC", albumID, albumID]]];
+        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://geo.itunes.apple.com/us/album/awaken-my-love!/id1173655524?mt=1&app=music"]]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://geo.itunes.apple.com/us/album/id%@?app=music&at=1l3vuBC", albumID]]];
     } else {
         // Initialize Product View Controller
         if ([SKStoreProductViewController class] != nil) {
