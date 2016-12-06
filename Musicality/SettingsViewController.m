@@ -8,7 +8,7 @@
 
 @import MessageUI;
 @import StoreKit;
-
+@import SafariServices;
 #import "MStore.h"
 #import "AutoScan.h"
 #import "UserPrefs.h"
@@ -97,19 +97,26 @@
         return;
     }
 
-    // Initialize Product View Controller
-    if ([SKStoreProductViewController class] != nil) {
-        // Configure View Controller
-        _storeViewController = [[SKStoreProductViewController alloc] init];
-        [self.storeViewController setDelegate:self];
-        NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
-        [self.storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
-            if (error) {
-                // handle the error
-                NSLog(@"%@",error.description);
-            }
-            [self presentViewController:self.storeViewController animated:YES completion:nil];
+    if ([[UserPrefs sharedPrefs] isAppleMusicEnabled]) {
+        SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://geo.itunes.apple.com/us/album/id%@?app=music&at=1l3vuBC", albumID]]];
+        [self presentViewController:safariVC animated:true completion:^{
+            [self dismissViewControllerAnimated:true completion:nil];
         }];
+    } else {
+        // Initialize Product View Controller
+        if ([SKStoreProductViewController class] != nil) {
+            // Configure View Controller
+            _storeViewController = [[SKStoreProductViewController alloc] init];
+            [self.storeViewController setDelegate:self];
+            NSDictionary *productParams = @{SKStoreProductParameterITunesItemIdentifier : albumID, SKStoreProductParameterAffiliateToken : mStore.affiliateToken};
+            [self.storeViewController loadProductWithParameters:productParams completionBlock:^(BOOL result, NSError *error) {
+                if (error) {
+                    // handle the error
+                    NSLog(@"%@",error.description);
+                }
+                [self presentViewController:self.storeViewController animated:YES completion:nil];
+            }];
+        }
     }
 }
 
@@ -170,6 +177,8 @@
         cell.detailTextLabel.text = self.autoupdateText;
     } else if (indexPath.row == 2) {
         cell.detailTextLabel.text = self.darkModeText;
+    } else if (indexPath.row == 6) {
+        cell.detailTextLabel.text = self.appleMusicText;
     }
 }
 

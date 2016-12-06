@@ -8,6 +8,7 @@
 // The first view that the app loads. The explore tab shows the top albums in iTunes
 
 @import StoreKit;
+@import SafariServices;
 #import "ExploreViewController.h"
 #import "MViewControllerDelegate.h"
 #import "ExploreFetch.h"
@@ -467,8 +468,10 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     }
 
     if ([[UserPrefs sharedPrefs] isAppleMusicEnabled]) {
-        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://geo.itunes.apple.com/us/album/awaken-my-love!/id1173655524?mt=1&app=music"]]];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://geo.itunes.apple.com/us/album/id%@?app=music&at=1l3vuBC", albumID]]];
+        SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://geo.itunes.apple.com/us/album/id%@?app=music&at=1l3vuBC", albumID]]];
+        [self presentViewController:safariVC animated:true completion:^{
+            [self dismissViewControllerAnimated:true completion:nil];
+        }];
     } else {
         // Initialize Product View Controller
         if ([SKStoreProductViewController class] != nil) {
