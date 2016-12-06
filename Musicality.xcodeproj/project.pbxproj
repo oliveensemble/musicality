@@ -98,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C21E11E1DF75813001442B9 /* Musicality.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Musicality.entitlements; sourceTree = "<group>"; };
 		4F0029491A1AD55D004FFC10 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4F018C711D1B43C500999334 /* ColorScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorScheme.h; sourceTree = "<group>"; };
 		4F018C721D1B43C500999334 /* ColorScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorScheme.m; sourceTree = "<group>"; };
@@ -294,6 +295,7 @@
 		4F18222F19DA0439006CCA8B /* Musicality */ = {
 			isa = PBXGroup;
 			children = (
+				3C21E11E1DF75813001442B9 /* Musicality.entitlements */,
 				4FF5C5061D2324FB000CE9F7 /* ViewModel */,
 				4F2C437B19F0023C00909D01 /* View */,
 				4F2C437A19F0022600909D01 /* Controller */,
@@ -939,6 +941,7 @@
 			baseConfigurationReference = 8D01FE13E87B7D841801FFE4 /* Pods-Musicality.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Musicality/Musicality.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Evan Lewis (YLL6NP4S88)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -961,6 +964,7 @@
 			baseConfigurationReference = CB5DDAE4018B77B8A5242100 /* Pods-Musicality.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Musicality/Musicality.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Evan Lewis (7ZE54HDXZR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
