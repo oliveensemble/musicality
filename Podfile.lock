@@ -1,7 +1,7 @@
 PODS:
-  - Crashlytics (3.7.2):
+  - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.7)
+  - Fabric (1.6.11)
   - Haneke (1.0.2)
 
 DEPENDENCIES:
@@ -10,8 +10,8 @@ DEPENDENCIES:
   - Haneke (~> 1.0.2)
 
 SPEC CHECKSUMS:
-  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
-  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Haneke: 01454a67322faa0dd9d81fc0f447885044e71521
 
 PODFILE CHECKSUM: 7667b3dff2b8d6981e01f3b564c32d25a1c90b8c
