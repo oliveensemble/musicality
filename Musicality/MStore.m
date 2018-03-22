@@ -117,15 +117,15 @@
     DLog(@"Cannot format, url is empty: %@", url);
     return nil;
   }
-  
+
   NSString *stringUrl = [url absoluteString];
-  NSString *idString = @"/id";
-  NSString *uoString = @"?";
+  NSString *idString = @"/";
+  NSString *uoString = @"?uo";
   if ([stringUrl containsString:@"i="]) {
     idString = @"i=";
     uoString = @"&uo";
   }
-  NSRange firstCut = [stringUrl rangeOfString:idString];
+  NSRange firstCut = [stringUrl rangeOfString:idString options:NSBackwardsSearch];
   NSRange secondCut = [stringUrl rangeOfString:uoString];
   NSRange intersectionRange = NSUnionRange(firstCut, secondCut);
   NSString *formattedString = @"";
