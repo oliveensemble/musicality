@@ -24,6 +24,7 @@
 		4F18CC081D4D44D80005957D /* TutorialNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC071D4D44D80005957D /* TutorialNotificationViewController.m */; };
 		4F18CC0B1D4D44F40005957D /* TutorialScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC0A1D4D44F40005957D /* TutorialScanViewController.m */; };
 		4F18CC0E1D4D45B90005957D /* TutorialPopularArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC0D1D4D45B90005957D /* TutorialPopularArtistsViewController.m */; };
+		4F3255CA1F1BD5A300A47124 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F3255C91F1BD5A300A47124 /* GoogleService-Info.plist */; };
 		4F3720BD1B154A8C0067E80A /* LatestReleaseSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720BC1B154A8C0067E80A /* LatestReleaseSearch.m */; };
 		4F3720C61B1940410067E80A /* NotificationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720C51B1940410067E80A /* NotificationCheck.m */; };
 		4F3720C71B1940410067E80A /* NotificationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720C51B1940410067E80A /* NotificationCheck.m */; };
@@ -111,7 +112,7 @@
 		4F18223119DA0439006CCA8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F18223219DA0439006CCA8B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F18223419DA0439006CCA8B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4F18223519DA0439006CCA8B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4F18223519DA0439006CCA8B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
 		4F18223B19DA0439006CCA8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F18223D19DA0439006CCA8B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4F18224019DA0439006CCA8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 		4F18CC0A1D4D44F40005957D /* TutorialScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialScanViewController.m; sourceTree = "<group>"; };
 		4F18CC0C1D4D45B90005957D /* TutorialPopularArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPopularArtistsViewController.h; sourceTree = "<group>"; };
 		4F18CC0D1D4D45B90005957D /* TutorialPopularArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPopularArtistsViewController.m; sourceTree = "<group>"; };
+		4F3255C91F1BD5A300A47124 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F3720BB1B154A8C0067E80A /* LatestReleaseSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatestReleaseSearch.h; sourceTree = "<group>"; };
 		4F3720BC1B154A8C0067E80A /* LatestReleaseSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatestReleaseSearch.m; sourceTree = "<group>"; };
 		4F3720C41B1940410067E80A /* NotificationCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCheck.h; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				4F18223119DA0439006CCA8B /* Info.plist */,
+				4F3255C91F1BD5A300A47124 /* GoogleService-Info.plist */,
 				4F18223219DA0439006CCA8B /* main.m */,
 			);
 			name = "Supporting Files";
@@ -567,7 +570,7 @@
 		4F18222519DA0439006CCA8B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Evan Lewis";
 				TargetAttributes = {
 					4F18222C19DA0439006CCA8B = {
@@ -588,6 +591,7 @@
 					};
 					4F18224519DA043A006CCA8B = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 7ZE54HDXZR;
 						TestTargetID = 4F18222C19DA0439006CCA8B;
 					};
 				};
@@ -627,6 +631,7 @@
 				4F3836F61A800C4000E872E3 /* LibraryData.plist in Resources */,
 				4F63E82C1BE56DE3004B6991 /* AlbumTableViewCell.xib in Resources */,
 				4F650E611A279E1F00C2FA82 /* LibraryNavigationBar.xib in Resources */,
+				4F3255CA1F1BD5A300A47124 /* GoogleService-Info.plist in Resources */,
 				4F18223E19DA0439006CCA8B /* Images.xcassets in Resources */,
 				4FA71CF11BF6C6EC00DC6C0E /* FilterTableViewCell.xib in Resources */,
 				4F7A16ED19F885090039508D /* ArtistsNavigationBar.xib in Resources */,
@@ -857,14 +862,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -904,14 +915,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -986,6 +1003,8 @@
 			baseConfigurationReference = 885E07BD137EF5A622495A48 /* Pods-MusicalityTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7ZE54HDXZR;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1004,6 +1023,8 @@
 			baseConfigurationReference = CEDBE23EDF974A34DF67AE00 /* Pods-MusicalityTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 7ZE54HDXZR;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = MusicalityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

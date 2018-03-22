@@ -32,6 +32,7 @@
 }
 
 - (void)prepareForReuse {
+    [super prepareForReuse];
     self.backgroundColor = [[ColorScheme sharedScheme] primaryColor];
     self.albumLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];
     self.artistLabel.textColor = [[ColorScheme sharedScheme] secondaryColor];

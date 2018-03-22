@@ -9,6 +9,7 @@ target 'Musicality' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'Haneke', '~> 1.0.2'
+  pod 'Firebase/Core'
 
   target 'MusicalityTests' do
     inherit! :search_paths

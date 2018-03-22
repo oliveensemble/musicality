@@ -25,6 +25,7 @@
 }
 
 - (void)prepareForReuse {
+    [super prepareForReuse];
     [self configure];
 }
 

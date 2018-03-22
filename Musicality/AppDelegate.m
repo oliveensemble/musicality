@@ -9,6 +9,7 @@
 @import StoreKit;
 @import Fabric;
 @import Crashlytics;
+@import Firebase;
 
 #import "NotificationManager.h"
 #import "AppDelegate.h"
@@ -26,6 +27,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [Fabric with:@[[Crashlytics class]]];
+  [FIRApp configure];
   
   application.minimumBackgroundFetchInterval = UIApplicationBackgroundFetchIntervalMinimum;
   
