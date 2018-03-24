@@ -157,7 +157,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 96;
+    return 126;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
