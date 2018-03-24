@@ -189,9 +189,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="6Lo-f0-9gj"/>
+                                    <constraint firstAttribute="height" priority="250" constant="100" id="6Lo-f0-9gj"/>
                                     <constraint firstAttribute="bottom" secondItem="oHB-I3-Xp1" secondAttribute="bottom" id="Asx-Ri-iMS"/>
                                     <constraint firstAttribute="trailing" secondItem="oHB-I3-Xp1" secondAttribute="trailing" id="NFl-ya-1Ba"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="OWR-5r-qyb"/>
                                     <constraint firstItem="oHB-I3-Xp1" firstAttribute="leading" secondItem="iTK-RV-EZw" secondAttribute="leading" id="tiX-Db-6zh"/>
                                 </constraints>
                             </view>
@@ -250,11 +251,13 @@
                             <constraint firstItem="5EQ-Ia-109" firstAttribute="centerY" secondItem="hw1-y6-c05" secondAttribute="centerY" id="BRy-GE-Rjz"/>
                             <constraint firstItem="VM5-F5-1iy" firstAttribute="top" secondItem="iTK-RV-EZw" secondAttribute="bottom" constant="34" id="DtX-AY-wke"/>
                             <constraint firstItem="VM5-F5-1iy" firstAttribute="centerX" secondItem="iTK-RV-EZw" secondAttribute="centerX" id="FlH-NJ-pnU"/>
+                            <constraint firstItem="qic-vl-RNS" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Msz-VF-LWk" secondAttribute="bottom" constant="10" id="Ref-V1-Lt0"/>
+                            <constraint firstItem="Msz-VF-LWk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5EQ-Ia-109" secondAttribute="bottom" constant="30" id="Urv-se-Ult"/>
                             <constraint firstItem="iTK-RV-EZw" firstAttribute="top" secondItem="hw1-y6-c05" secondAttribute="top" id="hZo-nl-lbQ"/>
                             <constraint firstItem="5EQ-Ia-109" firstAttribute="centerX" secondItem="Msz-VF-LWk" secondAttribute="centerX" id="kGB-qg-ESN"/>
                             <constraint firstItem="VM5-F5-1iy" firstAttribute="leading" secondItem="5EQ-Ia-109" secondAttribute="leading" id="sxN-jb-R5R"/>
                             <constraint firstItem="5EQ-Ia-109" firstAttribute="top" secondItem="VM5-F5-1iy" secondAttribute="bottom" constant="49" id="ujD-7t-3AM"/>
-                            <constraint firstItem="Msz-VF-LWk" firstAttribute="top" secondItem="5EQ-Ia-109" secondAttribute="bottom" constant="78" id="wBq-T4-5Mu"/>
+                            <constraint firstItem="Msz-VF-LWk" firstAttribute="top" secondItem="5EQ-Ia-109" secondAttribute="bottom" priority="750" constant="78" id="wBq-T4-5Mu"/>
                             <constraint firstItem="VM5-F5-1iy" firstAttribute="leading" secondItem="hw1-y6-c05" secondAttribute="leadingMargin" id="y2Y-5u-2ai"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qic-vl-RNS"/>
