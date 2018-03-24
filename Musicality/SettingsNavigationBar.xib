@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4G6-z7-Qpw">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="42.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="36"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -30,6 +30,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4G6-z7-Qpw" firstAttribute="leading" secondItem="zmu-I6-lh3" secondAttribute="leading" id="1m4-L0-xxk"/>
+                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="4G6-z7-Qpw" secondAttribute="bottom" constant="20" id="MSb-Ir-svK"/>
                 <constraint firstAttribute="trailing" secondItem="4G6-z7-Qpw" secondAttribute="trailing" id="XOy-zl-tAj"/>
                 <constraint firstAttribute="centerX" secondItem="4G6-z7-Qpw" secondAttribute="centerX" id="bWS-ph-1nP"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4G6-z7-Qpw" secondAttribute="bottom" constant="10" id="eDt-9A-1nW"/>

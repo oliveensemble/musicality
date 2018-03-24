@@ -22,12 +22,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Artist" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WM7-GA-N1y">
-                    <rect key="frame" x="5" y="0.0" width="310" height="41"/>
+                    <rect key="frame" x="5" y="0.0" width="310" height="71"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="34"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XP-lL-SRJ" customClass="Button">
-                    <rect key="frame" x="163.5" y="46" width="78" height="30"/>
+                    <rect key="frame" x="163.5" y="76" width="78" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="78" id="dhA-86-p7h"/>
                         <constraint firstAttribute="height" constant="30" id="w7I-gD-j99"/>
@@ -39,13 +39,13 @@
                     </state>
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ED9-FD-yZh">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
                     <state key="normal">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncz-gA-3PF" customClass="Button">
-                    <rect key="frame" x="78.5" y="46" width="60" height="30"/>
+                    <rect key="frame" x="78.5" y="76" width="60" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="8oG-Ja-Y06"/>
                         <constraint firstAttribute="height" constant="30" id="idE-Ix-PJ8"/>
@@ -86,6 +86,7 @@
                 <constraint firstItem="WM7-GA-N1y" firstAttribute="top" secondItem="BxR-YS-44J" secondAttribute="top" id="gfZ-9q-Rxk"/>
                 <constraint firstItem="TJ9-dh-GSc" firstAttribute="width" secondItem="mtg-Bo-OKm" secondAttribute="width" id="jvJ-0L-HYx"/>
                 <constraint firstItem="TJ9-dh-GSc" firstAttribute="height" secondItem="mtg-Bo-OKm" secondAttribute="height" id="nd5-ZH-hER"/>
+                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="5XP-lL-SRJ" secondAttribute="bottom" constant="20" id="qHt-17-y00"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5XP-lL-SRJ" secondAttribute="bottom" constant="10" id="xdt-Gn-1fd"/>
                 <constraint firstAttribute="bottom" secondItem="mtg-Bo-OKm" secondAttribute="bottom" id="yYT-6O-or3"/>
                 <constraint firstAttribute="trailing" secondItem="mtg-Bo-OKm" secondAttribute="trailing" id="yup-ai-aoh"/>

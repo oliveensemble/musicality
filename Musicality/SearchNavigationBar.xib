@@ -22,12 +22,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3N-Ow-IeE">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="34"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcz-4g-ZG4" customClass="Button">
-                    <rect key="frame" x="163.5" y="50" width="78" height="30"/>
+                    <rect key="frame" x="163.5" y="76" width="78" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="78" identifier="ArtistWidth&gt;=78" id="TKr-f0-QaY"/>
                         <constraint firstAttribute="height" constant="30" identifier="AlbumsButtonHeight" id="x5R-B6-FHe"/>
@@ -39,7 +39,7 @@
                     </state>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LT4-91-PuE" customClass="Button">
-                    <rect key="frame" x="78.5" y="50" width="60" height="30"/>
+                    <rect key="frame" x="78.5" y="76" width="60" height="30"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" identifier="ArtistWidth&gt;=60" id="kNa-i0-Bn0"/>
@@ -63,7 +63,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YF1-Kd-Trn">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
                     <state key="normal">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -89,6 +89,7 @@
                 <constraint firstItem="LT4-91-PuE" firstAttribute="centerY" secondItem="Fcz-4g-ZG4" secondAttribute="centerY" id="eEY-fV-GZP"/>
                 <constraint firstAttribute="centerX" secondItem="Q3N-Ow-IeE" secondAttribute="centerX" id="etF-eG-Bfn"/>
                 <constraint firstAttribute="trailing" secondItem="YF1-Kd-Trn" secondAttribute="trailing" id="h9n-bh-ffb"/>
+                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Fcz-4g-ZG4" secondAttribute="bottom" constant="20" id="igd-81-wLc"/>
                 <constraint firstItem="Fcz-4g-ZG4" firstAttribute="leading" secondItem="LT4-91-PuE" secondAttribute="trailing" constant="25" id="kj3-7q-sqs"/>
                 <constraint firstAttribute="bottom" secondItem="7Hn-j4-zb6" secondAttribute="bottom" id="nFM-fK-KdG"/>
                 <constraint firstItem="Fcz-4g-ZG4" firstAttribute="height" secondItem="LT4-91-PuE" secondAttribute="height" id="vGG-hk-qEf"/>
