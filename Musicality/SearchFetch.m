@@ -102,6 +102,8 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
       
       //Cast the operation to NSObject, and notify the caller on the main thread.
       [(NSObject *)self.delegate performSelectorOnMainThread:@selector(didFinishSearchWithResults:) withObject:[searchResultsArray copy] waitUntilDone:NO];
+    } else {
+        DLog(@"Uh oh....");
     }
   }
 }

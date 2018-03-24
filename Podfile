@@ -8,7 +8,7 @@ target 'Musicality' do
   # Pods for Musicality
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'Haneke', '~> 1.0.2'
+  pod 'Haneke', '~> 1.0.2', :inhibit_warnings => true
   pod 'Firebase/Core'
 
   target 'MusicalityTests' do
