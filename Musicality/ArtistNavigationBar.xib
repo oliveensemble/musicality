@@ -1,80 +1,89 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleAspectFit" id="m4r-2T-xcL" customClass="ArtistNavigationBar">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="126"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WM7-GA-N1y">
-                    <rect key="frame" x="0.0" y="10" width="320" height="41"/>
+                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Artist" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WM7-GA-N1y">
+                    <rect key="frame" x="5" y="0.0" width="310" height="41"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="34"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5XP-lL-SRJ" customClass="Button">
-                    <rect key="frame" x="164" y="56" width="78" height="30"/>
+                    <rect key="frame" x="163.5" y="46" width="78" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="78" id="dhA-86-p7h"/>
                         <constraint firstAttribute="height" constant="30" id="w7I-gD-j99"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                     <state key="normal" title="Follow">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ED9-FD-yZh">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
                     <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncz-gA-3PF" customClass="Button">
-                    <rect key="frame" x="79" y="56" width="60" height="30"/>
+                    <rect key="frame" x="78.5" y="46" width="60" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="8oG-Ja-Y06"/>
                         <constraint firstAttribute="height" constant="30" id="idE-Ix-PJ8"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                     <state key="normal" title="  Back  ">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtg-Bo-OKm">
-                    <rect key="frame" x="242" y="47" width="78" height="49"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="241.5" y="77" width="78.5" height="49"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJ9-dh-GSc">
-                    <rect key="frame" x="0.0" y="47" width="79" height="49"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="0.0" y="77" width="78.5" height="49"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="49" id="tau-Dk-ape"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="WM7-GA-N1y" firstAttribute="bottom" secondItem="ED9-FD-yZh" secondAttribute="bottom" id="2Ao-Op-XCR"/>
-                <constraint firstAttribute="centerX" secondItem="WM7-GA-N1y" secondAttribute="centerX" id="8fW-x1-F0n"/>
                 <constraint firstItem="ED9-FD-yZh" firstAttribute="leading" secondItem="m4r-2T-xcL" secondAttribute="leading" id="Ce9-u6-eIw"/>
                 <constraint firstItem="5XP-lL-SRJ" firstAttribute="leading" secondItem="Ncz-gA-3PF" secondAttribute="trailing" constant="25" id="Evx-ie-Nwd"/>
                 <constraint firstItem="5XP-lL-SRJ" firstAttribute="top" secondItem="WM7-GA-N1y" secondAttribute="bottom" constant="5" id="HCk-Ag-qIs"/>
                 <constraint firstItem="Ncz-gA-3PF" firstAttribute="centerY" secondItem="5XP-lL-SRJ" secondAttribute="centerY" id="HNT-GO-sgR"/>
                 <constraint firstItem="Ncz-gA-3PF" firstAttribute="leading" secondItem="TJ9-dh-GSc" secondAttribute="trailing" id="IAW-Ul-jKW"/>
                 <constraint firstAttribute="bottom" secondItem="TJ9-dh-GSc" secondAttribute="bottom" id="PNk-tF-Cpl"/>
-                <constraint firstItem="WM7-GA-N1y" firstAttribute="leading" secondItem="m4r-2T-xcL" secondAttribute="leading" id="SHK-gY-iOy"/>
+                <constraint firstItem="WM7-GA-N1y" firstAttribute="leading" secondItem="BxR-YS-44J" secondAttribute="leading" constant="5" id="SHK-gY-iOy"/>
                 <constraint firstItem="TJ9-dh-GSc" firstAttribute="leading" secondItem="m4r-2T-xcL" secondAttribute="leading" id="T8z-lI-3Yf"/>
                 <constraint firstItem="mtg-Bo-OKm" firstAttribute="leading" secondItem="5XP-lL-SRJ" secondAttribute="trailing" id="VkJ-wK-MwO"/>
                 <constraint firstItem="ED9-FD-yZh" firstAttribute="top" secondItem="m4r-2T-xcL" secondAttribute="top" id="WRh-wa-c0t"/>
-                <constraint firstAttribute="trailing" secondItem="WM7-GA-N1y" secondAttribute="trailing" id="aVR-RD-Ohw"/>
+                <constraint firstItem="BxR-YS-44J" firstAttribute="trailing" secondItem="WM7-GA-N1y" secondAttribute="trailing" constant="5" id="aVR-RD-Ohw"/>
                 <constraint firstAttribute="trailing" secondItem="ED9-FD-yZh" secondAttribute="trailing" id="bZl-RX-zQx"/>
-                <constraint firstItem="WM7-GA-N1y" firstAttribute="top" secondItem="m4r-2T-xcL" secondAttribute="top" constant="10" id="gfZ-9q-Rxk"/>
+                <constraint firstItem="WM7-GA-N1y" firstAttribute="top" secondItem="BxR-YS-44J" secondAttribute="top" id="gfZ-9q-Rxk"/>
                 <constraint firstItem="TJ9-dh-GSc" firstAttribute="width" secondItem="mtg-Bo-OKm" secondAttribute="width" id="jvJ-0L-HYx"/>
                 <constraint firstItem="TJ9-dh-GSc" firstAttribute="height" secondItem="mtg-Bo-OKm" secondAttribute="height" id="nd5-ZH-hER"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5XP-lL-SRJ" secondAttribute="bottom" constant="10" id="xdt-Gn-1fd"/>
@@ -83,6 +92,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="BxR-YS-44J"/>
             <connections>
                 <outlet property="addToListButton" destination="5XP-lL-SRJ" id="qtG-Ly-7ow"/>
                 <outlet property="artistLabel" destination="WM7-GA-N1y" id="er0-Pd-JlR"/>
