@@ -54,7 +54,7 @@ typedef NS_OPTIONS(NSUInteger, SearchType) {
       requestString = [NSString stringWithFormat:@"https://itunes.apple.com/search?term=%@&entity=musicArtist&limit=50", self.searchTerm];
     }
     
-    NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
     NSData *searchData = [[NSData alloc] initWithContentsOfURL:requestURL];
     
     DLog(@"Searching: %@", requestURL.absoluteString);
