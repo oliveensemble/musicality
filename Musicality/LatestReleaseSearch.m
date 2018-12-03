@@ -31,8 +31,8 @@
   
   @autoreleasepool {
 
-    NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@&entity=album&limit=1&sort=recent", self.artist.artistID];
-    NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@&entity=album&limit=1&order=recent", self.artist.artistID];
+    NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
     NSData *albumData = [[NSData alloc] initWithContentsOfURL:requestURL];
     
     if (albumData) {

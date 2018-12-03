@@ -78,7 +78,7 @@
 		4FEC5A861B35DD9300985B0C /* AutoScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC5A851B35DD9300985B0C /* AutoScan.m */; };
 		4FEC5A881B3646FD00985B0C /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC5A871B3646FD00985B0C /* Tutorial.storyboard */; };
 		4FF0A2C51BE56340005E7118 /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF0A2C41BE56340005E7118 /* AlbumTableViewCell.m */; };
-		4FF5C4FC1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C4FB1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m */; };
+		4FF5C4FC1D23056B000CE9F7 /* ArtistUpdatePendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C4FB1D23056B000CE9F7 /* ArtistUpdatePendingOperations.m */; };
 		4FF5C4FF1D2306C2000CE9F7 /* AutoScanPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C4FE1D2306C2000CE9F7 /* AutoScanPendingOperations.m */; };
 		4FF5C5091D2340A1000CE9F7 /* ArtistListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF5C5081D2340A1000CE9F7 /* ArtistListViewModel.m */; };
 		4FFBFF8819F5DFD400EF5FD9 /* ArtistNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8719F5DFD400EF5FD9 /* ArtistNavigationBar.xib */; };
@@ -222,7 +222,7 @@
 		4FF0A2C31BE56340005E7118 /* AlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewCell.h; sourceTree = "<group>"; };
 		4FF0A2C41BE56340005E7118 /* AlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewCell.m; sourceTree = "<group>"; };
 		4FF5C4FA1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistUpdatePendingOperations.h; sourceTree = "<group>"; };
-		4FF5C4FB1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistUpdatePendingOperations.h.m; sourceTree = "<group>"; };
+		4FF5C4FB1D23056B000CE9F7 /* ArtistUpdatePendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistUpdatePendingOperations.m; sourceTree = "<group>"; };
 		4FF5C4FD1D2306C2000CE9F7 /* AutoScanPendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoScanPendingOperations.h; sourceTree = "<group>"; };
 		4FF5C4FE1D2306C2000CE9F7 /* AutoScanPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoScanPendingOperations.m; sourceTree = "<group>"; };
 		4FF5C5071D2340A1000CE9F7 /* ArtistListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistListViewModel.h; sourceTree = "<group>"; };
@@ -477,7 +477,7 @@
 				4FEC5A841B35DD9300985B0C /* AutoScan.h */,
 				4FEC5A851B35DD9300985B0C /* AutoScan.m */,
 				4FF5C4FA1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h */,
-				4FF5C4FB1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m */,
+				4FF5C4FB1D23056B000CE9F7 /* ArtistUpdatePendingOperations.m */,
 				4FF5C4FD1D2306C2000CE9F7 /* AutoScanPendingOperations.h */,
 				4FF5C4FE1D2306C2000CE9F7 /* AutoScanPendingOperations.m */,
 			);
@@ -815,7 +815,7 @@
 				4FAACD261D3D5FE600A362CC /* SearchNavigationBar.m in Sources */,
 				4F0FA8D01B4B67160050A314 /* LoadingView.m in Sources */,
 				4F1520CA19EDFEAD00530B8E /* ExploreViewController.m in Sources */,
-				4FF5C4FC1D23056B000CE9F7 /* ArtistUpdatePendingOperations.h.m in Sources */,
+				4FF5C4FC1D23056B000CE9F7 /* ArtistUpdatePendingOperations.m in Sources */,
 				4F7A63891C44545F003AE595 /* MNavigationBar.m in Sources */,
 				4FC1C26B19F7367900E14360 /* ArtistNavigationBar.m in Sources */,
 			);
