@@ -966,7 +966,7 @@
 			baseConfigurationReference = 8D01FE13E87B7D841801FFE4 /* Pods-Musicality.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Evan Lewis (26T3J222VC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 57YJNDUYJ2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
@@ -989,8 +989,8 @@
 			baseConfigurationReference = CB5DDAE4018B77B8A5242100 /* Pods-Musicality.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Later Creative LLC (57YJNDUYJ2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 57YJNDUYJ2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
 				IBC_WARNINGS = YES;
@@ -1012,7 +1012,7 @@
 			baseConfigurationReference = 885E07BD137EF5A622495A48 /* Pods-MusicalityTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Evan Lewis (26T3J222VC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 57YJNDUYJ2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1033,8 +1033,8 @@
 			baseConfigurationReference = CEDBE23EDF974A34DF67AE00 /* Pods-MusicalityTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Later Creative LLC (57YJNDUYJ2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 57YJNDUYJ2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = MusicalityTests/Info.plist;
