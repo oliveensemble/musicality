@@ -35,7 +35,7 @@
 - (void)main {
   
   @autoreleasepool {
-    NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@&entity=album&order=recent", self.artist.artistID];
+    NSString *requestString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@&entity=album&sort=recent", self.artist.artistID];
     NSURL *requestURL = [NSURL URLWithString:[requestString stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
     NSData *albumData = [[NSData alloc] initWithContentsOfURL:requestURL];
     NSMutableArray *albumArray = [NSMutableArray array];
