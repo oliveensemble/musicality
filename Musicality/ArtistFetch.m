@@ -86,7 +86,9 @@
     }
     
     //Cast the operation to NSObject, and notify the caller on the main thread.
-    [(NSObject *)self.delegate performSelectorOnMainThread:@selector(didFinishFetchingArtistAlbums:) withObject: [albumArray copy] waitUntilDone:NO];
+     NSArray *sortedAlbumsArray = [[[[albumArray sortedArrayUsingSelector:@selector(compare:)] reverseObjectEnumerator] allObjects] mutableCopy];
+
+    [(NSObject *)self.delegate performSelectorOnMainThread:@selector(didFinishFetchingArtistAlbums:) withObject: sortedAlbumsArray waitUntilDone:NO];
   }
 }
 
