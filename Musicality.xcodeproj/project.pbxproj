@@ -23,7 +23,6 @@
 		4F18CC081D4D44D80005957D /* TutorialNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC071D4D44D80005957D /* TutorialNotificationViewController.m */; };
 		4F18CC0B1D4D44F40005957D /* TutorialScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC0A1D4D44F40005957D /* TutorialScanViewController.m */; };
 		4F18CC0E1D4D45B90005957D /* TutorialPopularArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC0D1D4D45B90005957D /* TutorialPopularArtistsViewController.m */; };
-		4F3255CA1F1BD5A300A47124 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F3255C91F1BD5A300A47124 /* GoogleService-Info.plist */; };
 		4F3720BD1B154A8C0067E80A /* LatestReleaseSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720BC1B154A8C0067E80A /* LatestReleaseSearch.m */; };
 		4F3720C61B1940410067E80A /* NotificationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720C51B1940410067E80A /* NotificationCheck.m */; };
 		4F3836F61A800C4000E872E3 /* LibraryData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F3836F51A800C4000E872E3 /* LibraryData.plist */; };
@@ -556,7 +555,6 @@
 				4F3836F61A800C4000E872E3 /* LibraryData.plist in Resources */,
 				4F63E82C1BE56DE3004B6991 /* AlbumTableViewCell.xib in Resources */,
 				4F650E611A279E1F00C2FA82 /* LibraryNavigationBar.xib in Resources */,
-				4F3255CA1F1BD5A300A47124 /* GoogleService-Info.plist in Resources */,
 				4F18223E19DA0439006CCA8B /* Images.xcassets in Resources */,
 				4FA71CF11BF6C6EC00DC6C0E /* FilterTableViewCell.xib in Resources */,
 				4F7A16ED19F885090039508D /* ArtistsNavigationBar.xib in Resources */,

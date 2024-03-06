@@ -3,7 +3,7 @@
 //  Musicality
 //
 //  Created by Elle Lewis on 6/28/16.
-//  Copyright (c) 2015 Elle Lewis. All rights reserved.
+//  Copyright (c) 2015 Later Creative LLC. All rights reserved.
 //
 
 #import "ArtistUpdatePendingOperations.h"

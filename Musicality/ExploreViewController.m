@@ -3,7 +3,7 @@
 //  Musicality
 //
 //  Created by Elle Lewis on 10/14/14.
-//  Copyright © 2014 Elle Lewis. All rights reserved.
+//  Copyright © 2014 Later Creative LLC. All rights reserved.
 //
 // The first view that the app loads. The explore tab shows the top albums in iTunes
 

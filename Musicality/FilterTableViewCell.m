@@ -3,7 +3,7 @@
 //  Musicality
 //
 //  Created by Elle Lewis on 11/6/15.
-//  Copyright © 2015 Elle Lewis. All rights reserved.
+//  Copyright © 2015 Later Creative LLC. All rights reserved.
 //
 
 #import "FilterTableViewCell.h"

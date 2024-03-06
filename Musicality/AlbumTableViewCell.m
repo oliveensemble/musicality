@@ -3,7 +3,7 @@
 //  Musicality
 //
 //  Created by Elle Lewis on 10/31/15.
-//  Copyright © 2015 Elle Lewis. All rights reserved.
+//  Copyright © 2015 Later Creative LLC. All rights reserved.
 //
 
 #import "AlbumTableViewCell.h"
