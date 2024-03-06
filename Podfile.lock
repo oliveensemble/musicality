@@ -8,14 +8,14 @@ PODS:
   - FirebaseAnalytics (4.1.0):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
   - FirebaseCore (4.0.18):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
   - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - Haneke (1.0.2)
   - nanopb (0.3.8):
@@ -30,9 +30,21 @@ DEPENDENCIES:
   - Firebase/Core
   - Haneke (~> 1.0.2)
 
+SPEC REPOS:
+  trunk:
+    - Crashlytics
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - GoogleToolboxForMac
+    - Haneke
+    - nanopb
+
 SPEC CHECKSUMS:
-  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
-  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
+  Crashlytics: 0ea46c8966ec6c2eab61f5d1bb71d6461c33278f
+  Fabric: 0d4097606c34460a8ba5c7eb9dab75a467f0b30e
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
   FirebaseCore: b981f47e5254cbcfdeb483355300d743f6fcab2c
@@ -43,4 +55,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 44e7c0b6adb10db888e74d7d4b1aaecfbbdff19f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.15.2
