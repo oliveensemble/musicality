@@ -233,7 +233,7 @@
                 MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
                 mail.mailComposeDelegate = self;
                 [mail setSubject:@"Musicality Help/Feedback"];
-                [mail setToRecipients:@[@"evanlwsapps+musicalityhelp@gmail.com"]];
+                [mail setToRecipients:@[@"latercreative+musicalityhelp@gmail.com"]];
 
                 [self presentViewController:mail animated:YES completion:NULL];
             } else {
