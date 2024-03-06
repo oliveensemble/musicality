@@ -2,8 +2,8 @@
 //  TutorialNotificationViewController.m
 //  Musicality
 //
-//  Created by Evan Lewis on 7/30/16.
-//  Copyright © 2016 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 7/30/16.
+//  Copyright © 2016 Later Creative LLC. All rights reserved.
 //
 
 #import "TutorialNotificationViewController.h"

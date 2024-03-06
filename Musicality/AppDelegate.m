@@ -2,14 +2,11 @@
 //  AppDelegate.m
 //  Musicality
 //
-//  Created by Evan Lewis on 9/29/14.
-//  Copyright (c) 2014 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 9/29/14.
+//  Copyright (c) 2014 Later Creative LLC. All rights reserved.
 //
 
 @import StoreKit;
-@import Fabric;
-@import Crashlytics;
-@import Firebase;
 
 #import "NotificationManager.h"
 #import "AppDelegate.h"
@@ -25,10 +22,7 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  [Fabric with:@[[Crashlytics class]]];
-  [FIRApp configure];
-  
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {  
   application.minimumBackgroundFetchInterval = UIApplicationBackgroundFetchIntervalMinimum;
   
   if (![[NSUserDefaults standardUserDefaults] boolForKey:@"notFirstRun"]) {

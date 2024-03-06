@@ -2,8 +2,8 @@
 //  ExploreViewController.m
 //  Musicality
 //
-//  Created by Evan Lewis on 10/14/14.
-//  Copyright © 2014 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 10/14/14.
+//  Copyright © 2014 Later Creative LLC. All rights reserved.
 //
 // The first view that the app loads. The explore tab shows the top albums in iTunes
 

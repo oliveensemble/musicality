@@ -6,10 +6,7 @@ target 'Musicality' do
   # use_frameworks!
 
   # Pods for Musicality
-  pod 'Fabric'
-  pod 'Crashlytics'
   pod 'Haneke', '~> 1.0.2', :inhibit_warnings => true
-  pod 'Firebase/Core'
 
   target 'MusicalityTests' do
     inherit! :search_paths

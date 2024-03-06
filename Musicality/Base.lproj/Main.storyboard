@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yS8-BL-qul">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yS8-BL-qul">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -74,14 +70,14 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArtistCell" id="o9F-0Y-q5j" customClass="SearchArtistTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o9F-0Y-q5j" id="cRx-aB-0zr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qn7-Ip-mle">
-                                                    <rect key="frame" x="15" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="41" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -98,14 +94,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlbumCell" rowHeight="100" id="vKN-zL-nJs" customClass="SearchAlbumTableViewCell">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="94" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vKN-zL-nJs" id="bAW-NO-0Mm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5l-Yr-mvO">
-                                                    <rect key="frame" x="75" y="31" width="200" height="38"/>
+                                                    <rect key="frame" x="76" y="31" width="198" height="38"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="c1B-Rd-gKj">
                                                             <rect key="frame" x="0.0" y="0.0" width="35" height="22"/>
@@ -118,7 +114,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="TSP-NC-Cd0">
-                                                            <rect key="frame" x="0.0" y="22" width="34" height="16"/>
+                                                            <rect key="frame" x="0.0" y="22" width="33" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="4d5-3e-Cba"/>
                                                                 <constraint firstAttribute="height" constant="16" id="7oZ-eF-QfG"/>
@@ -141,14 +137,14 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ece-es-lSQ">
-                                                    <rect key="frame" x="15" y="22" width="55" height="55"/>
+                                                    <rect key="frame" x="16" y="22.5" width="55" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="55" identifier="AlbumImageViewWidth" id="CQC-b7-yt5"/>
                                                         <constraint firstAttribute="width" secondItem="Ece-es-lSQ" secondAttribute="height" multiplier="1:1" identifier="SquareAspectRatio" id="vuJ-Z7-JGS"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYz-IZ-2cp" customClass="Button">
-                                                    <rect key="frame" x="280" y="37" width="80" height="26"/>
+                                                    <rect key="frame" x="279" y="37" width="80" height="26"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="6bG-Qw-Y50"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" identifier="ViewArtistButtonWidth" id="QF2-CN-JD3"/>
@@ -191,6 +187,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="rbW-BM-3Cn"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ThR-cp-Hsj" firstAttribute="bottom" secondItem="rbW-BM-3Cn" secondAttribute="bottom" identifier="TableViewBottonGuide0" id="0Fp-rD-w0u"/>
@@ -205,7 +202,6 @@
                             <constraint firstItem="tpV-sY-jYP" firstAttribute="top" secondItem="1ya-HA-JC4" secondAttribute="top" id="sfO-Ch-rF5"/>
                             <constraint firstItem="ThR-cp-Hsj" firstAttribute="leading" secondItem="rbW-BM-3Cn" secondAttribute="leading" identifier="TableViewLeading" id="zeT-2J-Rnn"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="rbW-BM-3Cn"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Ju8-bQ-Lll"/>
@@ -235,14 +231,14 @@
                             <tableViewSection id="pP3-Xg-hph">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="5Xa-r1-Kel" rowHeight="60" style="IBUITableViewCellStyleDefault" id="qaM-CZ-ovw" customClass="SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qaM-CZ-ovw" id="tq5-7m-Mab">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rate Musicality" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Xa-r1-Kel">
-                                                    <rect key="frame" x="15" y="0.0" width="344" height="60"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -255,14 +251,14 @@
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="6oj-xd-B8O" detailTextLabel="rcs-NO-8kW" rowHeight="60" style="IBUITableViewCellStyleValue1" id="f39-7S-kEs" customClass="SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="110" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f39-7S-kEs" id="97W-ie-oa6">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Scan Library Automatically" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6oj-xd-B8O">
-                                                    <rect key="frame" x="15" y="18" width="231" height="24"/>
+                                                    <rect key="frame" x="16" y="18" width="233" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -282,14 +278,14 @@
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="xR7-S4-t5Z" detailTextLabel="KfS-IL-3j2" rowHeight="60" style="IBUITableViewCellStyleValue1" id="1J8-QT-YCL" customClass="SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="170" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1J8-QT-YCL" id="F1S-QF-49z">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Dark Mode" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xR7-S4-t5Z">
-                                                    <rect key="frame" x="15" y="18" width="95.5" height="24"/>
+                                                    <rect key="frame" x="16" y="18" width="96.5" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -309,14 +305,14 @@
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="B0x-vw-pHC" rowHeight="60" style="IBUITableViewCellStyleDefault" id="7PT-JV-mtv" customClass="SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="180" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="230" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7PT-JV-mtv" id="Gnq-RT-aiv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Help / Send Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B0x-vw-pHC">
-                                                    <rect key="frame" x="15" y="0.0" width="344" height="60"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -329,14 +325,14 @@
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="DBE-FR-jzW" rowHeight="60" style="IBUITableViewCellStyleDefault" id="k0x-dN-Dak" customClass="SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="290" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k0x-dN-Dak" id="yw3-bz-dPW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Privacy Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DBE-FR-jzW">
-                                                    <rect key="frame" x="15" y="0.0" width="344" height="60"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -352,14 +348,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="plu-Rg-RZE" rowHeight="60" style="IBUITableViewCellStyleDefault" id="xw3-zR-iMt" customClass="SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="300" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="350" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xw3-zR-iMt" id="ffj-3M-IQU">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Clear All Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="plu-Rg-RZE">
-                                                    <rect key="frame" x="15" y="0.0" width="344" height="60"/>
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -372,14 +368,14 @@
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings Cell" textLabel="Qhm-3i-KX7" detailTextLabel="sHz-ia-Z2M" rowHeight="60" style="IBUITableViewCellStyleValue1" id="hGh-2L-vTc" customClass="SettingsTableViewCell">
-                                        <rect key="frame" x="0.0" y="360" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="410" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hGh-2L-vTc" id="JDZ-ld-V53">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Open Links in Apple Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qhm-3i-KX7">
-                                                    <rect key="frame" x="15" y="20" width="202" height="20.5"/>
+                                                    <rect key="frame" x="16" y="20" width="201" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -425,17 +421,17 @@
             <objects>
                 <viewController id="Tjm-g1-8IZ" customClass="PrivacyPolicyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lay-FR-dKP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Drz-KH-9cH">
-                                <rect key="frame" x="116" y="20" width="143" height="29"/>
+                                <rect key="frame" x="116" y="0.0" width="143" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3m-au-fnW" customClass="Button">
-                                <rect key="frame" x="162.5" y="57" width="50" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3m-au-fnW" customClass="Button">
+                                <rect key="frame" x="162.5" y="37" width="50" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="tWi-gQ-Ndy"/>
                                 </constraints>
@@ -447,15 +443,15 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" scrollEnabled="NO" editable="NO" text="This policy explains what information Musicality collects and how it is used" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIi-Xo-ygN">
-                                <rect key="frame" x="16" y="95" width="343" height="49.5"/>
+                                <rect key="frame" x="16" y="75" width="343" height="49.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfd-Rc-5fK">
-                                <rect key="frame" x="16" y="152.5" width="343" height="504.5"/>
+                                <rect key="frame" x="16" y="132.5" width="343" height="504.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">Musicality is an app designed to search the users iTunes libraries and remind them of recent releases by their favorite artists.
+                                <mutableString key="text">Musicality is an app designed to search the users iTunes libraries and remind them of recent releases by their favorite artists.
 
 This app simply collects a list of the artists located in your music library and automatically searches the iTunes store for the artists latest releases. We do not collect or store any personally identifiable information. The information that is sent to iTunes is the artist name, identification number and album name and identification number. Notifications are not sent using a remote server, as they are local notifications based on the posted release date of the album in iTunes. While that means your information is not sent to any service in the background, it also means that as of now only items that were pre-orders in iTunes can send you background notifications.
 
@@ -463,11 +459,12 @@ App Analytics is a service by Apple available to all iOS developers which is use
 
 Musicality is a free service and does not collect personal data. Instead, a small commission is made on purchases you make through iTunes on this device via the affiliate program. The iTunes affiliate program is a program by Apple that allows developers and content makers to receive commission by attracting traffic to the iTunes store. Whenever you click on a link in Musicality, our affiliate token (none of your data) is sent along with the link.
 
-If you have any further questions, please email evanlwsapps+musicalityhelp@gmail.com</string>
+If you have any further questions, please email latercreative+musicalityhelp@gmail.com</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="zGS-he-eJj"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Sfd-Rc-5fK" firstAttribute="centerX" secondItem="zGS-he-eJj" secondAttribute="centerX" id="0tR-YP-EuP"/>
@@ -484,7 +481,6 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                             <constraint firstItem="e3m-au-fnW" firstAttribute="centerX" secondItem="zGS-he-eJj" secondAttribute="centerX" id="vmB-XO-hMv"/>
                             <constraint firstItem="lIi-Xo-ygN" firstAttribute="centerX" secondItem="zGS-he-eJj" secondAttribute="centerX" id="yzU-M0-fMP"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zGS-he-eJj"/>
                     </view>
                     <connections>
                         <outlet property="introText" destination="lIi-Xo-ygN" id="fPl-Jf-Rhs"/>
@@ -508,14 +504,14 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                         <inset key="separatorInset" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="genreCell" textLabel="3LJ-F6-quZ" rowHeight="50" style="IBUITableViewCellStyleDefault" id="wcb-2A-6zQ" customClass="FilterTableViewCell">
-                                <rect key="frame" x="0.0" y="116" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wcb-2A-6zQ" id="fPi-qM-Yo7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="All Genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="3LJ-F6-quZ">
-                                            <rect key="frame" x="15" y="0.0" width="344" height="49.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -584,14 +580,14 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistNameCell" textLabel="VxF-eo-okg" style="IBUITableViewCellStyleDefault" id="spF-hY-Yca">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="spF-hY-Yca" id="sNF-fk-PMe">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VxF-eo-okg">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -625,14 +621,14 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell tag="1" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" rowHeight="65" id="s8F-yh-FzZ" customClass="FilterTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s8F-yh-FzZ" id="eCU-QC-Yjk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndZ-wt-60t">
-                                            <rect key="frame" x="30" y="20" width="48" height="24"/>
+                                            <rect key="frame" x="30" y="20.5" width="48" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="DtU-pI-yLp"/>
                                             </constraints>
@@ -684,14 +680,14 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="ArtistCell" textLabel="3qF-4M-1WT" style="IBUITableViewCellStyleDefault" id="QQt-3s-ZD2">
-                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QQt-3s-ZD2" id="JvC-oz-dqX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3qF-4M-1WT">
-                                            <rect key="frame" x="15" y="0.0" width="344" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -741,6 +737,7 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                     <tabBarItem key="tabBarItem" title="Artists" image="mic_icon" id="gTJ-ny-0Wh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hic-P8-l6W">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -778,6 +775,7 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
                     <tabBarItem key="tabBarItem" systemItem="search" id="xXA-iF-heg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mzf-6n-AQk">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -790,14 +788,14 @@ If you have any further questions, please email evanlwsapps+musicalityhelp@gmail
             <point key="canvasLocation" x="260" y="1522"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="explore_icon" width="30" height="30"/>
-        <image name="mic_icon" width="30" height="30"/>
-        <image name="settings_icon" width="30" height="30"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OJd-mv-FB1"/>
         <segue reference="8kx-G7-AAs"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <resources>
+        <image name="explore_icon" width="30" height="30"/>
+        <image name="mic_icon" width="30" height="30"/>
+        <image name="settings_icon" width="30" height="30"/>
+    </resources>
 </document>

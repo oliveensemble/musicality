@@ -17,17 +17,14 @@
 		4F18223C19DA0439006CCA8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F18223A19DA0439006CCA8B /* Main.storyboard */; };
 		4F18223E19DA0439006CCA8B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F18223D19DA0439006CCA8B /* Images.xcassets */; };
 		4F18224119DA0439006CCA8B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F18223F19DA0439006CCA8B /* LaunchScreen.xib */; };
-		4F18224D19DA043A006CCA8B /* MusicalityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18224C19DA043A006CCA8B /* MusicalityTests.m */; };
 		4F18225B19DA4F6C006CCA8B /* MStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18225A19DA4F6C006CCA8B /* MStore.m */; };
 		4F18225E19DA5316006CCA8B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F18225D19DA5316006CCA8B /* MediaPlayer.framework */; };
 		4F18CC051D4D3A730005957D /* TutorialIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC041D4D3A730005957D /* TutorialIntroViewController.m */; };
 		4F18CC081D4D44D80005957D /* TutorialNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC071D4D44D80005957D /* TutorialNotificationViewController.m */; };
 		4F18CC0B1D4D44F40005957D /* TutorialScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC0A1D4D44F40005957D /* TutorialScanViewController.m */; };
 		4F18CC0E1D4D45B90005957D /* TutorialPopularArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18CC0D1D4D45B90005957D /* TutorialPopularArtistsViewController.m */; };
-		4F3255CA1F1BD5A300A47124 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F3255C91F1BD5A300A47124 /* GoogleService-Info.plist */; };
 		4F3720BD1B154A8C0067E80A /* LatestReleaseSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720BC1B154A8C0067E80A /* LatestReleaseSearch.m */; };
 		4F3720C61B1940410067E80A /* NotificationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720C51B1940410067E80A /* NotificationCheck.m */; };
-		4F3720C71B1940410067E80A /* NotificationCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3720C51B1940410067E80A /* NotificationCheck.m */; };
 		4F3836F61A800C4000E872E3 /* LibraryData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F3836F51A800C4000E872E3 /* LibraryData.plist */; };
 		4F3B35EB1BEEA4ED0003F96F /* ExploreFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3B35EA1BEEA4ED0003F96F /* ExploreFetch.m */; };
 		4F4EE9EA1A18EC4300E8F608 /* NotificationData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F4EE9E91A18EC4300E8F608 /* NotificationData.plist */; };
@@ -84,19 +81,8 @@
 		4FFBFF8819F5DFD400EF5FD9 /* ArtistNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8719F5DFD400EF5FD9 /* ArtistNavigationBar.xib */; };
 		4FFBFF8A19F5E00100EF5FD9 /* ExploreNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8919F5E00100EF5FD9 /* ExploreNavigationBar.xib */; };
 		4FFBFF8C19F5E01400EF5FD9 /* SettingsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8B19F5E01400EF5FD9 /* SettingsNavigationBar.xib */; };
-		DE3453E644D59CEA08697825 /* libPods-MusicalityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A03003A737E3B612ED0C8B86 /* libPods-MusicalityTests.a */; };
 		F6C68D1700E512905B3A6E80 /* libPods-Musicality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68E8C2B811EA01DD81B1C2 /* libPods-Musicality.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4F18224719DA043A006CCA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F18222519DA0439006CCA8B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F18222C19DA0439006CCA8B;
-			remoteInfo = Musicality;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4F0029491A1AD55D004FFC10 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -115,9 +101,6 @@
 		4F18223B19DA0439006CCA8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F18223D19DA0439006CCA8B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4F18224019DA0439006CCA8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4F18224619DA043A006CCA8B /* MusicalityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicalityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F18224B19DA043A006CCA8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F18224C19DA043A006CCA8B /* MusicalityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicalityTests.m; sourceTree = "<group>"; };
 		4F18225919DA4F6C006CCA8B /* MStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MStore.h; sourceTree = "<group>"; };
 		4F18225A19DA4F6C006CCA8B /* MStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MStore.m; sourceTree = "<group>"; };
 		4F18225D19DA5316006CCA8B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -252,14 +235,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F18224319DA043A006CCA8B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE3453E644D59CEA08697825 /* libPods-MusicalityTests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -277,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				4F18222F19DA0439006CCA8B /* Musicality */,
-				4F18224919DA043A006CCA8B /* MusicalityTests */,
 				4F18222E19DA0439006CCA8B /* Products */,
 				06CB62681F5EC097DEBE6D16 /* Frameworks */,
 				F391FC518122A9201884197F /* Pods */,
@@ -288,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				4F18222D19DA0439006CCA8B /* Musicality.app */,
-				4F18224619DA043A006CCA8B /* MusicalityTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,23 +292,6 @@
 				4F18223119DA0439006CCA8B /* Info.plist */,
 				4F3255C91F1BD5A300A47124 /* GoogleService-Info.plist */,
 				4F18223219DA0439006CCA8B /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4F18224919DA043A006CCA8B /* MusicalityTests */ = {
-			isa = PBXGroup;
-			children = (
-				4F18224C19DA043A006CCA8B /* MusicalityTests.m */,
-				4F18224A19DA043A006CCA8B /* Supporting Files */,
-			);
-			path = MusicalityTests;
-			sourceTree = "<group>";
-		};
-		4F18224A19DA043A006CCA8B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4F18224B19DA043A006CCA8B /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -528,9 +484,6 @@
 				4F18222919DA0439006CCA8B /* Sources */,
 				4F18222A19DA0439006CCA8B /* Frameworks */,
 				4F18222B19DA0439006CCA8B /* Resources */,
-				4FA71CE91BF68CC600DC6C0E /* ShellScript */,
-				E6F95231FFEB86B03CEE77DC /* [CP] Embed Pods Frameworks */,
-				AF54D02BEF70E78097FD37A0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -540,27 +493,6 @@
 			productName = Musicality;
 			productReference = 4F18222D19DA0439006CCA8B /* Musicality.app */;
 			productType = "com.apple.product-type.application";
-		};
-		4F18224519DA043A006CCA8B /* MusicalityTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4F18225319DA043A006CCA8B /* Build configuration list for PBXNativeTarget "MusicalityTests" */;
-			buildPhases = (
-				346610940F89A2C5838CCA91 /* [CP] Check Pods Manifest.lock */,
-				4F18224219DA043A006CCA8B /* Sources */,
-				4F18224319DA043A006CCA8B /* Frameworks */,
-				4F18224419DA043A006CCA8B /* Resources */,
-				2D9AF1F8838CCA7E2CCB318E /* [CP] Embed Pods Frameworks */,
-				5AB57F86DEC9B2E0F1A4E7CD /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4F18224819DA043A006CCA8B /* PBXTargetDependency */,
-			);
-			name = MusicalityTests;
-			productName = MusicalityTests;
-			productReference = 4F18224619DA043A006CCA8B /* MusicalityTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -574,7 +506,6 @@
 					4F18222C19DA0439006CCA8B = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = 57YJNDUYJ2;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -587,11 +518,6 @@
 							};
 						};
 					};
-					4F18224519DA043A006CCA8B = {
-						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 57YJNDUYJ2;
-						TestTargetID = 4F18222C19DA0439006CCA8B;
-					};
 				};
 			};
 			buildConfigurationList = 4F18222819DA0439006CCA8B /* Build configuration list for PBXProject "Musicality" */;
@@ -599,6 +525,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -608,7 +535,6 @@
 			projectRoot = "";
 			targets = (
 				4F18222C19DA0439006CCA8B /* Musicality */,
-				4F18224519DA043A006CCA8B /* MusicalityTests */,
 			);
 		};
 /* End PBXProject section */
@@ -629,7 +555,6 @@
 				4F3836F61A800C4000E872E3 /* LibraryData.plist in Resources */,
 				4F63E82C1BE56DE3004B6991 /* AlbumTableViewCell.xib in Resources */,
 				4F650E611A279E1F00C2FA82 /* LibraryNavigationBar.xib in Resources */,
-				4F3255CA1F1BD5A300A47124 /* GoogleService-Info.plist in Resources */,
 				4F18223E19DA0439006CCA8B /* Images.xcassets in Resources */,
 				4FA71CF11BF6C6EC00DC6C0E /* FilterTableViewCell.xib in Resources */,
 				4F7A16ED19F885090039508D /* ArtistsNavigationBar.xib in Resources */,
@@ -640,77 +565,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F18224419DA043A006CCA8B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D9AF1F8838CCA7E2CCB318E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicalityTests/Pods-MusicalityTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		346610940F89A2C5838CCA91 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MusicalityTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4FA71CE91BF68CC600DC6C0E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/Fabric/run 2dc7fcb0503f1e8d4ab624535a9f5d48db7d596a b9a9b1123a61d00895b7f4d3986f94eb8059971ecb398ac16a006ae6182a1af2";
-		};
-		5AB57F86DEC9B2E0F1A4E7CD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MusicalityTests/Pods-MusicalityTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		713AF64DAFAF98234FCAA04F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -727,36 +584,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AF54D02BEF70E78097FD37A0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Musicality/Pods-Musicality-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E6F95231FFEB86B03CEE77DC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Musicality/Pods-Musicality-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -819,24 +646,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F18224219DA043A006CCA8B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F18224D19DA043A006CCA8B /* MusicalityTests.m in Sources */,
-				4F3720C71B1940410067E80A /* NotificationCheck.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4F18224819DA043A006CCA8B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4F18222C19DA0439006CCA8B /* Musicality */;
-			targetProxy = 4F18224719DA043A006CCA8B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4F18223A19DA0439006CCA8B /* Main.storyboard */ = {
@@ -966,17 +776,16 @@
 			baseConfigurationReference = 8D01FE13E87B7D841801FFE4 /* Pods-Musicality.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				DEVELOPMENT_TEAM = 57YJNDUYJ2;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				IBC_WARNINGS = YES;
 				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = Musicality/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.evanlewis.musicality;
+				PRODUCT_BUNDLE_IDENTIFIER = com.latercreative.musicality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -989,59 +798,22 @@
 			baseConfigurationReference = CB5DDAE4018B77B8A5242100 /* Pods-Musicality.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 57YJNDUYJ2;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				IBC_WARNINGS = YES;
 				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = Musicality/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.evanlewis.musicality;
+				PRODUCT_BUNDLE_IDENTIFIER = com.latercreative.musicality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		4F18225419DA043A006CCA8B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 885E07BD137EF5A622495A48 /* Pods-MusicalityTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 57YJNDUYJ2;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MusicalityTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.evanlewis.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Musicality.app/Musicality";
-			};
-			name = Debug;
-		};
-		4F18225519DA043A006CCA8B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEDBE23EDF974A34DF67AE00 /* Pods-MusicalityTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 57YJNDUYJ2;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = MusicalityTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.evanlewis.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Musicality.app/Musicality";
 			};
 			name = Release;
 		};
@@ -1062,15 +834,6 @@
 			buildConfigurations = (
 				4F18225119DA043A006CCA8B /* Debug */,
 				4F18225219DA043A006CCA8B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4F18225319DA043A006CCA8B /* Build configuration list for PBXNativeTarget "MusicalityTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4F18225419DA043A006CCA8B /* Debug */,
-				4F18225519DA043A006CCA8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

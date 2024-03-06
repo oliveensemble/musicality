@@ -2,8 +2,8 @@
 //  SettingsViewController.m
 //  Musicality
 //
-//  Created by Evan Lewis on 11/13/14.
-//  Copyright (c) 2014 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 11/13/14.
+//  Copyright (c) 2014 Later Creative LLC. All rights reserved.
 //
 
 @import MessageUI;
@@ -233,7 +233,7 @@
                 MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
                 mail.mailComposeDelegate = self;
                 [mail setSubject:@"Musicality Help/Feedback"];
-                [mail setToRecipients:@[@"evanlwsapps+musicalityhelp@gmail.com"]];
+                [mail setToRecipients:@[@"latercreative+musicalityhelp@gmail.com"]];
 
                 [self presentViewController:mail animated:YES completion:NULL];
             } else {

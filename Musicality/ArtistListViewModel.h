@@ -2,8 +2,8 @@
 //  ArtistListViewModel.h
 //  Musicality
 //
-//  Created by Evan Lewis on 6/28/16.
-//  Copyright © 2016 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 6/28/16.
+//  Copyright © 2016 Later Creative LLC. All rights reserved.
 //
 
 @import Foundation;
