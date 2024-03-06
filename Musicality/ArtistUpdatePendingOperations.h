@@ -2,8 +2,8 @@
 //  ArtistUpdatePendingOperations.h
 //  Musicality
 //
-//  Created by Evan Lewis on 6/28/16.
-//  Copyright (c) 2016 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 6/28/16.
+//  Copyright (c) 2016 Elle Lewis. All rights reserved.
 //
 
 @import Foundation;

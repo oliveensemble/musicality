@@ -2,8 +2,8 @@
 //  ArtistFetch.h
 //  Musicality
 //
-//  Created by Evan Lewis on 1/11/16.
-//  Copyright © 2016 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 1/11/16.
+//  Copyright © 2016 Elle Lewis. All rights reserved.
 //
 // Fetches an array of albums for the specified artist
 

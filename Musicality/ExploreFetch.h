@@ -2,8 +2,8 @@
 //  ExploreFetch.h
 //  Musicality
 //
-//  Created by Evan Lewis on 11/7/15.
-//  Copyright © 2015 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 11/7/15.
+//  Copyright © 2015 Elle Lewis. All rights reserved.
 //
 
 

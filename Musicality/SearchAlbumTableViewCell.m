@@ -2,8 +2,8 @@
 //  SearchAlbumTableViewCell.m
 //  Musicality
 //
-//  Created by Evan Lewis on 7/18/16.
-//  Copyright © 2016 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 7/18/16.
+//  Copyright © 2016 Elle Lewis. All rights reserved.
 //
 
 #import "SearchAlbumTableViewCell.h"

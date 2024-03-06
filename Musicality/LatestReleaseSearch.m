@@ -2,8 +2,8 @@
 //  LatestReleaseSearch.m
 //  Musicality
 //
-//  Created by Evan Lewis on 5/26/15.
-//  Copyright (c) 2015 Evan Lewis. All rights reserved.
+//  Created by Elle Lewis on 5/26/15.
+//  Copyright (c) 2015 Elle Lewis. All rights reserved.
 //
 
 #import "MStore.h"
