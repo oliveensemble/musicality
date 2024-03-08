@@ -10,6 +10,8 @@
 		247744142B9AD06200DAAB2C /* MusicalityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744132B9AD06200DAAB2C /* MusicalityApp.swift */; };
 		247744162B9AD16800DAAB2C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744152B9AD16800DAAB2C /* Item.swift */; };
 		247744182B9AD19E00DAAB2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744172B9AD19E00DAAB2C /* ContentView.swift */; };
+		2477441A2B9AEF0400DAAB2C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744192B9AEF0400DAAB2C /* HeaderView.swift */; };
+		2477441C2B9AF06400DAAB2C /* SquareButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477441B2B9AF06400DAAB2C /* SquareButtonStyle.swift */; };
 		4F00294A1A1AD55D004FFC10 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0029491A1AD55D004FFC10 /* ImageIO.framework */; };
 		4F018C731D1B43C500999334 /* ColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F018C721D1B43C500999334 /* ColorScheme.m */; };
 		4F0FA8D01B4B67160050A314 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0FA8CF1B4B67160050A314 /* LoadingView.m */; };
@@ -90,6 +92,8 @@
 		247744132B9AD06200DAAB2C /* MusicalityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicalityApp.swift; sourceTree = "<group>"; };
 		247744152B9AD16800DAAB2C /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		247744172B9AD19E00DAAB2C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		247744192B9AEF0400DAAB2C /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		2477441B2B9AF06400DAAB2C /* SquareButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButtonStyle.swift; sourceTree = "<group>"; };
 		4F0029491A1AD55D004FFC10 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4F018C711D1B43C500999334 /* ColorScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorScheme.h; sourceTree = "<group>"; };
 		4F018C721D1B43C500999334 /* ColorScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorScheme.m; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 			children = (
 				247744132B9AD06200DAAB2C /* MusicalityApp.swift */,
 				247744172B9AD19E00DAAB2C /* ContentView.swift */,
+				247744192B9AEF0400DAAB2C /* HeaderView.swift */,
+				2477441B2B9AF06400DAAB2C /* SquareButtonStyle.swift */,
 				247744152B9AD16800DAAB2C /* Item.swift */,
 				4FF5C5061D2324FB000CE9F7 /* ViewModel */,
 				4F2C437B19F0023C00909D01 /* View */,
@@ -564,6 +570,7 @@
 				4FD2E8131B77002000F35659 /* VariousArtistsNavigationBar.m in Sources */,
 				4FAACD2F1D3D8ED000A362CC /* SearchViewController.m in Sources */,
 				4F96D9311A23B73C00759C6D /* ArtistViewController.m in Sources */,
+				2477441A2B9AEF0400DAAB2C /* HeaderView.swift in Sources */,
 				4F7A16E819F763350039508D /* ExploreNavigationBar.m in Sources */,
 				4F18223619DA0439006CCA8B /* AppDelegate.m in Sources */,
 				4F650E641A27A34800C2FA82 /* LibraryNavigationBar.m in Sources */,
@@ -578,6 +585,7 @@
 				4FAACD351D3D92CC00A362CC /* SearchFetch.m in Sources */,
 				4FF5C4FF1D2306C2000CE9F7 /* AutoScanPendingOperations.m in Sources */,
 				4F18CC051D4D3A730005957D /* TutorialIntroViewController.m in Sources */,
+				2477441C2B9AF06400DAAB2C /* SquareButtonStyle.swift in Sources */,
 				247744162B9AD16800DAAB2C /* Item.swift in Sources */,
 				4FE103A119DBA0DB004F27BB /* Album.m in Sources */,
 				4FC3E7791B13957000C3C10F /* ArtistList.m in Sources */,
