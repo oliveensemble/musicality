@@ -31,6 +31,9 @@ struct HeaderView: View {
                     .buttonStyle(SquareButtonStyle())
                 }
             }
+            Divider()
+                .padding(.top, 12)
+                .shadow(color: .black, radius: 0.5, y: 0.5)
         }
         .frame(maxWidth: .infinity)
         .frame(height: 126)

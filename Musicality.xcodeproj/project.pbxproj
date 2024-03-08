@@ -12,6 +12,7 @@
 		247744182B9AD19E00DAAB2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744172B9AD19E00DAAB2C /* ContentView.swift */; };
 		2477441A2B9AEF0400DAAB2C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744192B9AEF0400DAAB2C /* HeaderView.swift */; };
 		2477441C2B9AF06400DAAB2C /* SquareButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477441B2B9AF06400DAAB2C /* SquareButtonStyle.swift */; };
+		2477441E2B9AF38B00DAAB2C /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477441D2B9AF38B00DAAB2C /* ExploreView.swift */; };
 		4F00294A1A1AD55D004FFC10 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0029491A1AD55D004FFC10 /* ImageIO.framework */; };
 		4F018C731D1B43C500999334 /* ColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F018C721D1B43C500999334 /* ColorScheme.m */; };
 		4F0FA8D01B4B67160050A314 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0FA8CF1B4B67160050A314 /* LoadingView.m */; };
@@ -94,6 +95,7 @@
 		247744172B9AD19E00DAAB2C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		247744192B9AEF0400DAAB2C /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2477441B2B9AF06400DAAB2C /* SquareButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButtonStyle.swift; sourceTree = "<group>"; };
+		2477441D2B9AF38B00DAAB2C /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		4F0029491A1AD55D004FFC10 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4F018C711D1B43C500999334 /* ColorScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorScheme.h; sourceTree = "<group>"; };
 		4F018C721D1B43C500999334 /* ColorScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorScheme.m; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				247744132B9AD06200DAAB2C /* MusicalityApp.swift */,
 				247744172B9AD19E00DAAB2C /* ContentView.swift */,
 				247744192B9AEF0400DAAB2C /* HeaderView.swift */,
+				2477441D2B9AF38B00DAAB2C /* ExploreView.swift */,
 				2477441B2B9AF06400DAAB2C /* SquareButtonStyle.swift */,
 				247744152B9AD16800DAAB2C /* Item.swift */,
 				4FF5C5061D2324FB000CE9F7 /* ViewModel */,
@@ -607,6 +610,7 @@
 				4F18CC081D4D44D80005957D /* TutorialNotificationViewController.m in Sources */,
 				247744142B9AD06200DAAB2C /* MusicalityApp.swift in Sources */,
 				4F18CC0B1D4D44F40005957D /* TutorialScanViewController.m in Sources */,
+				2477441E2B9AF38B00DAAB2C /* ExploreView.swift in Sources */,
 				4F3720C61B1940410067E80A /* NotificationCheck.m in Sources */,
 				4F8008AB1D1B9AF3005EBE37 /* SettingsTableViewCell.m in Sources */,
 				4F668CEF1B3A2A68008DC2A7 /* UserPrefs.m in Sources */,

@@ -15,7 +15,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            Text("First Tab")
+            ExploreView()
                 .tabItem {
                     Label("Explore", image: selection == 0 ? ImageResource.exploreSelectedIcon : ImageResource.exploreIcon)
                 }
