@@ -3,7 +3,7 @@
 //  Musicality
 //
 //  Created by Elle Lewis on 3/7/24.
-//  Copyright © 2024 Evan Lewis. All rights reserved.
+//  Copyright © 2024 Later Creative LLC. All rights reserved.
 //
 
 import SwiftUI

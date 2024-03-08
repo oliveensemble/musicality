@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		247744142B9AD06200DAAB2C /* MusicalityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744132B9AD06200DAAB2C /* MusicalityApp.swift */; };
+		247744162B9AD16800DAAB2C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744152B9AD16800DAAB2C /* Item.swift */; };
+		247744182B9AD19E00DAAB2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744172B9AD19E00DAAB2C /* ContentView.swift */; };
 		4F00294A1A1AD55D004FFC10 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0029491A1AD55D004FFC10 /* ImageIO.framework */; };
 		4F018C731D1B43C500999334 /* ColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F018C721D1B43C500999334 /* ColorScheme.m */; };
 		4F0FA8D01B4B67160050A314 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0FA8CF1B4B67160050A314 /* LoadingView.m */; };
@@ -88,6 +90,8 @@
 /* Begin PBXFileReference section */
 		247744122B9AD06100DAAB2C /* Musicality-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Musicality-Bridging-Header.h"; sourceTree = "<group>"; };
 		247744132B9AD06200DAAB2C /* MusicalityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicalityApp.swift; sourceTree = "<group>"; };
+		247744152B9AD16800DAAB2C /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		247744172B9AD19E00DAAB2C /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4F0029491A1AD55D004FFC10 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4F018C711D1B43C500999334 /* ColorScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorScheme.h; sourceTree = "<group>"; };
 		4F018C721D1B43C500999334 /* ColorScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorScheme.m; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				247744132B9AD06200DAAB2C /* MusicalityApp.swift */,
+				247744172B9AD19E00DAAB2C /* ContentView.swift */,
+				247744152B9AD16800DAAB2C /* Item.swift */,
 				4FF5C5061D2324FB000CE9F7 /* ViewModel */,
 				4F2C437B19F0023C00909D01 /* View */,
 				4F2C437A19F0022600909D01 /* Controller */,
@@ -505,8 +511,9 @@
 		4F18222519DA0439006CCA8B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = LC;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = "Evan Lewis";
+				ORGANIZATIONNAME = "Later Creative";
 				TargetAttributes = {
 					4F18222C19DA0439006CCA8B = {
 						CreatedOnToolsVersion = 6.0;
@@ -602,6 +609,7 @@
 				4F7A16EB19F883F80039508D /* SettingsNavigationBar.m in Sources */,
 				4FD6103019E353DA00EEBD59 /* NotificationManager.m in Sources */,
 				4F63E84F1BED2E16004B6991 /* FilterTableViewCell.m in Sources */,
+				247744182B9AD19E00DAAB2C /* ContentView.swift in Sources */,
 				4FD2E8131B77002000F35659 /* VariousArtistsNavigationBar.m in Sources */,
 				4FAACD2F1D3D8ED000A362CC /* SearchViewController.m in Sources */,
 				4F96D9311A23B73C00759C6D /* ArtistViewController.m in Sources */,
@@ -619,6 +627,7 @@
 				4FAACD351D3D92CC00A362CC /* SearchFetch.m in Sources */,
 				4FF5C4FF1D2306C2000CE9F7 /* AutoScanPendingOperations.m in Sources */,
 				4F18CC051D4D3A730005957D /* TutorialIntroViewController.m in Sources */,
+				247744162B9AD16800DAAB2C /* Item.swift in Sources */,
 				4FE103A119DBA0DB004F27BB /* Album.m in Sources */,
 				4FC3E7791B13957000C3C10F /* ArtistList.m in Sources */,
 				4F668CEC1B38E501008DC2A7 /* PrivacyPolicyViewController.m in Sources */,
@@ -791,7 +800,7 @@
 				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = Musicality/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.latercreative.musicality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -810,7 +819,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 57YJNDUYJ2;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -818,7 +827,7 @@
 				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = Musicality/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.latercreative.musicality;
