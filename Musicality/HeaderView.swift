@@ -8,15 +8,9 @@
 
 import SwiftUI
 
-struct HeaderButton: Identifiable {
-    let id = UUID()
-    let title: String
-    let action: () -> ()
-}
-
 struct HeaderView: View {
     let title: String
-    var buttons: [HeaderButton] = []
+    var buttons: [SquareButton] = []
 
     var body: some View {
         VStack {
@@ -41,5 +35,5 @@ struct HeaderView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    HeaderView(title: "Explore", buttons: [HeaderButton(title: "New", action: {}), HeaderButton(title: "Top Charts", action: {})])
+    HeaderView(title: "Explore", buttons: [SquareButton(title: "New", action: {}), SquareButton(title: "Top Charts", action: {})])
 }

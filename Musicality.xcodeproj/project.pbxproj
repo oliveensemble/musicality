@@ -13,6 +13,8 @@
 		2477441A2B9AEF0400DAAB2C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744192B9AEF0400DAAB2C /* HeaderView.swift */; };
 		2477441C2B9AF06400DAAB2C /* SquareButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477441B2B9AF06400DAAB2C /* SquareButtonStyle.swift */; };
 		2477441E2B9AF38B00DAAB2C /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477441D2B9AF38B00DAAB2C /* ExploreView.swift */; };
+		247744202B9AF7E600DAAB2C /* MusicItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477441F2B9AF7E600DAAB2C /* MusicItemView.swift */; };
+		247744222B9AFB1D00DAAB2C /* SquareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247744212B9AFB1D00DAAB2C /* SquareButton.swift */; };
 		4F00294A1A1AD55D004FFC10 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0029491A1AD55D004FFC10 /* ImageIO.framework */; };
 		4F018C731D1B43C500999334 /* ColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F018C721D1B43C500999334 /* ColorScheme.m */; };
 		4F0FA8D01B4B67160050A314 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0FA8CF1B4B67160050A314 /* LoadingView.m */; };
@@ -96,6 +98,8 @@
 		247744192B9AEF0400DAAB2C /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2477441B2B9AF06400DAAB2C /* SquareButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButtonStyle.swift; sourceTree = "<group>"; };
 		2477441D2B9AF38B00DAAB2C /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		2477441F2B9AF7E600DAAB2C /* MusicItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicItemView.swift; sourceTree = "<group>"; };
+		247744212B9AFB1D00DAAB2C /* SquareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButton.swift; sourceTree = "<group>"; };
 		4F0029491A1AD55D004FFC10 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4F018C711D1B43C500999334 /* ColorScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorScheme.h; sourceTree = "<group>"; };
 		4F018C721D1B43C500999334 /* ColorScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorScheme.m; sourceTree = "<group>"; };
@@ -272,7 +276,9 @@
 				247744172B9AD19E00DAAB2C /* ContentView.swift */,
 				247744192B9AEF0400DAAB2C /* HeaderView.swift */,
 				2477441D2B9AF38B00DAAB2C /* ExploreView.swift */,
+				2477441F2B9AF7E600DAAB2C /* MusicItemView.swift */,
 				2477441B2B9AF06400DAAB2C /* SquareButtonStyle.swift */,
+				247744212B9AFB1D00DAAB2C /* SquareButton.swift */,
 				247744152B9AD16800DAAB2C /* Item.swift */,
 				4FF5C5061D2324FB000CE9F7 /* ViewModel */,
 				4F2C437B19F0023C00909D01 /* View */,
@@ -599,6 +605,7 @@
 				4F3B35EB1BEEA4ED0003F96F /* ExploreFetch.m in Sources */,
 				4FAACD291D3D704D00A362CC /* SearchArtistTableViewCell.m in Sources */,
 				4F018C731D1B43C500999334 /* ColorScheme.m in Sources */,
+				247744202B9AF7E600DAAB2C /* MusicItemView.swift in Sources */,
 				4F650E5F1A279AF000C2FA82 /* LibraryListViewController.m in Sources */,
 				4FC089301D10605E00CABB8D /* MViewControllerDelegate.m in Sources */,
 				4F18CC0E1D4D45B90005957D /* TutorialPopularArtistsViewController.m in Sources */,
@@ -608,6 +615,7 @@
 				4FEC5A831B34D0DC00985B0C /* Blacklist.m in Sources */,
 				4FD2E80E1B76F77A00F35659 /* VariousArtistsViewController.m in Sources */,
 				4F18CC081D4D44D80005957D /* TutorialNotificationViewController.m in Sources */,
+				247744222B9AFB1D00DAAB2C /* SquareButton.swift in Sources */,
 				247744142B9AD06200DAAB2C /* MusicalityApp.swift in Sources */,
 				4F18CC0B1D4D44F40005957D /* TutorialScanViewController.m in Sources */,
 				2477441E2B9AF38B00DAAB2C /* ExploreView.swift in Sources */,

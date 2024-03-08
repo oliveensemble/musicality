@@ -15,8 +15,8 @@ struct ExploreView: View {
                 HeaderView(
                     title: "Explore",
                     buttons: [
-                        HeaderButton(title: "New", action: {}),
-                        HeaderButton(title: "Top Charts", action: {})
+                        SquareButton(title: "New", action: {}),
+                        SquareButton(title: "Top Charts", action: {})
                     ])
                 Spacer()
             }
