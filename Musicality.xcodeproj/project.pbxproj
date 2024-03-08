@@ -84,7 +84,6 @@
 		4FFBFF8819F5DFD400EF5FD9 /* ArtistNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8719F5DFD400EF5FD9 /* ArtistNavigationBar.xib */; };
 		4FFBFF8A19F5E00100EF5FD9 /* ExploreNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8919F5E00100EF5FD9 /* ExploreNavigationBar.xib */; };
 		4FFBFF8C19F5E01400EF5FD9 /* SettingsNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFBFF8B19F5E01400EF5FD9 /* SettingsNavigationBar.xib */; };
-		F6C68D1700E512905B3A6E80 /* libPods-Musicality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68E8C2B811EA01DD81B1C2 /* libPods-Musicality.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,12 +218,6 @@
 		4FFBFF8719F5DFD400EF5FD9 /* ArtistNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtistNavigationBar.xib; sourceTree = "<group>"; };
 		4FFBFF8919F5E00100EF5FD9 /* ExploreNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreNavigationBar.xib; sourceTree = "<group>"; };
 		4FFBFF8B19F5E01400EF5FD9 /* SettingsNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsNavigationBar.xib; sourceTree = "<group>"; };
-		885E07BD137EF5A622495A48 /* Pods-MusicalityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicalityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MusicalityTests/Pods-MusicalityTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8D01FE13E87B7D841801FFE4 /* Pods-Musicality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Musicality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Musicality/Pods-Musicality.debug.xcconfig"; sourceTree = "<group>"; };
-		A03003A737E3B612ED0C8B86 /* libPods-MusicalityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MusicalityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB5DDAE4018B77B8A5242100 /* Pods-Musicality.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Musicality.release.xcconfig"; path = "Pods/Target Support Files/Pods-Musicality/Pods-Musicality.release.xcconfig"; sourceTree = "<group>"; };
-		CEDBE23EDF974A34DF67AE00 /* Pods-MusicalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MusicalityTests/Pods-MusicalityTests.release.xcconfig"; sourceTree = "<group>"; };
-		FF68E8C2B811EA01DD81B1C2 /* libPods-Musicality.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Musicality.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,7 +231,6 @@
 				4F8771591A563F2F00981495 /* AVFoundation.framework in Frameworks */,
 				4F00294A1A1AD55D004FFC10 /* ImageIO.framework in Frameworks */,
 				4F18225E19DA5316006CCA8B /* MediaPlayer.framework in Frameworks */,
-				F6C68D1700E512905B3A6E80 /* libPods-Musicality.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,8 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				4FA549C91B544731005FB1B3 /* StoreKit.framework */,
-				FF68E8C2B811EA01DD81B1C2 /* libPods-Musicality.a */,
-				A03003A737E3B612ED0C8B86 /* libPods-MusicalityTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -261,7 +251,6 @@
 				4F18222F19DA0439006CCA8B /* Musicality */,
 				4F18222E19DA0439006CCA8B /* Products */,
 				06CB62681F5EC097DEBE6D16 /* Frameworks */,
-				F391FC518122A9201884197F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -473,17 +462,6 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
-		F391FC518122A9201884197F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8D01FE13E87B7D841801FFE4 /* Pods-Musicality.debug.xcconfig */,
-				CB5DDAE4018B77B8A5242100 /* Pods-Musicality.release.xcconfig */,
-				885E07BD137EF5A622495A48 /* Pods-MusicalityTests.debug.xcconfig */,
-				CEDBE23EDF974A34DF67AE00 /* Pods-MusicalityTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -491,7 +469,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F18225019DA043A006CCA8B /* Build configuration list for PBXNativeTarget "Musicality" */;
 			buildPhases = (
-				713AF64DAFAF98234FCAA04F /* [CP] Check Pods Manifest.lock */,
 				4F18222919DA0439006CCA8B /* Sources */,
 				4F18222A19DA0439006CCA8B /* Frameworks */,
 				4F18222B19DA0439006CCA8B /* Resources */,
@@ -579,27 +556,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		713AF64DAFAF98234FCAA04F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Musicality-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4F18222919DA0439006CCA8B /* Sources */ = {
@@ -789,7 +745,6 @@
 		};
 		4F18225119DA043A006CCA8B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D01FE13E87B7D841801FFE4 /* Pods-Musicality.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -834,7 +789,6 @@
 		};
 		4F18225219DA043A006CCA8B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CB5DDAE4018B77B8A5242100 /* Pods-Musicality.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
