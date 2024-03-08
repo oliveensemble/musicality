@@ -15,7 +15,6 @@
 		4F0FA8D01B4B67160050A314 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0FA8CF1B4B67160050A314 /* LoadingView.m */; };
 		4F0FA8D21B4CD2CB0050A314 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F0FA8D11B4CD2CB0050A314 /* LoadingView.xib */; };
 		4F1520CA19EDFEAD00530B8E /* ExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1520C919EDFEAD00530B8E /* ExploreViewController.m */; };
-		4F18223319DA0439006CCA8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18223219DA0439006CCA8B /* main.m */; };
 		4F18223619DA0439006CCA8B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18223519DA0439006CCA8B /* AppDelegate.m */; };
 		4F18223C19DA0439006CCA8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F18223A19DA0439006CCA8B /* Main.storyboard */; };
 		4F18223E19DA0439006CCA8B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F18223D19DA0439006CCA8B /* Images.xcassets */; };
@@ -101,7 +100,6 @@
 		4F1520C919EDFEAD00530B8E /* ExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController.m; sourceTree = "<group>"; };
 		4F18222D19DA0439006CCA8B /* Musicality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musicality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F18223119DA0439006CCA8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F18223219DA0439006CCA8B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F18223419DA0439006CCA8B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4F18223519DA0439006CCA8B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
 		4F18223B19DA0439006CCA8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 		4F18CC0A1D4D44F40005957D /* TutorialScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialScanViewController.m; sourceTree = "<group>"; };
 		4F18CC0C1D4D45B90005957D /* TutorialPopularArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPopularArtistsViewController.h; sourceTree = "<group>"; };
 		4F18CC0D1D4D45B90005957D /* TutorialPopularArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPopularArtistsViewController.m; sourceTree = "<group>"; };
-		4F3255C91F1BD5A300A47124 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F3720BB1B154A8C0067E80A /* LatestReleaseSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatestReleaseSearch.h; sourceTree = "<group>"; };
 		4F3720BC1B154A8C0067E80A /* LatestReleaseSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatestReleaseSearch.m; sourceTree = "<group>"; };
 		4F3720C41B1940410067E80A /* NotificationCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCheck.h; sourceTree = "<group>"; };
@@ -290,8 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				4F18223119DA0439006CCA8B /* Info.plist */,
-				4F3255C91F1BD5A300A47124 /* GoogleService-Info.plist */,
-				4F18223219DA0439006CCA8B /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -603,7 +598,6 @@
 				4FD2E80E1B76F77A00F35659 /* VariousArtistsViewController.m in Sources */,
 				4F18CC081D4D44D80005957D /* TutorialNotificationViewController.m in Sources */,
 				247744142B9AD06200DAAB2C /* MusicalityApp.swift in Sources */,
-				4F18223319DA0439006CCA8B /* main.m in Sources */,
 				4F18CC0B1D4D44F40005957D /* TutorialScanViewController.m in Sources */,
 				4F3720C61B1940410067E80A /* NotificationCheck.m in Sources */,
 				4F8008AB1D1B9AF3005EBE37 /* SettingsTableViewCell.m in Sources */,

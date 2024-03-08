@@ -17,7 +17,7 @@
 #import "SearchArtistTableViewCell.h"
 #import "Artist.h"
 #import "SearchAlbumTableViewCell.h"
-#import "UIImageView+Haneke.h"
+//#import "UIImageView+Haneke.h"
 #import "ArtistViewController.h"
 #import "VariousArtistsViewController.h"
 #import "SearchFetch.h"
@@ -263,7 +263,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
         Album *album = self.tableViewArray[indexPath.row];
         searchAlbumTableViewCell.albumLabel.text = album.title;
         searchAlbumTableViewCell.artistLabel.text = album.artist;
-        [searchAlbumTableViewCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
+//        [searchAlbumTableViewCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
         [searchAlbumTableViewCell.viewArtistButton addTarget:self action:@selector(viewArtistButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 
         if ([album.artistID isEqual: @0]) {

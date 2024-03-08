@@ -20,7 +20,7 @@
 #import "FilterTableViewCell.h"
 #import "Album.h"
 #import "AlbumTableViewCell.h"
-#import "UIImageView+Haneke.h"
+//#import "UIImageView+Haneke.h"
 #import "ArtistViewController.h"
 #import "VariousArtistsViewController.h"
 #import "NotificationManager.h"
@@ -251,7 +251,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
         } else {
             albumCell.preOrderLabel.hidden = YES;
         }
-        [albumCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
+//        [albumCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
         [albumCell.viewArtistButton addTarget:self action:@selector(toArtist:) forControlEvents:UIControlEventTouchUpInside];
 
         //Add user info to cell and button

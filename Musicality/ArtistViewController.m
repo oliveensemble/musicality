@@ -17,7 +17,7 @@
 #import "ArtistList.h"
 #import "MStore.h"
 #import "AlbumTableViewCell.h"
-#import "UIImageView+Haneke.h"
+//#import "UIImageView+Haneke.h"
 #import "NotificationManager.h"
 #import "Blacklist.h"
 #import "UserPrefs.h"
@@ -187,7 +187,7 @@
     } else {
         albumCell.preOrderLabel.hidden = YES;
     }
-    [albumCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
+//    [albumCell.albumImageView hnk_setImageFromURL:album.artworkURL placeholder:[mStore imageWithColor:[UIColor clearColor]]];
     albumCell.viewArtistButton.hidden = YES;
 
     //Add gesture recognizer for action sheet
