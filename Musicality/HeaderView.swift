@@ -8,22 +8,28 @@
 
 import SwiftUI
 
+struct HeaderButton: Identifiable {
+    let id = UUID()
+    let title: String
+    let action: () -> ()
+}
+
 struct HeaderView: View {
+    let title: String
+    var buttons: [HeaderButton] = []
+
     var body: some View {
         VStack {
-            Text("Explore")
+            Text(title)
                 .font(.largeTitle)
                 .fontWeight(.light)
             HStack(spacing: 24) {
-                Button(action: {}, label: {
-                    Text("New")
-                })
-                .buttonStyle(SquareButtonStyle())
-                
-                Button(action: {}, label: {
-                    Text("Top Charts")
-                })
-                .buttonStyle(SquareButtonStyle())
+                ForEach(buttons) { button in
+                    Button(action: button.action, label: {
+                        Text(button.title)
+                    })
+                    .buttonStyle(SquareButtonStyle())
+                }
             }
         }
         .frame(maxWidth: .infinity)
@@ -32,5 +38,5 @@ struct HeaderView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    HeaderView()
+    HeaderView(title: "Explore", buttons: [HeaderButton(title: "New", action: {}), HeaderButton(title: "Top Charts", action: {})])
 }
