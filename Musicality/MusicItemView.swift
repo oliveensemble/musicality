@@ -15,23 +15,26 @@ struct MusicItemView: View {
     let button: SquareButton
 
     var body: some View {
-        HStack(spacing: 12) {
-            imageView
+        VStack {
+            HStack(spacing: 12) {
+                imageView
 
-            VStack(alignment: .leading, spacing: 12) {
-                Text(title)
-                    .font(.title3)
-                Text(artistName)
-                    .font(.body)
-                Button(action: button.action, label: {
-                    Text(button.title)
-                })
-                .buttonStyle(SquareButtonStyle())
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(title)
+                        .font(.title3)
+                    Text(artistName)
+                        .font(.body)
+                    Button(action: button.action, label: {
+                        Text(button.title)
+                    })
+                    .buttonStyle(SquareButtonStyle())
+                }
+
+                Spacer()
             }
-
-            Spacer()
+            .padding(24)
+            Divider()
         }
-        .padding(24)
     }
 
     var imageView: some View {

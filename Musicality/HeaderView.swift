@@ -31,6 +31,7 @@ struct HeaderView: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 126)
+        .background(Color(.background))
     }
 }
 
