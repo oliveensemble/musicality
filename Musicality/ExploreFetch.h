@@ -17,7 +17,7 @@
 @property (nonatomic, weak) id<ExploreFetchDelegate> delegate;
 
 - (instancetype)initWithDelegate:(id<ExploreFetchDelegate>)delegate;
-- (void)fetchWithFeedType:(NSUInteger)feedType andGenre:(int)genreID;
+- (void)fetchWithGenre:(int)genreID;
 
 @end
 

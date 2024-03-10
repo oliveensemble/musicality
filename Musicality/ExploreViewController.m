@@ -32,11 +32,6 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
     loading = 1 << 2
 };
 
-typedef NS_OPTIONS(NSUInteger, FeedType) {
-    new = 1 << 0,
-    topCharts = 1 << 1
-};
-
 @interface ExploreViewController () <ExploreFetchDelegate, MViewControllerDelegate, SKStoreProductViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIRefreshControl *refresh;
@@ -49,7 +44,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 @property (nonatomic) NSDictionary *genres;
 
 @property (nonatomic) NSUInteger viewState;
-@property (nonatomic) NSUInteger feedType;
 
 @property (nonatomic) UIColor *cellTextColor;
 @property (nonatomic) UIColor *cellBackgroundColor;
@@ -84,7 +78,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 
     self.tableViewArray = [NSMutableArray arrayWithObject:@"All Genres"];
     self.viewState = browse;
-    self.feedType = topCharts;
     self.currentGenreId = -1;
     self.currentGenreTitle = @"All Genres";
     [self endLoading];
@@ -138,7 +131,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 - (void)fetchFeed {
     [self beginLoading];
     ExploreFetch *exploreFetch = [[ExploreFetch alloc] initWithDelegate:self];
-    [exploreFetch fetchWithFeedType: self.feedType andGenre: self.currentGenreId];
+    [exploreFetch fetchWithGenre: self.currentGenreId];
 }
 
 - (void)didFinishFetchingFeed:(NSArray *)albumArray {
@@ -183,15 +176,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     _navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, self.navigationBar.frame.size.height);
     _navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.navigationBar.bounds].CGPath;
     [_navigationBar.topChartsButton addTarget:self action:@selector(showTopCharts) forControlEvents:UIControlEventTouchUpInside];
-    [_navigationBar.exploreNewButton addTarget:self action:@selector(showNewReleases) forControlEvents:UIControlEventTouchUpInside];
     [_navigationBar.topOfPageButton addTarget:self action:@selector(topOfPage) forControlEvents:UIControlEventTouchUpInside];
-    if (self.feedType == topCharts) {
-        [_navigationBar.topChartsButton setSelectedStyle];
-        [_navigationBar.exploreNewButton setDeselectedStyle];
-    } else {
-        [_navigationBar.exploreNewButton setSelectedStyle];
-        [_navigationBar.topChartsButton setDeselectedStyle];
-    }
     return _navigationBar;
 }
 
@@ -342,20 +327,6 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
     }
 
     completion(YES);
-}
-
-- (void)showTopCharts {
-    self.feedType = topCharts;
-    [self.navigationBar.topChartsButton setSelectedStyle];
-    [self.navigationBar.exploreNewButton setDeselectedStyle];
-    [self fetchFeed];
-}
-
-- (void)showNewReleases {
-    self.feedType = new;
-    [self.navigationBar.exploreNewButton setSelectedStyle];
-    [self.navigationBar.topChartsButton setDeselectedStyle];
-    [self fetchFeed];
 }
 
 - (void)showActionSheet:(id)sender {

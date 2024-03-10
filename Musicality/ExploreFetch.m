@@ -48,20 +48,12 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   return self;
 }
 
-- (void)fetchWithFeedType:(NSUInteger)feedType andGenre:(int)genreID {
-  if (feedType == topCharts) {
+- (void)fetchWithGenre:(int)genreID {
     if (genreID == -1) {
       _url = [NSURL URLWithString:@"https://itunes.apple.com/us/rss/topalbums/explicit=true/limit=100/xml"];
     } else {
       _url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/us/rss/topalbums/explicit=true/limit=100/genre=%i/xml", genreID]];
     }
-  } else {
-    if (genreID == -1) {
-      _url = [NSURL URLWithString:@"https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/explicit=true/limit=100/rss.xml"];
-    } else {
-      _url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/WebObjects/MZStore.woa/wpa/MRSS/newreleases/sf=143441/explicit=true/limit=100/genre=%i/rss.xml", genreID]];
-    }
-  }
   
   // Begin the operation
   [self start];

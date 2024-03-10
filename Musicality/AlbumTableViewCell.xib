@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,11 +12,11 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2me-D1-6Ei" id="MLb-n1-dTO">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJy-wD-vmO">
-                        <rect key="frame" x="147" y="68" width="423" height="20"/>
+                        <rect key="frame" x="144" y="68" width="430" height="20"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="6Ky-Qb-OOZ"/>
@@ -33,19 +28,20 @@
                         <nil key="highlightedColor"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="XY5-Yu-I94"/>
                                 <exclude reference="qwa-Hr-7rr"/>
+                                <exclude reference="XY5-Yu-I94"/>
                             </mask>
                         </variation>
                     </label>
                     <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bjm-Gk-erf">
-                        <rect key="frame" x="30" y="21" width="107" height="107"/>
+                        <rect key="frame" x="26" y="21" width="108" height="108"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Bjm-Gk-erf" secondAttribute="height" multiplier="1:1" id="3ui-KE-hjT"/>
+                            <constraint firstAttribute="width" constant="108" id="mVP-qr-ev2"/>
+                            <constraint firstAttribute="height" constant="108" id="sLd-Hz-TJv"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-N4-3vl">
-                        <rect key="frame" x="147" y="41" width="423" height="22"/>
+                        <rect key="frame" x="144" y="41" width="430" height="22"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -54,7 +50,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     </label>
                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbg-ZQ-MLo" customClass="Button">
-                        <rect key="frame" x="147" y="93" width="84" height="28"/>
+                        <rect key="frame" x="144" y="93" width="84" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="T8q-00-R8T"/>
                             <constraint firstAttribute="width" constant="84" id="gyN-dl-gW2"/>
@@ -65,7 +61,7 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pre-Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfF-3v-dHJ">
-                        <rect key="frame" x="147" y="18" width="423" height="15"/>
+                        <rect key="frame" x="144" y="18" width="430" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="750" constant="15" id="Mqv-43-60C"/>
                         </constraints>
@@ -108,7 +104,7 @@
                 <outlet property="preOrderLabel" destination="lfF-3v-dHJ" id="acA-dW-MSz"/>
                 <outlet property="viewArtistButton" destination="Wbg-ZQ-MLo" id="ncN-Nq-Z38"/>
             </connections>
-            <point key="canvasLocation" x="410" y="327"/>
+            <point key="canvasLocation" x="656" y="294.15292353823088"/>
         </tableViewCell>
     </objects>
 </document>

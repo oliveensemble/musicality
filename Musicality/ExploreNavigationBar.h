@@ -12,7 +12,6 @@
 
 @interface ExploreNavigationBar : MNavigationBar
 
-@property (weak, nonatomic) IBOutlet Button *exploreNewButton;
 @property (weak, nonatomic) IBOutlet Button *topChartsButton;
 @property (weak, nonatomic) IBOutlet UILabel *exploreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
