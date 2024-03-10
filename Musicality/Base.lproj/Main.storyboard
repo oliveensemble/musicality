@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Search" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8lv-fJ-GMj" customClass="MTextField">
-                                <rect key="frame" x="60.5" y="120" width="254" height="35"/>
+                                <rect key="frame" x="60.5" y="150" width="254" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="hjg-Te-bv6"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="254" identifier="SearchWidth&gt;=254" id="j7i-4k-u9R"/>
@@ -51,17 +51,17 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpV-sY-jYP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="BlE-R8-dhp"/>
+                                    <constraint firstAttribute="height" constant="150" id="BlE-R8-dhp"/>
                                 </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aPN-d5-v8n">
                                 <rect key="frame" x="169" y="290.5" width="37" height="37"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ThR-cp-Hsj">
-                                <rect key="frame" x="0.0" y="170" width="375" height="448"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="418"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="999" constant="450" id="zng-mj-XNR"/>
@@ -788,8 +788,8 @@ If you have any further questions, please email latercreative+musicalityhelp@gma
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OJd-mv-FB1"/>
-        <segue reference="8kx-G7-AAs"/>
+        <segue reference="P3I-8o-bjq"/>
+        <segue reference="qf3-OR-EQf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
