@@ -13,7 +13,7 @@ struct HeaderView: View {
     var buttons: [SquareButton] = []
 
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             Text(title)
                 .font(.largeTitle)
                 .fontWeight(.light)
@@ -29,6 +29,7 @@ struct HeaderView: View {
                 .padding(.top, 12)
                 .shadow(color: .black, radius: 0.5, y: 0.5)
         }
+        .padding(.top, 16)
         .frame(maxWidth: .infinity)
         .frame(height: 126)
         .background(Color(.background))
