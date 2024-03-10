@@ -29,6 +29,7 @@
   [[NSUserDefaults standardUserDefaults] synchronize];
   UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
   UIViewController *initialViewController = [storyBoard instantiateInitialViewController];
+  initialViewController.modalPresentationStyle = UIModalPresentationFullScreen;
   [self presentViewController:initialViewController animated:YES completion:nil];
 }
 
