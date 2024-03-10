@@ -240,7 +240,12 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
     }];
 
     if (self.filterType == latestReleases) {
-        return [[[[albumsArray sortedArrayUsingSelector:@selector(compare:)] reverseObjectEnumerator] allObjects] mutableCopy];
+        // Sort by release date
+        NSArray *sortedArray;
+        sortedArray = [albumsArray sortedArrayUsingComparator:^NSComparisonResult(Album *a, Album *b) {
+            return [a.releaseDate compare:b.releaseDate];
+        }];
+        return [[[sortedArray reverseObjectEnumerator] allObjects] mutableCopy];
     } else if (self.filterType == artists) {
         // Sort alphabetically
         NSArray *sortedArray;
