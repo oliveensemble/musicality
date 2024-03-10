@@ -55,7 +55,7 @@
 		45E0619D0F774AE2F946AF0F2CB061F6 /* Pods-MusicalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MusicalityTests.release.xcconfig"; sourceTree = "<group>"; };
 		493EB89ED2061180455FE44AED7BBC3C /* UIView+Haneke.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+Haneke.m"; path = "Haneke/UIView+Haneke.m"; sourceTree = "<group>"; };
 		5CAB67E95F3F8A3C2BE1496D3DEC0FBB /* HNKCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HNKCache.h; path = Haneke/HNKCache.h; sourceTree = "<group>"; };
-		5FCFC9DC18538FF007A0ED27AB96E3FD /* Pods-Musicality */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-Musicality"; path = "libPods-Musicality.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FCFC9DC18538FF007A0ED27AB96E3FD /* libPods-Musicality.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Musicality.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D910260987DB3BB9F8CF7FC7ED376F6 /* HNKNetworkFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HNKNetworkFetcher.m; path = Haneke/HNKNetworkFetcher.m; sourceTree = "<group>"; };
 		6DABDFE03406BC010E265CEBD78813CE /* UIImageView+Haneke.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+Haneke.m"; path = "Haneke/UIImageView+Haneke.m"; sourceTree = "<group>"; };
 		7A5A2FBA2976CAED4EDB32F444292315 /* HNKNetworkFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HNKNetworkFetcher.h; path = Haneke/HNKNetworkFetcher.h; sourceTree = "<group>"; };
@@ -67,11 +67,11 @@
 		98B8400ED4E2F875132A210C623FFB0A /* HNKDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HNKDiskCache.m; path = Haneke/HNKDiskCache.m; sourceTree = "<group>"; };
 		9A147C31C5BDC1FBAD705058AA873674 /* HNKSimpleFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HNKSimpleFetcher.h; path = Haneke/HNKSimpleFetcher.h; sourceTree = "<group>"; };
 		9CEA3583F5C8A8019CA4C4F4FB5C8D1B /* HNKDiskCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HNKDiskCache.h; path = Haneke/HNKDiskCache.h; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A293CAB831806C92908549E5FB043919 /* UIButton+Haneke.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+Haneke.h"; path = "Haneke/UIButton+Haneke.h"; sourceTree = "<group>"; };
 		AE48DDDBBF2FBA50D0C9A281AE3FC916 /* Pods-Musicality-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Musicality-acknowledgements.plist"; sourceTree = "<group>"; };
 		AEB2DB582AF44FFE300F6414CC81A5EE /* Pods-MusicalityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MusicalityTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B34D2842F7D1CAEDC956C9369035105F /* Haneke */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = Haneke; path = libHaneke.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B34D2842F7D1CAEDC956C9369035105F /* libHaneke.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHaneke.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD2E6853695DF788C6E0028458266AF7 /* Pods-Musicality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Musicality.debug.xcconfig"; sourceTree = "<group>"; };
 		C3BE4F65259B96EF979541E23B45D9B0 /* HNKCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HNKCache.m; path = Haneke/HNKCache.m; sourceTree = "<group>"; };
 		C6FE9DAADDDC67C964ED79E7B5D50ED5 /* HNKDiskFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HNKDiskFetcher.h; path = Haneke/HNKDiskFetcher.h; sourceTree = "<group>"; };
@@ -174,7 +174,6 @@
 				493EB89ED2061180455FE44AED7BBC3C /* UIView+Haneke.m */,
 				EB1F721970D0E9BB4382D72C1296B592 /* Support Files */,
 			);
-			name = Haneke;
 			path = Haneke;
 			sourceTree = "<group>";
 		};
@@ -199,8 +198,8 @@
 		DC5E84A7612A4DFFBC4DEF26601D3858 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B34D2842F7D1CAEDC956C9369035105F /* Haneke */,
-				5FCFC9DC18538FF007A0ED27AB96E3FD /* Pods-Musicality */,
+				B34D2842F7D1CAEDC956C9369035105F /* libHaneke.a */,
+				5FCFC9DC18538FF007A0ED27AB96E3FD /* libPods-Musicality.a */,
 				EB6C494A672643852DABA856F0E9767E /* Pods-MusicalityTests */,
 			);
 			name = Products;
@@ -269,7 +268,7 @@
 			);
 			name = "Pods-Musicality";
 			productName = "Pods-Musicality";
-			productReference = 5FCFC9DC18538FF007A0ED27AB96E3FD /* Pods-Musicality */;
+			productReference = 5FCFC9DC18538FF007A0ED27AB96E3FD /* libPods-Musicality.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		A16819DBD2600CEB461E12867FDD30DE /* Haneke */ = {
@@ -286,7 +285,7 @@
 			);
 			name = Haneke;
 			productName = Haneke;
-			productReference = B34D2842F7D1CAEDC956C9369035105F /* Haneke */;
+			productReference = B34D2842F7D1CAEDC956C9369035105F /* libHaneke.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		C1CBDFCCD4EE4AF82148D08C453A22BF /* Pods-MusicalityTests */ = {
@@ -396,7 +395,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -459,7 +458,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/Haneke/Haneke-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
@@ -529,8 +528,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -545,7 +543,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -632,7 +630,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				GCC_PREFIX_HEADER = "Target Support Files/Haneke/Haneke-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
