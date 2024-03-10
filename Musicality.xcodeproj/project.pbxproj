@@ -783,7 +783,7 @@
 				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = Musicality/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.latercreative.musicality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -806,7 +806,7 @@
 				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = Musicality/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.latercreative.musicality;
