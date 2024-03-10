@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yS8-BL-qul">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yS8-BL-qul">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment version="4352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -451,7 +450,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfd-Rc-5fK">
                                 <rect key="frame" x="16" y="132.5" width="343" height="504.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <mutableString key="text">Musicality is an app designed to search the users iTunes libraries and remind them of recent releases by their favorite artists.
+                                <string key="text">Musicality is an app designed to search the users iTunes libraries and remind them of recent releases by their favorite artists.
 
 This app simply collects a list of the artists located in your music library and automatically searches the iTunes store for the artists latest releases. We do not collect or store any personally identifiable information. The information that is sent to iTunes is the artist name, identification number and album name and identification number. Notifications are not sent using a remote server, as they are local notifications based on the posted release date of the album in iTunes. While that means your information is not sent to any service in the background, it also means that as of now only items that were pre-orders in iTunes can send you background notifications.
 
@@ -459,7 +458,7 @@ App Analytics is a service by Apple available to all iOS developers which is use
 
 Musicality is a free service and does not collect personal data. Instead, a small commission is made on purchases you make through iTunes on this device via the affiliate program. The iTunes affiliate program is a program by Apple that allows developers and content makers to receive commission by attracting traffic to the iTunes store. Whenever you click on a link in Musicality, our affiliate token (none of your data) is sent along with the link.
 
-If you have any further questions, please email latercreative+musicalityhelp@gmail.com</mutableString>
+If you have any further questions, please email latercreative+musicalityhelp@gmail.com</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
