@@ -22,6 +22,7 @@
   if (self) {
     _delegate = delegate;
     _artist = artist;
+    self.qualityOfService = NSOperationQualityOfServiceUserInitiated;
     self.queuePriority = NSOperationQueuePriorityNormal;
   }
   return self;
@@ -52,7 +53,7 @@
     albumData = nil;
     
     //Cast the operation to NSObject, and notify the caller on the main thread.
-    [(NSObject *)self.delegate performSelectorOnMainThread:@selector(latestReleaseSearchDidFinish:) withObject:self waitUntilDone:NO];
+    [(NSObject *)self.delegate performSelectorOnMainThread:@selector(latestReleaseSearchDidFinish:) withObject:self waitUntilDone:YES];
   }
 }
 

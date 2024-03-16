@@ -23,6 +23,7 @@
   if (self) {
     _delegate = delegate;
     self.queuePriority = NSOperationQueuePriorityHigh;
+    self.qualityOfService = NSOperationQualityOfServiceUserInitiated;
   }
   return self;
 }

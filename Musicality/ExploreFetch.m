@@ -44,6 +44,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
   if (self) {
     _delegate = delegate;
     self.queuePriority = NSOperationQueuePriorityVeryHigh;
+    self.qualityOfService = NSOperationQualityOfServiceUserInitiated;
   }
   return self;
 }
@@ -150,7 +151,7 @@ typedef NS_OPTIONS(NSUInteger, FeedType) {
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-  [(NSObject *)self.delegate performSelectorOnMainThread:@selector(didFinishFetchingFeed:) withObject:[self.albumArray copy]  waitUntilDone:NO];
+  [(NSObject *)self.delegate performSelectorOnMainThread:@selector(didFinishFetchingFeed:) withObject:[self.albumArray copy]  waitUntilDone:YES];
 }
 
 @end

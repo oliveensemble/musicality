@@ -17,6 +17,7 @@
     _delegate = delegate;
     _artist = artist;
     self.queuePriority = NSOperationQueuePriorityHigh;
+    self.qualityOfService = NSOperationQualityOfServiceUserInitiated;
   }
   return self;
 }
