@@ -54,7 +54,6 @@
             self.isScanning = YES;
           }
           ArtistSearch *artistSearch = [[ArtistSearch alloc] initWithArtist:artist delegate:self];
-//          artistSearch.queuePriority = NSOperationQueuePriorityLow;
           [[[AutoScanPendingOperations sharedOperations] artistRequestsInProgress] setObject:artistSearch forKey:[NSString stringWithFormat:@"Scanning %@", artist.name]];
           [[[AutoScanPendingOperations sharedOperations] artistRequestQueue] addOperation:artistSearch];
         } 
