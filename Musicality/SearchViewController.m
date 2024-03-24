@@ -85,6 +85,7 @@ typedef NS_OPTIONS(NSUInteger, ViewState) {
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self.activityIndicator stopAnimating];
 }
 

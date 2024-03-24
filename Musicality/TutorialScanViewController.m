@@ -39,6 +39,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
   [[UserPrefs sharedPrefs] savePrefs];
 }
 

@@ -520,6 +520,7 @@ typedef NS_OPTIONS(NSUInteger, FilterType) {
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self.refresh endRefreshing];
 }
 

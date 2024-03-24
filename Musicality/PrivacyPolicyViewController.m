@@ -33,6 +33,7 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewMovedToForeground) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
