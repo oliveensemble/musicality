@@ -791,6 +791,7 @@
 				IBC_WARNINGS = YES;
 				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = Musicality/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Musicality: Never Miss a Beat";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
@@ -816,6 +817,7 @@
 				IBC_WARNINGS = YES;
 				IBSC_WARNINGS = YES;
 				INFOPLIST_FILE = Musicality/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Musicality: Never Miss a Beat";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
